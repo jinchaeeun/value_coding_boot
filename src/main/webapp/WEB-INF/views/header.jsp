@@ -29,7 +29,8 @@
 <script src="./js/fullpage.min.js"></script>
 <link rel="stylesheet" href="./js/fullpage.min.css">
 
-<link rel="stylesheet" href="./css/style.css">
+
+<link href="./css/style.css" rel="stylesheet" />
 
 <!-- 모바일 -->
 <link rel="stylesheet" media="screen and (max-width: 480px)" href="./css/480.css">
