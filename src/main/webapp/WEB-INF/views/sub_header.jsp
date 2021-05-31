@@ -49,15 +49,15 @@
 <div class="header" data-aos="fade-down" data-aos-delay="300">
 	<!-- 로고, 메뉴 -->
 	<div class="header-box">
-		<h1><a href="../index.jsp"><span>가치 코딩 .</span></a></h1>
+		<h1><a href="/index"><span>가치 코딩 .</span></a></h1>
 
 		<div class="cursor">
 		</div>
 
 		<div class="tnb">
 			<ul>
-				<li><a href="../member/login.jsp">로그인</a></li>
-				<li><a href="../member/join.jsp">회원가입</a></li>
+				<li><a href="../member/login">로그인</a></li>
+				<li><a href="../member/join">회원가입</a></li>
 				<!--
 				<li><a href="#none">로그아웃</a></li>
 				<li><a href="#none">정보수정</a></li>
