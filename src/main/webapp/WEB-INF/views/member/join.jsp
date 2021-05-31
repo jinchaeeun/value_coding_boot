@@ -3,6 +3,9 @@
  <!-- 상단 헤더 불러오기 -->
  <jsp:include page="../sub_header.jsp"></jsp:include>
 
+<div class="circle-small"></div>
+<div class="circle-big"></div>
+
 <div class="join-box">
 	<h1>회원가입</h1>
 	<div class="join">

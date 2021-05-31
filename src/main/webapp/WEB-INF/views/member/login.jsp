@@ -11,6 +11,9 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+<div class="circle-small"></div>
+<div class="circle-big"></div>
+
 <div class="login-box">
 	<h1>로그인</h1>
 	<div class="login">

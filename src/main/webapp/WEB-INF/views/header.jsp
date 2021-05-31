@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html lang="en" class="vlt-is--custom-cursor">
  <head>
@@ -25,12 +24,11 @@
 <!-- 스크롤시 fixed -->
 <script src="./js/autofix.js"></script>
 
-<!-- fullfage -->
-<script src="./js/fullpage.min.js"></script>
-<link rel="stylesheet" href="./js/fullpage.min.css">
+<!-- swiper -->
+<script src="./js/swiper.min.js"></script>
+<link rel="stylesheet" href="./js/swiper.min.css">
 
-
-<link href="./css/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="./css/style.css">
 
 <!-- 모바일 -->
 <link rel="stylesheet" media="screen and (max-width: 480px)" href="./css/480.css">
@@ -51,7 +49,7 @@
 <div class="header" data-aos="fade-down" data-aos-delay="300">
 	<!-- 로고, 메뉴 -->
 	<div class="header-box">
-		<h1><a href="/index"><span>가치 코딩 .</span></a></h1>
+		<h1 class="logo"><a href="/"><span>가치 코딩 .</span></a></h1>
 
 		<div class="cursor">
 		</div>
@@ -63,71 +61,33 @@
 				<li><a href="./member/mypage">마이페이지</a></li>
 				<!--
 				<li><a href="#none">로그아웃</a></li>
-				<li><a href="#none">마이페이지</a></li>
+				<li><a href="#none">정보수정</a></li>
 				-->
 			</ul>
 		</div>
 
 		<div class="gnb">
 			<ul>
-				<li><a href="none">WEB</a>
+				<li><a href="none">ABOUT</a></li>
+				<li><a href="none">가치 코딩</a>
 					<ul class="sub-gnb">
-						<li><a href="none">HTML/CSS</a></li>
-						<li><a href="none">JavaScript</a></li>
-						<li><a href="none">웹 퍼블리싱</a></li>
-						<li><a href="none">Java</a></li>
-						<li><a href="none">Python</a></li>
-						<li><a href="none">Node.js</a></li>
-						<li><a href="none">React</a></li>
-						<li><a href="none">Vue.js</a></li>
-						<li><a href="none">Spring</a></li>
+						<li><a href="none">언어</a></li>
+						<li><a href="none">DATABASE</a></li>
+						<li><a href="none">데이터 과학</a></li>
+						<li><a href="none">개발도구</a></li>
+						<li><a href="none">프로젝트 관리</a></li>
 					</ul>
 				</li>
-				<li><a href="none">APP</a>
+				<li><a href="none">커뮤니티</a>
 					<ul class="sub-gnb">
-						<li><a href="none">Android</a></li>
-						<li><a href="none">iOS</a></li>
-						<li><a href="none">Swift</a></li>
-						<li><a href="none">Kotlin</a></li>
-						<li><a href="none">Firebase</a></li>
-						<li><a href="none">Flutter</a></li>
-						<li><a href="none">JavaScript</a></li>
-						<li><a href="none">Java</a></li>
-						<li><a href="none">React Native</a></li>
-						<li><a href="none">IONIC</a></li>
+						<li><a href="none">일상</a></li>
+						<li><a href="none">프로젝트</a></li>
+						<li><a href="none">책/강의/프로그램</a></li>
+						<li><a href="none">스터디</a></li>
 					</ul>
 				</li>
-				<li><a href="none">GAME</a>
-					<ul class="sub-gnb">
-						<li><a href="none">Unity</a></li>
-						<li><a href="none">C#</a></li>
-						<li><a href="none">iOS</a></li>
-						<li><a href="none">Unreal Engine</a></li>
-						<li><a href="none">Swift</a></li>
-						<li><a href="none">Python</a></li>
-						<li><a href="none">JavaScript</a></li>
-						<li><a href="none">C++</a></li>
-					</ul>
-				</li>
-				<li><a href="none">언어</a>
-					<ul class="sub-gnb">
-						<li><a href="none">Python</a></li>
-						<li><a href="none">Java</a></li>
-						<li><a href="none">JavaScript</a></li>
-						<li><a href="none">HTML/CSS</a></li>
-						<li><a href="none">R</a></li>
-						<li><a href="none">C</a></li>
-						<li><a href="none">C#</a></li>
-						<li><a href="none">알고리즘</a></li>
-					</ul>
-				</li>
-				<li><a href="none">DATABASE</a></li>
-				<li><a href="none">클라이언트</a></li>
-				<li><a href="none">서버</a></li>
-				<li><a href="none">데이터 과학</a></li>
-				<li><a href="none">개발도구</a></li>
-				<li><a href="none">프로젝트 관리</a></li>
-				<li><a href="./board/notice_list.jsp">기타</a></li>
+				<li><a href="none">코딩 테스트</a></li>
+				<li><a href="none">CONTACT</a></li>
 			</ul>
 		</div>
 	</div>

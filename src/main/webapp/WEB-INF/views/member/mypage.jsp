@@ -3,6 +3,9 @@
  <!-- 상단 헤더 불러오기 -->
  <jsp:include page="../sub_header.jsp"></jsp:include>
 
+<div class="circle-small"></div>
+<div class="circle-big"></div>
+
 <div class="mypage-box">
 	<h1>김나현님 마이페이지</h1>
 		<ul class="mypage-tap">
