@@ -49,7 +49,7 @@
 <div class="header" data-aos="fade-down" data-aos-delay="300">
 	<!-- 로고, 메뉴 -->
 	<div class="header-box">
-		<h1><a href="/index"><span>가치 코딩 .</span></a></h1>
+		<h1><a href="/"><span>가치 코딩 .</span></a></h1>
 
 		<div class="cursor">
 		</div>

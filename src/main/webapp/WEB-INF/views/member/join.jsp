@@ -52,7 +52,7 @@
 		<button>가입하기</button>
 	</div>
 	<div class="button">
-		<a href="../index.jsp">이전</a>
+		<a href="/">이전</a>
 	</div>
 </div>
 
