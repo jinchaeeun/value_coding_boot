@@ -139,7 +139,7 @@ img {
 .main-gallery > ul{width: 50%;}
 .main-gallery > ul > li{float:left; padding: 20px; padding-top: 95px; width: 100%;}
 .main-gallery > ul > li:nth-child(4n+1){clear:both;}
-.main-gallery > ul > li > .info{padding: 50px; height:650px; background-color: #102770; border-radius: 10px; box-shadow: rgb(0 0 0 / 50%) 0px 8px 12px; text-align: left;}
+.main-gallery > ul > li > .info{padding: 60px; height:650px; background-color: #102770; border-radius: 10px; box-shadow: rgb(0 0 0 / 50%) 0px 8px 12px; text-align: left;}
 .main-gallery > ul > li > .info h3 {
 	color:#fff;
 	font-size: 4.5rem;
