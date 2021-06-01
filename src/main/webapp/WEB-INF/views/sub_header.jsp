@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- 스크롤시 fixed -->
-<script src="./js/autofix.js"></script>
+<script src="../js/autofix.js"></script>
 
 <!-- swiper -->
 <script src="../js/swiper.min.js"></script>

@@ -41,19 +41,31 @@ public class MemberController {
 	public String member_login() { 
 		
 		return "member/login"; 
-		} 
+	} 
 	
 	@GetMapping("join") 
 	public String member_join() { 
 		
 		return "member/join"; 
-		} 
+	} 
 	
 	@GetMapping("mypage") 
 	public String member_mypage() { 
 		
 		return "member/mypage"; 
-		} 
+	} 
+	
+	@GetMapping("mypage01") 
+	public String member_mypage01() { 
+		
+		return "member/mypage01"; 
+	}
+	
+	@GetMapping("mypage02") 
+	public String member_mypage02() { 
+		
+		return "member/mypage02"; 
+	}
 	
 	
 	
