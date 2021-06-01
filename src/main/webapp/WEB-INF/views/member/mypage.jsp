@@ -64,14 +64,14 @@
 
 <script>
 $('#mytap1').bind('click', function(event) {
-	   fn_getPage('./mypage01.jsp');
+	   fn_getPage('../member/mypage01');
 	   
 	    $(this).addClass('on');
 	    $('#mytap2').removeClass('on');
 	});
 	
 $('#mytap2').bind('click', function(event) {
-fn_getPage('./mypage02.jsp');
+fn_getPage('../member/mypage02');
 
 		$(this).addClass('on');
 		$('#mytap1').removeClass('on');
@@ -83,7 +83,7 @@ fn_getPage('./mypage02.jsp');
 	function fn_getPage(url) {
 	   $.ajax({
 		url : url,
-		type : 'post',
+		type : 'get',
 		data : {
 				test : '1', 
 				test: '2',
