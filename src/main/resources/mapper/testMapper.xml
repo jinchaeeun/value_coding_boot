@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper interface 경로 일치 -->
+
+<mapper namespace="com.hustar.value_coding_boot.mapper.TestMapper">
+<!-- 쿼리문 id 값에는 mapper 메서드명과 일치. -->
+<!-- 게시글 조회 -->
+	<select id="selectTest" resultType="com.hustar.value_coding_boot.dto.TestDto">
+		SELECT * 
+		FROM article
+	</select>
+
+</mapper> 

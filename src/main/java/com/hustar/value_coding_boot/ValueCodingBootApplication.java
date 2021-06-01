@@ -9,5 +9,4 @@ public class ValueCodingBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ValueCodingBootApplication.class, args);
 	}
-
 }
