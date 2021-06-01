@@ -74,21 +74,22 @@ img {
 .header .header-box{overflow: hidden; padding: 0px 10px;}
 .header h1{float: left;}
 .header h1 a{display: block; padding: 20px; color: #111;}
-.header h1 a span {display: inline-block; vertical-align: middle; margin-left: 0; color: #111; height: 40px; font-size: 24px; line-height: 40px; padding: 0 10px;}
+.header h1 a span {display: inline-block; vertical-align: middle; margin-left: 0; color: #111; height: 40px; font-size: 30px; line-height: 40px; padding: 0 10px;}
 
 .header h1 a img{max-width: 120px; max-height: 40px;}
 .header .gnb{width:700px; margin: 0 auto; margin-top: 10px;}
 .header .gnb > ul{overflow: hidden;}
 .header .gnb > ul > li{float:left; margin: 15px 0 15px 0; padding: 0 20px; border-right: 1px solid #ccc;}
 .header .gnb > ul > li:last-child{border: 0;}
-.header .gnb > ul > li > a{display: block; padding: 5px 10px 5px 10px; font-size: 16px; font-weight: 500; color: #111;}
+.header .gnb > ul > li > a{display: block; padding: 5px 10px 5px 10px; font-size: 1rem; font-weight: 500; color: #111;}
 
 .header .gnb .sub-gnb{display: none; position: absolute; padding-top: 15px;}
-.header .gnb .sub-gnb > li{padding: 10px;}
+.header .gnb .sub-gnb > li{padding: 11px;}
+.header .gnb .sub-gnb > li a {font-size: 0.85rem;}
 
 .header .tnb{float: right; margin-top: 22px; margin-right: 20px;}
 .header .tnb > ul > li{float: left;}
-.header .tnb > ul > li a{display: block; padding: 10px; color: #111;}
+.header .tnb > ul > li a{display: block; padding: 10px;  font-size: 0.85rem; color: #111;}
 
 /* main-visual */
 .circle-small {
@@ -133,20 +134,20 @@ img {
 }
 
 /* main-gallery */
-.m-g-box{max-width:1200px; margin: 0 auto; padding-top: 250px;}
+.m-g-box{max-width:1300px; margin: 0 auto; padding-top: 250px;}
 .main-gallery {display: inline;}
 .main-gallery > ul{width: 50%;}
 .main-gallery > ul > li{float:left; padding: 20px; padding-top: 95px; width: 100%;}
 .main-gallery > ul > li:nth-child(4n+1){clear:both;}
-.main-gallery > ul > li > .info{padding: 50px; height:600px; background-color: #102770; border-radius: 10px; box-shadow: rgb(0 0 0 / 50%) 0px 8px 12px; text-align: left;}
+.main-gallery > ul > li > .info{padding: 50px; height:650px; background-color: #102770; border-radius: 10px; box-shadow: rgb(0 0 0 / 50%) 0px 8px 12px; text-align: left;}
 .main-gallery > ul > li > .info h3 {
 	color:#fff;
-	font-size: 5rem;
+	font-size: 4.5rem;
 	font-weight: 700;
     line-height: 1.55;
 	margin-bottom: 40px;
 }
-.main-gallery > ul > li > .info p{color:#fff; font-size: 1rem !important; line-height: 1.55; margin-bottom: 50px;}
+.main-gallery > ul > li > .info p{color:#fff; font-size: 1rem !important; line-height: 2; margin-bottom: 50px;}
 
 /* footer */
 .footer{position:fixed; left: 0px;  z-index:999; width:100%; background-color: rgba(255, 255, 255, 0.1);}
@@ -191,7 +192,7 @@ img {
   display: inline-block;
   transition: all 0.3s ease;
   text-align: center;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.2;
   font-weight: 500;
   color: #ffeba7;
@@ -224,7 +225,7 @@ img {
 .card-3d-wrap {
   position: relative;
   max-width: calc(100% - 40px);
-  height: 595px;
+  height: 645px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   perspective: 1000px;
@@ -285,7 +286,7 @@ img {
   text-align: center;
   font-weight: 700;
   letter-spacing: 1px;
-  font-size: 22px;
+  font-size: 1.8rem;
   line-height: 1.7;
   color: #102770;
   transform: translate3d(0, 0, 35px) perspective(100px);
@@ -304,7 +305,7 @@ img {
   width: 70px;
   height: 70px;
   display: block;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 6px 20px 0 rgba(16, 39, 112,.3);
@@ -332,12 +333,12 @@ img {
   font-size: 36px;
   line-height: 1.1;
   color: #102770;
-  margin-top: 40px;
+  margin-top: 55px;
   padding-right: 35px;
   transform: translate3d(0, 0, 30px) perspective(100px);
 }
 .pricing-wrap h2 sup{
-  font-size: 14px;
+  font-size: 1rem;
   margin: 15px;
 }
 .pricing-wrap p{
@@ -346,7 +347,7 @@ img {
   display: block;
   text-align: center;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.2;
   letter-spacing: 1px;
   color: #102770;
@@ -386,7 +387,7 @@ img {
 .img-3{
   position: absolute;
   display: block;
-  right: -90px;
+  right: -100px;
   top: -40px;
   z-index: 5;
   width: calc(60% + 50px);
@@ -441,7 +442,7 @@ img {
   width: 100%;
 }
 .slabel label img {
-	max-width: 20px; margin-left: 5px; margin-bottom: 3px;
+	max-width: 20px; margin-left: 10px; margin-bottom: 3px;
 }
 .slabel input {
   -webkit-appearance: none;
@@ -456,7 +457,7 @@ img {
   transition: transform 225ms ease-in-out;
   width: 100%;
   background: #fff;
-  	font-size: 14px;
+  	font-size: 1rem;
 	line-height: 1.2;
 	font-weight: 500;
     letter-spacing: -0.01em;
@@ -506,9 +507,9 @@ img {
   transition: transform 225ms ease-in-out;
   width: 100%;
   color: inherit;
-	font-size: 14px;
+	font-size: 1rem;
 	line-height: 1.2;
-	font-weight: 500;
+	font-weight: 700;
     letter-spacing: -0.01em;
     outline: 0;
     box-shadow: 0 3px 6px 2px rgb(16 16 16 / 20%), inset 0 -2px 0 0 rgb(16 16 16 / 20%);
@@ -552,13 +553,13 @@ img {
   transform: translate(-50%, -50%);
   border-radius: 8px;
   width: 100%;
-  max-width: 480px;
+  max-width: 530px;
   padding: 10px 20px 10px 20px;
   overflow: auto;
-  margin-top: 95px;
+  margin-top: 105px;
 }
 .app-header {
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 32px;
   color: #102770;
@@ -589,14 +590,14 @@ img {
   display: flex;
   align-items: flex-start;
   color: #102770;
-  font-size: 12px;
+  font-size: 0.85rem;
   line-height: 24px;
   position: relative;
   transition: 0.2s;
 }
 
 .question-container {
-	margin-top: 160px;
+	margin-top: 190px;
 }
 
 .question-header {
@@ -610,13 +611,14 @@ img {
 }
 
 .date-list-span {
-	font-size: 10px;
+	font-size: 0.7rem;
 	color: rgba(1, 1, 1, 0.4);
-    margin-left: 5px;
+    margin-left: 8px;
     margin-right: 5px;
 }
 
 .tag-list-span {
+	font-size: 0.85rem;
 	background-color: rgba(1, 1, 1, 0.1);
 	padding: 5px 10px 5px 10px;
 	border-radius: 4px;
@@ -636,6 +638,7 @@ img {
 }
 
 .tag-span {
+  font-size: 0.85rem;
     background-color: rgba(1, 1, 1, 0.1);
     padding: 5px 10px 5px 10px;
     border-radius: 4px;
