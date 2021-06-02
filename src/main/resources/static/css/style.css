@@ -51,8 +51,8 @@ img {
 
 /* header */
 .cursor {
-	width: 0.8rem;
-	height: 0.8rem;
+	width: 1.2rem;
+	height: 1.2rem;
 	border: 2px solid var(--color-texta);
 	border-radius: 50%;
 	position: absolute;
@@ -67,7 +67,7 @@ img {
 }
 
 .cursor-grow {
-	transform: scale(3);
+	transform: scale(2);
 }
 
 .header{position:fixed; z-index:999; left:0; top:0; width:100%;}
