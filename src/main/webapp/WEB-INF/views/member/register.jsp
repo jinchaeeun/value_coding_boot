@@ -114,7 +114,7 @@
 								</ul>
 							</div>
 						</div>
-						
+
 						<div class="form-group has-feedback">
 							<button class="btn btn-success" type="submit" id="submit" onclick="return test_checkbox()">가입하기</button>
 						</div>

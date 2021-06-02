@@ -7,10 +7,12 @@
 	<insert id="register">
 	    INSERT INTO MP_MEMBER(   USERID
 	   					       , USERPASS 
-	   					       , USERNICKNAME  	)
+	   					       , USERNICKNAME
+	   					       , DEVLANG  	)
 	                  VALUES(    #{userId}
 	                 		   , #{userPass}
-	                 		   , #{userNickName} )
+	                 		   , #{userNickName}
+	                 		   , #{devLang} )
     </insert>
    
 </mapper>

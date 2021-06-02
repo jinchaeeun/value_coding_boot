@@ -8,7 +8,9 @@ public class MemberVO {
 	private String userPass;
 	private String userNickName;
 	private Date regDate;
+	private String devLang;
 	
+
 	public String getUserId() {
 		return userId;
 	}
@@ -34,10 +36,16 @@ public class MemberVO {
 		this.regDate = regDate;
 	}
 	
+	public String getDevLang() {
+		return devLang;
+	}
+	public void setDevLang(String devLang) {
+		this.devLang = devLang;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userNickName=" + userNickName + ", regDate="
-				+ regDate + "]";
+				+ regDate + ", devLang=" + devLang + "]";
 	}
 	
 }
