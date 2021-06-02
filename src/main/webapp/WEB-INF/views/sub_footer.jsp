@@ -38,13 +38,13 @@ animation-fill-mode: forwards;
 <!-- 콘텐츠 끝 -->
 <script>
 	$(".gnb li").hover(function() {
-		$(this).children("ul").slideToggle(300)
+		$(this).children("ul").slideToggle(100)
 	})
 
 	let mouseCursor = document.querySelector(".cursor");
 	let tnbLinks = document.querySelectorAll(".tnb li a");
 	let gnbLinks = document.querySelectorAll(".gnb li a");
-	let qnaLinks = document.querySelectorAll(".vlt-btn");
+	let logLinks = document.querySelectorAll(".logo");
 	window.addEventListener("scroll", cursor);
 	window.addEventListener("mousemove", cursor);
 	function cursor(e) {
@@ -70,7 +70,8 @@ animation-fill-mode: forwards;
 		});
 	});
 
-	qnaLinks.forEach((link) => {
+	
+	logLinks.forEach((link) => {
 		link.addEventListener("mouseover", () => {
 			mouseCursor.classList.add("cursor-grow");
 		});
@@ -78,6 +79,7 @@ animation-fill-mode: forwards;
 			mouseCursor.classList.remove("cursor-grow");
 		});
 	});
+
 
 	$(document).ready(function() {
 		document.querySelector(".circle-small").classList.add("go");
@@ -90,3 +92,5 @@ animation-fill-mode: forwards;
 </body>
 
 </html>
+
+

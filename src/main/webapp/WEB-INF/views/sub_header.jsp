@@ -32,19 +32,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
 
 <link rel="stylesheet" href="../js/fullpage.min.css">
+<!-- swiper -->
+<script src="../js/swiper.min.js"></script>
+<link rel="stylesheet" href="../js/swiper.min.css">
 
 <link rel="stylesheet" href="../css/style.css">
 
 <!-- 모바일 -->
-<link rel="stylesheet" media="screen and (max-width: 480px)" href="../css/480.css">
+<link rel="stylesheet" media="screen and (max-width: 480px)" href="./css/480.css">
 
 <!-- 태블릿 세로--> 
-<link rel="stylesheet" media="screen and (min-width: 481px) and (max-width: 720px)" href="../css/720.css">
+<link rel="stylesheet" media="screen and (min-width: 481px) and (max-width: 720px)" href="./css/720.css">
 
 <!-- 태블릿 가로-->
-<link rel="stylesheet" media="screen and (min-width: 721px) and (max-width: 1024px)" href="../css/1024.css">
+<link rel="stylesheet" media="screen and (min-width: 721px) and (max-width: 1024px)" href="./css/1024.css">
 <!-- PC -->
-<link rel="stylesheet" media="screen and (min-width: 1025px)" href="../css/pc.css">
+<link rel="stylesheet" media="screen and (min-width: 1025px)" href="./css/pc.css">
 
 </head>
 
@@ -55,14 +58,16 @@
 	<!-- 로고, 메뉴 -->
 	<div class="header-box">
 		<h1><a href="/"><span>가치 코딩 .</span></a></h1>
+		<h1 class="logo"><a href="/"><span>가치 코딩 .</span></a></h1>
 
 		<div class="cursor">
 		</div>
 
 		<div class="tnb">
 			<ul>
-				<li><a href="../member/login.jsp">로그인</a></li>
-				<li><a href="../member/join.jsp">회원가입</a></li>
+				<li><a href="../member/login">로그인</a></li>
+				<li><a href="../member/join">회원가입</a></li>
+				<li><a href="../member/mypage">마이페이지</a></li>
 				<!--
 				<li><a href="#none">로그아웃</a></li>
 				<li><a href="#none">정보수정</a></li>
@@ -72,31 +77,22 @@
 
 		<div class="gnb">
 			<ul>
-				<li><a href="none">WEB</a>
+				<li><a href="none">ABOUT</a></li>
+				<li><a href="none">가치 코딩</a>
 					<ul class="sub-gnb">
-						<li><a href="none">HTML/CSS</a></li>
-						<li><a href="none">JavaScript</a></li>
-						<li><a href="none">웹 퍼블리싱</a></li>
-						<li><a href="none">Java</a></li>
-						<li><a href="none">Python</a></li>
-						<li><a href="none">Node.js</a></li>
-						<li><a href="none">React</a></li>
-						<li><a href="none">Vue.js</a></li>
-						<li><a href="none">Spring</a></li>
+						<li><a href="none">언어</a></li>
+						<li><a href="none">DATABASE</a></li>
+						<li><a href="none">데이터 과학</a></li>
+						<li><a href="none">개발도구</a></li>
+						<li><a href="none">프로젝트 관리</a></li>
 					</ul>
 				</li>
-				<li><a href="none">APP</a>
+				<li><a href="none">커뮤니티</a>
 					<ul class="sub-gnb">
-						<li><a href="none">Android</a></li>
-						<li><a href="none">iOS</a></li>
-						<li><a href="none">Swift</a></li>
-						<li><a href="none">Kotlin</a></li>
-						<li><a href="none">Firebase</a></li>
-						<li><a href="none">Flutter</a></li>
-						<li><a href="none">JavaScript</a></li>
-						<li><a href="none">Java</a></li>
-						<li><a href="none">React Native</a></li>
-						<li><a href="none">IONIC</a></li>
+						<li><a href="none">일상</a></li>
+						<li><a href="none">프로젝트</a></li>
+						<li><a href="none">책/강의/프로그램</a></li>
+						<li><a href="none">스터디</a></li>
 					</ul>
 				</li>
 				<li><a href="none">GAME</a>
@@ -130,6 +126,8 @@
 				<li><a href="none">프로젝트 관리</a></li>
 				<li><a href="/about">소개</a></li>
 				<li><a href="/board_list">기타</a></li>
+				<li><a href="none">코딩 테스트</a></li>
+				<li><a href="none">CONTACT</a></li>
 			</ul>
 		</div>
 	</div>
