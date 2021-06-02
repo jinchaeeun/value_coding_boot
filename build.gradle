@@ -28,6 +28,9 @@ dependencies {
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.0'
+	implementation group: 'javax.inject', name: 'javax.inject', version: '1'
+	//implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
 
 test {

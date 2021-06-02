@@ -29,6 +29,9 @@
 <script src="./js/fullpage.min.js"></script>
 <link rel="stylesheet" href="./js/fullpage.min.css">
 
+<!-- 숫자 카운터 counterUp -->
+<script src="../js/jquery.counterup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
 
 <link href="./css/style.css" rel="stylesheet" />
 
@@ -51,7 +54,7 @@
 <div class="header" data-aos="fade-down" data-aos-delay="300">
 	<!-- 로고, 메뉴 -->
 	<div class="header-box">
-		<h1><a href="./index.jsp"><span>가치 코딩 .</span></a></h1>
+		<h1><a href="/"><span>가치 코딩 .</span></a></h1>
 
 		<div class="cursor">
 		</div>
@@ -123,11 +126,11 @@
 				</li>
 				<li><a href="none">DATABASE</a></li>
 				<li><a href="none">클라이언트</a></li>
-				<li><a href="none">서버</a></li>
 				<li><a href="none">데이터 과학</a></li>
 				<li><a href="none">개발도구</a></li>
 				<li><a href="none">프로젝트 관리</a></li>
-				<li><a href="./board/notice_list.jsp">기타</a></li>
+				<li><a href="/about">소개</a></li>
+				<li><a href="/board_list">기타</a></li>
 			</ul>
 		</div>
 	</div>

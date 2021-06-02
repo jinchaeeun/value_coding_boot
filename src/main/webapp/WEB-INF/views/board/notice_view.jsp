@@ -94,8 +94,8 @@
 	</div> <!-- answer-wrap -->
 	
 	<div class="write-btn-box">
-		<a href="./notice_list.jsp">목록으로</a>
-		<a href="./notice_write.jsp">수정</a>
+		<a href="/board_list">목록으로</a>
+		<a href="/board_write">수정</a>
 		<a href="#none">삭제</a>
 	</div>
 </div> <!-- notice-view-wrap -->
