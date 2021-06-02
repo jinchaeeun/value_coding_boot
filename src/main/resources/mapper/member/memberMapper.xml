@@ -5,12 +5,12 @@
 <mapper namespace="memberMapper">
 	<!-- 게시판 글 작성 -->
 	<insert id="register">
-	    INSERT INTO MP_MEMBER(   USERID 
+	    INSERT INTO MP_MEMBER(   USERID
 	   					       , USERPASS 
-	   					       , USERNAME 	)
-	                  VALUES(    #{userId} 
+	   					       , USERNICKNAME  	)
+	                  VALUES(    #{userId}
 	                 		   , #{userPass}
-	                 		   , #{userName})
+	                 		   , #{userNickName} )
     </insert>
    
 </mapper>

@@ -3,11 +3,12 @@ package com.hustar.value_coding_boot.vo;
 import java.util.Date;
 
 public class MemberVO {
-
+	
 	private String userId;
 	private String userPass;
-	private String userName;
+	private String userNickName;
 	private Date regDate;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -20,11 +21,11 @@ public class MemberVO {
 	public void setUserPass(String userPass) {
 		this.userPass = userPass;
 	}
-	public String getUserName() {
-		return userName;
+	public String getuserNickName() {
+		return userNickName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setuserNickName(String userNickName) {
+		this.userNickName = userNickName;
 	}
 	public Date getRegDate() {
 		return regDate;
@@ -35,7 +36,7 @@ public class MemberVO {
 	
 	@Override
 	public String toString() {
-		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", regDate="
+		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userNickName=" + userNickName + ", regDate="
 				+ regDate + "]";
 	}
 	
