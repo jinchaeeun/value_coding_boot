@@ -294,6 +294,17 @@ svg:not(:root) {
 .button{width: 30px; margin:0 auto;}
 
 
+	/* 중복아이디 존재하지 않는경우 */
+	.nick_check_ok{
+		color : green;
+		display : none;
+	}
+	/* 중복아이디 존재하는 경우 */
+	.nick_check_no{
+		color : red;
+		display : none;
+	}
+
 /*mypage.jsp*/
 .mypage-box{width: 480px; margin: 200px auto; }
 .mypage-box h1{text-align: center; margin-bottom:20px;}

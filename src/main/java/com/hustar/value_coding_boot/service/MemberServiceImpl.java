@@ -25,6 +25,10 @@ public class MemberServiceImpl {
 				return false;
 	}
 
+	public MemberDto getMemberById(String me_id) {
+		return memberMapper.getMemberById(me_id);
+	}
+	
 	public void join(Map<String, Object> param) {
 		memberMapper.join(param);	
 	}

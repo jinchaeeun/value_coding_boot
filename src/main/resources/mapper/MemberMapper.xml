@@ -5,7 +5,7 @@
 <mapper namespace="com.hustar.value_coding_boot.mapper.MemberMapper">
 	
 	<!-- 회원 가입 -->
-	<insert id="join" useGeneratedKeys="true" keyProperty="id">
+	<insert id="join">
 		INSERT INTO t_member
 		<set> 
 			<if test="me_id != null">

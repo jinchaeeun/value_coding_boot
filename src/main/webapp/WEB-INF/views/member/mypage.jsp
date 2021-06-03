@@ -16,7 +16,8 @@
 		<div class="mypage" id="ajax_div">
 			<span>닉네임</span>
 			<input type="text" placeholder="닉네임" />
-			<div class="nick_check">이미 사용 중인 닉네임입니다!.</div>
+			<span class="nick_check_ok">사용 가능한 아이디입니다.</span>
+			<div class="nick_check_no">이미 사용 중인 닉네임입니다!.</div>
 			<span>아이디(이메일)</span>
 			<input type="text" id="mypage_Email" placeholder="${mypage.me_id}" readonly onfocus="this.blur()" />
 			

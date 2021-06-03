@@ -84,6 +84,8 @@
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userId">아이디(이메일)</label>
 					<input class="form-control" type="text" id="userId" name="me_id"  placeholder="6자 이상의 영 소문자 및 숫자를 입력해주세요"/>
+					<span class="nick_check_ok">사용 가능한 아이디입니다.</span>
+					<span class="nick_check_no">이미 사용 중인 닉네임입니다!.</span>
 				</div>
 				
 				<div class="form-group has-feedback">
@@ -123,7 +125,23 @@
 		<a href="/login">이전</a>
 	</div>
 </div>
+<script>
+//아이디 중복검사
+$('#userId').on("propertychange change keyup paste input", function(){
 
+	//console.log("keyup 테스트");	
+	
+	var memberId = $('#userId').val();			// .id_input에 입력되는 값
+	var data = {memberId : memberId}				// '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+	
+	$.ajax({
+		type : "post",
+		url : "/member/memberIdChk",
+		data : data
+	}); // ajax 종료
+
+});// function 종료
+</script>
 </body>
 
 <!-- 하단 헤더 불러오기 -->
