@@ -1,21 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <!-- 상단 헤더 불러오기 -->
  <jsp:include page="../sub_header.jsp"></jsp:include>
 
 <div class="mypage-box">
-	<h1>김나현님 마이페이지</h1>
+	
+	<h1>${mypage.me_nickname}님 마이페이지</h1>
 		<ul class="mypage-tap">
 			<li class="mypage-tapmenu on" id="mytap1"><a href="#" id="mypage-menu1"><span>내 정보 수정</span></a></li>
 			<li class="mypage-tapmenu" id="mytap2"><a href="#"><span>나의 게시물</span></a></li>
 		</ul>
 	
-	<div class="mypage" id="ajax_div">
+	
+		<div class="mypage" id="ajax_div">
 			<span>닉네임</span>
 			<input type="text" placeholder="닉네임" />
-			<div class="nick_check">이미 사용 중인 닉네임입니다.</div>
+			<div class="nick_check">이미 사용 중인 닉네임입니다!.</div>
 			<span>아이디(이메일)</span>
-			<input type="text" id="mypage_Email" placeholder="value_coding@naver.com" readonly onfocus="this.blur()" />
+			<input type="text" id="mypage_Email" placeholder="${mypage.me_id}" readonly onfocus="this.blur()" />
 			
 			<span>비밀번호</span>
 			<input type="password"  placeholder="비밀번호" />
@@ -55,8 +58,10 @@
 					</li>
 				</ul>
 			</div>
-			<button>회원 정보 수정</button>
-		</div>	
+			<input type="submit" value="회원정보 수정" />
+			</div>
+	
+
 </div>
 
 <script>

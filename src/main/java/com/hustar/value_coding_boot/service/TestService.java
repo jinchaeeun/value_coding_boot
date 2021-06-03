@@ -8,4 +8,8 @@ public interface TestService {
 
 	// 디비 조회
 	List<TestDto> selectTest() throws Exception;
+	
+	TestDto getTestDetailById(int id) throws Exception;
+
+	public void deleteArticleById(int id) throws Exception;
 }

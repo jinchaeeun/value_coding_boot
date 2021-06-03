@@ -17,4 +17,16 @@ public class TestServiceImpl {
 	public List<TestDto> selectTest() throws Exception {
 		return testMapper.selectTest();
 	}
+
+
+	public TestDto getTestDetailById(int id) throws Exception {
+		return testMapper.getTestDetailById(id);
+	}
+
+
+	public void deleteTest(int id) throws Exception {
+		testMapper.deleteTest(id);
+	}
+
+
 }

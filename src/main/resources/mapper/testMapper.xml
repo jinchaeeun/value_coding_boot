@@ -10,4 +10,18 @@
 		FROM article
 	</select>
 
+	<!-- 게시글 상세 조회 -->
+	<select id="getTestDetailById" resultType="com.hustar.value_coding_boot.dto.TestDto">
+		SELECT * 
+		FROM article 
+		WHERE id = #{id}
+	</select>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteTest">
+		DELETE FROM article
+		WHERE id = #{id}
+	</delete>
+
+
 </mapper> 
