@@ -8,12 +8,7 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	
 <script type="text/javascript">
 
 		$(document).ready(function(){
@@ -21,26 +16,21 @@
 			$("#submit").on("click", function(){
 				if($("#me_nickName").val()==""){
 					alert("닉네임을 입력해주세요.");
-					$("#userNickName").focus();
+					$("#me_nickName").focus();
 					return false;
-				}
-				if($("#me_id").val()==""){
+				} else if($("#me_id").val()==""){
 					alert("아이디를 입력해주세요.");
-					$("#userId").focus();
+					$("#me_id").focus();
 					return false;
-				}
-				if($("#me_pass").val()==""){
+				} else if($("#me_pass").val()==""){
 					alert("비밀번호를 입력해주세요.");
-					$("#userPass").focus();
+					$("#me_pass").focus();
 					return false;
-				}
-				if($("#me_pass2").val()==""){
+				} else if($("#me_pass2").val()==""){
 					alert("비밀번호 확인을 입력해주세요.");
-					$("#userPass").focus();
+					$("#me_pass2").focus();
 					return false;
-				}
-				
-				if($("#me_pass").val() != $("#me_pass2").val()){
+				} else if($("#me_pass").val() != $("#me_pass2").val()){
 					alert("비밀번호 입력 값이 다릅니다.");
 					$("#me_pass2").focus();
 					return false;
