@@ -13,7 +13,7 @@ public class MemberDAOImpl implements MemberDAO {
 	// 회원가입
 
 	@Override
-	public void register(MemberVO vo) throws Exception {
-		sql.insert("memberMapper.register", vo);
+	public void join(MemberVO vo) throws Exception {
+		sql.insert("memberMapper.join", vo);
 	}
 }

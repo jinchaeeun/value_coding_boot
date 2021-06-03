@@ -22,17 +22,17 @@ public class MemberController {
 	MemberService service;
 	
 	// 회원가입 get
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void getRegister() throws Exception {
-		logger.info("get register");
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public void getJoin() throws Exception {
+		logger.info("get join");
 	}
 	
 	// 회원가입 post
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postRegister(MemberVO vo) throws Exception {
-		logger.info("post register");
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
+	public String postJoin(MemberVO vo) throws Exception {
+		logger.info("post join");
 		
-		service.register(vo);
+		service.join(vo);
 		
 		return null;
 	}
@@ -43,11 +43,7 @@ public class MemberController {
 		return "member/login"; 
 	} 
 	
-	@GetMapping("join") 
-	public String member_join() { 
-		
-		return "member/join"; 
-	} 
+
 	
 	@GetMapping("mypage") 
 	public String member_mypage() { 

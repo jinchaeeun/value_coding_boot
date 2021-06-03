@@ -3,16 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberMapper">
-	<!-- 게시판 글 작성 -->
-	<insert id="register">
-	    INSERT INTO MP_MEMBER(   USERID
-	   					       , USERPASS 
-	   					       , USERNICKNAME
-	   					       , DEVLANG  	)
-	                  VALUES(    #{userId}
-	                 		   , #{userPass}
-	                 		   , #{userNickName}
-	                 		   , #{devLang} )
+	<!-- 회원가입 멤버 등록 -->
+	<insert id="join">
+	    INSERT INTO T_MEMBER(   ME_ID
+	   					       , ME_PASSWORD 
+	   					       , ME_NICKNAME
+	   					       , ME_DEVLANG  	)
+	                  VALUES(    #{me_id}
+	                 		   , #{me_pass}
+	                 		   , #{me_nickName}
+	                 		   , #{me_devLang}  )
     </insert>
    
 </mapper>

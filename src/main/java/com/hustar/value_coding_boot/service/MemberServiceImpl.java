@@ -13,9 +13,9 @@ public class MemberServiceImpl implements MemberService {
 	@Inject MemberDAO dao;
 	
 	@Override
-	public void register(MemberVO vo) throws Exception {
+	public void join(MemberVO vo) throws Exception {
 		
-		dao.register(vo);
+		dao.join(vo);
 		
 	}
 	
