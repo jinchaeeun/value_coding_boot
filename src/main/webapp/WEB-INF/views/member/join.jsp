@@ -95,7 +95,7 @@
 				
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userPassConfirm">비밀번호 확인</label>
-					<input class="form-control" type="password" id="userPassConfirm" name="userPassConfig" placeholder="비밀번호 확인"/>
+					<input class="form-control" type="password" id="userPassConfirm" name="userPassConfirm" placeholder="비밀번호 확인"/>
 				</div>
 				
 				<div class="form-group has-feedback">
@@ -125,23 +125,7 @@
 		<a href="/login">이전</a>
 	</div>
 </div>
-<script>
-//아이디 중복검사
-$('#userId').on("propertychange change keyup paste input", function(){
 
-	//console.log("keyup 테스트");	
-	
-	var memberId = $('#userId').val();			// .id_input에 입력되는 값
-	var data = {memberId : memberId}				// '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
-	
-	$.ajax({
-		type : "post",
-		url : "/member/memberIdChk",
-		data : data
-	}); // ajax 종료
-
-});// function 종료
-</script>
 </body>
 
 <!-- 하단 헤더 불러오기 -->

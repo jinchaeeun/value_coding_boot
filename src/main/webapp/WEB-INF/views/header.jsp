@@ -31,6 +31,7 @@
 
 
 <link href="./css/style.css" rel="stylesheet" />
+<script src="./js/main.js"></script>
 
 <!-- 모바일 -->
 <link rel="stylesheet" media="screen and (max-width: 480px)" href="./css/480.css">

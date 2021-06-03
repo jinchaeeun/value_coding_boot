@@ -34,7 +34,6 @@ public class MemberController {
 	@ResponseBody
 	public String dojoin(@RequestParam Map<String, Object> param) {
 		String me_id = Util.getAsStr(param.get("me_id"),"");
-		
 		// js 상 써줘도 controller에 무조건 써줘야함 (파라미터, js 무력화 등 방지)
 		if ( me_id.length() == 0 ) {
 			return String.format("<script> alert('로그인 아이디를 입력해주세요.'); histroy.back(); </script>");
@@ -47,6 +46,7 @@ public class MemberController {
 			return String.format("<script> alert('%s(은)는 이미 사용 중인 아이디입니다.'); location.replace('/member/join') </script>", me_id);
 		}
 		
+
 		//회원 생성될 때 회원번호 생성
 		memberServiceImpl.join(param);
 		
