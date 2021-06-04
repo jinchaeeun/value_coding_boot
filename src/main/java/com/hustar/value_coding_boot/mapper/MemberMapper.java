@@ -5,13 +5,12 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.hustar.value_coding_boot.dto.MemberDto;
-
 @Mapper
 public interface MemberMapper {
-
-	MemberDto getMemberById(@Param("me_id") String me_id);
-
+	
 	void join(Map<String, Object> param);
-
+	
+	// 아이디 중복 검사
+	public int idCheck(@Param("me_id") String me_id);
+	
 }

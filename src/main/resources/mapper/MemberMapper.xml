@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <!-- mapper interface 경로 일치 -->
 
 <mapper namespace="com.hustar.value_coding_boot.mapper.MemberMapper">
-	
+
 	<!-- 회원 가입 -->
 	<insert id="join">
 		INSERT INTO t_member
@@ -17,13 +18,17 @@
 			<if test="me_nickname != null">
 				me_nickname = #{me_nickname},
 			</if>
+				me_regDate = NOW(),
+				me_devLang = #{me_devLang};
 		</set>
 	</insert>
 	
-	<select id = "getMemberById" resultType="com.hustar.value_coding_boot.dto.MemberDto">
-		SELECT *
-		FROM t_member
-		WHERE me_id = #{me_id}
-	</select> 
 	
-</mapper>
+	<select id="idCheck" resultType="int">
+  		SELECT count(*) 
+  		FROM t_member 
+  		WHERE me_id = #{me_id};
+  	</select>
+
+
+</mapper> 

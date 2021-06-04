@@ -5,6 +5,19 @@
  <!-- 상단 헤더 불러오기 -->
  <jsp:include page="../sub_header.jsp"></jsp:include>
 
+<style>
+
+	/* 중복아이디 존재하지 않는경우 */
+	.id_input_re_1{
+		color : green;
+		display : none;
+	}
+	/* 중복아이디 존재하는 경우 */
+	.id_input_re_2{
+		color : red;
+		display : none;
+	}
+</style>
 <div class="circle-small"></div>
 <div class="circle-big"></div>
 
@@ -12,6 +25,20 @@
 	<h1>회원가입</h1>
 		<div class="join">
 			<script>
+			function isAlphaNumeric(str) {
+				  var code, i, len;
+
+				  for (i = 0, len = str.length; i < len; i++) {
+				    code = str.charCodeAt(i);
+				    if (!(code > 47 && code < 58) && // numeric (0-9)
+				        !(code > 64 && code < 91) && // upper alpha (A-Z)
+				        !(code > 96 && code < 123)) { // lower alpha (a-z)
+				      return false;
+				    }
+				  }
+				  return true;
+				};
+				
 			// 가입 버튼 여러 번 클릭하게 될 경우, Submit 중복 방지용
 			var joinFormSubmitDone = false;
 			function joinFormSubmit(form){
@@ -74,7 +101,7 @@
 				joinFormSubmitDone = true;
 			}
 			</script>
-			<form action="dojoin" method="post" onsubmit="joinFormSubmit(this); return false;">
+			<form action="doJoin" name="frm" method="post" onsubmit="joinFormSubmit(this); return false;">
 				
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userNickName">닉네임</label>
@@ -83,9 +110,9 @@
 				
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userId">아이디(이메일)</label>
-					<input class="form-control" type="text" id="userId" name="me_id"  placeholder="6자 이상의 영 소문자 및 숫자를 입력해주세요"/>
-					<span class="nick_check_ok">사용 가능한 아이디입니다.</span>
-					<span class="nick_check_no">이미 사용 중인 닉네임입니다!.</span>
+					<input class="id_input" type="text" id="userId" name="me_id"  placeholder="6자 이상의 영 소문자 및 숫자를 입력해주세요"/>
+				<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
+				<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
 				</div>
 				
 				<div class="form-group has-feedback">
@@ -95,28 +122,28 @@
 				
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userPassConfirm">비밀번호 확인</label>
-					<input class="form-control" type="password" id="userPassConfirm" name="userPassConfirm" placeholder="비밀번호 확인"/>
+					<input class="form-control" type="password" id="userPassConfirm" name="userPassConfig" placeholder="비밀번호 확인"/>
 				</div>
 				
 				<div class="form-group has-feedback">
-					<label class="control-label" for="checkDevLang">선호 개발 언어</label>
+					<label class="control-label" for="checkDevLangDiv">선호 개발 언어</label>
 					<div class="checkDevLangDiv">
 						<ul>
-							<li><label><input type="checkbox" name="devLang" value="Java">Java</label></li>
-							<li><label><input type="checkbox" name="devLang" value="Python">Python</label></li>
-							<li><label><input type="checkbox" name="devLang" value="JSP">JSP</label></li>
-							<li><label><input type="checkbox" name="devLang" value="PHP">PHP</label></li>
-							<li><label><input type="checkbox" name="devLang" value="C">C</label></li>
-							<li><label><input type="checkbox" name="devLang" value="C++">C++</label></li>
-							<li><label><input type="checkbox" name="devLang" value="R">R</label></li>
-							<li><label><input type="checkbox" name="devLang" value="Git">Git</label></li>
-							<li><label><input type="checkbox" name="devLang" value="Etc">Etc</label></li>
+							<li><label><input type="checkbox" name="me_devLang" value="Java">Java</label></li>
+							<li><label><input type="checkbox" name="me_devLang" value="Python">Python</label></li>
+							<li><label><input type="checkbox" name="me_devLang" value="JSP">JSP</label></li>
+							<li><label><input type="checkbox" name="me_devLang" value="PHP">PHP</label></li>
+							<li><label><input type="checkbox" name="me_devLang" value="C">C</label></li>
+							<li><label><input type="checkbox" name="me_devLang" value="C++">C++</label></li>
+							<li><label><input type="checkbox" name="me_devLang" value="R">R</label></li>
+							<li><label><input type="checkbox" name="me_devLang" value="Git">Git</label></li>
+							<li><label><input type="checkbox" name="me_devLang" value="Etc">Etc</label></li>
 						</ul>
 					</div>
 				</div>
 
 				<div class="form-group has-feedback">
-					<input type="submit" class="btn btn-success" value="가입하기" />
+					<button type="submit" class="btn btn-success">가입하기</button>
 				</div>
 			</form>
 		</div>
@@ -125,7 +152,36 @@
 		<a href="/login">이전</a>
 	</div>
 </div>
+<script>
+//아이디 중복검사
+$('.id_input').on("propertychange change keyup paste input", function(){
+	
+	//console.log("키보드 테스트")
+	var id = $('.id_input').val();	// .id_input에 입력되는 값
 
+	$.ajax({
+		type : 'POST',
+		url : '<c:url value="/member/memberIdChk"/>',
+		dataType : 'JSON',
+		data : {"id" : id},     // '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+		success : function(data) {
+			console.log (data);
+			if(data.duplicate == true ) {
+				alert('이미 가입된 ID입니다.');
+			} else {
+				alert ('가입 가능한 ID입니다.');
+			}
+			
+		},
+		
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log (textStatus);
+		}
+		
+	});
+	
+
+</script>
 </body>
 
 <!-- 하단 헤더 불러오기 -->

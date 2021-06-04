@@ -1,4 +1,3 @@
-/* 정규식 (한글 제한 )*/ 
 function isAlphaNumeric(str) {
   var code, i, len;
 

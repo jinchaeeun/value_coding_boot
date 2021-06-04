@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+LOG_PATH_IS_UNDEFINED/error.log
+LOG_PATH_IS_UNDEFINED/today_common.log
+LOG_PATH_IS_UNDEFINED/archived/today_common.log

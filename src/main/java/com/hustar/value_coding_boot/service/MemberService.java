@@ -2,13 +2,9 @@ package com.hustar.value_coding_boot.service;
 
 import java.util.Map;
 
-import com.hustar.value_coding_boot.dto.MemberDto;
-
 public interface MemberService {
+	public void join(Map<String, Object> param) throws Exception;
 	
-	public boolean isJoinAvailableId(String me_id);
-
-	public MemberDto getMemberById(String me_id);
-	
-	public void join(Map<String, Object> param); 
+	// 아이디 중복 검사
+	public int idCheck(String me_id) throws Exception;
 }

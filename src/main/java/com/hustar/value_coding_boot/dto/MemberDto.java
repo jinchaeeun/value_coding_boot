@@ -9,7 +9,8 @@ public class MemberDto {
 	private String me_id;
 	private String me_password;
 	private String me_nickname;
-	private String me_singup_type;
+	private String me_regDate;
+	private String me_devLang;
 	
 	
 	public String getMe_id() {
@@ -30,11 +31,24 @@ public class MemberDto {
 	public void setMe_nickname(String me_nickname) {
 		this.me_nickname = me_nickname;
 	}
-	public String getMe_singup_type() {
-		return me_singup_type;
+
+	public String getMe_regDate() {
+		return me_regDate;
 	}
-	public void setMe_singup_type(String me_singup_type) {
-		this.me_singup_type = me_singup_type;
+	public void setMe_regDate(String me_regDate) {
+		this.me_regDate = me_regDate;
+	}
+	public String getMe_devLang() {
+		return me_devLang;
+	}
+	public void setMe_devLang(String me_devLang) {
+		this.me_devLang = me_devLang;
+	}
+	
+	@Override
+	public String toString() {
+		return "MemberVO [me_id=" + me_id + ", me_password=" + me_password + ", me_nickname=" + me_nickname + ", me_regDate="
+				+ me_regDate + ", me_devLang=" + me_devLang + "]";
 	}
 
 }
