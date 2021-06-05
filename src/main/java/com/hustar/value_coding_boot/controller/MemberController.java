@@ -1,13 +1,17 @@
 package com.hustar.value_coding_boot.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.hustar.value_coding_boot.service.MemberService;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -20,6 +24,9 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Inject
 	MemberService service;
+	
+	@Resource(name="jsonView")
+	MappingJackson2JsonView jsonView;
 	
 	// 회원가입 get
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
@@ -63,6 +70,12 @@ public class MemberController {
 		return "member/mypage02"; 
 	}
 	
+	@RequestMapping("/member/checkId.do")
+	public ModelAndView checkId(ModelMap model) throws Exception {
+		System.out.println("checkId");
+		
+		return new ModelAndView(jsonView);
+	}
 	
 	
 }

@@ -46,21 +46,18 @@
 		<form action="/member/join" method="post">
 
 			<div class="form-group has-feedback">
-				<label class="control-label" for="me_nickName">닉네임</label> <input
-					class="form-control" type="text" id="me_nickName"
-					name="me_nickName" placeholder="닉네임" />
+				<label class="control-label" for="me_nickName">닉네임</label> 
+				<input class="form-control" type="text" id="me_nickName" name="me_nickName" placeholder="닉네임" />
 			</div>
 
 			<div class="form-group has-feedback">
-				<label class="control-label" for="me_id">아이디(이메일)</label> <input
-					class="form-control" type="text" id="me_id" name="me_id"
-					placeholder="아이디(이메일)" />
+				<label class="control-label" for="me_id">아이디(이메일)</label> 
+				<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" />
 			</div>
 
 			<div class="form-group has-feedback">
-				<label class="control-label" for="me_pass">비밀번호</label> <input
-					class="form-control" type="password" id="me_pass" name="me_pass"
-					placeholder="비밀번호" />
+				<label class="control-label" for="me_pass">비밀번호</label> 
+				<input class="form-control" type="password" id="me_pass" name="me_pass" placeholder="비밀번호" />
 			</div>
 
 			<div class="form-group has-feedback">

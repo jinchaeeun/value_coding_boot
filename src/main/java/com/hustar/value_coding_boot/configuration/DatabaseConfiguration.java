@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -47,5 +48,10 @@ public class DatabaseConfiguration {
     @Bean			//SqlSession을 구현하고 코드에서 SqlSession을 대체하는 역할, 여러 개의 DAO나 Mapper에서 공유할 수 있다.
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
+    }
+    
+    @Bean			//View를 Json 타입의 뷰로 변환
+    public MappingJackson2JsonView jsonView() {
+    	return new MappingJackson2JsonView();
     }
 }
