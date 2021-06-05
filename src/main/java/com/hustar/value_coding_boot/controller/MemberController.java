@@ -73,7 +73,7 @@ public class MemberController {
 	@RequestMapping("/member/checkId.do")
 	public ModelAndView checkId(ModelMap model) throws Exception {
 		System.out.println("checkId");
-		
+		model.addAttribute("duplicate", true);
 		return new ModelAndView(jsonView);
 	}
 	

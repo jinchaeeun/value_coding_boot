@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 상단 헤더 불러오기 -->
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
@@ -37,13 +39,38 @@
 				}
 			});
 		})
+		function checkId(){
+			var me_id = document.frm.me_id.value;
+			
+			$.ajax({
+				type: "POST",
+				url: "<c:url value='/member/checkId.do'/>",
+				dataType: "JSON",
+				data: {"me_id": me_id},
+				success : function(data){
+					console.log(data);
+					if(data.duplicate == true){
+						alert("이미 가입된 ID입니다.");
+					}else{
+						alert("가입 가능한 ID입니다.");
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown){
+					console.log(textStatus);
+				}
+				
+			})
+			
+		}
+		
+		
 	</script>
 	
 <div class="join-box">
 	<h1>회원가입</h1>
 	<div class="join">
 
-		<form action="/member/join" method="post">
+		<form action="/member/join" method="post" name="frm">
 
 			<div class="form-group has-feedback">
 				<label class="control-label" for="me_nickName">닉네임</label> 
@@ -52,7 +79,8 @@
 
 			<div class="form-group has-feedback">
 				<label class="control-label" for="me_id">아이디(이메일)</label> 
-				<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" />
+				<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" ><a href="javascript:checkId();">중복확인</a>
+				
 			</div>
 
 			<div class="form-group has-feedback">
