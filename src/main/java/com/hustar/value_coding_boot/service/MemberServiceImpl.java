@@ -18,5 +18,11 @@ public class MemberServiceImpl implements MemberService {
 		dao.join(vo);
 		
 	}
+
+	@Override
+	public int checkId(MemberVO membervo) throws Exception {
+		return dao.checkId(membervo);
+		
+	}
 	
 }

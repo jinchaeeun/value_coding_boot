@@ -5,5 +5,7 @@ import com.hustar.value_coding_boot.vo.MemberVO;
 public interface MemberService {
 
 	public void join(MemberVO vo) throws Exception;
+
+	public int checkId(MemberVO membervo) throws Exception;
 	
 }

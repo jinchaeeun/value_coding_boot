@@ -14,5 +14,11 @@
 	                 		   , #{me_nickName}
 	                 		   , #{me_devLang}  )
     </insert>
-   
+   <!-- id 중복체크 -->
+   <select id="checkId" resultType="int">
+	   SELECT COUNT(*) 
+	   FROM T_MEMBER
+	   WHERE ME_ID = #{me_id}
+   </select>
+   <!-- //id 중복체크 -->
 </mapper>

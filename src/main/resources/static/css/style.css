@@ -748,7 +748,7 @@ svg:not(:root) {
 .join-box .join span{margin-top: 10px;}
 .join-box .join input{margin: 10px 0px; height: 40px; }
 
-.join-box .join .checkDevLangDiv{margin: 10px 0; border: 1px solid #7d7d7d; }
+.join-box .join .checkDevLangDiv{margin: 10px 0; border: 1px solid #7d7d7d; overflow:hidden;}
 .join-box .join input[type="checkbox"]{margin: 10px 5px; height: 20px; }
 .join-box ul li{float: left; width: 33.33%; } /*3개 한 줄 차지*/
 .join-box ul li:nth-child(3n+1) { clear: both; } /*4번째부터 스타일 초기화해서 다음 줄에 배치 */

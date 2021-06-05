@@ -16,4 +16,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public void join(MemberVO vo) throws Exception {
 		sql.insert("memberMapper.join", vo);
 	}
+
+	@Override
+	public int checkId(MemberVO membervo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("memberMapper.checkId", membervo);
+	}
 }
