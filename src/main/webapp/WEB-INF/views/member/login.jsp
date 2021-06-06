@@ -23,7 +23,7 @@
 		   <input type="text" name="me_id" placeholder="아이디">
 		   <span>비밀번호</span>
 		   <input type="password" name="me_pass" placeholder="비밀번호">
-		   <button type="button" onclick="actionLoginAsync();">로그인</button>
+		   <button type="button" onclick="actionLogin();">로그인</button>
 		   <label><input type="checkbox" id="chk-notice" value="log-in">&nbsp로그인 상태 유지</label>
 		</div>
 	</form>
@@ -38,11 +38,13 @@
 		if(frm.me_id.value == ""){
 			alert('ID가 비어있습니다.');
 			frm.me_id.focus();
+			return false;
 		}else if(frm.me_pass.value == ""){
 			alert('비밀번호가 비어있습니다.');
 			frm.me_pass.focus();
+			return false;
 		} else{
-			frm.submit();
+			actionLoginAsync();
 		}
 	}
 	
