@@ -12,33 +12,31 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	
 <script type="text/javascript">
+var msg = '<c:out value="${msg}"/>';
+if (msg != ''){
+	alert(msg);
+}
 
-		$(document).ready(function(){
-
-			$("#submit").on("click", function(){
+			function submitForm(){
 				if($("#me_nickName").val()==""){
 					alert("닉네임을 입력해주세요.");
 					$("#me_nickName").focus();
-					return false;
 				} else if($("#me_id").val()==""){
 					alert("아이디를 입력해주세요.");
 					$("#me_id").focus();
-					return false;
 				} else if($("#me_pass").val()==""){
 					alert("비밀번호를 입력해주세요.");
 					$("#me_pass").focus();
-					return false;
 				} else if($("#me_pass2").val()==""){
 					alert("비밀번호 확인을 입력해주세요.");
 					$("#me_pass2").focus();
-					return false;
 				} else if($("#me_pass").val() != $("#me_pass2").val()){
 					alert("비밀번호 입력 값이 다릅니다.");
 					$("#me_pass2").focus();
-					return false;
+				}else{
+					document.frm.submit();
 				}
-			});
-		})
+			};
 		function checkId(){
 			var me_id = document.frm.me_id.value;
 			
@@ -70,7 +68,7 @@
 	<h1>회원가입</h1>
 	<div class="join">
 
-		<form action="/member/join" method="post" name="frm">
+		<form method="post" name="frm"  action="<c:url value='/member/joinInsert'/>">
 
 			<div class="form-group has-feedback">
 				<label class="control-label" for="me_nickName">닉네임</label> 
@@ -121,7 +119,7 @@
 			</div>
 
 			<div class="form-group has-feedback">
-				<button class="btn btn-success" type="submit" id="submit">가입하기</button>
+				<button class="btn btn-success" type="button" onclick="submitForm();">가입하기</button>
 			</div>
 		</form>
 	</div>

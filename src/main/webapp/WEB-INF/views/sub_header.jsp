@@ -76,26 +76,26 @@
 
       <div class="gnb">
          <ul>
-            <li><a href="none">ABOUT</a></li>
-            <li><a href="none">가치 코딩</a>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">가치 코딩</a>
                <ul class="sub-gnb">
-                  <li><a href="none">언어</a></li>
-                  <li><a href="none">DATABASE</a></li>
-                  <li><a href="none">데이터 과학</a></li>
-                  <li><a href="none">개발도구</a></li>
-                  <li><a href="none">프로젝트 관리</a></li>
+                  <li><a href="#">언어</a></li>
+                  <li><a href="#">DATABASE</a></li>
+                  <li><a href="#">데이터 과학</a></li>
+                  <li><a href="#">개발도구</a></li>
+                  <li><a href="#">프로젝트 관리</a></li>
                </ul>
             </li>
-            <li><a href="none">커뮤니티</a>
+            <li><a href="#">커뮤니티</a>
                <ul class="sub-gnb">
-                  <li><a href="none">일상</a></li>
-                  <li><a href="none">프로젝트</a></li>
-                  <li><a href="none">책/강의/프로그램</a></li>
-                  <li><a href="none">스터디</a></li>
+                  <li><a href="#">일상</a></li>
+                  <li><a href="#">프로젝트</a></li>
+                  <li><a href="#">책/강의/프로그램</a></li>
+                  <li><a href="#">스터디</a></li>
                </ul>
             </li>
-            <li><a href="none">코딩 테스트</a></li>
-            <li><a href="none">CONTACT</a></li>
+            <li><a href="#">코딩 테스트</a></li>
+            <li><a href="#">CONTACT</a></li>
          </ul>
 
 		</div>

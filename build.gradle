@@ -25,12 +25,15 @@ dependencies {
 	implementation 'javax.servlet:jstl'
 	compile group: 'javax.inject', name: 'javax.inject', version: '1'
 	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.0'
 	implementation group: 'javax.inject', name: 'javax.inject', version: '1'
+	implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.3m'		//비밀번호 암호화
+	implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.4.5'	//암호화하려면 같이 써주어야한다.
+	
 	//implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
 
