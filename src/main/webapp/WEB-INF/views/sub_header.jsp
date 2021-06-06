@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="en" class="vlt-is--custom-cursor">
@@ -26,12 +28,12 @@
 
 <!-- fullfage -->
 <script src="../js/fullpage.min.js"></script>
+<link rel="stylesheet" href="./js/fullpage.min.css">
 
 <!-- 숫자 카운터 counterUp -->
 <script src="../js/jquery.counterup.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
 
-<link rel="stylesheet" href="../js/fullpage.min.css">
 <!-- swiper -->
 <script src="../js/swiper.min.js"></script>
 <link rel="stylesheet" href="../js/swiper.min.css">
@@ -53,6 +55,8 @@
 
 <body>
 
+<c:set var="session" value="${sessionScope.login}" scope="application"/>
+
 <!-- 콘텐츠 시작 -->
 <div class="header" data-aos="fade-down" data-aos-delay="300">
 	<!-- 로고, 메뉴 -->
@@ -64,13 +68,18 @@
 
 		<div class="tnb">
          <ul>
-            <li><a href="../member/login">로그인</a></li>
-            <li><a href="../member/join">회원가입</a></li>
-            <li><a href="../member/mypage">마이페이지</a></li>
-            <!--
-            <li><a href="#none">로그아웃</a></li>
-            <li><a href="#none">정보수정</a></li>
-            -->
+            <!--tnb-->
+			<li><a href="#"><c:out value="${session.me_nickName}"/></a></li>
+			<!-- 로그인이 된 경우 -->
+			<c:if test="${not empty session}">
+				<li><a href="<c:url value='/member/actionLogout.do'/>">로그아웃</a></li>
+				<li><a href="<c:url value='/member/mypage'/>">마이페이지</a></li>
+			</c:if>
+			<!-- 로그인이 안된 경우 -->
+			<c:if test="${empty session}">
+				<li><a href="<c:url value='/member/login'/>">로그인</a></li>
+				<li><a href="<c:url value='/member/join'/>">회원가입</a></li>
+			</c:if>
          </ul>
       </div>
 

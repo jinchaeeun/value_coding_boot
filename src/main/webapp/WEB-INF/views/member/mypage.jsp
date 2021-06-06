@@ -1,13 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <!-- 상단 헤더 불러오기 -->
- <jsp:include page="../sub_header.jsp"></jsp:include>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<c:set var="session" value="${sessionScope.login}" scope="application"/>
+<!-- 상단 헤더 불러오기 -->
+<jsp:include page="../sub_header.jsp"></jsp:include>
 
 <div class="circle-small"></div>
 <div class="circle-big"></div>
 
 <div class="mypage-box">
-	<h1>김나현님 마이페이지</h1>
+	<h1><c:out value="${session.me_nickName}"/>님 마이페이지</h1>
 		<ul class="mypage-tap">
 			<li class="mypage-tapmenu on" id="mytap1"><a href="#" id="mypage-menu1"><span>내 정보 수정</span></a></li>
 			<li class="mypage-tapmenu" id="mytap2"><a href="#"><span>나의 게시물</span></a></li>
@@ -15,10 +18,10 @@
 	
 	<div class="mypage" id="ajax_div">
 			<span>닉네임</span>
-			<input type="text" placeholder="닉네임" />
+			<input type="text" placeholder='<c:out value="${session.me_nickName}"/>' />
 			<div class="nick_check">이미 사용 중인 닉네임입니다.</div>
 			<span>아이디(이메일)</span>
-			<input type="text" id="mypage_Email" placeholder="value_coding@naver.com" readonly onfocus="this.blur()" />
+			<input type="text" id="mypage_Email" placeholder='<c:out value="${session.me_id}"/>' readonly onfocus="this.blur()" />
 			
 			<span>비밀번호</span>
 			<input type="password"  placeholder="비밀번호" />
