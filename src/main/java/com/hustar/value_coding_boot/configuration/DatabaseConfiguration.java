@@ -41,6 +41,7 @@ public class DatabaseConfiguration {
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+        sqlSessionFactoryBean.setTypeAliasesPackage("com.hustar.value_coding_boot.vo");		//mapper에서 memberVO 객체로 반환할 때 객체 선언을 위해 필요한 것
         sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapper/**/*.xml"));	//MyBatis Mapper 파일(sql 쿼리) 위치를 설정, **은 하위 폴더, *.xml은 xml 파일 전체를 의미
         return sqlSessionFactoryBean.getObject();
     }

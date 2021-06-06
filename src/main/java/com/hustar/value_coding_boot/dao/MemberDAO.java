@@ -1,5 +1,7 @@
 package com.hustar.value_coding_boot.dao;
 
+import java.util.List;
+
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 public interface MemberDAO {
@@ -8,4 +10,6 @@ public interface MemberDAO {
 	public void join(MemberVO vo) throws Exception;
 
 	public int checkId(MemberVO membervo) throws Exception;
+
+	public MemberVO selectMemberView(MemberVO memberVO, String sql_id) throws Exception;
 }

@@ -131,4 +131,66 @@ public class MemberController {
 		return new ModelAndView(jsonView);
 	}
 	
+	@RequestMapping("/member/actionLogin.do")
+	public String actionLogin(
+			@ModelAttribute("memberVO") MemberVO memberVO, 
+			RedirectAttributes redirectAttributes) throws Exception{
+		MemberVO loginVO = (MemberVO) service.selectMemberView(memberVO, null, null, "selectMemberView");
+		
+		if(loginVO != null) {
+			if (BCrypt.checkpw(memberVO.getMe_pass(), loginVO.getMe_pass()) == true){
+				//로그인세션
+				HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+				request.getSession().setAttribute("login", loginVO);
+				return "redirect:/";
+			}else {
+				// 비밀번호 불일치
+				redirectAttributes.addFlashAttribute("msg", "비밀번호가 맞지 않습니다.");
+			} 
+		}else {
+			// ID 존재하지 않음
+			redirectAttributes.addFlashAttribute("msg", "존재하지않는 ID입니다.");
+		} 
+		
+		return "redirect:/";
+	}
+
+	
+	@RequestMapping("/member/actionLogout.do")
+	public String actionLogout() throws Exception{
+		RequestAttributes requestAttribute = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		requestAttribute.setAttribute("login", null, RequestAttributes.SCOPE_SESSION);
+		
+		return "redirect:/member/login";
+	}
+	
+	//로그인 db 체크
+	@RequestMapping("/member/actionLoginAsync.do")
+	public ModelAndView actionLoginAsync(ModelMap model, HttpServletRequest req,
+			HttpServletResponse res, String me_id, String me_pass) throws Exception {
+		//System.out.println("Controller - actionLoginAsync");
+		MemberVO memberVO = new MemberVO();
+		memberVO.setMe_id(me_id);
+		memberVO.setMe_pass(me_pass);
+		
+		MemberVO loginVO = (MemberVO) service.selectMemberView(memberVO, null, null, "selectMemberView");
+		//System.out.println("actionLoginAsync => loginVO");
+		
+		if(loginVO != null) {
+			if(BCrypt.checkpw(memberVO.getMe_pass(), loginVO.getMe_pass()) == true) {
+				//비밀번호 값 확인
+				HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+				request.getSession().setAttribute("login", loginVO);
+				model.addAttribute("login", true);
+			}else {
+				//비밀번호 다름
+				model.addAttribute("login", false);
+			}
+		}else {
+			//loginVO에서 값을 가지고 오지 못함
+			model.addAttribute("login", false);
+		}
+		return new ModelAndView(jsonView);
+	}
+	
 }

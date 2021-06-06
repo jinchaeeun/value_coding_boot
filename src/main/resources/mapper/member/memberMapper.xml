@@ -6,7 +6,7 @@
 	<!-- 회원가입 멤버 등록 -->
 	<insert id="join">
 	    INSERT INTO T_MEMBER(   ME_ID
-	   					       , ME_PASSWORD 
+	   					       , ME_PASS 
 	   					       , ME_NICKNAME
 	   					       , ME_DEVLANG  	)
 	                  VALUES(    #{me_id}
@@ -21,4 +21,14 @@
 	   WHERE ME_ID = #{me_id}
    </select>
    <!-- //id 중복체크 -->
+   
+   <!-- 로그인 체크 -->
+   <select id="selectMemberView" parameterType="memberVO" resultType="memberVO">
+   		<![CDATA[
+	   		SELECT *
+	   		FROM T_MEMBER
+	   		WHERE ME_ID = #{me_id}
+   		]]>
+   </select>
+   <!-- //로그인 체크 -->
 </mapper>

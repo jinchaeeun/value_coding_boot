@@ -1,5 +1,7 @@
 package com.hustar.value_coding_boot.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -21,5 +23,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public int checkId(MemberVO membervo) throws Exception {
 		// TODO Auto-generated method stub
 		return sql.selectOne("memberMapper.checkId", membervo);
+	}
+
+	@Override
+	public MemberVO selectMemberView(MemberVO memberVO, String sql_id) throws Exception {
+		// TODO Auto-generated method stub
+		return (MemberVO) sql.selectOne(sql_id, memberVO);
 	}
 }
