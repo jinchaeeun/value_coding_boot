@@ -100,16 +100,17 @@ public class MemberController {
 		return "member/mypage"; 
 	} 
 	
-	@GetMapping("mypage01") 
-	public String member_mypage01() { 
-		
-		return "member/mypage01"; 
-	}
-	
-	@GetMapping("mypage02") 
+	@GetMapping("mypage_board") 
 	public String member_mypage02() { 
 		
-		return "member/mypage02"; 
+		return "member/mypage_board"; 
+	}
+	
+	
+	// 마이페이지 수정
+	@RequestMapping(value = "/member/ModifyMypage")
+	public String ModifyMypage() throws Exception {
+		return "member/mypage";
 	}
 	
 	//아이디 중복 체크
