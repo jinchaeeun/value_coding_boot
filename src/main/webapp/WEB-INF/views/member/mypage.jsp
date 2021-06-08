@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<div id="ajax_div">
+
 <c:set var="session" value="${sessionScope.login}" scope="application"/>
 <!-- 상단 헤더 불러오기 -->
 <jsp:include page="../sub_header.jsp"></jsp:include>
@@ -9,8 +11,6 @@
 <div class="circle-small"></div>
 <div class="circle-big"></div>
 
-
-<div id="ajax_div">
 
 <div class="mypage-box">
 	<h1><span class="usr_nickname"><c:out value="${session.me_nickName}"/></span>님 마이페이지</h1>

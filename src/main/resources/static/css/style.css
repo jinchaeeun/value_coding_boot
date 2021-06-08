@@ -764,6 +764,8 @@ svg:not(:root) {
 .mypage-box h1{text-align: center; margin-bottom:20px;}
 
 /*마이페이지 메뉴*/
+
+.usr_nickname {color : #102770;}
 .mypage-box > ul{display: table; width: 100%; text-align: center;}
 .mypage-box ul.mypage-tap li{display: table-cell; width: 50%; }
 .mypage-box ul.mypage-tap li > a{display: block; padding: 10px; font-size:14px;}
@@ -802,18 +804,18 @@ position:absolute; left:50%; transform:translateX(-50%); bottom:-7px; }
 .mypage-form > ul > li:not(:last-child){border-bottom:1px solid #e1e1e1;}
 .myquestion-tittle a:hover{text-decoration:underline;}
 
-.nick_check {color:#c3323a;}
+.nick_check {color:#102770;}
 .myquestion-content {margin-top:1rem;}
 .myquestion-manage{display:flex; justify-content: flex-end;}
 .myquestion-manage > li{padding-left: 10px;}
 
-.myquestion-manage .myquestion-remove a{color: #c3323a;}
+.myquestion-manage .myquestion-remove a{color: #102770;}
 
 /*페이징 */
 .paging ul {text-align: center; margin: 20px;}
 .paging ul li {display: inline-block; margin: 5px 0px;}
-.paging ul li a{display: block; padding: 5px 10px; border: 1.5px solid #c3323a; background-color: #fff; color: rgb(32, 22, 11);}
-.paging ul li.on a{background-color: #c3323a; color: #fff; border: 1.5px solid #c3323a;} 
+.paging ul li a{display: block; padding: 5px 10px; border: 1.5px solid #102770; background-color: #fff; color: rgb(32, 22, 11);}
+.paging ul li.on a{background-color: #102770; color: #fff; border: 1.5px solid #102770;} 
 
 /* 서브메뉴 스타일 */
 .snb-wrap {text-align: center; margin-top: 60px;}
