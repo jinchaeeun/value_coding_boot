@@ -109,8 +109,19 @@ public class MemberController {
 	
 	// 마이페이지 수정
 	@RequestMapping(value = "/member/ModifyMypage")
-	public String ModifyMypage() throws Exception {
-		return "member/mypage";
+	public String ModifyMypage(HttpServletRequest req, MemberVO memberVO, RedirectAttributes redirectAttributes) throws Exception {
+		logger.info("get mypage");
+		//비밀번호 암호화
+		String encpass = BCrypt.hashpw(memberVO.getMe_pass(), BCrypt.gensalt()); 
+		memberVO.setMe_pass(encpass);											
+		
+		//암호화된 비밀번호 수정
+		service.ModifyMypage(memberVO);
+		redirectAttributes.addFlashAttribute("msg", "회원 정보 수정 성공");
+		
+		//login.invalidate();
+		
+		return "redirect:/member/mypage";
 	}
 	
 	//아이디 중복 체크

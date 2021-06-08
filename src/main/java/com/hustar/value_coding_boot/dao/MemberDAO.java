@@ -1,7 +1,5 @@
 package com.hustar.value_coding_boot.dao;
 
-import java.util.List;
-
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 public interface MemberDAO {
@@ -12,4 +10,7 @@ public interface MemberDAO {
 	public int checkId(MemberVO membervo) throws Exception;
 
 	public MemberVO selectMemberView(MemberVO memberVO, String sql_id) throws Exception;
+	
+	// 회원정보 수정
+	public void ModifyMypage(MemberVO memberVO)throws Exception;
 }

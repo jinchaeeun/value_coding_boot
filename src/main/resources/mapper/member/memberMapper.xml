@@ -31,4 +31,16 @@
    		]]>
    </select>
    <!-- //로그인 체크 -->
+   
+   <!-- 마이페이지 수정 -->
+	<update id="ModifyMypage">
+	  <![CDATA[
+		UPDATE T_MEMBER 
+		SET ME_NICKNAME = #{me_nickName},
+			ME_PASS = #{me_pass},
+			ME_DEVLANG = #{me_devLang}
+		WHERE ME_ID = #{me_id}
+		]]>
+	</update>
+   <!-- //마이페이지 수정 -->
 </mapper>

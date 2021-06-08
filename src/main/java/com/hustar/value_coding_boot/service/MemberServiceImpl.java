@@ -1,7 +1,5 @@
 package com.hustar.value_coding_boot.service;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +32,12 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		System.out.println(sql_id);
 		return dao.selectMemberView(memberVO, sql_id);
+	}
+	
+	// 회원정보 수정
+	@Override
+	public void ModifyMypage(MemberVO memberVO) throws Exception {
+		dao.ModifyMypage(memberVO);
 	}
 	
 }

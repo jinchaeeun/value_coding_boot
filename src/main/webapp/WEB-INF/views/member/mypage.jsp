@@ -22,9 +22,9 @@
 	<form method ="post" name="mypageForm" action="<c:url value='/member/ModifyMypage'/>">
 	<div class="mypage-form">
 			<span>닉네임</span>
-			<input type="text" name="me_nickname" id="me_nickName" value='<c:out value="${session.me_nickName}"/>' />
+			<input type="text" name="me_nickName" id="me_nickName" value='<c:out value="${session.me_nickName}"/>' />
 			<span>아이디(이메일)</span>
-			<input type="text" name="me_id" id="mypage_Email" placeholder='<c:out value="${session.me_id}"/>' readonly onfocus="this.blur()" />
+			<input type="text" name="me_id" id="mypage_Email" value='<c:out value="${session.me_id}"/>' readonly onfocus="this.blur()" />
 			
 			<span>비밀번호</span>
 			<input type="password" name="me_pass" id="me_pass" placeholder="비밀번호" />
@@ -64,6 +64,8 @@
 					</li>
 				</ul>
 			</div>
+			
+			<!-- <span>가입 날짜</span> <c:out value="${session.me_regDate}"/> -->
 			<button class="btn btn-success" type="button" onclick="mypage_SubmitForm();">회원정보 수정</button>
 		</div>	
 	</form>
@@ -73,6 +75,12 @@
 
 </div>
 <script>
+
+var msg = '<c:out value="${msg}"/>';
+if (msg != ''){
+	alert(msg);
+}
+
 $('#mytap1').bind('click', function(event) {
 	   fn_getPage('./mypage');
 	   
