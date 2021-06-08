@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
  <!-- 상단 헤더 불러오기 -->
  <jsp:include page="header.jsp"></jsp:include>
+
+<c:set var="session" value="${sessionScope.login}" scope="application"/>
+
 
 <div class="contents">
 
@@ -40,9 +45,9 @@
 						  <div class="card-3d-wrapper">
 							<div class="card-front">
 							  <div class="pricing-wrap">
-								<h4 class="mb-5">검사동코딩대장</h4>
+								<h4 class="mb-5"><c:out value="${session.me_nickName}"/></h4>
 								<h2 class="mb-2"><sup>답변 받은 질문</sup>12 / 14<sup>전체 질문</sup></h2>
-								<p class="mb-4">Java | Python | JSP</p>
+								<p class="mb-4">${session.me_devLang} | Python | JSP</p>
 								<p class="mb-1"><i class="uil uil-location-pin-alt size-22"></i></p>
 								<p class="mb-4">개발자</p>
 								<div class="app-container" id="taskList">
@@ -68,7 +73,7 @@
 								</div>
 							<div class="card-back">
 							  <div class="pricing-wrap">
-								<h4 class="mb-5">검사동코딩대장</h4>
+								<h4 class="mb-5"> <c:out value="${session.me_nickName}"/> </h4>
 								<div class="app-container question-container" id="questionList">
 								  <span class="tag-span">java</span>
 								  <span class="tag-span">python</span>

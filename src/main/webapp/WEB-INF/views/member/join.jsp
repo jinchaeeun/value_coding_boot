@@ -37,29 +37,29 @@ if (msg != ''){
 					document.frm.submit();
 				}
 			};
-		function checkId(){
-			var me_id = document.frm.me_id.value;
-			
-			$.ajax({
-				type: "POST",
-				url: "<c:url value='/member/checkId.do'/>",
-				dataType: "JSON",
-				data: {"me_id": me_id},
-				success : function(data){
-					console.log(data);
-					if(data.duplicate == true){
-						alert("이미 가입된 ID입니다.");
-					}else{
-						alert("가입 가능한 ID입니다.");
-					}
-				},
-				error : function(jqXHR, textStatus, errorThrown){
-					console.log(textStatus);
-				}
-				
-			})
-			
+function checkId(){
+	var me_id = document.frm.me_id.value;
+	
+	$.ajax({
+		type: "POST",
+		url: "<c:url value='/member/checkId.do'/>",
+		dataType: "JSON",
+		data: {"me_id": me_id},
+		success : function(data){
+			console.log(data);
+			if(data.duplicate == true){
+				alert("이미 가입된 ID입니다.");
+			}else{
+				alert("가입 가능한 ID입니다.");
+			}
+		},
+		error : function(jqXHR, textStatus, errorThrown){
+			console.log(textStatus);
 		}
+		
+	})
+	
+}
 		
 		
 	</script>

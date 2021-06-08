@@ -96,7 +96,7 @@ public class MemberController {
 	
 	@GetMapping("mypage") 
 	public String member_mypage() { 
-		
+	
 		return "member/mypage"; 
 	} 
 	
@@ -117,11 +117,13 @@ public class MemberController {
 		
 		//암호화된 비밀번호 수정
 		service.ModifyMypage(memberVO);
-		redirectAttributes.addFlashAttribute("msg", "회원 정보 수정 성공");
+		redirectAttributes.addFlashAttribute("msg", "회원정보 수정 성공!");
 		
-		//login.invalidate();
+		// 회원정보 수정 후 자동 로그아웃
+		RequestAttributes requestAttribute = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		requestAttribute.setAttribute("logout", null, RequestAttributes.SCOPE_SESSION);
 		
-		return "redirect:/member/mypage";
+		return "redirect:/member/login";
 	}
 	
 	//아이디 중복 체크
