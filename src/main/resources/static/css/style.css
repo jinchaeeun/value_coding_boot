@@ -748,7 +748,7 @@ svg:not(:root) {
 .join-box .join span{margin-top: 10px;}
 .join-box .join input{margin: 10px 0px; height: 40px; }
 
-.join-box .join .checkDevLangDiv{margin: 10px 0; border: 1px solid #7d7d7d; }
+.join-box .join .checkDevLangDiv{margin: 10px 0; border: 1px solid #7d7d7d; overflow:hidden;}
 .join-box .join input[type="checkbox"]{margin: 10px 5px; height: 20px; }
 .join-box ul li{float: left; width: 33.33%; } /*3개 한 줄 차지*/
 .join-box ul li:nth-child(3n+1) { clear: both; } /*4번째부터 스타일 초기화해서 다음 줄에 배치 */
@@ -783,30 +783,29 @@ border-top:0 solid transparent; border-bottom: 5px solid #000; border-left: 5px 
 position:absolute; left:50%; transform:translateX(-50%); bottom:-7px; }
 
 /*마이페이지 내 정보 수정*/
-.mypage-box .mypage {max-width: 500px; margin: 20px auto; border: 1px solid #e1e1e1; padding: 20px; background: #fff; display: grid; }
-.mypage-box .mypage span{margin-top: 10px;}
-.mypage-box .mypage input{margin: 10px 0px; height: 40px; }
+.mypage-box .mypage-form {max-width: 500px; margin: 20px auto; border: 1px solid #e1e1e1; padding: 20px; background: #fff; display: grid; }
+.mypage-box .mypage-form span{margin-top: 10px;}
+.mypage-box .mypage-form input{margin: 10px 0px; height: 40px; }
 
-.mypage-box .mypage .checkDevLangDiv{margin: 10px 0; border: 1px solid #7d7d7d; }
-.mypage-box .mypage input[type="checkbox"]{margin: 10px 5px; height: 20px; }
+.mypage-box .mypage-form .checkDevLangDiv{margin: 10px 0; border: 1px solid #7d7d7d; }
+.mypage-box .mypage-form input[type="checkbox"]{margin: 10px 5px; height: 20px; }
 .mypage-box .checkDevLangDiv ul li{float: left; width: 33.33%; } /*3개 한 줄 차지*/
 .mypage-box .checkDevLangDiv ul li:nth-child(3n+1) { clear: both; } /*4번째부터 스타일 초기화해서 다음 줄에 배치 */
 
-.mypage button{width: 100%; height: 40px; background: #c3323a; border: 0px; color: #fff;}
+.mypage-form button{width: 100%; height: 40px; background: #102770; border: 0px; color: #fff;}
 .mypage-box a{text-align: center;}
 
-.mypage-box .mypage #mypage_Email{background:#d3d3d3; border:0px;}
+.mypage-box .mypage-form #mypage_Email{background:#d3d3d3; border:0px;}
 
 /*마이페이지 나의 게시물*/
-#ajax_div > ul > li{padding: 1rem;}
-#ajax_div > ul > li:not(:last-child){border-bottom:1px solid #e1e1e1;}
+.mypage-form > ul > li{padding: 1rem;}
+.mypage-form > ul > li:not(:last-child){border-bottom:1px solid #e1e1e1;}
 .myquestion-tittle a:hover{text-decoration:underline;}
 
 .nick_check {color:#c3323a;}
 .myquestion-content {margin-top:1rem;}
 .myquestion-manage{display:flex; justify-content: flex-end;}
 .myquestion-manage > li{padding-left: 10px;}
-
 
 .myquestion-manage .myquestion-remove a{color: #c3323a;}
 

@@ -2,8 +2,9 @@
 <%@page import="java.security.SecureRandom"%>
 <%@page import="java.net.URLEncoder"%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <!-- 상단 헤더 불러오기 -->
  <jsp:include page="../sub_header.jsp"></jsp:include>
 
@@ -16,18 +17,69 @@
 
 <div class="login-box">
 	<h1>로그인</h1>
-	<div class="login">
-	   <span>아이디(이메일)</span>
-	   <input type="text" placeholder="아이디">
-	   <span>비밀번호</span>
-	   <input type="password"  placeholder="비밀번호">
-	   <button>로그인</button>
-	   <label><input type="checkbox" id="chk-notice" value="log-in">&nbsp로그인 상태 유지</label>
-	</div>
+	<form method="post" name="frm" action="<c:url value='/member/actionLogin.do'/>">
+		<div class="login">
+		   <span>아이디(이메일)</span>
+		   <input type="text" name="me_id" placeholder="아이디">
+		   <span>비밀번호</span>
+		   <input type="password" name="me_pass" placeholder="비밀번호">
+		   <button type="button" onclick="actionLogin();">로그인</button>
+		   <label><input type="checkbox" id="chk-notice" value="log-in">&nbsp로그인 상태 유지</label>
+		</div>
+	</form>
+	<script>
+	var msg = '<c:out value="${msg}"/>';
+	if (msg != ''){
+		alert(msg);
+	}
+	
+	function actionLogin(){
+		var frm =document.frm;
+		if(frm.me_id.value == ""){
+			alert('ID가 비어있습니다.');
+			frm.me_id.focus();
+			return false;
+		}else if(frm.me_pass.value == ""){
+			alert('비밀번호가 비어있습니다.');
+			frm.me_pass.focus();
+			return false;
+		} else{
+			actionLoginAsync();
+		}
+	}
+	
+	function actionLoginAsync(){
+		var me_id = document.frm.me_id.value;
+		var me_pass= document.frm.me_pass.value;
+		
+		console.log("me_id = " + me_id + ", me_pass = " + me_pass);
+		
+		$.ajax({
+			type: "POST",
+			url: "<c:url value='/member/actionLoginAsync.do'/>",
+			dataType: "JSON",
+			data: {"me_id": me_id, "me_pass": me_pass},
+			success : function(data){
+				console.log(data);
+				if(data.login == true){
+					location.href = "<c:url value='/'/>";	//메인 index로 이동
+				}else{
+					alert('로그인에 실패하였습니다.');
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown){
+				console.log("실패");
+				console.log(textStatus);
+			}
+			
+		})
+		
+	}
+	</script>
 	<div class="findIdPw">
 	   <a href="#none">아이디 찾기</a>
 	   <a href="#none">비밀번호 찾기</a>
-	   <a href="join">회원가입</a>      
+	   <a href="<c:url value='/member/join'/>">회원가입</a>      
 	</div>
 	<a id="kakao-login-btn"></a>
 	<!-- 카카오 로그인 -->

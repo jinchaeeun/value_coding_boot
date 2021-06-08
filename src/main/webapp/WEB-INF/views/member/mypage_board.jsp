@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+	
+<div class="mypage-box">
+	<h1><span class="usr_nickname"><c:out value="${session.me_nickName}"/></span>님 마이페이지</h1>
+	<ul class="mypage-tap">
+		<li class="mypage-tapmenu on" id="mytap1"><a href="#" id="mypage-menu1"><span>내 정보 수정</span></a></li>
+		<li class="mypage-tapmenu" id="mytap2"><a href="#"><span>나의 게시물</span></a></li>
+	</ul>
+		
+		
+	<div class="mypage-form">	
 	<ul class="myquestion">
 		<li>
 			<h2 class="myquestion-tittle"><a href="#">Java 관련 질문</a></h2>
@@ -59,3 +70,22 @@
             <li><a href="#">마지막</a></li>
         </ul>
     </div>
+    </div>
+    
+</div>
+
+<script>
+$('#mytap1').bind('click', function(event) {
+	   fn_getPage('./mypage');
+	   
+	    $(this).addClass('on');
+	    $('#mytap2').removeClass('on');
+	});
+	
+$('#mytap2').bind('click', function(event) {
+fn_getPage('./mypage02');
+
+		$(this).addClass('on');
+		$('#mytap1').removeClass('on');
+	});
+</script>
