@@ -4,13 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.print.attribute.HashAttributeSet;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.hustar.value_coding_boot.vo.BoardVO;
-import com.hustar.value_coding_boot.vo.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {

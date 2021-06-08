@@ -3,7 +3,6 @@ package com.hustar.value_coding_boot.service;
 import java.util.List;
 
 import com.hustar.value_coding_boot.vo.BoardVO;
-import com.hustar.value_coding_boot.vo.Criteria;
 
 public interface BoardService {
 //	public boolean registerBoard(BoardDTO params);

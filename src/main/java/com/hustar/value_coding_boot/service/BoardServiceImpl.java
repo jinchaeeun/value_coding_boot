@@ -1,6 +1,5 @@
 package com.hustar.value_coding_boot.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.hustar.value_coding_boot.dao.BoardDAO;
 import com.hustar.value_coding_boot.vo.BoardVO;
-import com.hustar.value_coding_boot.vo.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
