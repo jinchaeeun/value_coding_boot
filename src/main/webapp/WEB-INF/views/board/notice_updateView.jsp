@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 상단 헤더 불러오기 -->
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
@@ -10,15 +11,16 @@
 	<div class="notice-write-box">
 		<h1>글쓰기</h1>
 
-		<form action="/board/notice_write_dao" name="writeForm" method="post">
+		<form action="/board/notice_update" name="updateForm" method="post">
+			<input type="hidden" name="po_num" value='<c:out value="${update.po_num}" />'>
 			<div class="write-form">
 				<ul>
 					<li>
 						<label for="">제목</label>
-						<input class="title" type="text" name="po_title" placeholder="제목을 입력하세요">
+						<input class="title" type="text" name="po_title" placeholder="제목을 입력하세요" value="<c:out value='${update.po_title}' />">
 						
 						<select name="po_boardname" id="">
-							<option value="">게시판을 선택하세요.</option>
+							<option value="<c:out value='${update.po_boardname}' />"><c:out value='${update.po_boardname}' /></option>
 							<option value="공지사항">공지사항</option>
 							<option value="자유게시판">자유게시판</option>
 							<option value="언어">언어</option>
@@ -30,8 +32,7 @@
 					</li>
 					<li>
 						<label for="">내용</label>
-						<textarea name="po_contents" id="editor"></textarea>
-						<!-- <div id="editor"></div> -->
+						<textarea name="po_contents" id="editor"><c:out value='${update.po_contents}' /></textarea>
 					</li>
 					<li>
 						<label for="">첨부파일 #01</label>
@@ -53,7 +54,7 @@
 			
 			<div class="write-btn-box">
 				<a href="/board/notice_list?num=1">목록으로</a>
-				<a href="#" onclick="document.writeForm.submit();" >저장 </a>
+				<a href="#" onclick="document.updateForm.submit();">저장 </a>
 			</div>
 		</form>
 	</div> <!-- notice-write-box -->

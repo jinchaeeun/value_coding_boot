@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 상단 헤더 불러오기 -->
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
@@ -7,18 +9,18 @@
 	<div class="notice-box">
 		<div class="view">
 			<h2>공지사항</h2>
-			
+	
 			<div class="view-hd">
-				<p class="title"><b>공지사항 입니다.</b></p>
-				<span>답변수 : 1</span>
-				<span>조회수 : 5</span>
-				<span>등록일 : 2021-04-27</span>
-				<span>작성자 : <b>관리자</b></span>
+				<p class="title"><b><c:out value="${read.po_title}" /></b></p>
+				<span>답변수 : <c:out value="${read.po_num}" /></span>
+				<span>조회수 : <c:out value="${read.po_views}" /></span>
+				<span>등록일 : <fmt:formatDate value="${read.po_datetime}" pattern="yyyy-MM-dd"/></span>
+				<span>작성자 : <b><c:out value="${read.po_writer}" /></b></span>
 			</div>
 
 			<div class="view-content">
-				<p>공지사항 작성 후 출력 되는 페이지 입니다.</p>
-				<p>공지사항 작성은 textarea로 작성이 되었습니다.</p>
+			<p>${read.po_contents}</p>
+				<c:out value="" escapeXml="false"/>
 			</div>
 
 			<div class="view-file">
@@ -94,9 +96,9 @@
 	</div> <!-- answer-wrap -->
 	
 	<div class="write-btn-box">
-		<a href="/board_list">목록으로</a>
-		<a href="/board_write">수정</a>
-		<a href="#none">삭제</a>
+		<a href="/board/notice_list?num=1">목록으로</a>
+		<a href="/board/notice_updateView?po_num=${read.po_num}">수정</a>
+		<a href="/board/notice_delete?po_num=${read.po_num}">삭제</a>
 	</div>
 </div> <!-- notice-view-wrap -->
 <!-- 하단 푸터 불러오기 -->

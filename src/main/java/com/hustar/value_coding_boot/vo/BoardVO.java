@@ -1,6 +1,6 @@
 package com.hustar.value_coding_boot.vo;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class BoardVO {
 	private int po_num; // 게시글 번호
@@ -8,12 +8,34 @@ public class BoardVO {
 	private String po_title; // 게시글 제목
 	private String po_contents; // 게시글 내용
 	private String po_file_path; // 첨부파일 경로
-	private LocalDateTime po_datetime; // 작성일자
-	private LocalDateTime po_updatetime; // 수정일자
+	private Date po_datetime; // 작성일자
+	private Date po_updatetime; // 수정일자
 	private String po_writer; // 작성자
 	private int po_views; // 조회수
 	private String po_noticeYn; // 공지 여부
 	private String po_deleteYn; // 삭제 여부
+	
+	private int displayPost = 10;
+	private int postNum = 10;
+	
+	public int getDisplayPost() {
+		return displayPost;
+	}
+
+	public void setDisplayPost(int displayPost) {
+		this.displayPost = displayPost;
+	}
+
+	public int getPostNum() {
+		return postNum;
+	}
+
+	public void setPostNum(int postNum) {
+		this.postNum = postNum;
+	}
+
+	public BoardVO() {
+	}
 
 	public int getPo_num() {
 		return po_num;
@@ -55,19 +77,19 @@ public class BoardVO {
 		this.po_file_path = po_file_path;
 	}
 
-	public LocalDateTime getPo_datetime() {
+	public Date getPo_datetime() {
 		return po_datetime;
 	}
 
-	public void setPo_datetime(LocalDateTime po_datetime) {
+	public void setPo_datetime(Date po_datetime) {
 		this.po_datetime = po_datetime;
 	}
 
-	public LocalDateTime getPo_updatetime() {
+	public Date getPo_updatetime() {
 		return po_updatetime;
 	}
 
-	public void setPo_updatetime(LocalDateTime po_updatetime) {
+	public void setPo_updatetime(Date po_updatetime) {
 		this.po_updatetime = po_updatetime;
 	}
 
