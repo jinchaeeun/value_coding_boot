@@ -40,4 +40,9 @@ public class MemberServiceImpl implements MemberService {
 		dao.ModifyMypage(memberVO);
 	}
 	
+	// 회원 탈퇴
+	@Override
+	public void deleteMember(MemberVO memberVO)throws Exception {
+		dao.deleteMember(memberVO);
+	}
 }

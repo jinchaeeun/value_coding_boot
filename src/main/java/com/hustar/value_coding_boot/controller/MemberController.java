@@ -1,11 +1,22 @@
 package com.hustar.value_coding_boot.controller;
 
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.mindrot.jbcrypt.BCrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping; 
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -17,17 +28,6 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.hustar.value_coding_boot.service.MemberService;
 import com.hustar.value_coding_boot.vo.MemberVO;
-
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.mindrot.jbcrypt.BCrypt;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Controller 
 @RequestMapping("/member/**")
@@ -101,7 +101,8 @@ public class MemberController {
 	} 
 	
 	@GetMapping("mypage_board") 
-	public String member_mypage02() { 
+	public String mypage_board() { 
+		
 		
 		return "member/mypage_board"; 
 	}
@@ -124,6 +125,41 @@ public class MemberController {
 		requestAttribute.setAttribute("logout", null, RequestAttributes.SCOPE_SESSION);
 		
 		return "redirect:/member/login";
+	}
+	
+	// 회원 탈퇴
+	@RequestMapping(value= "/memberDeleteView", method = RequestMethod.GET)
+	public String memberDeleteView() throws Exception {
+		
+		return "member/delete";
+	}
+	
+	// 회원 탈퇴 POST
+	@RequestMapping(value= "/memberDelete", method = RequestMethod.POST)
+	public String memberDelete(MemberVO memberVO, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		
+		/*
+		// 세션에 있는 member를 가져와 member변수에 넣어줍니다.
+				MemberVO member = (MemberVO) session.getAttribute("login");
+				// 세션에 있는 비밀번호
+				String sessionPass = member.getMe_pass();
+				
+				// MemberVO로 들어오는 비밀번호
+				String encpass = BCrypt.hashpw(memberVO.getMe_pass(), BCrypt.gensalt()); 
+				memberVO.setMe_pass(encpass);	
+				
+				복호화해서 이 방법 X 
+				logger.info("sessionPass :  "  + sessionPass + "encpass :  " + encpass);
+				
+				if(!(sessionPass.equals(encpass))) {
+					redirectAttributes.addFlashAttribute("msg", false);
+					return "redirect:/member/memberDeleteView";
+				}
+				
+				*/ 
+				service.deleteMember(memberVO);
+				session.invalidate();
+				return "redirect:/";
 	}
 	
 	//아이디 중복 체크

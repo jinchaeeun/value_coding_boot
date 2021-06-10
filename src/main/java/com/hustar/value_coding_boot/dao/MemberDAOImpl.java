@@ -32,4 +32,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public void ModifyMypage(MemberVO memberVO)throws Exception{
 		sql.update("ModifyMypage", memberVO);
 	}
+	
+	// 회원 탈퇴
+	@Override
+	public void deleteMember(MemberVO memberVO)throws Exception {
+		sql.delete("deleteMember", memberVO);
+	}
 }

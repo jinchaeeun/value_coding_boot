@@ -43,4 +43,13 @@
 		]]>
 	</update>
    <!-- //마이페이지 수정 -->
+   
+      <!-- 회원탈퇴 -->
+	<update id="deleteMember">
+	  <![CDATA[		
+			DELETE FROM T_MEMBER
+			WHERE ME_ID = #{me_id}
+		]]>
+	</update>
+   <!-- //회원탈퇴 -->
 </mapper>

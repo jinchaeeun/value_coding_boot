@@ -107,6 +107,10 @@
 	              success: function (response) {
 	                 console.log(response);   //콘솔에 가져온 정보 출력 이메일, 닉네임
 	                 location.href="../index.jsp";   //로그인 후 메인 페이지로 이동
+	                 
+	                 var id = res.id;    //카카오톡 닉네임을 변수에 저장
+	                 var kakaonickname = res.properties.nickname;    //카카오톡 닉네임을 변수에 저장
+	                 var kakaoe_mail = res.kaccount_email;    //카카오톡 이메일을 변수에 저장함
 	              },
 	              fail: function (error) {
 	               console.log(error);

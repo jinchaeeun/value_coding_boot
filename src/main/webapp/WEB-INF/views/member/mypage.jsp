@@ -57,6 +57,7 @@
 				</div>
 				<!-- <span>가입 날짜</span> <c:out value="${session.me_regDate}"/> -->
 				<button class="btn btn-success" type="button" onclick="mypage_SubmitForm();">회원정보 수정</button>
+				<a href="<c:url value='/member/memberDeleteView'/>">회원탈퇴</a>
 			</div>	
 			</form>
 	</div>
