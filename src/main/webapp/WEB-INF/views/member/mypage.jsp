@@ -2,13 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!-- 로그아웃 상태 : 로그아웃 상태에서 마이페이지 접근 불가 -->
-<c:if test="${empty session}">
-	<jsp:include page="./login.jsp"></jsp:include>
-</c:if>			
-	
-<!-- 로그인 상태 -->
-<c:if test="${not empty session}">
+
 				
 <div id="ajax_div">
 
@@ -63,7 +57,6 @@
 	</div>
 </div>
 
-</c:if>
 
 <script>
 

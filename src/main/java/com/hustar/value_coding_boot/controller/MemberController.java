@@ -95,7 +95,15 @@ public class MemberController {
 	}
 	
 	@GetMapping("mypage") 
-	public String member_mypage() { 
+	public String member_mypage(HttpSession session, RedirectAttributes redirectAttributes) { 
+		
+		// 로그인 필수
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
 	
 		return "member/mypage"; 
 	} 
@@ -111,7 +119,7 @@ public class MemberController {
 	// 마이페이지 수정
 	@RequestMapping(value = "/member/ModifyMypage")
 	public String ModifyMypage(HttpServletRequest req, MemberVO memberVO, RedirectAttributes redirectAttributes) throws Exception {
-		logger.info("get mypage");
+		
 		//비밀번호 암호화
 		String encpass = BCrypt.hashpw(memberVO.getMe_pass(), BCrypt.gensalt()); 
 		memberVO.setMe_pass(encpass);											
@@ -129,7 +137,16 @@ public class MemberController {
 	
 	// 회원 탈퇴
 	@RequestMapping(value= "/memberDeleteView", method = RequestMethod.GET)
-	public String memberDeleteView() throws Exception {
+	public String memberDeleteView(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		
+		// 로그인 필수
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
+		
 		
 		return "member/delete";
 	}
@@ -138,28 +155,25 @@ public class MemberController {
 	@RequestMapping(value= "/memberDelete", method = RequestMethod.POST)
 	public String memberDelete(MemberVO memberVO, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
 		
-		/*
+		
 		// 세션에 있는 member를 가져와 member변수에 넣어줍니다.
 				MemberVO member = (MemberVO) session.getAttribute("login");
 				// 세션에 있는 비밀번호
 				String sessionPass = member.getMe_pass();
 				
 				// MemberVO로 들어오는 비밀번호
-				String encpass = BCrypt.hashpw(memberVO.getMe_pass(), BCrypt.gensalt()); 
-				memberVO.setMe_pass(encpass);	
+				String VOPass = memberVO.getMe_pass();
+
+				logger.info("sessionPass :  "  + sessionPass + "  encpass :  " + VOPass);
 				
-				복호화해서 이 방법 X 
-				logger.info("sessionPass :  "  + sessionPass + "encpass :  " + encpass);
-				
-				if(!(sessionPass.equals(encpass))) {
-					redirectAttributes.addFlashAttribute("msg", false);
-					return "redirect:/member/memberDeleteView";
+				if (BCrypt.checkpw(VOPass, sessionPass)) { 
+					service.deleteMember(memberVO);
+					session.invalidate();
+					return "redirect:/";
 				}
-				
-				*/ 
-				service.deleteMember(memberVO);
-				session.invalidate();
-				return "redirect:/";
+			
+			redirectAttributes.addFlashAttribute("msg", false);
+			return "redirect:/member/memberDeleteView";
 	}
 	
 	//아이디 중복 체크

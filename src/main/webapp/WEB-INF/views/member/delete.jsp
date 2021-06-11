@@ -33,46 +33,42 @@
 
 
 	<div class="mypage-box">
-		<h1><span class="usr_nickname"><c:out value="${session.me_nickName}"/></span>님 마이페이지</h1>
-			<ul class="mypage-tap">
-				<li class="mypage-tapmenu on" id="mytap1"><a href="#" id="mypage-menu1"><span>내 정보 수정</span></a></li>
-				<li class="mypage-tapmenu" id="mytap2"><a href="#"><span>나의 게시물</span></a></li>
-			</ul>
+		<h1><span class="usr_nickname"><c:out value="${session.me_nickName}"/></span>님 정말 회원탈퇴?</h1>
 		
 		<form method ="post" action="<c:url value='/member/memberDelete'/>">
 		<div class="mypage-form">
 				<span>아이디(이메일)</span>
 				<input type="text" name="me_id" id="mypage_Email" value='<c:out value="${session.me_id}"/>' readonly onfocus="this.blur()" />
 				
-				<!-- <span>비밀번호</span>
+				<span>비밀번호</span>
 				<input type="password" name="me_pass" id="me_pass" placeholder="비밀번호" />
-				 -->
+				<div>
+					<c:if test="${msg == false}">
+						비밀번호가 맞지 않습니다.
+					</c:if>
+				</div>
+				 
 				<button class="btn btn-success" type="submit" id="submit">회원탈퇴</button>
 				.
-				<button class="cencle btn btn-danger" type="button">취소</button>
+				<button class="cancle" type="button">취소</button>
 			</div>	
 			</form>
 			
-			<div>
-				<c:if test="${msg == false}">
-					비밀번호가 맞지 않습니다.
-				</c:if>
-			</div>
 	</div>
 
 <script type="text/javascript">
 		$(document).ready(function(){
 			// 취소
-			$(".cencle").on("click", function(){
+			$(".cancle").on("click", function(){
 				
 				location.href = "/member/mypage";
 						    
 			})
 		
 			$("#submit").on("click", function(){
-				if($("#userPass").val()==""){
+				if($("#me_pass").val()==""){
 					alert("비밀번호를 입력해주세요.");
-					$("#userPass").focus();
+					$("#me_pass").focus();
 					return false;
 				}	
 			});
