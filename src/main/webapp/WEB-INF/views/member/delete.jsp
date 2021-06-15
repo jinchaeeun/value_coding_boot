@@ -7,27 +7,6 @@
 <!-- 상단 헤더 불러오기 -->
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		// 취소
-		$(".cencle").on("click", function(){
-			
-			location.href = "/";
-					    
-		})
-	
-		$("#submit").on("click", function(){
-			if($("#userPass").val()==""){
-				alert("비밀번호를 입력해주세요.");
-				$("#userPass").focus();
-				return false;
-			}	
-		});
-		
-			
-		
-	})
-</script>
 <div class="circle-small"></div>
 <div class="circle-big"></div>
 

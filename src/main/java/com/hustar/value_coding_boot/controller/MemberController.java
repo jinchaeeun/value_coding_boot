@@ -1,5 +1,6 @@
 package com.hustar.value_coding_boot.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.hustar.value_coding_boot.service.MemberService;
+import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Controller 
@@ -95,7 +97,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("mypage") 
-	public String member_mypage(HttpSession session, RedirectAttributes redirectAttributes) { 
+	public String member_mypage(HttpSession session, RedirectAttributes redirectAttributes) throws Exception { 
 		
 		// 로그인 필수
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
@@ -108,9 +110,28 @@ public class MemberController {
 		return "member/mypage"; 
 	} 
 	
-	@GetMapping("mypage_board") 
-	public String mypage_board() { 
+	@RequestMapping("/member/mypage_board") 
+	public String mypage_board(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
 		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		// 로그인 필수
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
+		
+		// (loginVO) 받아서!! 세션 id!! 가져감!!
+		List<BoardVO> boardVO = (List<BoardVO>)service.ViewMyPostMember(loginVO);
+		
+		/*
+		 * DB에서 데이터 가져오는지 체크
+		for(int i=0;i<boardVO.size();i++) {
+			System.out.println(boardVO.get(i).getPo_title());
+		}
+		*/
+		
+		model.addAttribute("boardVO",boardVO);
 		
 		return "member/mypage_board"; 
 	}
@@ -141,6 +162,8 @@ public class MemberController {
 		
 		// 로그인 필수
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		
 		
 		if(loginVO == null) {
 			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");

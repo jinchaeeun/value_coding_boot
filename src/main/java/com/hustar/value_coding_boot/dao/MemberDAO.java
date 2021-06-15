@@ -1,5 +1,8 @@
 package com.hustar.value_coding_boot.dao;
 
+import java.util.List;
+
+import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 public interface MemberDAO {
@@ -16,4 +19,6 @@ public interface MemberDAO {
 	
 	// 회원 탈퇴
 	public void deleteMember(MemberVO memberVO)throws Exception;
+	
+	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception;
 }

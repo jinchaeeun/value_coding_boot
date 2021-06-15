@@ -1,5 +1,7 @@
 package com.hustar.value_coding_boot.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import com.hustar.value_coding_boot.dao.MemberDAO;
+import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Service
@@ -44,5 +47,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteMember(MemberVO memberVO)throws Exception {
 		dao.deleteMember(memberVO);
+	}
+	
+	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
+		return dao.ViewMyPostMember(memberVO);
 	}
 }

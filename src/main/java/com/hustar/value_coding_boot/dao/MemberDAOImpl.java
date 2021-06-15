@@ -1,9 +1,12 @@
 package com.hustar.value_coding_boot.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Repository
@@ -38,4 +41,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public void deleteMember(MemberVO memberVO)throws Exception {
 		sql.delete("deleteMember", memberVO);
 	}
+	
+	// 회원 나의 게시물
+		@Override
+		public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
+			return sql.selectList("ViewMyPostMember", memberVO);
+		}
 }

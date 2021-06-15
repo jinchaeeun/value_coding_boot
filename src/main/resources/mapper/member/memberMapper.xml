@@ -52,4 +52,14 @@
 		]]>
 	</update>
    <!-- //회원탈퇴 -->
+      <!-- 내가 쓴 글 조회 -->
+   <select id="ViewMyPostMember" parameterType="memberVO" resultType="BoardVO">
+   		<![CDATA[
+	   		SELECT *
+	   		FROM T_POST
+	   		WHERE po_writer = #{me_id} AND po_deleteYn = 'N'
+   		]]>
+   </select>
+   <!-- // 내가 쓴 글 조회  -->
+   
 </mapper>
