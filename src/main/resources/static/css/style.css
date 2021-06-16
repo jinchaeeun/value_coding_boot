@@ -767,7 +767,7 @@ svg:not(:root) {
 
 .usr_nickname {color : #102770;}
 .mypage-box > ul{display: table; width: 100%; text-align: center;}
-.mypage-box ul.mypage-tap li{display: table-cell; width: 50%; }
+.mypage-box ul.mypage-tap li{display: table-cell; width: 33%; }
 .mypage-box ul.mypage-tap li > a{display: block; padding: 10px; font-size:14px;}
 .mypage-box ul.mypage-tap li > a#mypage-menu1 {border-right: 1px solid #e1e1e1;}
 .mypage-box ul.mypage-tap li:hover span:before{width: 100%; left:0;}

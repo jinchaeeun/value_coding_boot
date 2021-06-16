@@ -4,22 +4,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-<!-- 상단 헤더 불러오기 -->
-<jsp:include page="../sub_header.jsp"></jsp:include>
-
-<div class="circle-small"></div>
-<div class="circle-big"></div>
-
-
 <div class="mypage-box">
 	<h1><span class="usr_nickname"><c:out value="${session.me_nickName}"/></span>님 마이페이지</h1>
-	<ul class="mypage-tap">
-		<li class="mypage-tapmenu" id="mytap1"><a href="#" id="mypage-menu1"><span>내 정보 수정</span></a></li>
-		<li class="mypage-tapmenu on" id="mytap2"><a href="#"><span>나의 게시물</span></a></li>
-	</ul>
+			<ul class="mypage-tap">
+				<li class="mypage-tapmenu" id="mytap1"><a href="#" id="mypage-menu1"><span>내 정보 수정</span></a></li>
+				<li class="mypage-tapmenu on" id="mytap2"><a href="#"><span>나의 게시물</span></a></li>
+			</ul>
 		
 		
 	<div class="mypage-form">	
+
+
+
 	<ul class="myquestion">
 		<c:forEach items="${boardVO }" var="postVO">
 		<li>
@@ -27,10 +23,10 @@
 			<div class="myquestion-content">
 				<c:out value="${postVO.po_contents }" />
 			</div>
-			
+			답변 수 <span style="color:red">5</span>
 			<ul class="myquestion-manage">
 				<li><a href="<c:url value='/board/notice_updateView?po_num=${postVO.po_num}' />">수정</a></li>
-	  			<li class="myquestion-remove"><a href="#" onclick="deleteConfirm();return false;">삭제</a></li>			
+	  			<li class="myquestion-remove"><a href="#" onclick="deleteConfirm(${postVO.po_num});return false;">삭제</a></li>			
 			</ul>
 		</li>
 		</c:forEach>
@@ -48,6 +44,7 @@
             <li><a href="#">마지막</a></li>
         </ul>
     </div>
+
     </div>
     
 </div>
@@ -58,23 +55,28 @@ $('#mytap1').bind('click', function(event) {
 	   
 	    $(this).addClass('on');
 	    $('#mytap2').removeClass('on');
+	    $('#mytap3').removeClass('on');
 	});
 	
 $('#mytap2').bind('click', function(event) {
-fn_getPage('./mypage02');
+fn_getPage('./mypage_board');
 
 		$(this).addClass('on');
 		$('#mytap1').removeClass('on');
+		$('#mytap3').removeClass('on');
 	});
+
+
 	
-<!--
-function deleteConfirm(){
+	
+ 
+function deleteConfirm(po_num){
 	if(confirm('삭제하시겠습니까?') == true) {
-		location.href = '<c:url value="/board/notice_delete"/>?po_num=${postVO.po_num}';
+		location.href = '/board/notice_delete?po_num=' + po_num;
 	}
 }
 
--->
+
 
 </script>
 <!-- 하단 헤더 불러오기 -->

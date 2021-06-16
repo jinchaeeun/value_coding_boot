@@ -52,7 +52,8 @@
 		]]>
 	</update>
    <!-- //회원탈퇴 -->
-      <!-- 내가 쓴 글 조회 -->
+   
+   <!-- 내가 쓴 글 조회 -->
    <select id="ViewMyPostMember" parameterType="memberVO" resultType="BoardVO">
    		<![CDATA[
 	   		SELECT *
@@ -61,5 +62,18 @@
    		]]>
    </select>
    <!-- // 내가 쓴 글 조회  -->
+   
+   <!-- 내가 쓴 답변 조회 -->
+   <select id="ViewMyCommentMember" parameterType="memberVO" resultType="CommentVO">
+   		<![CDATA[
+	   		SELECT *
+	   		FROM T_COMMENT
+	   		WHERE CO_USER_ID = #{me_id}
+	   		ORDER BY CO_DATETIME DESC;
+   		]]>
+   </select>
+   <!-- // 내가 쓴 답변 조회  -->
+   
+ 
    
 </mapper>

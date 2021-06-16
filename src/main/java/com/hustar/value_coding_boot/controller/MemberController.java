@@ -29,6 +29,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.hustar.value_coding_boot.service.MemberService;
 import com.hustar.value_coding_boot.vo.BoardVO;
+import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Controller 
@@ -110,6 +111,7 @@ public class MemberController {
 		return "member/mypage"; 
 	} 
 	
+	// 내가 작성한 질문
 	@RequestMapping("/member/mypage_board") 
 	public String mypage_board(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
 		
@@ -123,17 +125,42 @@ public class MemberController {
 		
 		// (loginVO) 받아서!! 세션 id!! 가져감!!
 		List<BoardVO> boardVO = (List<BoardVO>)service.ViewMyPostMember(loginVO);
-		
-		/*
-		 * DB에서 데이터 가져오는지 체크
-		for(int i=0;i<boardVO.size();i++) {
-			System.out.println(boardVO.get(i).getPo_title());
-		}
-		*/
-		
 		model.addAttribute("boardVO",boardVO);
 		
+		/*
+		CommentVO commentVO = (CommentVO)service.CountComment();
+		model.addAttribute("commentVO", commentVO);
+		*/
+		
 		return "member/mypage_board"; 
+	}
+	
+	// 내가 작성한 답변
+	@RequestMapping("/member/mypage_comment") 
+	public String mypage_comment(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		// 로그인 필수
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
+		
+		
+		// (loginVO) 받아서!! 세션 id!! 가져감!!
+		List<CommentVO> commentVO = (List<CommentVO>)service.ViewMyCommentMember(loginVO);
+		
+		/*
+		 // DB에서 데이터 가져오는지 체크
+		for(int i=0;i<commentVO.size();i++) {
+			System.out.println(commentVO.get(i).getCo_comments());
+		}
+		*/
+
+		model.addAttribute("commentVO",commentVO);
+		
+		return "member/mypage_comment"; 
 	}
 	
 	

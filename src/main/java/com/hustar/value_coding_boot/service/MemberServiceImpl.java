@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.hustar.value_coding_boot.dao.MemberDAO;
 import com.hustar.value_coding_boot.vo.BoardVO;
+import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Service
@@ -51,5 +52,9 @@ public class MemberServiceImpl implements MemberService {
 	
 	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
 		return dao.ViewMyPostMember(memberVO);
+	}
+	
+	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
+		return dao.ViewMyCommentMember(memberVO);
 	}
 }

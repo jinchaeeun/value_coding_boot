@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.hustar.value_coding_boot.vo.BoardVO;
+import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Repository
@@ -43,8 +44,14 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	// 회원 나의 게시물
-		@Override
-		public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
-			return sql.selectList("ViewMyPostMember", memberVO);
-		}
+	@Override
+	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
+		return sql.selectList("ViewMyPostMember", memberVO);
+	}
+		
+	// 나의 답변
+	@Override
+	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
+		return sql.selectList("ViewMyCommentMember", memberVO);
+	}
 }
