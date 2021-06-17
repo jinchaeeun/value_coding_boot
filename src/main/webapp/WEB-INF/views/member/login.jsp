@@ -155,6 +155,31 @@
 		})
 		
 	}
+	
+	function snsJoinInsert(){
+		console.log("sns_id = " + sns_id + ", sns_nick = " + sns_nick + ", sns_type = " + sns_type);
+		
+		$.ajax({
+			type: "POST",
+			url: "<c:url value='/member/sosialJoinInsert.do'/>",
+			dataType: "JSON",
+			data: {"sns_id": sns_id, "sns_nick": sns_nick, "sns_type": sns_type},
+			success : function(data){
+				console.log(data);
+				if(data.login == true){
+					location.href = "<c:url value='/'/>";	//메인 index로 이동
+				}else{
+					alert('로그인에 실패하였습니다.');
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown){
+				console.log("실패");	//뜨면 url 다시 확인하기
+				console.log(textStatus);
+			}
+			
+		})
+		
+	}
 </script>
 
 <!-- 카카오 스크립트 -->
@@ -162,6 +187,10 @@
 <script>
 Kakao.init('365e10715c6beba6ae9f5e655701ff59'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
+
+var sns_id=""; 
+var sns_nick="";	
+var sns_type=0; //1: 일반, 2: 카카오, 3: 네이버, 4: 구글, 5: 깃허브
 
 //카카오로그인
 function kakaoLogin() {
@@ -171,8 +200,15 @@ function kakaoLogin() {
         url: '/v2/user/me',
         success: function (response) {
            console.log(response);   //콘솔에 가져온 정보 출력 이메일, 닉네임
+           
+           sns_type=2;
+           sns_id=response.kakao_account.email;
+           sns_nick=response.properties.nickname;
+           
+           alert("카카오 로그인 성공 "+ response.kakao_account.email + response.properties.nickname + sns_type);
+           snsJoinInsert();	//호출
+           
            //location.href="<c:url value='/'/>";   //로그인 후 메인 페이지로 이동
-           alert("카카오 로그인 성공 "+ response.kakao_account.email + response.properties.nickname);
         },
         fail: function (error) {
          console.log(error);

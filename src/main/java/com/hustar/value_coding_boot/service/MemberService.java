@@ -14,5 +14,7 @@ public interface MemberService {
 	public int checkId(MemberVO membervo) throws Exception;
 
 	public MemberVO selectMemberView(MemberVO memberVO, HttpServletRequest req, HttpServletResponse res, String sql_id) throws Exception;
+
+	public void sosialJoin(MemberVO vo) throws Exception;
 	
 }

@@ -40,7 +40,7 @@ public class MemberController {
 	@Resource(name="jsonView")
 	MappingJackson2JsonView jsonView;
 	
-	// 회원가입 get
+	// 회원가입 메시지
 	@RequestMapping(value = "/member/join")
 	public String getJoin(HttpServletRequest request,
 			Model model) throws Exception {	
@@ -53,12 +53,12 @@ public class MemberController {
 		return "/member/join";
 	}
 	
-	// 회원가입 post
+	//회원가입 멤버 등록
 	@RequestMapping(value = "/member/joinInsert")
 	public String JoinInsert(
 			@ModelAttribute("memberVO") MemberVO vo, 
 			RedirectAttributes redirectAttributes) throws Exception {
-		logger.info("post join");
+		logger.info("joinInsert");
 		
 //		데이터 출력 확인		
 //		System.out.println("id = "+ vo.getMe_id());
@@ -190,6 +190,43 @@ public class MemberController {
 			//loginVO에서 값을 가지고 오지 못함
 			model.addAttribute("login", false);
 		}
+		return new ModelAndView(jsonView);
+	}
+	
+	//소셜 로그인 등록
+	//ajax json 쓰려면 ModelAndView
+	@RequestMapping(value = "/member/sosialJoinInsert.do")
+	public ModelAndView sosialJoinInsert(ModelMap model,
+			@ModelAttribute("memberVO") MemberVO vo, HttpServletRequest req,
+			HttpServletResponse res, 
+			RedirectAttributes redirectAttributes, String sns_id, String sns_nick, int sns_type) throws Exception {
+		logger.info("==============================sosialJoin");
+		
+		System.out.println("소셜 아이디: " + sns_id);
+		
+		vo.setMe_id(sns_id);
+		vo.setMe_nickName(sns_nick);
+		vo.setMe_singupcode(sns_type);
+		
+		int cnt = service.checkId(vo);
+		System.out.println("cnt = " + cnt);
+		
+		if(cnt>0) {	//이미 가입한 아이디므로 바로 로그인
+			redirectAttributes.addFlashAttribute("msg", "소셜 로그인 성공");			
+			model.addAttribute("login", true);
+		}else {
+			//데이터 삽입 후 로그인 처리됨
+			service.sosialJoin(vo);
+			redirectAttributes.addFlashAttribute("msg", "소셜 회원가입 성공");
+			model.addAttribute("login", true);
+		}
+		
+		//로그인 체크
+		MemberVO loginVO = (MemberVO) service.selectMemberView(vo, null, null, "selectMemberView");
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		request.getSession().setAttribute("login", loginVO);
+		System.out.println("login 세션 =>" +loginVO);
+		
 		return new ModelAndView(jsonView);
 	}
 	

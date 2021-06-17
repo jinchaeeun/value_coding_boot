@@ -30,4 +30,10 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return (MemberVO) sql.selectOne(sql_id, memberVO);
 	}
+
+	@Override
+	public void sosialJoin(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.insert("memberMapper.sosialJoin", vo);
+	}
 }

@@ -31,4 +31,15 @@
    		]]>
    </select>
    <!-- //로그인 체크 -->
+   
+   <!-- 소셜 로그인 멤버 등록 -->
+   <insert id="sosialJoin">
+	    INSERT INTO T_MEMBER(   ME_ID
+	   					       , ME_NICKNAME
+	   					       , ME_SINGUPCODE  	)
+	                  VALUES(    #{me_id}
+	                 		   , #{me_nickName}
+	                 		   , #{me_singupcode})
+    </insert>
+   <!-- //소셜 로그인 멤버 등록 -->
 </mapper>
