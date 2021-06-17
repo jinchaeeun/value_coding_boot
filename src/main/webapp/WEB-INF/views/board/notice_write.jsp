@@ -4,13 +4,13 @@
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
 <link rel="stylesheet" type="text/css" href="../js/ckeditor5/sample/styles.css">
-<script type="text/javascript" src="../js/ckeditor5/build/ckeditor.js"></script>
+<script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
 
 <div class="notice-write-wrap">
 	<div class="notice-write-box">
 		<h1>글쓰기</h1>
 
-		<form action="/board/notice_write_dao" name="writeForm" method="post">
+		<form action="/board/notice_write_dao" name="writeForm" method="post" enctype="multipart/form-data">
 			<div class="write-form">
 				<ul>
 					<li>
@@ -31,15 +31,14 @@
 					<li>
 						<label for="">내용</label>
 						<textarea name="po_contents" id="editor"></textarea>
+						<script type="text/javascript">
+							CKEDITOR.replace('editor')
+						</script>
 						<!-- <div id="editor"></div> -->
 					</li>
 					<li>
-						<label for="">첨부파일 #01</label>
-						<input type="file" name="po_file_path">
-					</li>
-					<li>
-						<label for="">첨부파일 #02</label>
-						<input type="file" name="po_file_path">
+						<label for="">첨부파일</label>
+						<input type="file" id="files" name="po_file_path" multiple="multiple">
 					</li>
 					<li class="check-box"> <!-- 관리자가 로그인 했을 때만 보이도록함 -->
 						<label for="">공지 선택</label>
@@ -53,90 +52,32 @@
 			
 			<div class="write-btn-box">
 				<a href="/board/notice_list?num=1">목록으로</a>
-				<a href="#" onclick="document.writeForm.submit();" >저장 </a>
+				<a href="#" onclick="fn_check();" >저장</a>
 			</div>
 		</form>
 	</div> <!-- notice-write-box -->
-	
-	
 </div> <!-- notice-write-wrap -->
 
 <script type="text/javascript">
-ClassicEditor
-.create(document.querySelector('#editor'), {
-	heading: {
-        options: [
-            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-            { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-            { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-            { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' }
-        ]
-    },
-	toolbar: {
-		items: [
-			'heading',
-			'|',
-			'fontFamily',
-			'fontSize',
-			'fontColor',
-			'bold',
-			'underline',
-			'italic',
-			'blockQuote',
-			'specialCharacters',
-			'|',
-			'bulletedList',
-			'numberedList',
-			'indent',
-			'outdent',
-			'|',
-			'codeBlock',
-			'insertTable',
-			'mediaEmbed',
-			'link',
-			'imageUpload',
-			'undo',
-			'redo'
-		]
-	},
-	fontFamily: {
-		options: [
-			'default',
-			'Arial',
-			'궁서체',
-			'바탕',
-			'돋움'
-		],
-		supportAllValues: true
-	},
-	language: 'ko',
-	image: {
-		toolbar: [
-			'imageTextAlternative',
-			'imageStyle:full',
-			'imageStyle:side'
-		]
-	},
-	table: {
-		contentToolbar: [
-			'tableColumn',
-			'tableRow',
-			'mergeTableCells',
-			'tableCellProperties',
-			'tableProperties'
-		]
-	},
-	licenseKey: '',
-})
-.then(editor => {
-	window.editor = editor;
-})
-.catch(error => {
-	console.error( 'Oops, something went wrong!' );
-	console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+function fn_check() {
+	var po_title = $("input[name=po_title]").val();
+	var po_contents = CKEDITOR.instances.editor.getData();
+	console.log(po_contents);
+	var po_boardname = $("select[name=po_boardname]").val();
 	
-	console.error( error );
-});
+	if(po_title == '') {
+		alert('제목을 작성해주세요');
+	}
+	else if(po_boardname == '') {
+		alert('게시판을 선택해주세요');
+	}
+	else if(po_contents == '') {
+		alert('내용을 작성해주세요');
+	}
+	else {
+		document.writeForm.submit();
+	}
+}
 </script>
 <!-- 하단 푸터 불러오기 -->
 <jsp:include page="../sub_footer.jsp"></jsp:include>

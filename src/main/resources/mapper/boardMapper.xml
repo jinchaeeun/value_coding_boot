@@ -12,6 +12,7 @@
  		po_updatetime,
  		po_writer,
  		po_views,
+ 		po_ans_cnt,
  		po_noticeYn,
  		po_deleteYn
 	</sql>
@@ -29,6 +30,7 @@
 	 		po_updatetime,
 	 		po_writer,
 	 		po_views,
+	 		po_ans_cnt,
 	 		po_noticeYn,
 	 		po_deleteYn
 		) VALUES (
@@ -40,6 +42,7 @@
 			NOW(),
 			NULL,
 			#{po_writer},
+			0,
 			0,
 			IFNULL(#{po_noticeYn}, 'N'),
 			IFNULL(#{po_deleteYn}, 'N')
@@ -60,6 +63,7 @@
 	 		po_updatetime,
 	 		po_writer,
 	 		po_views,
+	 		po_ans_cnt,
 	 		po_noticeYn,
 	 		po_deleteYn
 		FROM
@@ -100,6 +104,7 @@
 		 		po_updatetime,
 		 		po_writer,
 		 		po_views,
+		 		po_ans_cnt,
 		 		po_noticeYn,
 		 		po_deleteYn
 			FROM
@@ -164,4 +169,26 @@
 		</if>
 	</select>
 	<!-- //게시글 총 갯수 -->
+	
+	<!-- 게시글 조회 수 증가 -->
+	<update id="updateViewCnt" parameterType="int">
+		<![CDATA[
+			update t_post set po_views = po_views + 1 where po_num = #{po_num}
+		]]>
+	</update>
+	<!-- //게시글 조회 수 증가 -->
+	
+	<!-- 게시글의 답변 수 -->
+	<update id="updateAnsCnt" parameterType="int">
+		<![CDATA[
+			UPDATE t_post SET
+				po_ans_cnt = (
+					SELECT COUNT(*) FROM t_answer 
+						WHERE po_num = #{po_num} 
+						AND ans_deleteYn='N'
+						)
+				WHERE po_num = #{po_num};
+	]]>
+	<!-- //게시글의 답변 수 -->
+	</update>
 </mapper>

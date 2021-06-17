@@ -60,4 +60,16 @@ public class BoardDAOImpl implements BoardDAO {
 		data.put("keyword", keyword);  // 검색어
 		return sqlSession.selectOne("mapper.boardMapper.selectBoardTotalCount", data);
 	}
+	
+	// 게시글 조회수
+	@Override
+	public int updateViewCnt(int po_num) throws Exception {
+		return sqlSession.update("mapper.boardMapper.updateViewCnt", po_num);
+	}
+	
+	// 게시글 답변수
+	@Override
+	public int updateAnsCnt(int po_num) throws Exception {
+		return sqlSession.update("mapper.boardMapper.updateAnsCnt", po_num);
+	}
 }

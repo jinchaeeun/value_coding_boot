@@ -101,6 +101,7 @@
                   <li><a href="#">프로젝트</a></li>
                   <li><a href="#">책/강의/프로그램</a></li>
                   <li><a href="#">스터디</a></li>
+                  <li><a href="/board/notice_list?num=1">공지사항</a></li>
                </ul>
             </li>
             <li><a href="#">코딩 테스트</a></li>

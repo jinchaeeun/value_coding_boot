@@ -151,7 +151,7 @@ img {
 .main-gallery > ul > li > .info p{color:#fff; font-size: 1rem !important; line-height: 2; margin-bottom: 50px;}
 
 /* footer */
-.footer{position:fixed; left: 0px;  z-index:999; width:100%; background-color: rgba(255, 255, 255, 0.1);}
+.footer{position:fixed; left: 0px;  z-index: -1; width:100%; background-color: rgba(255, 255, 255, 0.1);}
 .footer > div{margin: 0 auto; overflow: hidden;}
 .footer > div > div{float:left;}
 .footer > div > div.f-copy{margin: 20px; color: #111;}

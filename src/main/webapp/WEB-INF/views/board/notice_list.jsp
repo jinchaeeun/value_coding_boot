@@ -48,7 +48,7 @@
 					<div class="title"><a href="/board/notice_view?po_num=${list.po_num}"><c:out value="${list.po_title}" /></a></div>
 					<div class="writer"><c:out value="${list.po_writer}" /></div>
 					<div class="date"><fmt:formatDate value="${list.po_datetime}" pattern="yyyy-MM-dd"/></div>
-					<div class="answer"><c:out value="${list.po_views}" /></div>
+					<div class="answer"><c:out value="${list.po_ans_cnt}" /></div>
 					<div class="hot"><c:out value="${list.po_views}" /></div>
 				</li>
 			</c:forEach>

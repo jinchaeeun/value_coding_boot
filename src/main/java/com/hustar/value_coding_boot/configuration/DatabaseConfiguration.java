@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -54,5 +55,14 @@ public class DatabaseConfiguration {
     @Bean			//View를 Json 타입의 뷰로 변환
     public MappingJackson2JsonView jsonView() {
     	return new MappingJackson2JsonView();
+    }
+    
+    // 파일 업로드를 위한 스프링 빈 설정
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+    	CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+    	commonsMultipartResolver.setDefaultEncoding("UTF-8");
+    	commonsMultipartResolver.setMaxUploadSizePerFile(20 * 1024 * 1024);  // 업로드 되는 파일 크기 20MB 제한
+    	return commonsMultipartResolver;
     }
 }

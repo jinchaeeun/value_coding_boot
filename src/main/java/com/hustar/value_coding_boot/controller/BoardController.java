@@ -1,5 +1,6 @@
 package com.hustar.value_coding_boot.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -12,10 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
+import com.hustar.value_coding_boot.service.AnswerService;
 import com.hustar.value_coding_boot.service.BoardService;
+import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.Paging;
 
@@ -25,7 +29,10 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Inject
-	BoardService boardService;
+	private BoardService boardService;
+	
+	@Inject
+	private AnswerService answerService;
 	
 	// 글쓰기 화면
 	@RequestMapping(value = "/board/notice_write", method = RequestMethod.GET)
@@ -37,10 +44,11 @@ public class BoardController {
 	
 	// 글 작성
 	@RequestMapping(value = "/board/notice_write_dao", method = RequestMethod.POST)
-	public String notice_write(BoardVO boardVO, RedirectAttributes redirectAttributes) throws Exception {
+	public String notice_write(BoardVO boardVO, RedirectAttributes redirectAttributes,
+			MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
 		logger.info("notice_write_dao");
 		
-		boardService.write(boardVO);
+		boardService.write(boardVO, multipartHttpServletRequest);
 		
 		redirectAttributes.addFlashAttribute("msg", "게시글을 작성했습니다.");
 		
@@ -80,7 +88,6 @@ public class BoardController {
 		// 전달된 메세지가 있으면 뿌려줌
 		if(inputFlashMap != null) {
 			model.addAttribute("msg", inputFlashMap.get("msg"));
-			System.out.println("msg = " + inputFlashMap.get("msg"));
 		}
 	
 		return "/board/notice_list";
@@ -88,10 +95,22 @@ public class BoardController {
 	
 	// 게시글 조회
 	@RequestMapping(value = "/board/notice_view", method = RequestMethod.GET)
-	public String notice_view(int po_num, Model model) throws Exception {
+	public String notice_view(int po_num, Model model, AnswerVO answerVO) throws Exception {
 		logger.info("notice_view");
 		
 		BoardVO boardVO = boardService.read(po_num);
+		
+		// 조회 수 증가
+		boardService.updateViewCnt(po_num);
+		
+		// 답글 조회
+		answerVO.setPo_num(po_num);
+		List<AnswerVO> answerList =  answerService.list(answerVO);
+		model.addAttribute("answerList", answerList);
+		
+		// 답글 수 조회
+		int answerCnt = answerService.getCnt(answerVO);
+		model.addAttribute("answerCnt", answerCnt);
 		
 		// 게시글 하나 조회해서 보여줌
 		model.addAttribute("read", boardVO);
@@ -103,8 +122,6 @@ public class BoardController {
 	@RequestMapping(value = "/board/notice_delete", method = RequestMethod.GET)
 	public String notice_delete(int po_num) throws Exception {
 		logger.info("notice_delete");
-		
-		System.out.println(po_num);
 		
 		boardService.deleteBoard(po_num);
 		

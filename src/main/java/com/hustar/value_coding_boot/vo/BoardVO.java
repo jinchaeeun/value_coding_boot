@@ -4,14 +4,32 @@ import java.util.Date;
 
 public class BoardVO {
 	private int po_num; // 게시글 번호
-	private String po_boardname; // 게시판 카테고리
 	private String po_title; // 게시글 제목
 	private String po_contents; // 게시글 내용
+	private String po_boardname; // 게시판 선택
 	private String po_file_path; // 첨부파일 경로
 	private Date po_datetime; // 작성일자
 	private Date po_updatetime; // 수정일자
 	private String po_writer; // 작성자
 	private int po_views; // 조회수
+	private int po_ans_cnt; // 답변수
+	
+	public String getPo_boardname() {
+		return po_boardname;
+	}
+
+	public void setPo_boardname(String po_boardname) {
+		this.po_boardname = po_boardname;
+	}
+
+	public int getPo_ans_cnt() {
+		return po_ans_cnt;
+	}
+
+	public void setPo_ans_cnt(int po_ans_cnt) {
+		this.po_ans_cnt = po_ans_cnt;
+	}
+
 	private String po_noticeYn; // 공지 여부
 	private String po_deleteYn; // 삭제 여부
 	
@@ -43,14 +61,6 @@ public class BoardVO {
 
 	public void setPo_num(int po_num) {
 		this.po_num = po_num;
-	}
-
-	public String getPo_boardname() {
-		return po_boardname;
-	}
-
-	public void setPo_boardname(String po_boardname) {
-		this.po_boardname = po_boardname;
 	}
 
 	public String getPo_title() {

@@ -11,7 +11,7 @@
 	<div class="notice-write-box">
 		<h1>글쓰기</h1>
 
-		<form action="/board/notice_update" name="updateForm" method="post">
+		<form action="/board/notice_update" name="updateForm" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="po_num" value='<c:out value="${update.po_num}" />'>
 			<div class="write-form">
 				<ul>
@@ -35,12 +35,8 @@
 						<textarea name="po_contents" id="editor"><c:out value='${update.po_contents}' /></textarea>
 					</li>
 					<li>
-						<label for="">첨부파일 #01</label>
-						<input type="file" name="po_file_path">
-					</li>
-					<li>
-						<label for="">첨부파일 #02</label>
-						<input type="file" name="po_file_path">
+						<label for="">첨부파일</label>
+						<input type="file" id="files" name="po_file_path" multiple="multiple">
 					</li>
 					<li class="check-box"> <!-- 관리자가 로그인 했을 때만 보이도록함 -->
 						<label for="">공지 선택</label>

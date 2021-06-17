@@ -71,7 +71,7 @@ class BoardTest {
 	
 	@Test
 	public void testOfSelectList() throws Exception {
-		List<BoardVO> board = service.list(10, 10, "title", "");
+		List<BoardVO> board = service.list(0, 10, "title", "");
 		try {
 			String boardJson = new ObjectMapper().writeValueAsString(board);
 
