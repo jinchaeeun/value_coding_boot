@@ -65,9 +65,10 @@
    
    <!-- 내가 쓴 답변 조회 -->
    <select id="ViewMyCommentMember" parameterType="memberVO" resultType="CommentVO">
-   		<![CDATA[
+       <![CDATA[
 	   		SELECT *
-	   		FROM T_COMMENT
+	   		FROM t_comment LEFT OUTER JOIN t_post
+	   		ON t_post.po_num = t_comment.co_post_num
 	   		WHERE CO_USER_ID = #{me_id}
 	   		ORDER BY CO_DATETIME DESC;
    		]]>

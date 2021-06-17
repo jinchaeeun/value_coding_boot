@@ -12,7 +12,30 @@ public class CommentVO {
 	private String co_comments; // 댓글
 	private Date co_datetime; // 작성일자
 	
+	private int po_num; // 게시글 번호
+	private String po_boardname; // 게시판 카테고리
+	private String po_title; // 게시글 제목
+
+
 	
+	public int getPo_num() {
+		return po_num;
+	}
+	public void setPo_num(int po_num) {
+		this.po_num = po_num;
+	}
+	public String getPo_boardname() {
+		return po_boardname;
+	}
+	public void setPo_boardname(String po_boardname) {
+		this.po_boardname = po_boardname;
+	}
+	public String getPo_title() {
+		return po_title;
+	}
+	public void setPo_title(String po_title) {
+		this.po_title = po_title;
+	}
 	public int getCo_idx() {
 		return co_idx;
 	}
@@ -43,5 +66,7 @@ public class CommentVO {
 	public void setCo_datetime(Date co_datetime) {
 		this.co_datetime = co_datetime;
 	}
-	
+
 }
+
+
