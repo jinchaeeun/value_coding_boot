@@ -1,25 +1,32 @@
 package com.hustar.value_coding_boot.controller;
 
+import java.io.File;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.hustar.value_coding_boot.service.AnswerService;
 import com.hustar.value_coding_boot.service.BoardService;
 import com.hustar.value_coding_boot.vo.AnswerVO;
+import com.hustar.value_coding_boot.vo.BoardFileVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.Paging;
 
@@ -34,6 +41,9 @@ public class BoardController {
 	@Inject
 	private AnswerService answerService;
 	
+	@Inject
+	private MappingJackson2JsonView jsonView;
+
 	// 글쓰기 화면
 	@RequestMapping(value = "/board/notice_write", method = RequestMethod.GET)
 	public String notice_write() throws Exception {
@@ -44,13 +54,12 @@ public class BoardController {
 	
 	// 글 작성
 	@RequestMapping(value = "/board/notice_write_dao", method = RequestMethod.POST)
-	public String notice_write(BoardVO boardVO, RedirectAttributes redirectAttributes,
-			MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
+	public String notice_write(BoardVO boardVO,
+			MultipartHttpServletRequest multipartHttpServletRequest
+			) throws Exception {
 		logger.info("notice_write_dao");
 		
 		boardService.write(boardVO, multipartHttpServletRequest);
-		
-		redirectAttributes.addFlashAttribute("msg", "게시글을 작성했습니다.");
 		
 		return "redirect:/board/notice_list?num=1";
 	}
@@ -115,6 +124,11 @@ public class BoardController {
 		// 게시글 하나 조회해서 보여줌
 		model.addAttribute("read", boardVO);
 		
+		// 게시글 파일 조회
+		List<BoardFileVO> fileList =  boardService.selectFileList(po_num);
+		
+		model.addAttribute("fileList", fileList);
+		
 		return "/board/notice_view";
 	}
 	
@@ -135,16 +149,61 @@ public class BoardController {
 		
 		model.addAttribute("update", boardService.read(boardVO.getPo_num()));
 		
+		// 파일 목록 추가
+		List<BoardFileVO> list = boardService.selectFileList(boardVO.getPo_num());
+		model.addAttribute("list", list);
+		
 		return "/board/notice_updateView";
 	}
 	
 	// 게시글 수정
 	@RequestMapping(value = "/board/notice_update", method = RequestMethod.POST)
-	public String notice_update(BoardVO boardVO) throws Exception {
+	public String notice_update(BoardVO boardVO, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
 		logger.info("notice_update");
 		
-		boardService.updateBoard(boardVO);
+		boardService.updateBoard(boardVO, multipartHttpServletRequest);
 		
 		return "redirect:/board/notice_view?po_num=" + boardVO.getPo_num();
+	}
+	
+	// 게시글 파일 다운로드
+	@RequestMapping("/board/downloadFile")
+	public void downloadFile(int fi_num, int po_num, HttpServletResponse response) throws Exception {
+		logger.info("downloadFile");
+		
+		BoardFileVO boardFile = boardService.selectFileInfo(fi_num, po_num);
+		
+		if(ObjectUtils.isEmpty(boardFile) == false) {
+			String fileName = boardFile.getFi_ori_filename();
+			
+			// 실제 저장된 파일을 불러서 byte[] 형태로 저장
+			byte[] files = FileUtils.readFileToByteArray(new File(boardFile.getFi_filepath()));
+			
+			// 파일 저장 정보 세팅 (UTF-8로 인코딩하여 저장)
+			response.setContentType("application/octet-stream");
+			response.setContentLength(files.length);
+			response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode(fileName, "UTF-8")+"\";");
+			
+			response.getOutputStream().write(files);
+			response.getOutputStream().flush();
+			response.getOutputStream().close();
+		}
+	}
+	
+	// 게시글 파일 삭제
+	@RequestMapping("/board/deleteFile")
+	public ModelAndView deleteFile(int fi_num, int po_num, Model model) throws Exception {
+		logger.info("deleteFile");
+		
+		if(fi_num != 0) {
+			boardService.deleteFile(fi_num, po_num);
+			
+			model.addAttribute("success", "true");
+		}
+		else {
+			model.addAttribute("duplitcate", "false");
+		}
+		
+		return new ModelAndView(jsonView);
 	}
 }

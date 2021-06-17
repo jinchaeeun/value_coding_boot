@@ -34,10 +34,23 @@
 						<label for="">내용</label>
 						<textarea name="po_contents" id="editor"><c:out value='${update.po_contents}' /></textarea>
 					</li>
-					<li>
-						<label for="">첨부파일</label>
-						<input type="file" id="files" name="po_file_path" multiple="multiple">
-					</li>
+					<c:if test="${not empty list}">
+						<c:forEach items="${list}" var="file">
+							<div>
+								<a href="/board/downloadFile?fi_num=${file.fi_num}&po_num=${file.po_num}">
+									<i class="fa fa-download" aria-hidden="true"></i><c:out value=" ${file.fi_ori_filename}"/>[${file.fi_filesize}kb]
+								</a>
+								<a href="#" onclick="javascript:confirmDeleteFile(${file.fi_num}, ${file.po_num});">[삭제]</a>
+							</div>
+						</c:forEach>
+					</c:if>
+					<c:if test="${empty list}">
+						<li>
+							<label for="">첨부파일</label>
+							<input type="file" id="files" name="files" multiple="multiple">
+						</li>
+					</c:if>
+					
 					<li class="check-box"> <!-- 관리자가 로그인 했을 때만 보이도록함 -->
 						<label for="">공지 선택</label>
 						<div class="checkbox">
@@ -50,7 +63,7 @@
 			
 			<div class="write-btn-box">
 				<a href="/board/notice_list?num=1">목록으로</a>
-				<a href="#" onclick="document.updateForm.submit();">저장 </a>
+				<a href="#" onclick="javascript:fn_check();">저장</a>
 			</div>
 		</form>
 	</div> <!-- notice-write-box -->
@@ -59,81 +72,47 @@
 </div> <!-- notice-write-wrap -->
 
 <script type="text/javascript">
-ClassicEditor
-.create(document.querySelector('#editor'), {
-	heading: {
-        options: [
-            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-            { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-            { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-            { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' }
-        ]
-    },
-	toolbar: {
-		items: [
-			'heading',
-			'|',
-			'fontFamily',
-			'fontSize',
-			'fontColor',
-			'bold',
-			'underline',
-			'italic',
-			'blockQuote',
-			'specialCharacters',
-			'|',
-			'bulletedList',
-			'numberedList',
-			'indent',
-			'outdent',
-			'|',
-			'codeBlock',
-			'insertTable',
-			'mediaEmbed',
-			'link',
-			'imageUpload',
-			'undo',
-			'redo'
-		]
-	},
-	fontFamily: {
-		options: [
-			'default',
-			'Arial',
-			'궁서체',
-			'바탕',
-			'돋움'
-		],
-		supportAllValues: true
-	},
-	language: 'ko',
-	image: {
-		toolbar: [
-			'imageTextAlternative',
-			'imageStyle:full',
-			'imageStyle:side'
-		]
-	},
-	table: {
-		contentToolbar: [
-			'tableColumn',
-			'tableRow',
-			'mergeTableCells',
-			'tableCellProperties',
-			'tableProperties'
-		]
-	},
-	licenseKey: '',
-})
-.then(editor => {
-	window.editor = editor;
-})
-.catch(error => {
-	console.error( 'Oops, something went wrong!' );
-	console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+	function fn_check() {
+		var po_title = $("input[name=po_title]").val();
+		var po_contents = CKEDITOR.instances.editor.getData();
+		console.log(po_contents);
+		var po_boardname = $("select[name=po_boardname]").val();
+		
+		if(po_title == '') {
+			alert('제목을 작성해주세요');
+		}
+		else if(po_boardname == '') {
+			alert('게시판을 선택해주세요');
+		}
+		else if(po_contents == '') {
+			alert('내용을 작성해주세요');
+		}
+		else {
+			document.writeForm.submit();
+		}
+	}
 	
-	console.error( error );
-});
+	function confirmDeleteFile(fi_num, po_num) {
+		if(confirm("삭제하시겠습니까?") == true) {
+			$.ajax({
+				type : "POST",
+				url : "<c:url value='/board/deleteFile' />",
+				dataType : "JSON",
+				data : {"fi_num" : fi_num, "po_num" : po_num},
+				success : function(data) {
+					if(data.success == "true") {
+						location.reload();
+					}
+					else {
+						alert("파일 삭제가 실패했습니다.");
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus);
+				}
+			});
+		}
+	}
 </script>
 <!-- 하단 푸터 불러오기 -->
 <jsp:include page="../sub_footer.jsp"></jsp:include>

@@ -23,10 +23,18 @@
 				<c:out value="" escapeXml="false"/>
 			</div>
 
-			<div class="view-file">
-				<a href="#none"><i class="fa fa-download" aria-hidden="true"></i> 첨부파일 다운로드.jpg</a>
-				<a href="#none"><i class="fa fa-download" aria-hidden="true"></i> 첨부파일 다운로드.jpg</a>
-			</div>
+			<c:if test="${not empty fileList}">
+				<div class="view-file">
+					<c:forEach items="${fileList}" var="file">
+						<div>
+							<a href="/board/downloadFile?fi_num=${file.fi_num}&po_num=${file.po_num}">
+								<i class="fa fa-download" aria-hidden="true"></i><c:out value=" ${file.fi_ori_filename}"/>[${file.fi_filesize}kb]
+							</a>
+							<a href="#" onclick="javascript:confirmDeleteFile(${file.fi_num}, ${file.po_num});">[삭제]</a>
+						</div>
+					</c:forEach>
+				</div>
+			</c:if>
 		</div> <!-- view -->
 	</div> <!-- notice-box -->
 	
@@ -114,6 +122,28 @@
 		}
 		else {
 			document.update_answer_form.submit();
+		}
+	}
+	
+	function confirmDeleteFile(fi_num, po_num) {
+		if(confirm("삭제하시겠습니까?") == true) {
+			$.ajax({
+				type : "POST",
+				url : "<c:url value='/board/deleteFile' />",
+				dataType : "JSON",
+				data : {"fi_num" : fi_num, "po_num" : po_num},
+				success : function(data) {
+					if(data.success == "true") {
+						location.reload();
+					}
+					else {
+						alert("파일 삭제가 실패했습니다.");
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus);
+				}
+			});
 		}
 	}
 </script>

@@ -7,7 +7,7 @@ public class BoardVO {
 	private String po_title; // 게시글 제목
 	private String po_contents; // 게시글 내용
 	private String po_boardname; // 게시판 선택
-	private String po_file_path; // 첨부파일 경로
+	//private String po_file_path; // 첨부파일 경로
 	private Date po_datetime; // 작성일자
 	private Date po_updatetime; // 수정일자
 	private String po_writer; // 작성자
@@ -79,13 +79,12 @@ public class BoardVO {
 		this.po_contents = po_contents;
 	}
 
-	public String getPo_file_path() {
-		return po_file_path;
-	}
-
-	public void setPo_file_path(String po_file_path) {
-		this.po_file_path = po_file_path;
-	}
+	/*
+	 * public String getPo_file_path() { return po_file_path; }
+	 * 
+	 * public void setPo_file_path(String po_file_path) { this.po_file_path =
+	 * po_file_path; }
+	 */
 
 	public Date getPo_datetime() {
 		return po_datetime;

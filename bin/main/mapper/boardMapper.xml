@@ -7,7 +7,6 @@
  		po_boardname,
  		po_title,
  		po_contents,
- 		po_file_path,
  		po_datetime,
  		po_updatetime,
  		po_writer,
@@ -18,14 +17,13 @@
 	</sql>
 	
 	<!-- 게시글 작성 -->
-	<insert id="insert">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="po_num">
 	<![CDATA[
 		INSERT INTO t_post (
 			po_num,
 	 		po_boardname,
 	 		po_title,
 	 		po_contents,
-	 		po_file_path,
 	 		po_datetime,
 	 		po_updatetime,
 	 		po_writer,
@@ -38,7 +36,6 @@
 			#{po_boardname},
 			#{po_title},
 			#{po_contents},
-			IFNULL(#{po_file_path}, NULL),
 			NOW(),
 			NULL,
 			#{po_writer},
@@ -58,7 +55,6 @@
 	 		po_boardname,
 	 		po_title,
 	 		po_contents,
-	 		po_file_path,
 	 		po_datetime,
 	 		po_updatetime,
 	 		po_writer,
@@ -99,7 +95,6 @@
 		 		po_boardname,
 		 		po_title,
 		 		po_contents,
-		 		po_file_path,
 		 		po_datetime,
 		 		po_updatetime,
 		 		po_writer,
@@ -191,4 +186,70 @@
 	]]>
 	<!-- //게시글의 답변 수 -->
 	</update>
+	
+	<!-- 게시글 파일 업로드 -->
+	<insert id="insertFileList" parameterType="com.hustar.value_coding_boot.vo.BoardFileVO" useGeneratedKeys="true" keyProperty="fi_num">
+		<![CDATA[
+			INSERT INTO t_file (
+				po_num,
+				fi_ori_filename,
+				fi_filepath,
+				fi_filesize,
+				fi_datetime,
+				fi_updatetime,
+				fi_deleteYn
+			)
+			VALUES
+		]]>
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.po_num},
+				#{item.fi_ori_filename},
+				#{item.fi_filepath},
+				#{item.fi_filesize},
+				NOW(),
+				0,
+				IFNULL(#{item.fi_deleteYn}, 'N')		
+			)
+		</foreach>
+	</insert>
+	<!-- //게시글 파일 업로드 -->
+	
+	<!-- 게시글 파일 목록 -->
+	<select id="selectFileList" parameterType="int" resultType="com.hustar.value_coding_boot.vo.BoardFileVO">
+		<![CDATA[
+			SELECT 
+				fi_num, po_num, fi_ori_filename, FORMAT(ROUND(fi_filesize / 1024), 0) AS fi_filesize 
+				FROM t_file
+				WHERE po_num = #{po_num}
+				AND fi_deleteYn = 'N'
+		]]>
+	</select>
+	<!-- //게시글 파일 목록 -->
+	
+	<!-- 게시글 파일 정보 -->
+	<select id="selectFileInfo" parameterType="hashMap" resultType="com.hustar.value_coding_boot.vo.BoardFileVO">
+		<![CDATA[
+			SELECT 
+				fi_ori_filename, fi_filepath, fi_filesize
+				FROM t_file
+				WHERE fi_num = #{fi_num}
+					AND po_num = #{po_num}
+					AND fi_deleteYn = 'N'
+		]]>
+	</select>
+	<!-- //게시글 파일 정보 -->
+	
+	<!-- 게시글 파일 삭제 -->
+	<update id="deleteFile" parameterType="hashMap">
+		<![CDATA[
+			UPDATE t_file 
+				SET 
+					fi_deleteYn = 'Y',
+					fi_updatetime = NOW()
+				WHERE fi_num = #{fi_num}
+					AND po_num = #{po_num}
+		]]>
+	</update>
+	<!-- //게시글 파일 삭제 -->
 </mapper>

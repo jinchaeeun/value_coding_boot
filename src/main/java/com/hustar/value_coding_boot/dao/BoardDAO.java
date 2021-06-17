@@ -2,6 +2,7 @@ package com.hustar.value_coding_boot.dao;
 
 import java.util.List;
 
+import com.hustar.value_coding_boot.vo.BoardFileVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
 
 public interface BoardDAO {
@@ -29,4 +30,16 @@ public interface BoardDAO {
 	
 	// 게시글 답변 수 증가
 	public int updateAnsCnt(int po_num) throws Exception;
+	
+	// 게시글 파일 업로드
+	public void writeFile(List<BoardFileVO> list) throws Exception;
+	
+	// 게시글 파일 목록
+	public List<BoardFileVO> selectFileList(int po_num) throws Exception;
+	
+	// 게시글 파일 정보
+	public BoardFileVO selectFileInfo(int fi_num, int po_num) throws Exception;
+	
+	// 게시글 파일 삭제
+	public void deleteFile(int fi_num, int po_num) throws Exception;
 }

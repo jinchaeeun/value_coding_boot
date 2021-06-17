@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.hustar.value_coding_boot.vo.BoardFileVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
 
 @Repository
@@ -71,5 +72,33 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int updateAnsCnt(int po_num) throws Exception {
 		return sqlSession.update("mapper.boardMapper.updateAnsCnt", po_num);
+	}
+	
+	// 게시글 파일 업로드
+	@Override
+	public void writeFile(List<BoardFileVO> list) throws Exception {
+		sqlSession.insert("mapper.boardMapper.insertFileList", list);
+	}
+	
+	// 게시글 파일 목록
+	public List<BoardFileVO> selectFileList(int po_num) throws Exception {
+		return sqlSession.selectList("mapper.boardMapper.selectFileList", po_num);
+	}
+	
+	// 게시글 파일 정보
+	@Override
+	public BoardFileVO selectFileInfo(int fi_num, int po_num) throws Exception {
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		data.put("fi_num", fi_num);
+		data.put("po_num", po_num);
+		return sqlSession.selectOne("mapper.boardMapper.selectFileInfo", data);
+	}
+
+	@Override
+	public void deleteFile(int fi_num, int po_num) throws Exception {
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		data.put("fi_num", fi_num);
+		data.put("po_num", po_num);
+		sqlSession.update("mapper.boardMapper.deleteFile", data);
 	}
 }

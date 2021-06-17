@@ -38,7 +38,7 @@
 					</li>
 					<li>
 						<label for="">첨부파일</label>
-						<input type="file" id="files" name="po_file_path" multiple="multiple">
+						<input type="file" id="files" name="files" multiple="multiple">
 					</li>
 					<li class="check-box"> <!-- 관리자가 로그인 했을 때만 보이도록함 -->
 						<label for="">공지 선택</label>

@@ -4,14 +4,10 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.hustar.value_coding_boot.vo.BoardFileVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
 
 public interface BoardService {
-//	public boolean registerBoard(BoardDTO params);
-//	public BoardDTO getBoardDetail(int po_num);
-//	public boolean deleteBoard(int po_num);
-//	public List<Map<String, Object>> getBoardList();
-	
 	// 게시글 작성
 	public void write(BoardVO boardVO, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception;
 	
@@ -22,7 +18,7 @@ public interface BoardService {
 	public BoardVO read(int po_num) throws Exception;
 	
 	// 게시글 수정
-	public void updateBoard(BoardVO boardVO) throws Exception;
+	public void updateBoard(BoardVO boardVO, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception;
 	
 	// 게시글 삭제
 	public void deleteBoard(int po_num) throws Exception;
@@ -35,4 +31,13 @@ public interface BoardService {
 	
 	// 게시글 답변 수 증가
 	public int updateAnsCnt(int po_num) throws Exception;
+	
+	// 게시글 파일 목록
+	public List<BoardFileVO> selectFileList(int po_num) throws Exception;
+	
+	// 게시글 파일 정보
+	public BoardFileVO selectFileInfo(int fi_num, int po_num) throws Exception;
+	
+	// 게시글 파일 삭제
+	public void deleteFile(int fi_num, int po_num) throws Exception;
 }
