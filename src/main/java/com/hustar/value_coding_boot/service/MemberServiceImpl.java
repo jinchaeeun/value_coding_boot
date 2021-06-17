@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import com.hustar.value_coding_boot.dao.MemberDAO;
+import com.hustar.value_coding_boot.vo.BoardVO;
+import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Service
@@ -36,4 +38,23 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectMemberView(memberVO, sql_id);
 	}
 	
+	// 회원정보 수정
+	@Override
+	public void ModifyMypage(MemberVO memberVO) throws Exception {
+		dao.ModifyMypage(memberVO);
+	}
+	
+	// 회원 탈퇴
+	@Override
+	public void deleteMember(MemberVO memberVO)throws Exception {
+		dao.deleteMember(memberVO);
+	}
+	
+	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
+		return dao.ViewMyPostMember(memberVO);
+	}
+	
+	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
+		return dao.ViewMyCommentMember(memberVO);
+	}
 }
