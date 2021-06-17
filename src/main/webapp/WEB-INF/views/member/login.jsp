@@ -14,10 +14,9 @@
 
 <div class="circle-small"></div>
 <div class="circle-big"></div>
-
+<form method="post" name="frm" action="<c:url value='/member/actionLogin.do'/>">
 <div class="login-box">
 	<h1>로그인</h1>
-	<form method="post" name="frm" action="<c:url value='/member/actionLogin.do'/>">
 		<div class="login">
 		   <span>아이디(이메일)</span>
 		   <input type="text" name="me_id" placeholder="아이디">
@@ -26,14 +25,14 @@
 		   <button type="button" onclick="actionLogin();">로그인</button>
 		   <label><input type="checkbox" id="chk-notice" value="log-in">&nbsp로그인 상태 유지</label>
 		</div>
-	</form>
+
 	
 	<div class="findIdPw">
 	   <a href="#none">아이디 찾기</a>
 	   <a href="#none">비밀번호 찾기</a>
 	   <a href="<c:url value='/member/join'/>">회원가입</a>      
 	</div>
-	
+	<input type="hidden" id="tocken" name="tocken" value="0">
 	<a id="kakao-login-btn"></a>
 	<!-- 카카오 로그인 -->
 	   <div class="kakao-login">
@@ -89,8 +88,9 @@
 			</div>
 		</div>
 	</div>
+	
 </div>
-
+</form>
 	<!--
 	로그아웃
 		<a href="#" onclick="signOut();">Sign out</a>
@@ -217,4 +217,4 @@ function onSignIn(googleUser) {
 }
 </script>
 <!-- 하단 헤더 불러오기 -->
- <jsp:include page="../sub_footer.jsp"></jsp:include>
+<jsp:include page="../sub_footer.jsp"></jsp:include>
