@@ -32,7 +32,7 @@
 				${myComment.co_datetime }
 			</div>
 			<!-- BoardVO랑 CommentVO JOIN해서 select po_title, po_boardname from BoardVO where co_post_num = po_num -->
-			카테고리 | 글 제목
+			${myComment.po_num }  ${myComment.po_title } 	| ${myComment.po_boardname } 
 			<ul class="myquestion-manage">
 				<li><a href="<c:url value='/board/notice_updateView?po_num=${myComment.co_post_num }' />">수정</a></li>
 	  			<li class="myquestion-remove"><a href="#" onclick="deleteConfirm();return false;">삭제</a></li>			
