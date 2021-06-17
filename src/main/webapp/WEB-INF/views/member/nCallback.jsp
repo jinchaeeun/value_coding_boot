@@ -14,11 +14,13 @@
 
 
    <!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
+   
+   
    <script>
       var naverLogin = new naver.LoginWithNaverId(
          {
             clientId: "{WXFwIJiy9CY4hlkkNLJP}",
-            callbackUrl: "{http://127.0.0.1:8080/value_coding/member/nCallback.jsp}",
+            callbackUrl: "{http://127.0.0.1:8080/member/nCallback.do}",
             isPopup: false,
             callbackHandle: true
             /* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
@@ -41,14 +43,16 @@
                   return;
                }
 
-               window.location.replace("http://" + window.location.hostname + 
-                            ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/value_coding/index.jsp");
-                                                                /* 인증이 완료된후 /sample/main.html 페이지로 이동하라는것이다. 본인 페이로 수정해야한다. */
+            
+//               location.href = <c:url value='/'/>;
+               window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/"); /* 인증이 완료된후 /sample/main.html 페이지로 이동하라는것이다. 본인 페이로 수정해야한다. */
                  } else {
                console.log("callback 처리에 실패하였습니다.");
             }
          });
       });
+      
+
    </script>
 </body>
 

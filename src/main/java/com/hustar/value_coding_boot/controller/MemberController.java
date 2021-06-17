@@ -230,4 +230,9 @@ public class MemberController {
 		return new ModelAndView(jsonView);
 	}
 	
+	// -----------
+	@RequestMapping(value = "/member/nCallback.do")
+	public String nCallback() throws Exception {	
+		return "/member/nCallback";
+	}
 }
