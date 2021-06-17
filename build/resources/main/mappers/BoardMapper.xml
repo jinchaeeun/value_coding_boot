@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hustar.value_coding_boot.mapper.BoardMapper">
+	<sql id="boardColumns">
+ 		po_num,
+ 		po_boardname,
+ 		po_title,
+ 		po_contents,
+ 		po_file_path,
+ 		po_datetime,
+ 		po_updatetime,
+ 		po_writer,
+ 		po_views,
+ 		po_noticeYn,
+ 		po_deleteYn
+	</sql>
+	
+	<insert id="insertBoard" parameterType="BoardDTO">
+		INSERT INTO t_post (
+			<include refid="boardColumns" />
+		) VALUES (
+			#{po_num},
+			#{po_boardname},
+			#{po_title},
+			#{po_contents},
+			IFNULL(#{po_file_path}, NULL),
+			NOW(),
+			NULL,
+			#{po_writer},
+			0,
+			IFNULL(#{po_noticeYn}, 'N'),
+			IFNULL(#{po_deleteYn}, 'N')
+		)
+	</insert>
+	
+	<select id="selectBoardDetail" parameterType="Integer" resultType="BoardDTO">
+		SELECT
+			<include refid="boardColumns" />
+		FROM
+			t_post
+		WHERE
+			po_deleteYn = 'N'
+		AND
+			po_num = #{po_num}
+	</select>
+	
+	<update id="updateBoard" parameterType="BoardDTO">
+		UPDATE t_post
+		SET
+			po_updatetime = NOW(),
+			po_title = #{po_title},
+			po_contents = #{po_contents},
+			po_writer = #{po_writer},
+			po_noticeYn = IFNULL(#{po_noticeYn}, 'N')
+		WHERE
+			po_num = #{po_num}
+	</update>
+
+	<update id="deleteBoard" parameterType="int">
+		UPDATE t_post
+		SET
+			po_deleteYn = 'Y'
+		WHERE
+			po_num = #{po_num}
+	</update>
+
+	<select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
+		SELECT
+			<include refid="boardColumns" />
+		FROM
+			t_post
+		WHERE
+			po_deleteYn = 'N'
+		ORDER BY
+			po_noticeYn ASC,
+			po_num DESC,
+			po_datetime DESC
+	</select>
+
+	<select id="selectBoardTotalCount" parameterType="BoardDTO" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			t_post
+		WHERE
+			po_deleteYn = 'N'
+	</select>
+	
+</mapper>

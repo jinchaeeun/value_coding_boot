@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+.notice-box ul li div {
+    display: table-cell;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    font-size: 11px;
+}
+
+.notice-box ul li div.no {
+    width: 10%;
+}
+.notice-box ul li div.title {
+    width: 30%;
+}
+.notice-box ul li div.writer {
+    width: 20%;
+}
+.notice-box ul li div.date {
+    width: 16%;
+}
+.notice-box ul li div.answer {
+    width: 12%;
+}
+.notice-box ul li div.hot {
+    width: 12%;
+}
+
+.paging div ul {
+    padding: 0px;
+}
+
+.paging div ul li a {
+    padding: 5px;
+}
+
+.notice-view-wrap {
+    padding: 5px;
+}
+
+.about-wrap .about-box .about-hd .about-comment {
+    margin: 50px 10px;
+}
+
+.about-wrap .about-box .about-hd .about-comment span {
+    font-size: 18px;
+}
+
+.about-wrap .about-box .about-hd .about-comment p {
+    font-size: 30px;
+    word-break: keep-all;
+}
+
+.about-wrap .about-box .about-intro h2 {
+    font-size: 30px;
+}
+
+.about-wrap .about-box .about-intro p {
+    font-size: 20px;
+    word-break: keep-all;
+}
+
+.about-wrap .about-box .about-intro .about-intro-number ul {
+    padding: 5px;
+}
+
+.about-wrap .about-box .about-intro .about-intro-number ul li {
+    padding: 2px;
+}
+
+.about-wrap .about-box .about-intro .about-intro-number ul li p {
+    padding: 2px;
+    font-size: 20px;
+}
+
+.about-wrap .about-box .about-intro p {
+    margin-bottom: 10px;
+}
+
+.about-wrap .about-box .about-intro .about-intro-number ul li span {
+    padding: 2px;
+    font-size: 11px;
+}
+
+.about-wrap .about-box .about-body .about-maker h2 {
+    font-size: 30px;
+}
+
+.about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people {
+    border-bottom: 1px solid #ccc;
+}
+
+.about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people .about-dev-info p {
+    font-size: 12px;
+}

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.boardMapper">
+	<!-- 칼럼 리스트 -->
+	<sql id="boardColumns">
+ 		po_num,
+ 		po_boardname,
+ 		po_title,
+ 		po_contents,
+ 		po_file_path,
+ 		po_datetime,
+ 		po_updatetime,
+ 		po_writer,
+ 		po_views,
+ 		po_ans_cnt,
+ 		po_noticeYn,
+ 		po_deleteYn
+	</sql>
+	
+	<!-- 게시글 작성 -->
+	<insert id="insert">
+	<![CDATA[
+		INSERT INTO t_post (
+			po_num,
+	 		po_boardname,
+	 		po_title,
+	 		po_contents,
+	 		po_file_path,
+	 		po_datetime,
+	 		po_updatetime,
+	 		po_writer,
+	 		po_views,
+	 		po_ans_cnt,
+	 		po_noticeYn,
+	 		po_deleteYn
+		) VALUES (
+			#{po_num},
+			#{po_boardname},
+			#{po_title},
+			#{po_contents},
+			IFNULL(#{po_file_path}, NULL),
+			NOW(),
+			NULL,
+			#{po_writer},
+			0,
+			0,
+			IFNULL(#{po_noticeYn}, 'N'),
+			IFNULL(#{po_deleteYn}, 'N')
+		)
+		]]>
+	</insert>
+	<!-- //게시글 작성 -->
+	
+	<!-- 게시판 목록 -->
+	<select id="list" parameterType="hashMap" resultType="com.hustar.value_coding_boot.vo.BoardVO">
+		SELECT
+			po_num,
+	 		po_boardname,
+	 		po_title,
+	 		po_contents,
+	 		po_file_path,
+	 		po_datetime,
+	 		po_updatetime,
+	 		po_writer,
+	 		po_views,
+	 		po_ans_cnt,
+	 		po_noticeYn,
+	 		po_deleteYn
+		FROM
+			t_post
+		WHERE
+			po_deleteYn = 'N'
+		<if test='searchType.equals("title")'>
+			AND po_title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test='searchType.equals("contents")'>
+			AND po_contents LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test='searchType.equals("title_contents")'>
+			AND po_title LIKE CONCAT('%', #{keyword}, '%')
+			OR po_contents LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test='searchType.equals("writer")'>
+			AND po_writer LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		ORDER BY
+			po_noticeYn ASC,
+			po_num DESC,
+			po_datetime DESC
+		LIMIT #{displayPost}, #{postNum}
+	</select>
+	<!-- //게시판 목록 -->
+	
+	<!-- 게시글 조회 -->
+	<select id="read" parameterType="int" resultType="com.hustar.value_coding_boot.vo.BoardVO">
+		<![CDATA[
+			SELECT
+				po_num,
+		 		po_boardname,
+		 		po_title,
+		 		po_contents,
+		 		po_file_path,
+		 		po_datetime,
+		 		po_updatetime,
+		 		po_writer,
+		 		po_views,
+		 		po_ans_cnt,
+		 		po_noticeYn,
+		 		po_deleteYn
+			FROM
+				t_post
+			WHERE
+				po_deleteYn = 'N'
+			AND
+				po_num = #{po_num}
+		]]>
+	</select>
+	<!-- //게시글 조회 -->
+	
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="com.hustar.value_coding_boot.vo.BoardVO">
+		<![CDATA[
+			UPDATE t_post
+			SET
+				po_updatetime = NOW(),
+				po_boardname = #{po_boardname},
+				po_title = #{po_title},
+				po_contents = #{po_contents},
+				po_writer = #{po_writer},
+				po_noticeYn = IFNULL(#{po_noticeYn}, 'N')
+			WHERE
+				po_num = #{po_num}
+		]]>
+	</update>
+	<!-- //게시글 수정 -->
+	
+	<!-- 게시글 삭제 -->
+	<update id="deleteBoard" parameterType="int">
+		<![CDATA[
+			UPDATE t_post
+			SET
+				po_deleteYn = 'Y'
+			WHERE
+				po_num = #{po_num}
+		]]>
+	</update>
+	<!-- //게시글 삭제 -->
+	
+	<!-- 게시글 총 갯수 -->
+	<select id="selectBoardTotalCount" parameterType="hashMap" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			t_post
+		WHERE
+			po_deleteYn = 'N'
+		<if test='searchType.equals("title")'>
+			AND po_title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test='searchType.equals("contents")'>
+			AND po_contents LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test='searchType.equals("title_contents")'>
+			AND po_title LIKE CONCAT('%', #{keyword}, '%')
+			OR po_contents LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test='searchType.equals("writer")'>
+			AND po_writer LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</select>
+	<!-- //게시글 총 갯수 -->
+	
+	<!-- 게시글 조회 수 증가 -->
+	<update id="updateViewCnt" parameterType="int">
+		<![CDATA[
+			update t_post set po_views = po_views + 1 where po_num = #{po_num}
+		]]>
+	</update>
+	<!-- //게시글 조회 수 증가 -->
+	
+	<!-- 게시글의 답변 수 -->
+	<update id="updateAnsCnt" parameterType="int">
+		<![CDATA[
+			UPDATE t_post SET
+				po_ans_cnt = (
+					SELECT COUNT(*) FROM t_answer 
+						WHERE po_num = #{po_num} 
+						AND ans_deleteYn='N'
+						)
+				WHERE po_num = #{po_num};
+	]]>
+	<!-- //게시글의 답변 수 -->
+	</update>
+</mapper>

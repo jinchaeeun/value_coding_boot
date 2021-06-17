@@ -1,0 +1,4 @@
+com/hustar/value_coding_boot/ValueCodingBootApplicationTests.java
+ com.hustar.value_coding_boot.ValueCodingBootApplicationTests
+com/hustar/value_coding_boot/MapperTests.java
+ com.hustar.value_coding_boot.MapperTests
