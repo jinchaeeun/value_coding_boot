@@ -8,7 +8,7 @@
 <div class="notice-view-wrap">
 	<div class="notice-box">
 		<div class="view">
-			<h2>공지사항</h2>
+			<h2><c:out value="${board}"/></h2>
 	
 			<div class="view-hd">
 				<p class="title"><b><c:out value="${read.po_title}" /></b></p>
@@ -78,7 +78,7 @@
 	</div> <!-- answer-wrap -->
 	
 	<div class="write-btn-box">
-		<a href="/board/notice_list?num=1">목록으로</a>
+		<a href="/board/notice_list?board=${board}&num=1">목록으로</a>
 		<a href="/board/notice_updateView?po_num=${read.po_num}">수정</a>
 		<a href="#" onclick="javascript:noticeDelete();">삭제</a>
 	</div>

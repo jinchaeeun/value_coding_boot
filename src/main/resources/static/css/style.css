@@ -836,7 +836,7 @@ position:absolute; left:50%; transform:translateX(-50%); bottom:-7px; }
 
 
 /* 공지사항 스타일 */
-.notice-wrap {text-align: center; max-width: 1200px; margin: 0 auto;}
+.notice-wrap {text-align: center; max-width: 1200px; margin: 0 auto; margin-top: 80px;}
 .notice-wrap .notice-box {max-width: 1200px;}
 
 .notice-box ul {background: #fff;}

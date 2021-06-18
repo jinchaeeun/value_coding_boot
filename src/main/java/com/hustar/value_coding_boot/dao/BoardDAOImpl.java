@@ -25,12 +25,13 @@ public class BoardDAOImpl implements BoardDAO {
 
 	// 게시글 목록 조회
 	@Override
-	public List<BoardVO> list(int displayPost, int postNum, String searchType, String keyword) throws Exception {
+	public List<BoardVO> list(int displayPost, int postNum, String searchType, String keyword, String board) throws Exception {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		data.put("displayPost", displayPost);  // 출력할 게시물
 		data.put("postNum", postNum);  // 한 페이지에 출력할 게시물 개수
 		data.put("searchType", searchType);  // 검색 타입
 		data.put("keyword", keyword);  // 검색어
+		data.put("po_boardname", board);  // 게시판
 		
 		return sqlSession.selectList("mapper.boardMapper.list", data);
 	}

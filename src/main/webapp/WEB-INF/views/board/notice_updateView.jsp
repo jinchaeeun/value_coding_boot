@@ -5,7 +5,7 @@
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
 <link rel="stylesheet" type="text/css" href="../js/ckeditor5/sample/styles.css">
-<script type="text/javascript" src="../js/ckeditor5/build/ckeditor.js"></script>
+<script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
 
 <div class="notice-write-wrap">
 	<div class="notice-write-box">
@@ -21,18 +21,24 @@
 						
 						<select name="po_boardname" id="">
 							<option value="<c:out value='${update.po_boardname}' />"><c:out value='${update.po_boardname}' /></option>
-							<option value="공지사항">공지사항</option>
-							<option value="자유게시판">자유게시판</option>
 							<option value="언어">언어</option>
-							<option value="데이터베이스">데이터베이스</option>
-							<option value="데이터과학">데이터과학</option>
+							<option value="DATABASE">DATABASE</option>
+							<option value="데이터 과학">데이터 과학</option>
 							<option value="개발도구">개발도구</option>
 							<option value="프로젝트 관리">프로젝트 관리</option>
+							<option value="일상">일상</option>
+							<option value="프로젝트">프로젝트</option>
+							<option value="책/강의/프로그램">책/강의/프로그램</option>
+							<option value="스터디">스터디</option>
+							<option value="공지사항">공지사항</option>
 						</select>
 					</li>
 					<li>
 						<label for="">내용</label>
 						<textarea name="po_contents" id="editor"><c:out value='${update.po_contents}' /></textarea>
+						<script type="text/javascript">
+							CKEDITOR.replace('editor')
+						</script>
 					</li>
 					<c:if test="${not empty list}">
 						<c:forEach items="${list}" var="file">
@@ -62,7 +68,7 @@
 			</div> <!-- write-form -->
 			
 			<div class="write-btn-box">
-				<a href="/board/notice_list?num=1">목록으로</a>
+				<a href="/board/notice_list?board=${board}&num=1">목록으로</a>
 				<a href="#" onclick="javascript:fn_check();">저장</a>
 			</div>
 		</form>
@@ -88,7 +94,7 @@
 			alert('내용을 작성해주세요');
 		}
 		else {
-			document.writeForm.submit();
+			document.updateForm.submit();
 		}
 	}
 	

@@ -85,23 +85,23 @@
 
       <div class="gnb">
          <ul>
-            <li><a href="#">ABOUT</a></li>
+			<li><a href="#">ABOUT</a></li>
             <li><a href="#">가치 코딩</a>
                <ul class="sub-gnb">
-                  <li><a href="#">언어</a></li>
-                  <li><a href="#">DATABASE</a></li>
-                  <li><a href="#">데이터 과학</a></li>
-                  <li><a href="#">개발도구</a></li>
-                  <li><a href="#">프로젝트 관리</a></li>
+                  <li><a href="/board/notice_list?board=언어&num=1">언어</a></li>
+                  <li><a href="/board/notice_list?board=DATABASE&num=1">DATABASE</a></li>
+                  <li><a href="/board/notice_list?board=데이터 과학&num=1">데이터 과학</a></li>
+                  <li><a href="/board/notice_list?board=개발도구&num=1">개발도구</a></li>
+                  <li><a href="/board/notice_list?board=프로젝트 관리&num=1">프로젝트 관리</a></li>
                </ul>
             </li>
             <li><a href="#">커뮤니티</a>
                <ul class="sub-gnb">
-                  <li><a href="#">일상</a></li>
-                  <li><a href="#">프로젝트</a></li>
-                  <li><a href="#">책/강의/프로그램</a></li>
-                  <li><a href="#">스터디</a></li>
-                  <li><a href="/board/notice_list?num=1">공지사항</a></li>
+                  <li><a href="/board/notice_list?board=일상&num=1">일상</a></li>
+                  <li><a href="/board/notice_list?board=프로젝트&num=1">프로젝트</a></li>
+                  <li><a href="/board/notice_list?board=책/강의/프로그램&num=1">책/강의/프로그램</a></li>
+                  <li><a href="/board/notice_list?board=스터디&num=1">스터디</a></li>
+                  <li><a href="/board/notice_list?board=공지사항&num=1">공지사항</a></li>
                </ul>
             </li>
             <li><a href="#">코딩 테스트</a></li>

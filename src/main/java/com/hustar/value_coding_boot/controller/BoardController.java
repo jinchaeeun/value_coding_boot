@@ -43,7 +43,9 @@ public class BoardController {
 	
 	@Inject
 	private MappingJackson2JsonView jsonView;
-
+	
+	private static String boardName;
+	
 	// 글쓰기 화면
 	@RequestMapping(value = "/board/notice_write", method = RequestMethod.GET)
 	public String notice_write() throws Exception {
@@ -55,13 +57,15 @@ public class BoardController {
 	// 글 작성
 	@RequestMapping(value = "/board/notice_write_dao", method = RequestMethod.POST)
 	public String notice_write(BoardVO boardVO,
-			MultipartHttpServletRequest multipartHttpServletRequest
+			MultipartHttpServletRequest multipartHttpServletRequest,
+			Model model
 			) throws Exception {
 		logger.info("notice_write_dao");
 		
 		boardService.write(boardVO, multipartHttpServletRequest);
 		
-		return "redirect:/board/notice_list?num=1";
+		String encode = URLEncoder.encode(boardName, "UTF-8");
+		return "redirect:/board/notice_list?board=" + encode + "&num=1";
 	}
 	
 	// 게시글 목록 화면 (게시물 목록 + 페이징 + 검색)
@@ -70,10 +74,14 @@ public class BoardController {
 			Model model,
 			BoardVO boardVO,
 			@RequestParam("num") int num, // 현재 선택한 페이지
+			@RequestParam("board") String board, // 현재 선택한 게시판
 			@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType, 
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword
 			) throws Exception {
 		logger.info("notice_list");
+		
+		// 게시판 이름 설정
+		boardName = board;
 		
 		Paging page = new Paging();
 		
@@ -87,9 +95,11 @@ public class BoardController {
 		page.setSearchType(searchType);
 		page.setKeyword(keyword);
 		
-		model.addAttribute("list", boardService.list(page.getDisplayPost(), page.getPostNum(), searchType, keyword));
+		model.addAttribute("list", boardService.list(page.getDisplayPost(), page.getPostNum(), searchType, keyword, board));
 		model.addAttribute("page", page);
 		model.addAttribute("select", num);
+		// 게시판 이름 넘겨줌
+		model.addAttribute("board", board);
 		
 		// 게시글이 등록되면서 메세지가 전달됨
 		Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
@@ -129,6 +139,9 @@ public class BoardController {
 		
 		model.addAttribute("fileList", fileList);
 		
+		// 게시판 이름 넘겨줌
+		model.addAttribute("board", boardName);
+		
 		return "/board/notice_view";
 	}
 	
@@ -139,7 +152,8 @@ public class BoardController {
 		
 		boardService.deleteBoard(po_num);
 		
-		return "redirect:/board/notice_list?num=1";
+		String encode = URLEncoder.encode(boardName, "UTF-8");
+		return "redirect:/board/notice_list?board=" + encode + "&num=1";
 	}
 	
 	// 게시글 수정뷰
@@ -153,17 +167,23 @@ public class BoardController {
 		List<BoardFileVO> list = boardService.selectFileList(boardVO.getPo_num());
 		model.addAttribute("list", list);
 		
+		// 게시판 이름 넘겨줌
+		model.addAttribute("board", boardName);
+		
 		return "/board/notice_updateView";
 	}
 	
 	// 게시글 수정
 	@RequestMapping(value = "/board/notice_update", method = RequestMethod.POST)
-	public String notice_update(BoardVO boardVO, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
+	public String notice_update(BoardVO boardVO, MultipartHttpServletRequest multipartHttpServletRequest, Model model) throws Exception {
 		logger.info("notice_update");
 		
 		boardService.updateBoard(boardVO, multipartHttpServletRequest);
 		
-		return "redirect:/board/notice_view?po_num=" + boardVO.getPo_num();
+		// 게시판 이름 넘겨줌
+		model.addAttribute("board", boardName);
+		
+		return "redirect:/board/notice_view?&po_num=" + boardVO.getPo_num();
 	}
 	
 	// 게시글 파일 다운로드

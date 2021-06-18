@@ -66,6 +66,7 @@
 			t_post
 		WHERE
 			po_deleteYn = 'N'
+			AND po_boardname = #{po_boardname}
 		<if test='searchType.equals("title")'>
 			AND po_title LIKE CONCAT('%', #{keyword}, '%')
 		</if>

@@ -5,16 +5,9 @@
 <!-- 상단 헤더 불러오기 -->
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
-<div class="snb-wrap">
-	<div>
-		<ul>
-			<li class="on"><a href="/board_list?num=1"><span>공지사항</span></a></li>
-			<li><a href="#none"><span>자유게시판</span></a></li>
-		</ul>
-	</div>
-</div>
-
 <div class="notice-wrap">
+	<h1 class="board-name"><c:out value="${board}"/></h1>
+	
 	<div class="search-box">
 		<div>
 			<select name="searchType">
@@ -62,24 +55,24 @@
 	<div class="paging">
 		<div>
 			<ul>
-				<li><a href="/board/notice_list?num=1">처음</a></li>
+				<li><a href="/board/notice_list?board=${board}&num=1">처음</a></li>
 				<c:if test="${page.prev}">
-					<li><a href="/board/notice_list?num=${page.startPageNum - 1}${page.searchTypeKeyword}">이전</a></li>
+					<li><a href="/board/notice_list?board=${board}&num=${page.startPageNum - 1}${page.searchTypeKeyword}">이전</a></li>
 				</c:if>
 				
 				<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
 					<c:if test="${select != num}">
-						<li><a href="/board/notice_list?num=${num}${page.searchTypeKeyword}">${num}</a></li>	
+						<li><a href="/board/notice_list?board=${board}&num=${num}${page.searchTypeKeyword}">${num}</a></li>	
 					</c:if>
 					<c:if test="${select == num}">
-						<li class="on"><a href="/board/notice_list?num=${num}${page.searchTypeKeyword}">${num}</a></li>	
+						<li class="on"><a href="/board/notice_list?board=${board}&num=${num}${page.searchTypeKeyword}">${num}</a></li>	
 					</c:if>
 				</c:forEach>
 				
 				<c:if test="${page.next}">
-					<li><a href="/board/notice_list?num=${page.endPageNum + 1}${page.searchTypeKeyword}">다음</a></li>
+					<li><a href="/board/notice_list?board=${board}&num=${page.endPageNum + 1}${page.searchTypeKeyword}">다음</a></li>
 				</c:if>
-				<li><a href="/board/notice_list?num=${page.lastPageNum}${page.searchTypeKeyword}">마지막</a></li>
+				<li><a href="/board/notice_list?board=${board}&num=${page.lastPageNum}${page.searchTypeKeyword}">마지막</a></li>
 			</ul>
 		</div>
 	</div> <!-- paging -->

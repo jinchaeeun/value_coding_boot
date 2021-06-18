@@ -11,7 +11,7 @@ public interface BoardDAO {
 	public void write(BoardVO boardVO) throws Exception;
 	
 	// 게시글 목록 조회
-	public List<BoardVO> list(int displayPost, int postNum, String searchType, String keyword) throws Exception;
+	public List<BoardVO> list(int displayPost, int postNum, String searchType, String keyword, String board) throws Exception;
 	
 	// 게시글 조회
 	public BoardVO read(int po_num) throws Exception;
