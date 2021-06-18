@@ -65,4 +65,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return sql.selectOne("memberMapper.checkCode", vo);
 	}
 
+	// 내가 쓴 글 개수
+	@Override
+	public int getMyPostCnt(MemberVO memberVO) throws Exception{
+		return sql.selectOne("memberMapper.getMyPostCnt", memberVO);
+	}
+
 }

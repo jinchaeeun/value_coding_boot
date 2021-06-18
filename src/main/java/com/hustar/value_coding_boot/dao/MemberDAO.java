@@ -34,5 +34,5 @@ public interface MemberDAO {
 	public int checkCode(MemberVO vo) throws Exception;
 
 	// 내가 쓴 글 개수
-	//public int getMyPostCnt(MemberVO memberVO) throws Exception;
+	public int getMyPostCnt(MemberVO memberVO) throws Exception;
 }
