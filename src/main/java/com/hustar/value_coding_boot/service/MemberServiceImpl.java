@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import com.hustar.value_coding_boot.dao.MemberDAO;
+import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
@@ -69,4 +70,11 @@ public class MemberServiceImpl implements MemberService {
 	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
 		return dao.ViewMyCommentMember(memberVO);
 	}
+	
+	// 내 총 작성글 갯수
+	@Override
+	public int getMyPostCnt(MemberVO memberVO)throws Exception{
+		return dao.getMyPostCnt(memberVO);
+	}
+	
 }

@@ -28,8 +28,11 @@ public interface MemberDAO {
 	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception;
 	
 	//소셜 로그인(가입)
-	public void sosialJoin(MemberVO vo)  throws Exception;
+	public void sosialJoin(MemberVO vo) throws Exception;
 
 	//소셜 가입코드
 	public int checkCode(MemberVO vo) throws Exception;
+
+	// 내가 쓴 글 개수
+	//public int getMyPostCnt(MemberVO memberVO) throws Exception;
 }

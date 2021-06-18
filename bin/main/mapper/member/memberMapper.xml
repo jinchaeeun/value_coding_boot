@@ -94,6 +94,13 @@
    </select>
    <!-- // 내가 쓴 답변 조회  -->
    
+   <!--  내가 쓴 글 개수 -->
  
-   
+     <select id="getMyPostCnt" parameterType="memberVO" resultType="int">
+      <![CDATA[
+			SELECT COUNT(*) 
+			FROM t_post 
+			WHERE po_writer = #{me_id} AND po_deleteYn = 'N';
+  		]]>
+ 	 </select>
 </mapper>

@@ -95,6 +95,16 @@
 							</li>
 
 							<li><a href="<c:url value='/member/actionLogout.do'/>">로그아웃</a></li>
+								
+		<a href="#" onclick="signOut();">로그아웃</a>
+	<script>
+	  function signOut() {
+	    var auth2 = gapi.auth2.getAuthInstance();
+	    auth2.signOut().then(function () {
+	      console.log('User signed out.');
+	    });
+	  }
+	</script> 
 							<li><a href="<c:url value='/member/mypage'/>">마이페이지</a></li>
 						</c:if>
 

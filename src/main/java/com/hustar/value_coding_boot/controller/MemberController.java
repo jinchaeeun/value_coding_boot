@@ -147,20 +147,46 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 		
-		
 		// (loginVO) 받아서!! 세션 id!! 가져감!!
 		List<CommentVO> commentVO = (List<CommentVO>)service.ViewMyCommentMember(loginVO);
 		
-		/*
-		 // DB에서 데이터 가져오는지 체크
+		/* // DB에서 데이터 가져오는지 체크
 		for(int i=0;i<commentVO.size();i++) {
 			System.out.println(commentVO.get(i).getCo_comments());
-		}
-		*/
+		}*/
 
 		model.addAttribute("commentVO",commentVO);
 		
 		return "member/mypage_comment"; 
+	}
+	
+	
+	@RequestMapping(value="/member/mypage_activity")
+	public String mypage_activity(Model model, HttpSession session, RedirectAttributes redirectAttributes, MemberVO memberVO) throws Exception{
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		// 로그인 필수
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
+		
+		// 내가 쓴 게시물 수 조회
+		int MyPostCnt = 0;
+		
+		// po_writer를 받고 저장 서비스를 불러와 서비스 안에 po_writer
+		
+		try {
+			MyPostCnt = service.getMyPostCnt(loginVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("MyPostCnt", MyPostCnt);
+		
+		System.out.println("나의 게시물 수 " + MyPostCnt);
+		
+		return "member/mypage_activity";
 	}
 	
 	
@@ -183,6 +209,7 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
+
 	// 회원 탈퇴
 	@RequestMapping(value= "/memberDeleteView", method = RequestMethod.GET)
 	public String memberDeleteView(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {

@@ -64,4 +64,5 @@ public class MemberDAOImpl implements MemberDAO {
 	public int checkCode(MemberVO vo) throws Exception {
 		return sql.selectOne("memberMapper.checkCode", vo);
 	}
+
 }
