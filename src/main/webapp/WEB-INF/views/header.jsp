@@ -95,17 +95,30 @@
 							</li>
 
 							<li><a href="<c:url value='/member/actionLogout.do'/>">로그아웃</a></li>
-								
-		<a href="#" onclick="signOut();">로그아웃</a>
-	<script>
-	  function signOut() {
-	    var auth2 = gapi.auth2.getAuthInstance();
-	    auth2.signOut().then(function () {
-	      console.log('User signed out.');
-	    });
-	  }
-	</script> 
 							<li><a href="<c:url value='/member/mypage'/>">마이페이지</a></li>
+							
+							<!-- 구글 로그아웃 -->
+							<!-- <li><a href="/member/login" onclick="signOut();">구글 로그아웃</a></li> -->
+
+							<!-- 								
+							<li><a href="/member/login" onclick="signOut();">구글 로그아웃</a></li>
+							<script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
+							<script>
+							window.onLoadCallback = function(){
+							  gapi.auth2.init({
+							      client_id: "313884237013-nbebjejv6nsohf9hk0cpump6kr5lvaa8.apps.googleusercontent.com"
+							    });
+							}
+							  function signOut() {
+								  //document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://www.example.com";
+							    var auth2 = gapi.auth2.getAuthInstance();
+							    auth2.signOut().then(function () {
+							    	
+							      console.log('User signed out.');
+							    });
+							    auth2.disconnect();
+							  }
+							</script>  -->
 						</c:if>
 
 						<!-- 로그인이 안된 경우 -->
@@ -138,7 +151,9 @@
 								<li><a href="/board/notice_list?board=공지사항&num=1">공지사항</a></li>
 							</ul>
 						</li>
-
+						
+						<li><a href="<c:url value='/coding/codingTest'/>"># 코딩연습</a></li>
+						
 						<li><a href="none"># 고객센터</a></li>
 					</ul>
 				</div>

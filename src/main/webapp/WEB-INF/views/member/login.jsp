@@ -209,18 +209,36 @@ function kakaoLogin() {
 <!-- 구글프로필 정보 얻기 -->
 <script>
 	function onSignIn(googleUser) {
-	  var profile = googleUser.getBasicProfile();
-	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-	  console.log('Name: ' + profile.getName());
-	  console.log('Image URL: ' + profile.getImageUrl());
-	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-	  
-	 sns_type=4;
-     sns_id=profile.getEmail();
-     sns_nick=profile.getName();
+		console.log('구글 함수 들어옴');
+
+	var profile = googleUser.getBasicProfile();
+		console.log('Name: ' + profile.getName());
+		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		
+		sns_type=4;
+	    sns_id=profile.getEmail();
+	    sns_nick=profile.getName();
+	     
+		snsJoinInsert();	//호출
+	/* 
+		//var auth2 = gapi.auth2.getAuthInstance();
+		
+		if(auth2.isSignedIn.get()){
+			var profile = auth2.currentUser.get().getBasicProfile();
+			//console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			console.log('Name: ' + profile.getName());
+			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			
+			 sns_type=4;
+		     sns_id=profile.getEmail();
+		     sns_nick=profile.getName();
+		     //confirm("구글 로그인 성공 "+ profile.getEmail() + profile.getName() + sns_type);
+		     
+		     snsJoinInsert();	//호출
+		}
      
-     //confirm("구글 로그인 성공 "+ profile.getEmail() + profile.getName() + sns_type);
-     snsJoinInsert();	//호출
+     */
+    
 	}
 	
 </script>
