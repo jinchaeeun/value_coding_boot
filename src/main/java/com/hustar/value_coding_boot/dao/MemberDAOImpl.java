@@ -59,4 +59,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public void sosialJoin(MemberVO vo) throws Exception {
 		sql.insert("memberMapper.sosialJoin", vo);
 	}
+	
+	// 내가 쓴 글 개수
+	@Override
+	public int getMyPostCnt(MemberVO memberVO) throws Exception{
+		return sql.selectOne("memberMapper.getMyPostCnt", memberVO);
+	}
 }
