@@ -26,4 +26,7 @@ public interface MemberDAO {
 
 	// 내가 쓴 댓글 조회
 	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception;
+	
+	//소셜 로그인(가입)
+	public void sosialJoin(MemberVO vo)  throws Exception;
 }
