@@ -19,6 +19,8 @@ public interface MemberService {
 	public MemberVO selectMemberView(MemberVO memberVO, HttpServletRequest req, HttpServletResponse res, String sql_id) throws Exception;
 
 	public void sosialJoin(MemberVO vo) throws Exception;
+
+	public int checkCode(MemberVO vo) throws Exception;
 	
 	// 회원정보 수정
 	public void ModifyMypage(MemberVO memberVO) throws Exception;
