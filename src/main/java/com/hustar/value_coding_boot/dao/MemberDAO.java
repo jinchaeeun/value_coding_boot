@@ -29,4 +29,7 @@ public interface MemberDAO {
 	
 	//소셜 로그인(가입)
 	public void sosialJoin(MemberVO vo)  throws Exception;
+
+	//소셜 가입코드
+	public int checkCode(MemberVO vo) throws Exception;
 }

@@ -32,6 +32,25 @@
    </select>
    <!-- //로그인 체크 -->
    
+     <!-- 소셜 로그인 멤버 등록 -->
+   <insert id="sosialJoin">
+	    INSERT INTO T_MEMBER(   ME_ID
+	   					       , ME_NICKNAME
+	   					       , ME_SINGUPCODE  	)
+	                  VALUES(    #{me_id}
+	                 		   , #{me_nickName}
+	                 		   , #{me_singupcode})
+    </insert>
+   <!-- //소셜 로그인 멤버 등록 -->
+   
+   <!-- 소셜 가입 코드 확인 -->
+   <select id="checkCode" resultType="int">
+	   SELECT ME_SINGUPCODE 
+	   FROM T_MEMBER
+	   WHERE ME_ID = #{me_id}
+   </select>
+   <!-- //소셜 가입 코드 확인 -->
+   
    <!-- 마이페이지 수정 -->
 	<update id="ModifyMypage">
 	  <![CDATA[
