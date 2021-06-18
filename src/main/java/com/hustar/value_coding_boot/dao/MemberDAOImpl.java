@@ -59,4 +59,9 @@ public class MemberDAOImpl implements MemberDAO {
 	public void sosialJoin(MemberVO vo) throws Exception {
 		sql.insert("memberMapper.sosialJoin", vo);
 	}
+
+	@Override
+	public int checkCode(MemberVO vo) throws Exception {
+		return sql.selectOne("memberMapper.checkCode", vo);
+	}
 }
