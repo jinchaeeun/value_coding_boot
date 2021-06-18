@@ -14,4 +14,6 @@ public interface MemberDAO {
 	public MemberVO selectMemberView(MemberVO memberVO, String sql_id) throws Exception;
 
 	public void sosialJoin(MemberVO vo) throws Exception;
+
+	public int checkCode(MemberVO vo) throws Exception;
 }

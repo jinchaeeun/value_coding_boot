@@ -36,4 +36,9 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		sql.insert("memberMapper.sosialJoin", vo);
 	}
+
+	@Override
+	public int checkCode(MemberVO vo) throws Exception {
+		return sql.selectOne("memberMapper.checkCode", vo);
+	}
 }

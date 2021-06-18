@@ -41,5 +41,11 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		dao.sosialJoin(vo);
 	}
+
+	@Override
+	public int checkCode(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.checkCode(vo);
+	}
 	
 }

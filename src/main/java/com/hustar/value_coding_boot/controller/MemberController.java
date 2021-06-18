@@ -200,7 +200,6 @@ public class MemberController {
 			@ModelAttribute("memberVO") MemberVO vo, HttpServletRequest req,
 			HttpServletResponse res, 
 			RedirectAttributes redirectAttributes, String sns_id, String sns_nick, int sns_type) throws Exception {
-		logger.info("==============================sosialJoin");
 		
 		System.out.println("소셜 아이디: " + sns_id);
 		
@@ -211,15 +210,56 @@ public class MemberController {
 		int cnt = service.checkId(vo);
 		System.out.println("cnt = " + cnt);
 		
+		//소셜 로그인 가입코드 (1: 일반, 2: 카카오, 3: 네이버, 4: 구글)
+		String sosial ="";
+		if(sns_type == 2) sosial ="kakao_"; 
+		else if(sns_type == 3) sosial ="naver_";
+		else if(sns_type == 4) sosial ="google_";
+		
+		String randomText="";
+		for(int i=0; i<8; i++) {
+			int rndVal = (int)(Math.random()*62);	//난수 생성
+			if(rndVal < 10) {						//10보다 작은 경우
+				randomText += rndVal;				//숫자 그대로 저장 (0~9)
+			}else if(rndVal > 35) {					//소문자인 경우 (36~62)
+				randomText += (char)(rndVal + 61);	//문자로 반환해 저장
+			}else {									//그외 대문자 (10~35)
+				randomText += (char)(rndVal + 55);	//문자로 반환해 저장
+			}
+		}
+		System.out.println("랜덤값은 + " + randomText);
+		String rnd_sns_nick = sosial + randomText + sns_nick;
+
+		System.out.println("변경된 닉네임 값은 + " + rnd_sns_nick);
+		
+		//가입코드 같으면 진행, 아니면 else로 실패 출력
+
 		if(cnt>0) {	//이미 가입한 아이디므로 바로 로그인
-			redirectAttributes.addFlashAttribute("msg", "소셜 로그인 성공");			
-			model.addAttribute("login", true);
+			//redirectAttributes.addFlashAttribute("msg", "소셜 로그인 성공");
+			//이미 가입되어있을 때 가입코드 확인한다.
+			int signUpCode = service.checkCode(vo);
+			System.out.println("checkCode = " + signUpCode);
+			if(sns_type==signUpCode) {
+				//가입 성공
+				model.addAttribute("login", true);
+			}else {
+				//가입 불가
+				model.addAttribute("login", false);
+			}
 		}else {
 			//데이터 삽입 후 로그인 처리됨
+			vo.setMe_nickName(rnd_sns_nick);
 			service.sosialJoin(vo);
-			redirectAttributes.addFlashAttribute("msg", "소셜 회원가입 성공");
+			//redirectAttributes.addFlashAttribute("msg", "소셜 회원가입 성공");
 			model.addAttribute("login", true);
 		}
+		/*
+		else {
+		 
+			System.out.println("사용자가 이 타입으로 가입하지 않았음");
+			//redirectAttributes.addFlashAttribute("msg", "해당 버튼으로 가입하지 않은 계정입니다. 다시 시도하여 주십시오.");	
+		}
+		*/
 		
 		//로그인 체크
 		MemberVO loginVO = (MemberVO) service.selectMemberView(vo, null, null, "selectMemberView");
