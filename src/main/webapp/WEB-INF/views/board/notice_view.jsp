@@ -66,7 +66,7 @@
 			<form action="/answer/write" method="post" name="answerForm">
 				<div class="answer-write-wrap">
 					<div class="answer-write-box">
-						<p>로그인한 사람의 닉네임<input type="hidden" name="ans_writer" value=""></p>
+						<p><c:out value="${session.me_nickName}"/><input type="hidden" name="ans_writer" value=""></p>
 						<textarea rows="" cols="" name="ans_contents" placeholder="댓글을 남겨주세요."></textarea>
 						<input type="hidden" name="po_num" value="${read.po_num}"/>
 						<input type="button" onclick="answerSubmit();" value="등록"/>
