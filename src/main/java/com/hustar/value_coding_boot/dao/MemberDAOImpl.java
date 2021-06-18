@@ -54,4 +54,9 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
 		return sql.selectList("ViewMyCommentMember", memberVO);
 	}
+	//소셜 로그인(가입)
+	@Override
+	public void sosialJoin(MemberVO vo) throws Exception {
+		sql.insert("memberMapper.sosialJoin", vo);
+	}
 }

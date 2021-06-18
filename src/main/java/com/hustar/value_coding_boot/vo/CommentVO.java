@@ -15,9 +15,15 @@ public class CommentVO {
 	private int po_num; // 게시글 번호
 	private String po_boardname; // 게시판 카테고리
 	private String po_title; // 게시글 제목
-
+	private int po_ans_cnt; // 답변수
 
 	
+	public int getPo_ans_cnt() {
+		return po_ans_cnt;
+	}
+	public void setPo_ans_cnt(int po_ans_cnt) {
+		this.po_ans_cnt = po_ans_cnt;
+	}
 	public int getPo_num() {
 		return po_num;
 	}

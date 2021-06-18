@@ -20,10 +20,11 @@
 		<c:forEach items="${boardVO }" var="postVO">
 		<li>
 			<h2 class="myquestion-tittle"><a href="<c:url value='/board/notice_view?po_num=${postVO.po_num }' />"><c:out value="${postVO.po_title }" /></a></h2>
-			<div class="myquestion-content">
-				<c:out value="${postVO.po_contents }" />
+			<div class="myquestion-content">	
+				<c:out value=" ${postVO.po_contents }" />
 			</div>
-			답변 수 <span style="color:red">5</span>
+			<c:out value=" ${postVO.po_boardname }" /> <c:out value=" ${postVO.po_num }" />
+			<div> 답변 수 <span style="color:red"><c:out value="${postVO.po_ans_cnt }" /></span></div>
 			<ul class="myquestion-manage">
 				<li><a href="<c:url value='/board/notice_updateView?po_num=${postVO.po_num}' />">수정</a></li>
 	  			<li class="myquestion-remove"><a href="#" onclick="deleteConfirm(${postVO.po_num});return false;">삭제</a></li>			

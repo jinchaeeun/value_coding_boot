@@ -37,6 +37,12 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println(sql_id);
 		return dao.selectMemberView(memberVO, sql_id);
 	}
+
+	@Override
+	public void sosialJoin(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.sosialJoin(vo);
+	}
 	
 	// 회원정보 수정
 	@Override
