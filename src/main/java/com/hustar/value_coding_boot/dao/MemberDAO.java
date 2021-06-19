@@ -41,4 +41,8 @@ public interface MemberDAO {
 
 	// 전체 글 삭제
 	public void DeleteMyPost(MemberVO memberVO)throws Exception;
+
+	// 전체 댓글 삭제
+	public void DeleteMyComment(MemberVO memberVO)throws Exception;
+
 }

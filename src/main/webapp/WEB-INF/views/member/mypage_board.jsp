@@ -17,7 +17,7 @@
 	<div class="mypage-form">	
 
 
-	<a onclick="deleteAllConfirm(); return false;">전체 삭제</a>
+	<a href="#" onclick="deleteAllConfirm(); return false;">전체 삭제</a>
 	<ul class="myquestion">
 		<c:forEach items="${boardVO }" var="postVO">
 		<li>
@@ -81,7 +81,7 @@ function deleteConfirm(po_num){
 
 function deleteAllConfirm(){
 	if(confirm('전체 삭제하시겠습니까?') == true) {
-		location.href = '<c:url value='/member/mypage_boardDelete.do' />';
+		location.href = '<c:url value='/member/mypage_BoardDelete.do' />';
 	}
 }
 

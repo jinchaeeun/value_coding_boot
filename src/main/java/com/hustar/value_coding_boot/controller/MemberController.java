@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -31,6 +32,7 @@ import com.hustar.value_coding_boot.service.MemberService;
 import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
+import com.hustar.value_coding_boot.vo.Paging;
 
 @Controller 
 @RequestMapping("/member/**")
@@ -114,7 +116,7 @@ public class MemberController {
 	
 	// 내가 작성한 질문
 	@RequestMapping("/member/mypage_board") 
-	public String mypage_board(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
+	public String mypage_board(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception { 
 		
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
 		
@@ -128,6 +130,9 @@ public class MemberController {
 		List<BoardVO> boardVO = (List<BoardVO>)service.ViewMyPostMember(loginVO);
 		model.addAttribute("boardVO",boardVO);
 		
+		Paging page = new Paging();
+		
+
 		
 		/*
 		CommentVO commentVO = (CommentVO)service.CountComment();
@@ -138,7 +143,7 @@ public class MemberController {
 	}
 	
 	// 내 글 전체 삭제
-	@RequestMapping("/member/mypage_boardDelete.do")
+	@RequestMapping("/member/mypage_BoardDelete.do")
 	public String mypage_boardDelete(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
 		
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
@@ -154,6 +159,8 @@ public class MemberController {
 		
 		return "redirect:/member/mypage_board";
 	}
+	
+
 	// 내가 작성한 답변
 	@RequestMapping("/member/mypage_comment") 
 	public String mypage_comment(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
@@ -178,6 +185,25 @@ public class MemberController {
 		
 		return "member/mypage_comment"; 
 	}
+	
+	// 내 글 전체 삭제
+	@RequestMapping("/member/mypage_CommentDelete.do")
+	public String mypage_CommentDelete(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		// 로그인 필수
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
+	
+		//댓글 전체 삭제
+		service.DeleteMyComment(loginVO);
+		
+		return "redirect:/member/mypage_comment";
+	}
+	
 	
 	// 내 작성 글 / 댓글 개수 
 	@RequestMapping(value="/member/mypage_activity")

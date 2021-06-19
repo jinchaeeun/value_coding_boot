@@ -121,4 +121,14 @@
  	 	DELETE FROM T_POST WHERE po_writer = #{me_id} AND po_deleteYn = 'N';
  	 ]]>
  	 </delete>
+ 	 <!-- //내가 쓴 글 전체 삭제 -->
+ 	 
+ 	 <!-- 내가 쓴 댓글 전체 삭제 -->
+ 	 <delete id="DeleteMyComment" parameterType="memberVO">
+ 	 <![CDATA[
+ 	 	DELETE FROM T_COMMENT WHERE co_user_id = #{me_id};
+ 	 ]]>
+ 	 </delete>
+ 	 <!-- //내가 쓴 댓글 전체 삭제 -->
+
 </mapper>

@@ -84,4 +84,9 @@ public class MemberDAOImpl implements MemberDAO {
 		sql.delete("DeleteMyPost",memberVO);
 	}
 
+	// 전체 댓글 삭제
+	@Override
+	public void DeleteMyComment(MemberVO memberVO)throws Exception{
+		sql.delete("DeleteMyComment",memberVO);
+	}
 }
