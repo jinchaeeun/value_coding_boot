@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import com.hustar.value_coding_boot.dao.MemberDAO;
-import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
@@ -83,6 +82,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int getMyCommentCnt(MemberVO memberVO)throws Exception{
 		return dao.getMyCommentCnt(memberVO);
+	}
+	
+	// 전체 글 삭제
+	@Override
+	public void DeleteMyPost(MemberVO memberVO) throws Exception{
+		dao.DeleteMyPost(memberVO);
 	}
 	
 }

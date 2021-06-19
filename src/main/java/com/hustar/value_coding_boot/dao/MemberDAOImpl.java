@@ -77,5 +77,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public int getMyCommentCnt(MemberVO memberVO)throws Exception{
 		return sql.selectOne("getMyCommentCnt", memberVO);
 	}
+	
+	// 전체 글 삭제
+	@Override
+	public void DeleteMyPost(MemberVO memberVO)throws Exception{
+		sql.delete("DeleteMyPost",memberVO);
+	}
 
 }

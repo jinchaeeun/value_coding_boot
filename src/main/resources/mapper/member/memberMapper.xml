@@ -64,12 +64,12 @@
    <!-- //마이페이지 수정 -->
    
       <!-- 회원탈퇴 -->
-	<update id="deleteMember">
+	<delete id="deleteMember">
 	  <![CDATA[		
 			DELETE FROM T_MEMBER
 			WHERE ME_ID = #{me_id}
 		]]>
-	</update>
+	</delete>
    <!-- //회원탈퇴 -->
    
    <!-- 내가 쓴 글 조회 -->
@@ -115,4 +115,10 @@
  	 </select>
  	<!--  //내가 쓴 총 댓글 개수 --> 
  	 
+ 	 <!-- 내가 쓴 글 전체 삭제 -->
+ 	 <delete id="DeleteMyPost" parameterType="memberVO">
+ 	 <![CDATA[
+ 	 	DELETE FROM T_POST WHERE po_writer = #{me_id} AND po_deleteYn = 'N';
+ 	 ]]>
+ 	 </delete>
 </mapper>

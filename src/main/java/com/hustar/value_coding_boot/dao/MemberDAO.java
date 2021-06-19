@@ -38,4 +38,7 @@ public interface MemberDAO {
 		
 	// 내가 총 댓글 개수
 	public int getMyCommentCnt(MemberVO memberVO)throws Exception;
+
+	// 전체 글 삭제
+	public void DeleteMyPost(MemberVO memberVO)throws Exception;
 }

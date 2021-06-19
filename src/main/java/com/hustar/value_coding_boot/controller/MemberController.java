@@ -102,6 +102,7 @@ public class MemberController {
 		
 		// 로그인 필수
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		System.out.println("로그인 세션 " + loginVO);
 		
 		if(loginVO == null) {
 			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
@@ -136,7 +137,23 @@ public class MemberController {
 		return "member/mypage_board"; 
 	}
 	
-
+	// 내 글 전체 삭제
+	@RequestMapping("/member/mypage_boardDelete.do")
+	public String mypage_boardDelete(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		// 로그인 필수
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
+		
+		//게시글 전체 삭제
+		service.DeleteMyPost(loginVO);
+		
+		return "redirect:/member/mypage_board";
+	}
 	// 내가 작성한 답변
 	@RequestMapping("/member/mypage_comment") 
 	public String mypage_comment(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
