@@ -15,7 +15,7 @@
 	<div class="mypage-form">	
 
 
-
+	<a href="<c:url value='/member/mypage_boardDelete.do' />">전체 삭제</a>
 	<ul class="myquestion">
 		<c:forEach items="${boardVO }" var="postVO">
 		<li>

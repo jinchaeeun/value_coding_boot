@@ -94,7 +94,7 @@
    </select>
    <!-- // 내가 쓴 답변 조회  -->
    
-   <!--  내가 쓴 글 개수 -->
+   <!--  내가 쓴 총 글 개수 -->
  
      <select id="getMyPostCnt" parameterType="memberVO" resultType="int">
       <![CDATA[
@@ -103,4 +103,16 @@
 			WHERE po_writer = #{me_id} AND po_deleteYn = 'N';
   		]]>
  	 </select>
+    <!--  //내가 쓴 총 글 개수 -->
+ 	
+ 	<!--  내가 쓴 총 댓글 개수 --> 
+ 	<select id="getMyCommentCnt" parameterType="memberVO" resultType="int">
+      <![CDATA[
+			SELECT COUNT(*) 
+			FROM t_comment 
+			WHERE co_user_id = #{me_id};
+  		]]>
+ 	 </select>
+ 	<!--  //내가 쓴 총 댓글 개수 --> 
+ 	 
 </mapper>

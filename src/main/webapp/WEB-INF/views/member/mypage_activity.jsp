@@ -6,6 +6,8 @@
 <!-- 상단 헤더 불러오기 -->
  <jsp:include page="../sub_header.jsp"></jsp:include>
 
+<c:set var="session" value="${sessionScope.login}" scope="application"/>
+
 <div class="mypage-box">
 	<h1><span class="usr_nickname"><c:out value="${session.me_nickName}"/></span>님 마이페이지</h1>
 			<ul class="mypage-tap">
@@ -15,11 +17,12 @@
 		
 		
 	<div class="mypage-form">	
-
-		총 게시물 <span>${MyPostCnt }</span>
-		총 댓글	<span>3</span>
-		총 방문일  <span>2</span>
-
+		<span>닉네임  <c:out value="${session.me_nickName}"/> | Lv.2</span> 
+		<span>선호 언어 <c:out value="${session.me_devLang}"/> </span> 
+		<span>총 게시물  <c:out value="${MyPostCnt}"/> </span>
+		<span>총 댓글	<c:out value="${MyCommentCnt}"/> </span>
+		<span>총 방문일 2</span>
+	 <!-- <span>가입 날짜</span> <c:out value="${session.me_regDate}"/> -->
 
     </div>
     

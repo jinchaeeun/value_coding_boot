@@ -50,6 +50,7 @@
             <li><a href="#">다음</a></li>
             <li><a href="#">마지막</a></li>
         </ul>
+
     </div>
     
 </div>

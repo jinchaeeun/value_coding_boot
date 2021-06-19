@@ -63,18 +63,26 @@ public class MemberServiceImpl implements MemberService {
 		dao.deleteMember(memberVO);
 	}
 	
+	// 내가 쓴 글 조회
 	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
 		return dao.ViewMyPostMember(memberVO);
 	}
 	
+	// 내가 쓴 댓글 조회
 	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
 		return dao.ViewMyCommentMember(memberVO);
 	}
-	
+
 	// 내 총 작성글 갯수
 	@Override
 	public int getMyPostCnt(MemberVO memberVO)throws Exception{
 		return dao.getMyPostCnt(memberVO);
+	}
+	
+	// 내가 총 댓글 개수
+	@Override
+	public int getMyCommentCnt(MemberVO memberVO)throws Exception{
+		return dao.getMyCommentCnt(memberVO);
 	}
 	
 }

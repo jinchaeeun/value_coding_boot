@@ -21,6 +21,39 @@
 			</ul>
 	
 	<div id="ajax_div">	
+	
+	<c:if test="${session.me_singupcode != 1}">
+	
+	<form method ="post" name="mypageForm" action="<c:url value='/member/ModifyMypage'/>">
+		<div class="mypage-form">
+				<span>소셜 로그인 가입자</span>
+				<span>닉네임</span>
+				<input type="text" name="me_nickName" id="me_nickName" value='<c:out value="${session.me_nickName}"/>' />
+				<span>아이디(이메일)</span>
+				<input type="text" name="me_id" id="mypage_Email" value='<c:out value="${session.me_id}"/>' readonly onfocus="this.blur()" />
+				
+				<span>선호 개발 언어</span>
+				<div class="checkDevLangDiv">
+					<ul>
+						<li><label><input type="checkbox" name="me_devLang" value="Java">Java</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="Python">Python</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="JSP">JSP</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="PHP">PHP</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="C">C</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="C++">C++</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="R">R</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="Git">Git</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="Etc">기타</label></li>
+					</ul>
+				</div>
+				
+				<button class="btn btn-success" type="button" onclick="mypageSNS_SubmitForm();">회원정보 수정</button>
+				<a href="<c:url value='/member/memberDeleteView'/>">회원탈퇴</a>
+		</div>	
+		</form>
+	</c:if>
+	
+	<c:if test="${session.me_singupcode == 1}">
 		<form method ="post" name="mypageForm" action="<c:url value='/member/ModifyMypage'/>">
 		<div class="mypage-form">
 				<span>닉네임</span>
@@ -51,11 +84,11 @@
 				
 				<button class="btn btn-success" type="button" onclick="mypage_SubmitForm();">회원정보 수정</button>
 				<a href="<c:url value='/member/memberDeleteView'/>">회원탈퇴</a>
-			</div>	
-			</form>
+		</div>	
+		</form>
+	</c:if>
 	</div>
 
-	 <!-- <span>가입 날짜</span> <c:out value="${session.me_regDate}"/> -->
 </div>
 
 </div>
@@ -147,6 +180,16 @@ function mypage_SubmitForm(form){
 	}
 };
 
+
+function mypageSNS_SubmitForm(form){
+	
+	if($("#me_nickName").val().trim() ==""){
+		alert("닉네임을 입력해주세요.");
+		$("#me_nickName").focus();
+	} else{
+		document.mypageForm.submit();
+	}
+};
 
 </script>
 <!-- 하단 헤더 불러오기 -->

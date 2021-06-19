@@ -127,6 +127,7 @@ public class MemberController {
 		List<BoardVO> boardVO = (List<BoardVO>)service.ViewMyPostMember(loginVO);
 		model.addAttribute("boardVO",boardVO);
 		
+		
 		/*
 		CommentVO commentVO = (CommentVO)service.CountComment();
 		model.addAttribute("commentVO", commentVO);
@@ -135,6 +136,7 @@ public class MemberController {
 		return "member/mypage_board"; 
 	}
 	
+
 	// 내가 작성한 답변
 	@RequestMapping("/member/mypage_comment") 
 	public String mypage_comment(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
@@ -160,7 +162,7 @@ public class MemberController {
 		return "member/mypage_comment"; 
 	}
 	
-	
+	// 내 작성 글 / 댓글 개수 
 	@RequestMapping(value="/member/mypage_activity")
 	public String mypage_activity(Model model, HttpSession session, RedirectAttributes redirectAttributes, MemberVO memberVO) throws Exception{
 		
@@ -172,17 +174,21 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 		
-		// 내가 쓴 게시물 수 조회
+		// 내가 쓴 총 게시물 수
 		int MyPostCnt = 0;
+		// 내가 쓴 총 댓글 수
+		int MyCommentCnt = 0;
 		
 		// po_writer를 받고 저장 서비스를 불러와 서비스 안에 po_writer
 		
 		try {
 			MyPostCnt = service.getMyPostCnt(loginVO);
+			MyCommentCnt = service.getMyCommentCnt(loginVO);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("MyPostCnt", MyPostCnt);
+		model.addAttribute("MyCommentCnt",MyCommentCnt);
 		
 		System.out.println("나의 게시물 수 " + MyPostCnt);
 		

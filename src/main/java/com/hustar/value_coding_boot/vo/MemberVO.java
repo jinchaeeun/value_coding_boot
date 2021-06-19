@@ -10,7 +10,6 @@ public class MemberVO {
 	private int me_singupcode;
 	private Date me_regDate;
 	private String me_devLang;
-	private int me_post_cnt;
 	
 
 
@@ -85,22 +84,12 @@ public class MemberVO {
 	}
 
 
-	public int getMe_post_cnt() {
-		return me_post_cnt;
-	}
-
-
-
-	public void setMe_post_cnt(int me_post_cnt) {
-		this.me_post_cnt = me_post_cnt;
-	}
-
 
 
 	@Override
 	public String toString() {
 		return "MemberVO [me_id=" + me_id + ", me_pass=" + me_pass + ", me_nickName=" + me_nickName + ", me_regDate="
-				+ me_regDate + ", me_devLang=" + me_devLang + ", me_post_cnt=" + me_post_cnt + "]";
+				+ me_regDate + ", me_devLang=" + me_devLang + "]";
 	}
 
 	
