@@ -69,8 +69,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 게시글 총 갯수
 	@Override
-	public int count(String searchType, String keyword) throws Exception {
-		return dao.count(searchType, keyword);
+	public int count(String searchType, String keyword, String board) throws Exception {
+		return dao.count(searchType, keyword, board);
 	}
 	
 	// 게시글 조회 수 증가

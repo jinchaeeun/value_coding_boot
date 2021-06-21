@@ -66,7 +66,8 @@
 			t_post
 		WHERE
 			po_deleteYn = 'N'
-			AND po_boardname = #{po_boardname}
+		AND 
+			po_boardname = #{po_boardname}
 		<if test='searchType.equals("title")'>
 			AND po_title LIKE CONCAT('%', #{keyword}, '%')
 		</if>
@@ -150,6 +151,8 @@
 			t_post
 		WHERE
 			po_deleteYn = 'N'
+		AND 
+			po_boardname = #{po_boardname}
 		<if test='searchType.equals("title")'>
 			AND po_title LIKE CONCAT('%', #{keyword}, '%')
 		</if>
@@ -220,7 +223,7 @@
 	<select id="selectFileList" parameterType="int" resultType="com.hustar.value_coding_boot.vo.BoardFileVO">
 		<![CDATA[
 			SELECT 
-				fi_num, po_num, fi_ori_filename, FORMAT(ROUND(fi_filesize / 1024), 0) AS fi_filesize 
+				fi_num, po_num, fi_ori_filename, fi_filesize
 				FROM t_file
 				WHERE po_num = #{po_num}
 				AND fi_deleteYn = 'N'

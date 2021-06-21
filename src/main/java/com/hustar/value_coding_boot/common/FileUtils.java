@@ -61,24 +61,9 @@ public class FileUtils {
 					if(ObjectUtils.isEmpty(contentType)) {
 						break;
 					}
-					else {
-						if(contentType.contains("image/jpeg")) {
-							originalFileExtension = ".jpg";
-						}
-						else if(contentType.contains("image/png")) {
-							originalFileExtension = ".png";
-						}
-						else if(contentType.contains("image/gif")){
-							originalFileExtension = ".gif";
-						}
-						else {
-							System.out.println("여기");
-							break;
-						}
-					}
 					
 					// 파일 이름을 현재 시간(nanoTime)과 확장자로 저장
-					newFileName = Long.toString(System.nanoTime()) + originalFileExtension;
+					newFileName = Long.toString(System.nanoTime()) + "." + contentType;
 					BoardFileVO boardFile = new BoardFileVO();
 					
 					// 파일 정보 세팅

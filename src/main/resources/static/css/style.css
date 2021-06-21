@@ -956,7 +956,7 @@ position:absolute; left:50%; transform:translateX(-50%); bottom:-7px; }
 .write-btn-box a {float: right; padding: 10px; background: #8bcaff; color: #fff; border-radius: 5px; font-weight: bold; margin: 5px;}
 .write-btn-box a:hover {background: #3078b5;}
 
-.answer-wrap {border: 1px solid #ccc; padding: 10px;}
+.answer-wrap {padding: 10px;}
 .answer-wrap .answer-box {}
 .answer-wrap .answer-box h3 {padding: 5px; border-bottom: 1px solid #000; margin-bottom: 10px;}
 .answer-wrap .answer-box .answer {margin-bottom: 10px; border-bottom: 1px solid #ddd;}

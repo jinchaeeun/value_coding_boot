@@ -56,10 +56,11 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	// 게시글 총 갯수
 	@Override
-	public int count(String searchType, String keyword) throws Exception {
+	public int count(String searchType, String keyword, String board) throws Exception {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		data.put("searchType", searchType);  // 검색 타입
 		data.put("keyword", keyword);  // 검색어
+		data.put("po_boardname", board);  // 게시판 이름
 		return sqlSession.selectOne("mapper.boardMapper.selectBoardTotalCount", data);
 	}
 	

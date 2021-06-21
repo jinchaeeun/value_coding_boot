@@ -10,7 +10,10 @@
  		ans_updatetime,
  		ans_writer,
  		ans_hots,
- 		ans_deleteYn
+ 		ans_deleteYn,
+ 		ans_group_num,
+ 		ans_depth,
+ 		ans_group_order
 	</sql>
 
 	<!-- 답글 작성 -->
@@ -24,7 +27,10 @@
 	 		ans_updatetime,
 	 		ans_writer,
 	 		ans_hots,
-	 		ans_deleteYn
+	 		ans_deleteYn,
+	 		ans_group_num,
+ 			ans_depth,
+ 			ans_group_order
 	 		) VALUES (
 	 			NULL,
 	 			#{po_num},
@@ -33,7 +39,10 @@
 				NULL,
 				#{ans_writer},
 				0,
-				IFNULL(#{ans_deleteYn}, 'N')
+				IFNULL(#{ans_deleteYn}, 'N'),
+				#{ans_group_num},
+ 				#{ans_depth},
+ 				#{ans_group_order}
 			)
 		]]>
 	</insert>
@@ -45,7 +54,7 @@
 			SELECT * FROM t_answer
 				WHERE po_num = #{po_num}
 				AND ans_deleteYn = 'N'
-				ORDER BY ans_num ASC
+				ORDER BY ans_group_num ASC, ans_group_order ASC, ans_datetime ASC
 		]]>
 	</select>
 	<!-- //답글 보여주기 -->
@@ -82,6 +91,16 @@
 	</update>
 	<!-- //답글 삭제 -->
 	
+	<!-- 답글 그룹 삭제 -->
+	<update id="deleteAll" parameterType="com.hustar.value_coding_boot.vo.AnswerVO">
+		<![CDATA[
+			UPDATE t_answer SET 
+				ans_deleteYn = 'Y'
+				WHERE ans_group_num = #{ans_num};
+		]]>
+	</update>
+	<!-- //답글 그룹 삭제 -->
+	
 	<!-- 답글 갯수 -->
 	<select id="selectAnswersCnt" parameterType="com.hustar.value_coding_boot.vo.AnswerVO" resultType="int">
 		<![CDATA[
@@ -92,4 +111,62 @@
 		]]>
 	</select>
 	<!-- //답글 갯수 -->
+	
+	<!-- 부모의 group_num 할당 -->
+	<update id="updateParent" parameterType="int">
+		<![CDATA[
+			UPDATE t_answer SET 
+				ans_group_num = #{ans_num}
+				WHERE ans_num = #{ans_num};
+		]]>
+	</update>
+	<!-- //부모의 group_num 할당 -->
+	
+	<!-- 그룹 내 순서 조회 -->
+	<select id="selectMaxGroupOrder" parameterType="int" resultType="int">
+		<![CDATA[
+			SELECT MAX(ans_group_order) FROM t_answer WHERE ans_group_num = #{ans_num};
+		]]>
+	</select>
+	<!-- //그룹 내 순서 조회 -->
+	
+	<!-- 대댓글 입력 -->
+	<insert id="childInsert" parameterType="com.hustar.value_coding_boot.vo.AnswerVO">
+		<![CDATA[
+			INSERT INTO t_answer (
+			ans_num,
+	 		po_num,
+	 		ans_contents,
+	 		ans_datetime,
+	 		ans_updatetime,
+	 		ans_writer,
+	 		ans_hots,
+	 		ans_deleteYn,
+	 		ans_group_num,
+ 			ans_depth,
+ 			ans_group_order
+	 		) VALUES (
+	 			NULL,
+	 			#{po_num},
+				#{ans_contents},
+				NOW(),
+				NULL,
+				#{ans_writer},
+				0,
+				IFNULL(#{ans_deleteYn}, 'N'),
+				#{ans_group_num},
+ 				#{ans_depth},
+ 				#{ans_group_order}
+			)
+		]]>
+	</insert>
+	<!-- //대댓글 입력 -->
+	
+	<!-- 최근 답글의 ans_num 조회 -->
+	<select id="getLastAnswer" resultType="int">
+		<![CDATA[
+			SELECT ans_num FROM t_answer ORDER BY ans_num DESC LIMIT 1
+		]]>
+	</select>
+	<!-- //최근 답글의 ans_num 조회 -->
 </mapper>
