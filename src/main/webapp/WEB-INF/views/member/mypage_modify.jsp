@@ -10,7 +10,7 @@
 <c:set var="session" value="${sessionScope.login}" scope="application"/>
 
  <div class="mypage">
-        <h2><span style="color: #1d3a6d;">죽전동딩코</span>의 마이페이지</h2>
+        <h2><span style="color: #1d3a6d;">${session.me_nickName}</span>의 마이페이지</h2>
         <div class="mypage-form">
             <ul class="mypage-tap">
                 <li class="mypage-tapmenu" id="btn1"><a href="#">내 활동</a></li>
@@ -58,9 +58,9 @@
 		     <div class="mypage-con-column">
                 <div class="mypage-mod">
                     <span>닉네임</span>
-                    <input type="text" name="me_nickName" id="me_nickName" value='죽전동딩코' />
+                    <input type="text" name="me_nickName" id="me_nickName" value='<c:out value="${session.me_nickName}"/>' />
                     <span>아이디(이메일)</span>
-                    <input type="text" name="me_id" id="mypage_Email" value='032605' readonly onfocus="this.blur()" />
+                    <input type="text" name="me_id" id="mypage_Email" value='<c:out value="${session.me_id}"/>' readonly onfocus="this.blur()" />
                     
                     <span>비밀번호</span>
                     <input type="password" name="me_pass" id="me_pass" placeholder="비밀번호" />

@@ -28,8 +28,8 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.hustar.value_coding_boot.service.MemberService;
+import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
-import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 import com.hustar.value_coding_boot.vo.Paging;
 
@@ -173,14 +173,14 @@ public class MemberController {
 		}
 		
 		// (loginVO) 받아서!! 세션 id!! 가져감!!
-		List<CommentVO> commentVO = (List<CommentVO>)service.ViewMyCommentMember(loginVO);
+		List<AnswerVO> answerVO = (List<AnswerVO>)service.ViewMyCommentMember(loginVO);
 		
 		/* // DB에서 데이터 가져오는지 체크
 		for(int i=0;i<commentVO.size();i++) {
 			System.out.println(commentVO.get(i).getCo_comments());
 		}*/
 
-		model.addAttribute("commentVO",commentVO);
+		model.addAttribute("answerVO",answerVO);
 		
 		return "member/mypage_comment"; 
 	}

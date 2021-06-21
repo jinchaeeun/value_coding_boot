@@ -136,7 +136,7 @@
 		var htmls = '';
 		
 		htmls += '<form action="/answer/ans_write" method="post" name="ans_answer_form">';
-		htmls += '<input type="hidden" name="po_num" value="${read.po_num}"/>';
+		htmls += '<input type="hidden" name="ans_po_num" value="${read.po_num}"/>';
 		htmls += '<input type="hidden" name="ans_num" value="'+ans_num+'"/>';  // 부모의 번호 가져옴 => ans_group_num
 		htmls += '<p><c:out value="${session.me_nickName}"/><input type="hidden" name="ans_writer" id="ans_writer" value="<c:out value='${session.me_nickName}'/>"></p>';	//작성자 추가
 		htmls += '<textarea name="ans_contents" rows="" cols="" style="width:100%; height: 100px;" placeholder="댓글을 남겨주세요."></textarea>';

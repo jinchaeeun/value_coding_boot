@@ -2,8 +2,8 @@ package com.hustar.value_coding_boot.dao;
 
 import java.util.List;
 
+import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
-import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 public interface MemberDAO {
@@ -31,7 +31,7 @@ public interface MemberDAO {
 	public List<BoardVO> ViewMyPostMember(MemberVO memberVO) throws Exception;
 
 	// 내가 쓴 댓글 조회
-	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception;
+	public List<AnswerVO> ViewMyCommentMember(MemberVO memberVO) throws Exception;
 	
 	// 내가 쓴 글 개수
 	public int getMyPostCnt(MemberVO memberVO) throws Exception;

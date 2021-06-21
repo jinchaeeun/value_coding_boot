@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class AnswerVO {
 	private int ans_num;  // 답글 번호
-	private int po_num;  // 게시글 번호
+	private int ans_po_num;  // 게시글 번호
 	private String ans_boardname;  // 답글이 달린 게시판
 	private String ans_contents;  // 답글 내용
 	private Date ans_datetime;  // 답글 작성일
@@ -17,6 +17,13 @@ public class AnswerVO {
 	private int ans_group_order;  // 답글 순서
 	private int ans_depth;  // 답글 깊이
 
+	/* BoardVO 조인하기 위해서 */
+	private int po_num; // 게시글 번호
+	private String po_boardname; // 게시판 카테고리
+	private String po_title; // 게시글 제목
+	private int po_ans_cnt; // 답변수
+	
+	
 	public int getAns_group_num() {
 		return ans_group_num;
 	}
@@ -49,12 +56,12 @@ public class AnswerVO {
 		this.ans_num = ans_num;
 	}
 
-	public int getPo_num() {
-		return po_num;
+	public int getAns_po_num() {
+		return ans_po_num;
 	}
 
-	public void setPo_num(int po_num) {
-		this.po_num = po_num;
+	public void setAns_po_num(int ans_po_num) {
+		this.ans_po_num = ans_po_num;
 	}
 
 	public String getAns_boardname() {
@@ -112,4 +119,41 @@ public class AnswerVO {
 	public void setAns_deleteYn(String ans_deleteYn) {
 		this.ans_deleteYn = ans_deleteYn;
 	}
+	
+	/* BoardVO */
+
+	public int getPo_num() {
+		return po_num;
+	}
+
+	public void setPo_num(int po_num) {
+		this.po_num = po_num;
+	}
+
+	public String getPo_boardname() {
+		return po_boardname;
+	}
+
+	public void setPo_boardname(String po_boardname) {
+		this.po_boardname = po_boardname;
+	}
+
+	public String getPo_title() {
+		return po_title;
+	}
+
+	public void setPo_title(String po_title) {
+		this.po_title = po_title;
+	}
+
+	public int getPo_ans_cnt() {
+		return po_ans_cnt;
+	}
+
+	public void setPo_ans_cnt(int po_ans_cnt) {
+		this.po_ans_cnt = po_ans_cnt;
+	}
+	
+	
+	
 }

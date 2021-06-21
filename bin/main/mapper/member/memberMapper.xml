@@ -83,13 +83,13 @@
    <!-- // 내가 쓴 글 조회  -->
    
    <!-- 내가 쓴 답변 조회 -->
-   <select id="ViewMyCommentMember" parameterType="memberVO" resultType="CommentVO">
+   <select id="ViewMyCommentMember" parameterType="memberVO" resultType="AnswerVO">
        <![CDATA[
 	   		SELECT *
-	   		FROM t_comment LEFT OUTER JOIN t_post
-	   		ON t_post.po_num = t_comment.co_post_num
-	   		WHERE CO_USER_ID = #{me_id}
-	   		ORDER BY CO_DATETIME DESC;
+	   		FROM t_answer LEFT OUTER JOIN t_post
+	   		ON t_post.po_num = t_answer.po_num
+	   		WHERE ans_writer = #{me_id}
+	   		ORDER BY ans_datetime DESC;
    		]]>
    </select>
    <!-- // 내가 쓴 답변 조회  -->
@@ -109,8 +109,8 @@
  	<select id="getMyCommentCnt" parameterType="memberVO" resultType="int">
       <![CDATA[
 			SELECT COUNT(*) 
-			FROM t_comment 
-			WHERE co_user_id = #{me_id};
+			FROM t_answer 
+			WHERE ans_writer = #{me_id};
   		]]>
  	 </select>
  	<!--  //내가 쓴 총 댓글 개수 --> 
@@ -126,7 +126,7 @@
  	 <!-- 내가 쓴 댓글 전체 삭제 -->
  	 <delete id="DeleteMyComment" parameterType="memberVO">
  	 <![CDATA[
- 	 	DELETE FROM T_COMMENT WHERE co_user_id = #{me_id};
+ 	 	DELETE FROM t_answer WHERE ans_writer = #{me_id};
  	 ]]>
  	 </delete>
  	 <!-- //내가 쓴 댓글 전체 삭제 -->
