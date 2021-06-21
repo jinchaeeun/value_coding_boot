@@ -4,7 +4,7 @@
 	<!-- 칼럼 리스트 -->
 	<sql id="answerColumns">
  		ans_num,
- 		po_num,
+ 		ans_po_num,
  		ans_contents,
  		ans_datetime,
  		ans_updatetime,
@@ -21,7 +21,7 @@
 		<![CDATA[
 			INSERT INTO t_answer (
 			ans_num,
-	 		po_num,
+	 		ans_po_num,
 	 		ans_contents,
 	 		ans_datetime,
 	 		ans_updatetime,
@@ -33,7 +33,7 @@
  			ans_group_order
 	 		) VALUES (
 	 			NULL,
-	 			#{po_num},
+	 			#{ans_po_num},
 				#{ans_contents},
 				NOW(),
 				NULL,
@@ -52,7 +52,7 @@
 	<select id="selectAnswers" parameterType="com.hustar.value_coding_boot.vo.AnswerVO" resultType="com.hustar.value_coding_boot.vo.AnswerVO">
 		<![CDATA[
 			SELECT * FROM t_answer
-				WHERE po_num = #{po_num}
+				WHERE ans_po_num = #{ans_po_num}
 				AND ans_deleteYn = 'N'
 				ORDER BY ans_group_num ASC, ans_group_order ASC, ans_datetime ASC
 		]]>
@@ -63,7 +63,7 @@
 	<select id="selectDetail" parameterType="com.hustar.value_coding_boot.vo.AnswerVO" resultType="com.hustar.value_coding_boot.vo.AnswerVO">
 		<![CDATA[
 			SELECT * FROM t_answer
-				WHERE po_num = #{po_num}
+				WHERE ans_po_num = #{ans_po_num}
 				AND ans_num = #{ans_num}
 				AND ans_deleteYn = 'N'
 		]]>
@@ -105,7 +105,7 @@
 	<select id="selectAnswersCnt" parameterType="com.hustar.value_coding_boot.vo.AnswerVO" resultType="int">
 		<![CDATA[
 			SELECT COUNT(*) FROM t_answer
-				WHERE po_num = #{po_num}
+				WHERE ans_po_num = #{ans_po_num}
 				AND ans_deleteYn = 'N'
 				ORDER BY ans_num ASC
 		]]>
@@ -135,7 +135,7 @@
 		<![CDATA[
 			INSERT INTO t_answer (
 			ans_num,
-	 		po_num,
+	 		ans_po_num,
 	 		ans_contents,
 	 		ans_datetime,
 	 		ans_updatetime,
@@ -147,7 +147,7 @@
  			ans_group_order
 	 		) VALUES (
 	 			NULL,
-	 			#{po_num},
+	 			#{ans_po_num},
 				#{ans_contents},
 				NOW(),
 				NULL,

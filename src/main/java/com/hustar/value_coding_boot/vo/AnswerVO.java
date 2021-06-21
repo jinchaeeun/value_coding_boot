@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class AnswerVO {
 	private int ans_num;  // 답글 번호
-	private int po_num;  // 게시글 번호
+	private int ans_po_num;  // 게시글 번호
 	private String ans_boardname;  // 답글이 달린 게시판
 	private String ans_contents;  // 답글 내용
 	private Date ans_datetime;  // 답글 작성일
@@ -49,12 +49,12 @@ public class AnswerVO {
 		this.ans_num = ans_num;
 	}
 
-	public int getPo_num() {
-		return po_num;
+	public int getAns_po_num() {
+		return ans_po_num;
 	}
 
-	public void setPo_num(int po_num) {
-		this.po_num = po_num;
+	public void setAns_po_num(int ans_po_num) {
+		this.ans_po_num = ans_po_num;
 	}
 
 	public String getAns_boardname() {

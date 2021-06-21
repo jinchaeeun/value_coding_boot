@@ -62,7 +62,7 @@ public class DatabaseConfiguration {
     public CommonsMultipartResolver multipartResolver() {
     	CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
     	commonsMultipartResolver.setDefaultEncoding("UTF-8");
-    	commonsMultipartResolver.setMaxUploadSizePerFile(20 * 1024 * 1024);  // 업로드 되는 파일 크기 20MB 제한
+    	commonsMultipartResolver.setMaxUploadSizePerFile(10 * 1024 * 1024);  // 업로드 되는 파일 크기 10MB 제한
     	return commonsMultipartResolver;
     }
 }
