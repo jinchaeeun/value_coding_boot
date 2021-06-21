@@ -2,13 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!-- 상단 헤더 불러오기 -->
-<jsp:include page="../sub_header.jsp"></jsp:include>
+<link rel="stylesheet" href="../css/style.css">
 
 <div class="circle-small"></div>
-<div class="circle-big"></div>		
-
-<div id="ajax_div">
+<div class="circle-big"></div>	
 
 <c:set var="session" value="${sessionScope.login}" scope="application"/>
 
@@ -16,13 +13,13 @@
         <h2><span style="color: #1d3a6d;">죽전동딩코</span>의 마이페이지</h2>
         <div class="mypage-form">
             <ul class="mypage-tap">
-                <li class="mypage-tapmenu"><a href="#">내 활동</a></li>
-                <li class="mypage-tapmenu on"><a href="#">정보 수정</a></li>
+                <li class="mypage-tapmenu" id="btn1"><a href="#">내 활동</a></li>
+                <li class="mypage-tapmenu on" id="btn2"><a href="#">정보 수정</a></li>
                 <hr>
-                <li class="mypage-tapmenu"><a href="#">게시글</a></li>
-                <li class="mypage-tapmenu"><a href="#">답변</a></li>
+                <li class="mypage-tapmenu" id="btn3"><a href="#">게시글</a></li>
+                <li class="mypage-tapmenu" id="btn4"><a href="#">답변</a></li>
             </ul>
-            
+           
     <c:if test="${session.me_singupcode != 1}">
 	<form method ="post" name="mypageForm" action="<c:url value='/member/ModifyMypage'/>">
 		<div class="mypage-form">
@@ -93,11 +90,26 @@
  
         </div>
     </div>
-</div>
-	
-	
 
+ 
+ <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
+
+$('#btn1').bind('click', function(event) {
+	fn_getPage('./mypage_activity');
+	});
+$('#btn2').bind('click', function(event) {
+   fn_getPage('./mypage_modify');
+	});
+$('#btn3').bind('click', function(event) {
+	   fn_getPage('./mypage_board');
+		});
+$('#btn4').bind('click', function(event) {
+	   fn_getPage('./mypage_comment');
+		});
+
+
+	
 
 // 체크된 것을 배열로 넣기
 var checkedLang = "${session.me_devLang}"
@@ -118,73 +130,6 @@ if (msg != ''){
 }
 
 
-// 탭 이동 
-$('#mytap1').bind('click', function(event) {
-	   fn_getPage('./mypage');
-	   
-	    $(this).addClass('on');
-	    $('#mytap2').removeClass('on');
-	    $('#mytap3').removeClass('on');
-	});
-	
-$('#mytap2').bind('click', function(event) {
-fn_getPage('./mypage_board');
-
-		$(this).addClass('on');
-		$('#mytap1').removeClass('on');
-		$('#mytap3').removeClass('on');
-	});
-
-
-
-function fn_getPage(url) {
-	   $.ajax({
-		url : url,
-		type : 'get',
-		data : {
-				test : '1', 
-				test : '2',
-				}, //get-> sample11_1.jsp&test=1
-		dataType : 'html', // html, json, xml
-		beforeSend : function(){
-			//로딩.........show
-		},
-
-		success : function(data){
-	         $('#ajax_div').html(data);
-		},
-		
-		error : function(){
-			//alert('오류 발생')
-		},
-		complete : function(){
-			//hide	
-		}
-	});
-}
-	
-
-// 회원 정보 수정 시, 유효성 검사
-function mypage_SubmitForm(form){
-	
-	if($("#me_nickName").val().trim() ==""){
-		alert("닉네임을 입력해주세요.");
-		$("#me_nickName").focus();
-	} else if($("#me_pass").val().trim() ==""){
-		alert("비밀번호를 입력해주세요.");
-		$("#me_pass").focus();
-	} else if($("#me_pass2").val().trim() ==""){
-		alert("비밀번호 확인을 입력해주세요.");
-		$("#me_pass2").focus();
-	} else if($("#me_pass").val() != $("#me_pass2").val()){
-		alert("비밀번호 입력 값이 다릅니다.");
-		$("#me_pass2").focus();
-	}else{
-		document.mypageForm.submit();
-	}
-};
-
-
 function mypageSNS_SubmitForm(form){
 	
 	if($("#me_nickName").val().trim() ==""){
@@ -196,5 +141,3 @@ function mypageSNS_SubmitForm(form){
 };
 
 </script>
-<!-- 하단 헤더 불러오기 -->
- <jsp:include page="../sub_footer.jsp"></jsp:include>

@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -99,7 +98,7 @@ public class MemberController {
 		return "/member/login";
 	}
 	
-	@GetMapping("mypage") 
+	@RequestMapping("mypage_modify") 
 	public String member_mypage(HttpSession session, RedirectAttributes redirectAttributes) throws Exception { 
 		
 		// 로그인 필수
@@ -111,7 +110,7 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 	
-		return "member/mypage"; 
+		return "member/mypage_modify"; 
 	} 
 	
 	// 내가 작성한 질문

@@ -3,18 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!-- 상단 헤더 불러오기 -->
-<jsp:include page="../sub_header.jsp"></jsp:include>
+<link rel="stylesheet" href="../css/style.css">
 
 <div class="mypage">
         <h2><span style="color: #1d3a6d;">죽전동딩코</span>의 마이페이지</h2>
         <div class="mypage-form">
             <ul class="mypage-tap">
-                <li class="mypage-tapmenu"><a href="#">내 활동</a></li>
-                <li class="mypage-tapmenu"><a href="#">정보 수정</a></li>
+                <li class="mypage-tapmenu" id="btn1"><a href="#">내 활동</a></li>
+                <li class="mypage-tapmenu" id="btn2"><a href="#">정보 수정</a></li>
                 <hr>
-                <li class="mypage-tapmenu on"><a href="#">게시글</a></li>
-                <li class="mypage-tapmenu"><a href="#">답변</a></li>
+                <li class="mypage-tapmenu on" id="btn3"><a href="#">게시글</a></li>
+                <li class="mypage-tapmenu" id="btn4"><a href="#">답변</a></li>
             </ul>
             
 
@@ -63,22 +62,18 @@
 </div>
 
 <script>
-$('#mytap1').bind('click', function(event) {
-	   fn_getPage('./mypage');
-	   
-	    $(this).addClass('on');
-	    $('#mytap2').removeClass('on');
-	    $('#mytap3').removeClass('on');
+$('#btn1').bind('click', function(event) {
+	fn_getPage('./mypage_activity');
 	});
-	
-$('#mytap2').bind('click', function(event) {
-fn_getPage('./mypage_board');
-
-		$(this).addClass('on');
-		$('#mytap1').removeClass('on');
-		$('#mytap3').removeClass('on');
+$('#btn2').bind('click', function(event) {
+   fn_getPage('./mypage_modify');
 	});
-
+$('#btn3').bind('click', function(event) {
+	   fn_getPage('./mypage_board');
+		});
+$('#btn4').bind('click', function(event) {
+	   fn_getPage('./mypage_comment');
+		});
 
 	
 	
@@ -96,5 +91,3 @@ function deleteAllConfirm(){
 }
 
 </script>
-<!-- 하단 헤더 불러오기 -->
- <jsp:include page="../sub_footer.jsp"></jsp:include>
