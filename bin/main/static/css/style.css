@@ -85,7 +85,7 @@ img {
 .header h1 a span {color: #969ce3;}
 
 .header h1 a img{max-width: 120px; max-height: 40px;}
-.header .gnb{width:535px; margin: 0 auto; margin-top: 12px;}
+.header .gnb{width:700px; margin: 0 auto; margin-top: 12px;}
 .header .gnb > ul{overflow: hidden;}
 .header .gnb > ul > li{float:left; padding: 15px 20px;}
 .header .gnb > ul > li:last-child{border: 0;}
@@ -106,7 +106,7 @@ img {
 .sub-gnb > li:first-child{border: 0;}
 .sub-gnb > li a {font-size: 1rem;}
 
-.notice-sub {margin-top: 10px; margin-left: -155px; width: 400px;}
+.notice-sub {margin-top: 10px; margin-left: -130px; width: 400px;}
 .notice-sub > li a {line-height: 1.5;}
 .date-span {margin-left: 5px; color: #ccc;}
 .notice-info {display: inline-block; width: 323px;}
@@ -129,12 +129,15 @@ img {
 
 .header .tnb{float: right; margin-top: 20px; margin-right: 20px;}
 .header .tnb > ul > li{float: left;}
-.header .tnb > ul > li:first-child > a{color: #1d3a6d; margin-right: 25px;}
-.header .tnb > ul > li > a{display: block; padding: 10px 15px 10px 15px; font-size: 1rem; font-weight: 700;  color: #111;}
+.header .tnb > ul > li:first-child > a{color: #1d3a6d;}
+.header .tnb > ul > li > a{display: block; padding: 10px 15px 10px 15px; font-size: 1rem; font-weight: 700;}
+
+.notice {margin-right: 25px;}
+.notice > a {color: #1d3a6d;}
 
 .notification {
 	top: -2.2em;
-	right: 15.3em;
+	right: 17.7em;
 	width: 5.5em;
 	height: 5.5em;
 	padding: 17px 13px;
