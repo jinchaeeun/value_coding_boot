@@ -24,7 +24,7 @@ public interface BoardService {
 	public void deleteBoard(int po_num) throws Exception;
 	
 	// 게시글 총 갯수
-	public int count(String searchType, String keyword) throws Exception;
+	public int count(String searchType, String keyword, String board) throws Exception;
 	
 	// 게시글 조회수 증가
 	public int updateViewCnt(int po_num) throws Exception;

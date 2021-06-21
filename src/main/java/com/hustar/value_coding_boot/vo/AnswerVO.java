@@ -12,7 +12,35 @@ public class AnswerVO {
 	private String ans_writer;  // 답글 작성자
 	private int ans_hots;  // 답글 좋아요 수
 	private String ans_deleteYn;  // 답글 삭제여부
+	
+	private int ans_group_num;  // 답글 묶음
+	private int ans_group_order;  // 답글 순서
+	private int ans_depth;  // 답글 깊이
 
+	public int getAns_group_num() {
+		return ans_group_num;
+	}
+
+	public void setAns_group_num(int ans_group_num) {
+		this.ans_group_num = ans_group_num;
+	}
+
+	public int getAns_group_order() {
+		return ans_group_order;
+	}
+
+	public void setAns_group_order(int ans_group_order) {
+		this.ans_group_order = ans_group_order;
+	}
+
+	public int getAns_depth() {
+		return ans_depth;
+	}
+
+	public void setAns_depth(int ans_depth) {
+		this.ans_depth = ans_depth;
+	}
+	
 	public int getAns_num() {
 		return ans_num;
 	}

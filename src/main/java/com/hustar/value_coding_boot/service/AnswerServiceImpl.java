@@ -51,4 +51,34 @@ public class AnswerServiceImpl implements AnswerService {
 		return dao.detail(answerVO);
 	}
 
+	// 부모의 group_num 할당
+	@Override
+	public void updateParent(int ans_num) throws Exception {
+		dao.updateParent(ans_num);
+	}
+
+	// 그룹 내 순서 조회
+	@Override
+	public int selectMaxGroupOrder(int ans_num) throws Exception {
+		return dao.selectMaxGroupOrder(ans_num);
+	}
+	
+	// 대댓글 입력
+	@Override
+	public void childInsert(AnswerVO answerVO) throws Exception {
+		dao.childInsert(answerVO);
+	}
+	
+	// 최근 답글의 ans_num 조회
+	@Override
+	public int getLastAnswer() throws Exception {
+		return dao.getLastAnswer();
+	}
+	
+	// 답글 그룹 삭제
+	@Override
+	public void deleteAll(AnswerVO answerVO) throws Exception {
+		dao.deleteAll(answerVO);
+	}
+
 }

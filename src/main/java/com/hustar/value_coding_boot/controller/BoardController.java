@@ -89,7 +89,7 @@ public class BoardController {
 		page.setNum(num);
 		
 		// 게시물의 전체 개수 구함
-		page.setCount(boardService.count(searchType, keyword));
+		page.setCount(boardService.count(searchType, keyword, board));
 		
 		// 검색 타입과 검색어
 		page.setSearchType(searchType);

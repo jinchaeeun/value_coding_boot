@@ -8,25 +8,49 @@
 
 <c:set var="session" value="${sessionScope.login}" scope="application"/>
 
-<div class="mypage-box">
-	<h1><span class="usr_nickname"><c:out value="${session.me_nickName}"/></span>님 마이페이지</h1>
-			<ul class="mypage-tap">
-				<li class="mypage-tapmenu" id="mytap1"><a href="#" id="mypage-menu1"><span>내 정보 수정</span></a></li>
-				<li class="mypage-tapmenu on" id="mytap2"><a href="#"><span>나의 게시물</span></a></li>
-			</ul>
-		
-		
-	<div class="mypage-form">	
-		<span>닉네임  <c:out value="${session.me_nickName}"/> | Lv.2</span> 
-		<span>선호 언어 <c:out value="${session.me_devLang}"/> </span> 
-		<span>총 게시물  <c:out value="${MyPostCnt}"/> </span>
-		<span>총 댓글	<c:out value="${MyCommentCnt}"/> </span>
-		<span>총 방문일 2</span>
-	 <!-- <span>가입 날짜</span> <c:out value="${session.me_regDate}"/> -->
+    <div class="mypage">
+        <h2><span style="color: #1d3a6d;"><c:out value="${session.me_nickName}"/></span>의 마이페이지</h2>
+        <div class="mypage-form">
+            <ul class="mypage-tap">
+                <li class="mypage-tapmenu on"><a href="#">내 활동</a></li>
+                <li class="mypage-tapmenu"><a href="#">정보 수정</a></li>
+                <hr>
+                <li class="mypage-tapmenu"><a href="#">게시글</a></li>
+                <li class="mypage-tapmenu"><a href="#">답변</a></li>
+            </ul>
 
+            <div class="mypage-con">
+                <div class="left-dash">
+                    <ul class="mymy">
+                        <li><img src="https://clubsports.gcu.edu/wp-content/uploads/Coach-Avator.png" alt="" width="100px;"></li>
+                        <li class="mypage_nick"><b><c:out value="${session.me_nickName}"/></b> Lv.2</li>
+                        <li><c:out value="${session.me_devLang}"/></li>
+                        <li><c:out value="${session.me_regDate}"/></li>
+                    </ul>
+                </div>
+                <div class="right-dash">
+                    <ul class="activity">
+                        <li class="myPost">
+                            <div class="activity-title">총 게시물</div>
+                            <div class="activity-con"><c:out value="${MyPostCnt}"/></div>
+                        </li>
+                        <li class="myPost">
+                            <div class="activity-title">총 댓글</div>
+                            <div class="activity-con"><c:out value="${MyCommentCnt}"/></div>    
+                        </li>
+                        <li class="myPost">
+                            <div class="activity-title">총 방문 수</div>
+                            <div class="activity-con">5</div>     
+                        </li>
+                    </ul>
+                    
+                </div>
+
+
+                    
+            </div>
+        </div>
     </div>
-    
-</div>
 
 <!-- 하단 헤더 불러오기 -->
  <jsp:include page="../sub_footer.jsp"></jsp:include>

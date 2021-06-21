@@ -35,6 +35,13 @@ public class AnswerController {
 		answerVO.setAns_writer(request.getParameter("ans_writer"));
 		
 		answerService.write(answerVO);
+		
+		// 방금 넣은 답변의 ans_num 조회
+		int ans_num = answerService.getLastAnswer();
+		
+		// 부모 답글에 group_num 할당
+		answerService.updateParent(ans_num);
+		
 		boardService.updateAnsCnt(Integer.parseInt(request.getParameter("po_num")));
 		
 		return "redirect:/board/notice_view?po_num=" + request.getParameter("po_num");
@@ -68,10 +75,41 @@ public class AnswerController {
 		answerVO.setAns_num(ans_num);
 		answerVO.setPo_num(po_num);
 		
-		answerService.delete(answerVO);
+		AnswerVO parentVO = answerService.detail(answerVO);
+		
+		// 부모 댓글이면 자식댓글까지 다 삭제
+		if(parentVO.getAns_depth() == 0) {
+			answerService.deleteAll(answerVO);
+		}
+		else {  // 자식 댓글은 자식 하나만 삭제
+			answerService.delete(answerVO);
+		}
+		
 		boardService.updateAnsCnt(po_num);
 		
 		return "redirect:/board/notice_view?po_num=" + po_num;
 	}
 	
+	// 대댓글 작성
+	@RequestMapping("/answer/ans_write")
+	public String answeransWrite(AnswerVO answerVO) throws Exception {
+		logger.info("대댓글 작성");
+		
+		AnswerVO re_answerVO = new AnswerVO();
+		
+		// 그룹 내 순서 조회
+		int group_order = answerService.selectMaxGroupOrder(answerVO.getAns_num());
+		
+		re_answerVO.setAns_group_num(answerVO.getAns_num());
+		re_answerVO.setAns_contents(answerVO.getAns_contents());
+		re_answerVO.setPo_num(answerVO.getPo_num());
+		re_answerVO.setAns_depth(1);
+		re_answerVO.setAns_group_order(group_order + 1);
+		
+		// 대댓글 입력
+		answerService.childInsert(re_answerVO);
+		boardService.updateAnsCnt(answerVO.getPo_num());
+		
+		return "redirect:/board/notice_view?po_num=" + answerVO.getPo_num();
+	}
 }

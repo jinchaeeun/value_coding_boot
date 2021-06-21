@@ -12,18 +12,18 @@
 
 <c:set var="session" value="${sessionScope.login}" scope="application"/>
 
-	<div class="mypage-box">
-		<h1><span class="usr_nickname"><c:out value="${session.me_nickName}"/></span>님 마이페이지</h1>
-			<ul class="mypage-tap">
-				<li class="mypage-tapmenu on" id="mytap1"><a href="#" id="mypage-menu1"><span>내 정보 수정</span></a></li>
-				<li class="mypage-tapmenu" id="mytap2"><a href="#"><span>나의 게시물</span></a></li>
-				<li class="mypage-tapmenu" id="mytap3"><a href="<c:url value='/member/mypage_comment'/>"><span>나의 댓글</span></a></li>
-			</ul>
-	
-	<div id="ajax_div">	
-	
-	<c:if test="${session.me_singupcode != 1}">
-	
+ <div class="mypage">
+        <h2><span style="color: #1d3a6d;">죽전동딩코</span>의 마이페이지</h2>
+        <div class="mypage-form">
+            <ul class="mypage-tap">
+                <li class="mypage-tapmenu"><a href="#">내 활동</a></li>
+                <li class="mypage-tapmenu on"><a href="#">정보 수정</a></li>
+                <hr>
+                <li class="mypage-tapmenu"><a href="#">게시글</a></li>
+                <li class="mypage-tapmenu"><a href="#">답변</a></li>
+            </ul>
+            
+    <c:if test="${session.me_singupcode != 1}">
 	<form method ="post" name="mypageForm" action="<c:url value='/member/ModifyMypage'/>">
 		<div class="mypage-form">
 				<span>소셜 로그인 가입자</span>
@@ -53,45 +53,49 @@
 		</form>
 	</c:if>
 	
-	<c:if test="${session.me_singupcode == 1}">
+	
+		<c:if test="${session.me_singupcode == 1}">
 		<form method ="post" name="mypageForm" action="<c:url value='/member/ModifyMypage'/>">
-		<div class="mypage-form">
-				<span>닉네임</span>
-				<input type="text" name="me_nickName" id="me_nickName" value='<c:out value="${session.me_nickName}"/>' />
-				<span>아이디(이메일)</span>
-				<input type="text" name="me_id" id="mypage_Email" value='<c:out value="${session.me_id}"/>' readonly onfocus="this.blur()" />
-				
-				<span>비밀번호</span>
-				<input type="password" name="me_pass" id="me_pass" placeholder="비밀번호" />
-				
-				<span>비밀번호 확인</span>
-				<input type="password" name="passConfig" id="me_pass2" placeholder="비밀번호 확인" />
-				
-				<span>선호 개발 언어</span>
-				<div class="checkDevLangDiv">
-					<ul>
-						<li><label><input type="checkbox" name="me_devLang" value="Java">Java</label></li>
-						<li><label><input type="checkbox" name="me_devLang" value="Python">Python</label></li>
-						<li><label><input type="checkbox" name="me_devLang" value="JSP">JSP</label></li>
-						<li><label><input type="checkbox" name="me_devLang" value="PHP">PHP</label></li>
-						<li><label><input type="checkbox" name="me_devLang" value="C">C</label></li>
-						<li><label><input type="checkbox" name="me_devLang" value="C++">C++</label></li>
-						<li><label><input type="checkbox" name="me_devLang" value="R">R</label></li>
-						<li><label><input type="checkbox" name="me_devLang" value="Git">Git</label></li>
-						<li><label><input type="checkbox" name="me_devLang" value="Etc">기타</label></li>
-					</ul>
-				</div>
+		     <div class="mypage-con-column">
+                <div class="mypage-mod">
+                    <span>닉네임</span>
+                    <input type="text" name="me_nickName" id="me_nickName" value='죽전동딩코' />
+                    <span>아이디(이메일)</span>
+                    <input type="text" name="me_id" id="mypage_Email" value='032605' readonly onfocus="this.blur()" />
+                    
+                    <span>비밀번호</span>
+                    <input type="password" name="me_pass" id="me_pass" placeholder="비밀번호" />
+                    <span>비밀번호 확인</span>
+                    <input type="password" name="passConfig" id="me_pass2" placeholder="비밀번호 확인" />
+                    
+                    <span>선호 개발 언어</span>
+                    <div class="checkDevLangDiv">
+                        <ul>
+                            <li><label><input type="checkbox" name="me_devLang" value="Java">Java</label></li>
+                            <li><label><input type="checkbox" name="me_devLang" value="Python">Python</label></li>
+                            <li><label><input type="checkbox" name="me_devLang" value="JSP">JSP</label></li>
+                            <li><label><input type="checkbox" name="me_devLang" value="PHP">PHP</label></li>
+                            <li><label><input type="checkbox" name="me_devLang" value="C">C</label></li>
+                            <li><label><input type="checkbox" name="me_devLang" value="C++">C++</label></li>
+                            <li><label><input type="checkbox" name="me_devLang" value="R">R</label></li>
+                            <li><label><input type="checkbox" name="me_devLang" value="Git">Git</label></li>
+                            <li><label><input type="checkbox" name="me_devLang" value="Etc">기타</label></li>
+                        </ul>
+                    </div>
 				
 				<button class="btn btn-success" type="button" onclick="mypage_SubmitForm();">회원정보 수정</button>
-				<a href="<c:url value='/member/memberDeleteView'/>">회원탈퇴</a>
-		</div>	
+				<a href="<c:url value='/member/memberDeleteView'/>" class="memberdelete">회원탈퇴</a>
+				</div>
+			</div>	
 		</form>
-	</c:if>
-	</div>
-
+		</c:if>
+	
+ 
+        </div>
+    </div>
 </div>
-
-</div>
+	
+	
 
 <script>
 
