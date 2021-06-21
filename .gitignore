@@ -1,1 +1,16 @@
-*.class
+bin/main/log4jdbc.log4j2.properties
+bin/main/logback.xml
+bin/main/com/hustar/value_coding_boot/configuration/WebSocketConfig.class
+bin/main/com/hustar/value_coding_boot/controller/CodingController.class
+bin/main/com/hustar/value_coding_boot/controller/MessageController.class
+bin/main/com/hustar/value_coding_boot/dao/MemberDAO.class
+bin/main/com/hustar/value_coding_boot/dao/MemberDAOImpl.class
+bin/main/com/hustar/value_coding_boot/service/MemberServiceImpl.class
+bin/main/static/css/bootstrap.min.css
+LOG_PATH_IS_UNDEFINED/error.log
+LOG_PATH_IS_UNDEFINED/today_common.log
+LOG_PATH_IS_UNDEFINED/archived/today_common.log
+LOG_PATH_IS_UNDEFINED/daily_common/2021-06-19.log
+LOG_PATH_IS_UNDEFINED/daily_error/2021-06-19.log
+src/main/resources/log4jdbc.log4j2.properties
+src/main/resources/logback.xml
