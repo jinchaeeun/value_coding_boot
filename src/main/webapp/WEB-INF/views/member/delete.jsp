@@ -10,12 +10,14 @@
 <div class="circle-small"></div>
 <div class="circle-big"></div>
 
+<div class="mypage">
+        <h1><span style="color: #1d3a6d;"><c:out value="${session.me_nickName}"/></span>님 정말 회원탈퇴하시겠습니까?</h1>
+        <div class="mypage-form">
 
-	<div class="mypage-box">
-		<h1><span class="usr_nickname"><c:out value="${session.me_nickName}"/></span>님 정말 회원탈퇴?</h1>
-		
-		<form method ="post" action="<c:url value='/member/memberDelete'/>">
-		<div class="mypage-form">
+			<form method ="post" action="<c:url value='/member/memberDelete'/>">
+		     <div class="mypage-con-column">
+                <div class="mypage-mod">
+				
 				<span>아이디(이메일)</span>
 				<input type="text" name="me_id" id="mypage_Email" value='<c:out value="${session.me_id}"/>' readonly onfocus="this.blur()" />
 				
@@ -26,21 +28,26 @@
 						비밀번호가 맞지 않습니다.
 					</c:if>
 				</div>
-				 
-				<button class="btn btn-success" type="submit" id="submit">회원탈퇴</button>
-				.
-				<button class="cancle" type="button">취소</button>
+				
+				<button class="deleteBtn" type="submit" id="submit">회원탈퇴</button>
+				<button class="delete_cancle" type="button">취소</button>
+				</div>
 			</div>	
-			</form>
+		</form>
+		
+	</div>	
+
+</div>
+
+
 			
-	</div>
 
 <script type="text/javascript">
 		$(document).ready(function(){
 			// 취소
-			$(".cancle").on("click", function(){
+			$(".delete_cancle").on("click", function(){
 				
-				location.href = "/member/mypage";
+				location.href = "/member/mypage_modify";
 						    
 			})
 		

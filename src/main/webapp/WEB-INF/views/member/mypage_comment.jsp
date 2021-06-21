@@ -10,7 +10,7 @@
 <div class="circle-big"></div>	
 
 <div class="mypage">
-        <h2><span style="color: #1d3a6d;">죽전동딩코</span>의 마이페이지</h2>
+        <h2><span style="color: #1d3a6d;"><c:out value="${session.me_nickName}"/></span>의 마이페이지</h2>
         <div class="mypage-form">
             <ul class="mypage-tap">
                 <li class="mypage-tapmenu" id="btn1"><a href="#">내 활동</a></li>
