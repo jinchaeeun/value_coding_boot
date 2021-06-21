@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:set var="session" value="${sessionScope.login}" scope="application"/>
+
 <!DOCTYPE html>
 <html lang="en" class="vlt-is--custom-cursor">
 	<head>
@@ -56,7 +58,8 @@
 
 				<div class="tnb">
 
-					<ul>					
+					<ul>
+						<li><a href="#"><c:out value="${session.me_nickName}"/></a></li>					
 						<!-- 로그인이 된 경우 -->					
 						<c:if test="${not empty session}">
 							<div class="notification waiting">
@@ -93,7 +96,7 @@
 									</li>
 								</ul>
 							</li>
-
+						<!-- 로그인이 된 경우 -->
 							<li><a href="<c:url value='/member/actionLogout.do'/>">로그아웃</a></li>
 							<li><a href="<c:url value='/member/mypage_activity'/>">마이페이지</a></li>
 							

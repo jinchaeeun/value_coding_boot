@@ -7,63 +7,7 @@
 
 <div class="circle-small"></div>
 <div class="circle-big"></div>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	
-<script type="text/javascript">
-var msg = '<c:out value="${msg}"/>';
-if (msg != ''){
-	alert(msg);
-}
 
-			function submitForm(){
-				if($("#me_nickName").val()==""){
-					alert("닉네임을 입력해주세요.");
-					$("#me_nickName").focus();
-				} else if($("#me_id").val()==""){
-					alert("아이디를 입력해주세요.");
-					$("#me_id").focus();
-				} else if($("#me_pass").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#me_pass").focus();
-				} else if($("#me_pass2").val()==""){
-					alert("비밀번호 확인을 입력해주세요.");
-					$("#me_pass2").focus();
-				} else if($("#me_pass").val() != $("#me_pass2").val()){
-					alert("비밀번호 입력 값이 다릅니다.");
-					$("#me_pass2").focus();
-				}else{
-					document.frm.submit();
-				}
-			};
-function checkId(){
-	var me_id = document.frm.me_id.value;
-	
-	$.ajax({
-		type: "POST",
-		url: "<c:url value='/member/checkId.do'/>",
-		dataType: "JSON",
-		data: {"me_id": me_id},
-		success : function(data){
-			console.log(data);
-			if(data.duplicate == true){
-				alert("이미 가입된 ID입니다.");
-			}else{
-				alert("가입 가능한 ID입니다.");
-			}
-		},
-		error : function(jqXHR, textStatus, errorThrown){
-			console.log(textStatus);
-		}
-		
-	})
-	
-}
-		
-		
-	</script>
-	
 <div class="join-box">
 	<h1>회원가입</h1>
 	<div class="join">
@@ -77,8 +21,9 @@ function checkId(){
 
 			<div class="form-group has-feedback">
 				<label class="control-label" for="me_id">아이디(이메일)</label> 
-				<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" ><a href="javascript:checkId();">중복확인</a>
-				
+				<div class="id_check">
+					<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" ><a href="javascript:checkId();">중복확인</a>
+				</div>
 			</div>
 
 			<div class="form-group has-feedback">
@@ -131,3 +76,55 @@ function checkId(){
 
 <!-- 하단 헤더 불러오기 -->
 <jsp:include page="../sub_footer.jsp"></jsp:include>
+
+<script type="text/javascript">
+var msg = '<c:out value="${msg}"/>';
+if (msg != ''){
+	alert(msg);
+}
+
+			function submitForm(){
+				if($("#me_nickName").val()==""){
+					alert("닉네임을 입력해주세요.");
+					$("#me_nickName").focus();
+				} else if($("#me_id").val()==""){
+					alert("아이디를 입력해주세요.");
+					$("#me_id").focus();
+				} else if($("#me_pass").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#me_pass").focus();
+				} else if($("#me_pass2").val()==""){
+					alert("비밀번호 확인을 입력해주세요.");
+					$("#me_pass2").focus();
+				} else if($("#me_pass").val() != $("#me_pass2").val()){
+					alert("비밀번호 입력 값이 다릅니다.");
+					$("#me_pass2").focus();
+				}else{
+					document.frm.submit();
+				}
+			};
+function checkId(){
+	var me_id = document.frm.me_id.value;
+	
+	$.ajax({
+		type: "POST",
+		url: "<c:url value='/member/checkId.do'/>",
+		dataType: "JSON",
+		data: {"me_id": me_id},
+		success : function(data){
+			console.log(data);
+			if(data.duplicate == true){
+				alert("이미 가입된 ID입니다.");
+			}else{
+				alert("가입 가능한 ID입니다.");
+			}
+		},
+		error : function(jqXHR, textStatus, errorThrown){
+			console.log(textStatus);
+		}
+		
+	})
+	
+}		
+		
+</script>

@@ -56,7 +56,8 @@
 
 				<div class="tnb">
 
-					<ul>					
+					<ul>
+						<li><a href="#"><c:out value="${session.me_nickName}"/></a></li>					
 						<!-- 로그인이 된 경우 -->					
 						<c:if test="${not empty session}">
 							<div class="notification waiting">
