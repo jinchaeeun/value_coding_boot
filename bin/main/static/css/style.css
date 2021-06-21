@@ -106,10 +106,10 @@ img {
 .sub-gnb > li:first-child{border: 0;}
 .sub-gnb > li a {font-size: 1rem;}
 
-.notice-sub {margin-top: 10px; margin-left: -130px; width: 400px;}
+.notice-sub {margin-top: 10px; margin-left: -130px; width: 400px; max-height: 1100px; overflow-y: scroll;}
 .notice-sub > li a {line-height: 1.5;}
 .date-span {margin-left: 7px; color: #ccc;}
-.notice-info {display: inline-block; width: 323px;}
+.notice-info {display: inline-block; width: 308px;}
 
 .delete-btn {
   margin-top: 3px;
