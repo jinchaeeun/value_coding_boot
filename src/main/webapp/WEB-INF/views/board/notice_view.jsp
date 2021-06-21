@@ -45,7 +45,7 @@
 			<form action="/answer/write" method="post" name="answerForm">
 				<div class="answer-write-wrap">
 					<div class="answer-write-box">
-						<p><c:out value="${session.me_nickName}"/><input type="hidden" name="ans_writer" value="${session.me_nickName}"></p>
+						<p><c:out value="${session.me_nickName}"/><input type="hidden" name="ans_writer" value='<c:out value="${session.me_nickName}"/>'></p>
 						<textarea rows="" cols="" name="ans_contents" placeholder="댓글을 남겨주세요."></textarea>
 						<input type="hidden" name="po_num" value="${read.po_num}"/>
 						<input type="button" onclick="answerSubmit();" value="등록"/>
@@ -138,6 +138,7 @@
 		htmls += '<form action="/answer/ans_write" method="post" name="ans_answer_form">';
 		htmls += '<input type="hidden" name="po_num" value="${read.po_num}"/>';
 		htmls += '<input type="hidden" name="ans_num" value="'+ans_num+'"/>';  // 부모의 번호 가져옴 => ans_group_num
+		htmls += '<p><c:out value="${session.me_nickName}"/><input type="hidden" name="ans_writer" id="ans_writer" value="<c:out value='${session.me_nickName}'/>"></p>';	//작성자 추가
 		htmls += '<textarea name="ans_contents" rows="" cols="" style="width:100%; height: 100px;" placeholder="댓글을 남겨주세요."></textarea>';
 		htmls += '<a href="/board/notice_view?po_num='+po_num+'">취소 </a>';
 		htmls += '<a href="#none" onclick="ans_answer_form_submit();"> 완료</a>';
@@ -150,7 +151,7 @@
 	// 답글의 답글 입력
 	function ans_answer_form_submit() {
 		var contents = $("ans-answer-contents");
-		
+		console.log($('#ans_writer').val());
 		if(contents == '') {
 			alert("답글을 입력하세요!");
 		}

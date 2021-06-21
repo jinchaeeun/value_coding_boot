@@ -8,7 +8,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 @SpringBootApplication(exclude = {MultipartAutoConfiguration.class})
 public class ValueCodingBootApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ValueCodingBootApplication.class, args);
 	}

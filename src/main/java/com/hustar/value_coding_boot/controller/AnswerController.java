@@ -103,6 +103,7 @@ public class AnswerController {
 		re_answerVO.setAns_group_num(answerVO.getAns_num());
 		re_answerVO.setAns_contents(answerVO.getAns_contents());
 		re_answerVO.setPo_num(answerVO.getPo_num());
+		re_answerVO.setAns_writer(answerVO.getAns_writer());
 		re_answerVO.setAns_depth(1);
 		re_answerVO.setAns_group_order(group_order + 1);
 		

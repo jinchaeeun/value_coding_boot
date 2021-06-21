@@ -43,6 +43,7 @@
 			})
 
 			let mouseCursor = document.querySelector(".cursor");
+			let logoLinks = document.querySelectorAll(".header h1");
 			let tnbLinks = document.querySelectorAll(".tnb li a");
 			let gnbLinks = document.querySelectorAll(".gnb li a");
 			let goLinks = document.querySelectorAll(".go-btn");
@@ -54,6 +55,15 @@
 				mouseCursor.style.left = e.pageX + "px";
 				mouseCursor.style.top = e.pageY - scrollY + "px";
 			}
+			
+			logoLinks.forEach((link) => {
+				link.addEventListener("mouseover", () => {
+					mouseCursor.classList.add("cursor-grow");
+				});
+				link.addEventListener("mouseleave", () => {
+					mouseCursor.classList.remove("cursor-grow");
+				});
+			});
 
 			tnbLinks.forEach((link) => {
 				link.addEventListener("mouseover", () => {

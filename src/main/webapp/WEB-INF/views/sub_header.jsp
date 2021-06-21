@@ -63,14 +63,17 @@
 						<!-- 로그인이 된 경우 -->					
 						<c:if test="${not empty session}">
 							<div class="notification waiting">
-								<span class="number">17</span>
+								<span class="number"></span>
 							</div>
 						
 							<li class="notice"><a>알림</a>
 								<ul class="notice-sub sub-gnb">
 									<li>
+										<span class="delete-all">전체 삭제</span>
+									</li>
+									<li>
 										<div class="notice-info">
-											<a href="none">새로운 환경에서 로그인 되었습니다.</a>
+											<a class="notice-query" href="none">새로운 환경에서 로그인 되었습니다.</a>
 											<span class="date-span">방금</span>
 										</div>
 									<span class="delete-btn"></span>
@@ -78,7 +81,7 @@
 
 									<li>								
 										<div class="notice-info">
-											<a href="none">'스프링 부트 모드 선택' 질문의 답변이 등록되었습니다.</a>
+											<a class="notice-query" href="none">'스프링 부트 모드 선택' 질문의 답변이 등록되었습니다.</a>
 											<span class="date-span">25분 전</span>
 										</div>
 										<span class="delete-btn"></span>
@@ -86,19 +89,24 @@
 
 									<li>
 										<div class="notice-info">
-											<a href="none">'UEFI와 레거시 부팅의 차이점' 질문의 답변이 등록되었습니다.</a>
+											<a class="notice-query" href="none">'UEFI와 레거시 부팅의 차이점' 질문의 답변이 등록되었습니다.</a>
 											<span class="date-span">2시간 전</span>
 										</div>
 										<span class="delete-btn"></span>
-									</li>
-									<li>
-										<span class="delete-all">전체 삭제</span>
 									</li>
 								</ul>
 							</li>
 
 							<li><a href="<c:url value='/member/actionLogout.do'/>">로그아웃</a></li>
 							<li><a href="<c:url value='/member/mypage_activity'/>">마이페이지</a></li>
+							
+							<script>
+					            let Sub = document.querySelector('.notice-sub');
+					            let SubCount = Sub.childElementCount - 1;
+					            
+					            let X = document.getElementsByClassName("number")[0];
+					            X.innerText = SubCount;
+							</script>
 						</c:if>
 
 						<!-- 로그인이 안된 경우 -->
