@@ -42,7 +42,7 @@ select {margin:0}
 p {margin:0;padding:0;word-break:break-all}
 hr {display:none}
 pre {overflow-x:scroll;font-size:1em}
-a {color:#000;text-decoration:none; cursor: pointer;}
+a {color:#000; text-decoration:none; cursor: pointer;}
 
 *, :after, :before {
     -webkit-box-sizing: border-box;
@@ -506,7 +506,8 @@ svg:not(:root) {
 .join-box ul li{float: left; width: 33.33%; } /*3개 한 줄 차지*/
 .join-box ul li:nth-child(3n+1) { clear: both; } /*4번째부터 스타일 초기화해서 다음 줄에 배치 */
 
-.join button{width: 100%; height: 40px; background: #c3323a; border: 1px solid #7d7d7d; color: #fff;}
+.join button{width: 100%; height: 40px; background: #1d3a6d; border: 1px solid #7d7d7d; color: #fff;}
+.checkId{color:#1d3a6d;}
 .join-box a{text-align: center;}
 
 .button{width: 30px; margin:0 auto;}

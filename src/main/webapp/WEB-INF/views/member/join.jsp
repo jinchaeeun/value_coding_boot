@@ -7,9 +7,7 @@
 
 <div class="circle-small"></div>
 <div class="circle-big"></div>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
 	
 <script type="text/javascript">
 var msg = '<c:out value="${msg}"/>';
@@ -17,26 +15,41 @@ if (msg != ''){
 	alert(msg);
 }
 
-			function submitForm(){
-				if($("#me_nickName").val()==""){
-					alert("닉네임을 입력해주세요.");
-					$("#me_nickName").focus();
-				} else if($("#me_id").val()==""){
-					alert("아이디를 입력해주세요.");
-					$("#me_id").focus();
-				} else if($("#me_pass").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#me_pass").focus();
-				} else if($("#me_pass2").val()==""){
-					alert("비밀번호 확인을 입력해주세요.");
-					$("#me_pass2").focus();
-				} else if($("#me_pass").val() != $("#me_pass2").val()){
-					alert("비밀번호 입력 값이 다릅니다.");
-					$("#me_pass2").focus();
-				}else{
-					document.frm.submit();
-				}
-			};
+
+function submitForm(){
+
+	var me_nickName = $.trim($("#me_nickName").val());
+	var me_id = $.trim($("#me_id").val());
+	var me_pass = $.trim($("#me_pass").val());
+	var me_pass2 = $.trim($("#me_pass2").val());
+	
+	// 이메일 정규식
+	var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
+
+	 if(me_nickName ==""){
+		alert("닉네임을 입력해주세요.");
+		$("#me_nickName").focus();
+	} else if( me_id ==""){
+		alert("아이디를 입력해주세요.");
+		$("#me_id").focus();
+	} else if (!me_id.match(regExp)){
+		alert("이메일 형식을 맞춰주세요");
+		$("#me_id").focus();
+	} else if(me_pass ==""){
+		alert("비밀번호를 입력해주세요.");
+		$("#me_pass").focus();
+	} else if(me_pass2 ==""){
+		alert("비밀번호 확인을 입력해주세요.");
+		$("#me_pass2").focus();
+	} else if(me_pass != me_pass2){
+		alert("비밀번호 입력 값이 다릅니다.");
+		$("#me_pass2").focus();
+	}else{
+		document.frm.submit();
+	}
+};
+
+
 function checkId(){
 	var me_id = document.frm.me_id.value;
 	
@@ -77,7 +90,7 @@ function checkId(){
 
 			<div class="form-group has-feedback">
 				<label class="control-label" for="me_id">아이디(이메일)</label> 
-				<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" ><a href="javascript:checkId();">중복확인</a>
+				<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" ><a href="javascript:checkId();" class="checkId">중복확인</a>
 				
 			</div>
 
@@ -96,24 +109,15 @@ function checkId(){
 				<label class="control-label" for="checkDevLangDiv">선호 개발 언어</label>
 				<div class="checkDevLangDiv">
 					<ul>
-						<li><label><input type="checkbox" name="me_devLang"
-								value="Java">Java</label></li>
-						<li><label><input type="checkbox" name="me_devLang"
-								value="Python">Python</label></li>
-						<li><label><input type="checkbox" name="me_devLang"
-								value="JSP">JSP</label></li>
-						<li><label><input type="checkbox" name="me_devLang"
-								value="PHP">PHP</label></li>
-						<li><label><input type="checkbox" name="me_devLang"
-								value="C">C</label></li>
-						<li><label><input type="checkbox" name="me_devLang"
-								value="C++">C++</label></li>
-						<li><label><input type="checkbox" name="me_devLang"
-								value="R">R</label></li>
-						<li><label><input type="checkbox" name="me_devLang"
-								value="Git">Git</label></li>
-						<li><label><input type="checkbox" name="me_devLang"
-								value="Etc">Etc</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="Java">Java</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="Python">Python</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="JSP">JSP</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="PHP">PHP</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="C">C</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="C++">C++</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="R">R</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="Git">Git</label></li>
+						<li><label><input type="checkbox" name="me_devLang" value="Etc">Etc</label></li>
 					</ul>
 				</div>
 			</div>

@@ -22,8 +22,9 @@
            
     <c:if test="${session.me_singupcode != 1}">
 	<form method ="post" name="mypageForm" action="<c:url value='/member/ModifyMypage'/>">
-		<div class="mypage-form">
-				<span>소셜 로그인 가입자</span>
+		<div class="mypage-con-column">
+			<div class="mypage-mod">
+				<span><b>소셜 로그인 가입자</b></span>
 				<span>닉네임</span>
 				<input type="text" name="me_nickName" id="me_nickName" value='<c:out value="${session.me_nickName}"/>' />
 				<span>아이디(이메일)</span>
@@ -45,7 +46,8 @@
 				</div>
 				
 				<button class="btn btn-success" type="button" onclick="mypageSNS_SubmitForm();">회원정보 수정</button>
-				<a href="<c:url value='/member/memberDeleteView'/>">회원탈퇴</a>
+				<a href="<c:url value='/member/memberDeleteView'/>" class="memberdelete">회원탈퇴</a>
+			</div>
 		</div>	
 		</form>
 	</c:if>

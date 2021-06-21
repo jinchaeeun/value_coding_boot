@@ -22,6 +22,7 @@
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
 
 		<!-- 스크롤시 fixed -->
 		<script src="../js/autofix.js"></script>
@@ -41,6 +42,8 @@
 
 		<!-- PC -->
 		<link rel="stylesheet" media="screen and (min-width: 1025px)" href="./css/pc.css">
+
+		
 	</head>
 
 	<body>
