@@ -408,13 +408,13 @@ img {
 /*login.html*/
 .login-box{margin: 200px auto; text-align: center;}
 .login-box .login{max-width: 500px; margin: 20px auto; border: 1px solid #e1e1e1; padding: 20px; background: #fff; display: grid; }
-.login-box .login input{margin: 10px 0; width: 100%; height: 40px; }
+.login-box .login input{margin: 10px 0; width: 100%; height: 40px; border-radius: 4px; border: 1px solid #1d3a6d;}
 
 .login input[type="checkbox"]{ width: 20px;}
 
 #chk-notice{width:20px;}
 
-.login button{width: 100%; height: 40px; background: #c3323a; border: 1px solid #90a17e; color: #fff;}
+.login button{width: 100%; height: 40px; background: #1d3a6d; border: 1px solid #1d3a6d; color: #fff; border-radius: 4px}
 
 /*---------SNS Login API-----------------------------------------------------------*/
 .login-box img{
