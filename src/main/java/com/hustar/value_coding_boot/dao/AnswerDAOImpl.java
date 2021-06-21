@@ -50,5 +50,35 @@ public class AnswerDAOImpl implements AnswerDAO {
 	public AnswerVO detail(AnswerVO answerVO) throws Exception {
 		return sqlSession.selectOne("mapper.answerMapper.selectDetail", answerVO);
 	}
+	
+	// 부모의 group_num 할당
+	@Override
+	public void updateParent(int ans_num) throws Exception {
+		sqlSession.update("mapper.answerMapper.updateParent", ans_num);
+	}
+
+	// 그룹 내 순서 조회
+	@Override
+	public int selectMaxGroupOrder(int ans_num) throws Exception {
+		return sqlSession.selectOne("mapper.answerMapper.selectMaxGroupOrder", ans_num);
+	}
+
+	// 대댓글 입력
+	@Override
+	public void childInsert(AnswerVO answerVO) throws Exception {
+		sqlSession.insert("mapper.answerMapper.childInsert", answerVO);
+	}
+	
+	// 최근 답글의 ans_num 조회
+	@Override
+	public int getLastAnswer() throws Exception {
+		return sqlSession.selectOne("mapper.answerMapper.getLastAnswer");
+	}
+	
+	// 답글 그룹 삭제
+	@Override
+	public void deleteAll(AnswerVO answerVO) throws Exception {
+		sqlSession.update("mapper.answerMapper.deleteAll", answerVO);
+	}
 
 }

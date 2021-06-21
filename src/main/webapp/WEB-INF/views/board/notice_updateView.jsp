@@ -44,7 +44,7 @@
 						<c:forEach items="${list}" var="file">
 							<div>
 								<a href="/board/downloadFile?fi_num=${file.fi_num}&po_num=${file.po_num}">
-									<i class="fa fa-download" aria-hidden="true"></i><c:out value=" ${file.fi_ori_filename}"/>[${file.fi_filesize}kb]
+									<i class="fa fa-download" aria-hidden="true"></i><c:out value=" ${file.fi_ori_filename}"/>
 								</a>
 								<a href="#" onclick="javascript:confirmDeleteFile(${file.fi_num}, ${file.po_num});">[삭제]</a>
 							</div>
