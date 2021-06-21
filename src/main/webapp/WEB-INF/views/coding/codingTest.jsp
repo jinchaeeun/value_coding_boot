@@ -5,7 +5,7 @@
 
 <div class="coding-wrap">
 	<div class="coding-box">
-		<iframe src="http://ideone.com" width="100%" ></iframe>
+		<iframe class="coding-frame" src="http://ideone.com" width="100%" ></iframe>
 	</div>
 </div>
 			

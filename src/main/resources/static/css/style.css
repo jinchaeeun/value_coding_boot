@@ -754,3 +754,15 @@ position:absolute; left:50%; transform:translateX(-50%); bottom:-7px; }
 .about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people .about-dev-img {display: inline-block; width: 20%; margin-right: 20px;}
 .about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people .about-dev-info {display: inline-block; width: 70%; vertical-align: middle;}
 .about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people .about-dev-info p {font-size: 15px;}
+
+/* 코딩연습 */
+
+.coding-wrap {
+	max-width: 70%;
+	margin: 0 auto;
+	margin-top: 6%;
+	overflow: hidden;
+}
+
+.coding-frame {height: 1070px;}
+

@@ -128,6 +128,8 @@
 								<li><a href="/board/notice_list?board=공지사항&num=1">공지사항</a></li>
 							</ul>
 						</li>
+						
+						<li><a href="<c:url value='/coding/codingTest'/>"># 코딩연습</a></li>
 
 						<li><a href="none"># 고객센터</a></li>
 					</ul>
