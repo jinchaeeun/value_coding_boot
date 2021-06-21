@@ -60,7 +60,7 @@
                     <span>닉네임</span>
                     <input type="text" name="me_nickName" id="me_nickName" value='<c:out value="${session.me_nickName}"/>' />
                     <span>아이디(이메일)</span>
-                    <input type="text" name="me_id" id="mypage_Email" value='032605' readonly onfocus="this.blur()" />
+                    <input type="text" name="me_id" id="mypage_Email" value='<c:out value="${session.me_id}"/>' readonly onfocus="this.blur()" />
                     
                     <span>비밀번호</span>
                     <input type="password" name="me_pass" id="me_pass" placeholder="비밀번호" />
