@@ -102,13 +102,13 @@ img {
 	border-left: 3px solid #1d3a6d;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-.sub-gnb > li{padding: 13px; border-top: 1px solid #eee;}
+.sub-gnb > li{padding: 13px; border-bottom: 1px solid #eee;}
 .sub-gnb > li:first-child{border: 0;}
 .sub-gnb > li a {font-size: 1rem;}
 
 .notice-sub {margin-top: 10px; margin-left: -130px; width: 400px;}
 .notice-sub > li a {line-height: 1.5;}
-.date-span {margin-left: 5px; color: #ccc;}
+.date-span {margin-left: 7px; color: #ccc;}
 .notice-info {display: inline-block; width: 323px;}
 
 .delete-btn {
@@ -124,8 +124,9 @@ img {
   cursor: pointer;
 }
 
-.notice-sub > li:last-child{padding: 0; border: 0;}
-.delete-all {color: #111; float: right; margin-right: 10px; margin-bottom: 10px; cursor: pointer;}
+.notice-sub > li:first-child{padding: 0; border: 0;}
+.notice-sub > li:last-child{border: 0;}
+.delete-all {color: #111; float: right; margin: 10px; margin-bottom: 15px; cursor: pointer;}
 
 .header .tnb{float: right; margin-top: 20px; margin-right: 20px;}
 .header .tnb > ul > li{float: left;}
@@ -140,7 +141,8 @@ img {
 	right: 17.7em;
 	width: 5.5em;
 	height: 5.5em;
-	padding: 17px 13px;
+	text-align: center;
+	padding-top: 16px;
 	display: inline-block;
 	position: absolute;
 	background-color: #1d3a6d;
@@ -818,3 +820,5 @@ svg:not(:root) {
 
 .coding-frame {height: 1070px;}
 
+
+.go-btn { margin-bottom: 200px;}

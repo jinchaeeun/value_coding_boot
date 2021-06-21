@@ -12,17 +12,6 @@ import com.hustar.value_coding_boot.vo.MemberVO;
 @Controller 
 public class HomeController { 
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET) 
-	public String home() throws Exception  { 
-		System.out.println("home controller start"); 
-		RequestAttributes requestAttribute = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        
-        MemberVO vo = (MemberVO) requestAttribute.getAttribute("login", RequestAttributes.SCOPE_SESSION);
-		System.out.println(vo);
-		
-		return "index"; 
-	} 
-	
 	@RequestMapping(value = "/about", method = RequestMethod.GET) 
 	public String about() throws Exception { 
 		System.out.println("home controller start"); 
