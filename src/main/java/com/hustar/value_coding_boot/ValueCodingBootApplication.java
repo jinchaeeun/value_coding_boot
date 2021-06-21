@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfigura
 
 @SpringBootApplication(exclude = {MultipartAutoConfiguration.class})
 public class ValueCodingBootApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ValueCodingBootApplication.class, args);
 	}
