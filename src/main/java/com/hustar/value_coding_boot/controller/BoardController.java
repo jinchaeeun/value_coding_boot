@@ -123,7 +123,7 @@ public class BoardController {
 		boardService.updateViewCnt(po_num);
 		
 		// 답글 조회
-		answerVO.setPo_num(po_num);
+		answerVO.setAns_po_num(po_num);
 		List<AnswerVO> answerList =  answerService.list(answerVO);
 		model.addAttribute("answerList", answerList);
 		

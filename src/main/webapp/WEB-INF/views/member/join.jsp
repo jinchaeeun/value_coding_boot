@@ -8,75 +8,6 @@
 <div class="circle-small"></div>
 <div class="circle-big"></div>
 
-	
-<script type="text/javascript">
-var msg = '<c:out value="${msg}"/>';
-if (msg != ''){
-	alert(msg);
-}
-
-
-function submitForm(){
-
-	var me_nickName = $.trim($("#me_nickName").val());
-	var me_id = $.trim($("#me_id").val());
-	var me_pass = $.trim($("#me_pass").val());
-	var me_pass2 = $.trim($("#me_pass2").val());
-	
-	// 이메일 정규식
-	var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
-
-	 if(me_nickName ==""){
-		alert("닉네임을 입력해주세요.");
-		$("#me_nickName").focus();
-	} else if( me_id ==""){
-		alert("아이디를 입력해주세요.");
-		$("#me_id").focus();
-	} else if (!me_id.match(regExp)){
-		alert("이메일 형식을 맞춰주세요");
-		$("#me_id").focus();
-	} else if(me_pass ==""){
-		alert("비밀번호를 입력해주세요.");
-		$("#me_pass").focus();
-	} else if(me_pass2 ==""){
-		alert("비밀번호 확인을 입력해주세요.");
-		$("#me_pass2").focus();
-	} else if(me_pass != me_pass2){
-		alert("비밀번호 입력 값이 다릅니다.");
-		$("#me_pass2").focus();
-	}else{
-		document.frm.submit();
-	}
-};
-
-
-function checkId(){
-	var me_id = document.frm.me_id.value;
-	
-	$.ajax({
-		type: "POST",
-		url: "<c:url value='/member/checkId.do'/>",
-		dataType: "JSON",
-		data: {"me_id": me_id},
-		success : function(data){
-			console.log(data);
-			if(data.duplicate == true){
-				alert("이미 가입된 ID입니다.");
-			}else{
-				alert("가입 가능한 ID입니다.");
-			}
-		},
-		error : function(jqXHR, textStatus, errorThrown){
-			console.log(textStatus);
-		}
-		
-	})
-	
-}
-		
-		
-	</script>
-	
 <div class="join-box">
 	<h1>회원가입</h1>
 	<div class="join">
@@ -90,8 +21,11 @@ function checkId(){
 
 			<div class="form-group has-feedback">
 				<label class="control-label" for="me_id">아이디(이메일)</label> 
+
+				<div class="id_check">
+					<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" ><a href="javascript:checkId();">중복확인</a>
+				</div>
 				<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" ><a href="javascript:checkId();" class="checkId">중복확인</a>
-				
 			</div>
 
 			<div class="form-group has-feedback">
@@ -135,3 +69,68 @@ function checkId(){
 
 <!-- 하단 헤더 불러오기 -->
 <jsp:include page="../sub_footer.jsp"></jsp:include>
+
+<script type="text/javascript">
+var msg = '<c:out value="${msg}"/>';
+if (msg != ''){
+	alert(msg);
+}
+
+function submitForm(){
+
+	var me_nickName = $.trim($("#me_nickName").val());
+	var me_id = $.trim($("#me_id").val());
+	var me_pass = $.trim($("#me_pass").val());
+	var me_pass2 = $.trim($("#me_pass2").val());
+	
+	// 이메일 정규식
+	var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
+
+	 if(me_nickName ==""){
+		alert("닉네임을 입력해주세요.");
+		$("#me_nickName").focus();
+	} else if( me_id ==""){
+		alert("아이디를 입력해주세요.");
+		$("#me_id").focus();
+	} else if (!me_id.match(regExp)){
+		alert("이메일 형식을 맞춰주세요");
+		$("#me_id").focus();
+	} else if(me_pass ==""){
+		alert("비밀번호를 입력해주세요.");
+		$("#me_pass").focus();
+	} else if(me_pass2 ==""){
+		alert("비밀번호 확인을 입력해주세요.");
+		$("#me_pass2").focus();
+	} else if(me_pass != me_pass2){
+		alert("비밀번호 입력 값이 다릅니다.");
+		$("#me_pass2").focus();
+	}else{
+		document.frm.submit();
+	}
+};
+function checkId(){
+	var me_id = document.frm.me_id.value;
+	
+	$.ajax({
+		type: "POST",
+		url: "<c:url value='/member/checkId.do'/>",
+		dataType: "JSON",
+		data: {"me_id": me_id},
+		success : function(data){
+			console.log(data);
+			if(data.duplicate == true){
+				alert("이미 가입된 ID입니다.");
+			}else{
+				alert("가입 가능한 ID입니다.");
+			}
+		},
+		error : function(jqXHR, textStatus, errorThrown){
+			console.log(textStatus);
+		}
+		
+	})
+	
+}		
+
+
+</script>

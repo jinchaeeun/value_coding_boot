@@ -343,14 +343,11 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-
-	
+	//로그아웃
 	@RequestMapping("/member/actionLogout.do")
-	public String actionLogout() throws Exception{
-		RequestAttributes requestAttribute = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-		requestAttribute.setAttribute("login", null, RequestAttributes.SCOPE_SESSION);
-		
-		return "redirect:/member/login";
+	public String actionLogout(HttpSession session) throws Exception{
+		session.invalidate();
+		return "redirect:/";
 	}
 	
 	//로그인 db 체크
