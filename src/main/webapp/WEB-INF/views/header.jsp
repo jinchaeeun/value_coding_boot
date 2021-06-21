@@ -95,7 +95,7 @@
 							</li>
 
 							<li><a href="<c:url value='/member/actionLogout.do'/>">로그아웃</a></li>
-							<li><a href="<c:url value='/member/mypage'/>">마이페이지</a></li>
+							<li><a href="<c:url value='/member/mypage_activity'/>">마이페이지</a></li>
 							
 							<!-- 구글 로그아웃 -->
 							<!-- <li><a href="/member/login" onclick="signOut();">구글 로그아웃</a></li> -->
