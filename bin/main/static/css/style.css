@@ -615,7 +615,7 @@ svg:not(:root) {
     margin: 5px;
 }
 .activity-title {padding: 10px; border-bottom: 2px solid #1d3a6d; font-size: 14px; font-weight: bold;}
-.activity-con {text-align: center; font-size: 40px; color: #1d3a6d; padding-top: 10px;}
+.activity-con {text-align: center; font-size: 40px; color: #1d3a6d;}
 
 /*페이징 */
 .paging ul {text-align: center; margin: 20px;}

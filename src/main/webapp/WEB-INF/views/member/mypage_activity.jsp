@@ -31,8 +31,8 @@
             <div class="mypage-con">
                 <div class="left-dash">
                     <ul class="mymy">
-                        <li><img src="https://clubsports.gcu.edu/wp-content/uploads/Coach-Avator.png" alt="" width="100px;"></li>
-                        <li class="mypage_nick"><b><c:out value="${session.me_nickName}"/></b> Lv.2</li>
+                        <li><img src="../img/user.png" alt="" width="100px;"></li>
+                        <li class="mypage_nick"><b><c:out value="${session.me_nickName}"/></b></li>
                         <li><c:out value="${session.me_devLang}"/></li>
                         <li><c:out value="${session.me_regDate}"/></li>
                     </ul>
@@ -47,10 +47,13 @@
                             <div class="activity-title">총 댓글</div>
                             <div class="activity-con"><c:out value="${MyCommentCnt}"/></div>    
                         </li>
+                        <!-- 
                         <li class="myPost">
                             <div class="activity-title">총 방문 수</div>
                             <div class="activity-con">5</div>     
                         </li>
+                        
+                         -->
                     </ul>
                     
                 </div>
