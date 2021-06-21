@@ -47,7 +47,7 @@
 			// 취소
 			$(".delete_cancle").on("click", function(){
 				
-				location.href = "/member/mypage_modify";
+				window.history.back();
 						    
 			})
 		
