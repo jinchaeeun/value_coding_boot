@@ -43,6 +43,12 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		dao.sosialJoin(vo);
 	}
+
+	@Override
+	public int checkCode(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.checkCode(vo);
+	}
 	
 	// 회원정보 수정
 	@Override
@@ -56,11 +62,37 @@ public class MemberServiceImpl implements MemberService {
 		dao.deleteMember(memberVO);
 	}
 	
+	// 내가 쓴 글 조회
 	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
 		return dao.ViewMyPostMember(memberVO);
 	}
 	
+	// 내가 쓴 댓글 조회
 	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
 		return dao.ViewMyCommentMember(memberVO);
+	}
+
+	// 내 총 작성글 갯수
+	@Override
+	public int getMyPostCnt(MemberVO memberVO)throws Exception{
+		return dao.getMyPostCnt(memberVO);
+	}
+	
+	// 내가 총 댓글 개수
+	@Override
+	public int getMyCommentCnt(MemberVO memberVO)throws Exception{
+		return dao.getMyCommentCnt(memberVO);
+	}
+	
+	// 전체 글 삭제
+	@Override
+	public void DeleteMyPost(MemberVO memberVO) throws Exception{
+		dao.DeleteMyPost(memberVO);
+	}
+	
+	// 전체 댓글 삭제
+	@Override
+	public void DeleteMyComment(MemberVO memberVO) throws Exception{
+		dao.DeleteMyComment(memberVO);
 	}
 }

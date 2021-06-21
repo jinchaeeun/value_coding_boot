@@ -23,6 +23,7 @@
 	<div class="mypage-form">	
 	
 
+	<a href="#" onclick="deleteAllConfirm(); return false;">전체 삭제</a>
 	<ul class="myquestion">
 
 		<c:forEach items="${commentVO }" var="myComment">
@@ -35,7 +36,7 @@
 			${myComment.po_num }  ${myComment.po_title } 	| ${myComment.po_boardname } 
 			<ul class="myquestion-manage">
 				<li><a href="<c:url value='/board/notice_updateView?po_num=${myComment.co_post_num }' />">수정</a></li>
-	  			<li class="myquestion-remove"><a href="#" onclick="deleteConfirm();return false;">삭제</a></li>			
+	  			<li class="myquestion-remove"><a href="#">삭제</a></li>			
 			</ul>
 		</li>
 		</c:forEach>
@@ -50,6 +51,7 @@
             <li><a href="#">다음</a></li>
             <li><a href="#">마지막</a></li>
         </ul>
+
     </div>
     
 </div>
@@ -57,14 +59,13 @@
 </div>
 <script>
 
-<!--
-function deleteConfirm(){
-	if(confirm('삭제하시겠습니까?') == true) {
-		location.href = ;
+
+
+function deleteAllConfirm(){
+	if(confirm('전체 삭제하시겠습니까?') == true) {
+		location.href = '<c:url value='/member/mypage_CommentDelete.do' />';
 	}
 }
-
--->
 
 </script>
 <!-- 하단 헤더 불러오기 -->

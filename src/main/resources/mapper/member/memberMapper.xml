@@ -32,6 +32,25 @@
    </select>
    <!-- //로그인 체크 -->
    
+     <!-- 소셜 로그인 멤버 등록 -->
+   <insert id="sosialJoin">
+	    INSERT INTO T_MEMBER(   ME_ID
+	   					       , ME_NICKNAME
+	   					       , ME_SINGUPCODE  	)
+	                  VALUES(    #{me_id}
+	                 		   , #{me_nickName}
+	                 		   , #{me_singupcode})
+    </insert>
+   <!-- //소셜 로그인 멤버 등록 -->
+   
+   <!-- 소셜 가입 코드 확인 -->
+   <select id="checkCode" resultType="int">
+	   SELECT ME_SINGUPCODE 
+	   FROM T_MEMBER
+	   WHERE ME_ID = #{me_id}
+   </select>
+   <!-- //소셜 가입 코드 확인 -->
+   
    <!-- 마이페이지 수정 -->
 	<update id="ModifyMypage">
 	  <![CDATA[
@@ -45,12 +64,12 @@
    <!-- //마이페이지 수정 -->
    
       <!-- 회원탈퇴 -->
-	<update id="deleteMember">
+	<delete id="deleteMember">
 	  <![CDATA[		
 			DELETE FROM T_MEMBER
 			WHERE ME_ID = #{me_id}
 		]]>
-	</update>
+	</delete>
    <!-- //회원탈퇴 -->
    
    <!-- 내가 쓴 글 조회 -->
@@ -75,6 +94,41 @@
    </select>
    <!-- // 내가 쓴 답변 조회  -->
    
+   <!--  내가 쓴 총 글 개수 -->
  
-   
+     <select id="getMyPostCnt" parameterType="memberVO" resultType="int">
+      <![CDATA[
+			SELECT COUNT(*) 
+			FROM t_post 
+			WHERE po_writer = #{me_id} AND po_deleteYn = 'N';
+  		]]>
+ 	 </select>
+    <!--  //내가 쓴 총 글 개수 -->
+ 	
+ 	<!--  내가 쓴 총 댓글 개수 --> 
+ 	<select id="getMyCommentCnt" parameterType="memberVO" resultType="int">
+      <![CDATA[
+			SELECT COUNT(*) 
+			FROM t_comment 
+			WHERE co_user_id = #{me_id};
+  		]]>
+ 	 </select>
+ 	<!--  //내가 쓴 총 댓글 개수 --> 
+ 	 
+ 	 <!-- 내가 쓴 글 전체 삭제 -->
+ 	 <delete id="DeleteMyPost" parameterType="memberVO">
+ 	 <![CDATA[
+ 	 	DELETE FROM T_POST WHERE po_writer = #{me_id} AND po_deleteYn = 'N';
+ 	 ]]>
+ 	 </delete>
+ 	 <!-- //내가 쓴 글 전체 삭제 -->
+ 	 
+ 	 <!-- 내가 쓴 댓글 전체 삭제 -->
+ 	 <delete id="DeleteMyComment" parameterType="memberVO">
+ 	 <![CDATA[
+ 	 	DELETE FROM T_COMMENT WHERE co_user_id = #{me_id};
+ 	 ]]>
+ 	 </delete>
+ 	 <!-- //내가 쓴 댓글 전체 삭제 -->
+
 </mapper>

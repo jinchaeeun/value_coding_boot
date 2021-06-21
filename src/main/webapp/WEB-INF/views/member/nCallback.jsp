@@ -30,7 +30,8 @@
    				if(data.login == true){
    					location.href = "<c:url value='/'/>";	//메인 index로 이동
    				}else{
-   					alert('로그인에 실패하였습니다.');
+   					alert('해당 버튼으로 가입하지 않은 계정입니다. 가입한 계정으로 다시 시도하여 주십시오.');
+   					location.href = "<c:url value='/member/login'/>";
    				}
    			},
    			error : function(jqXHR, textStatus, errorThrown){
@@ -77,7 +78,7 @@
                sns_id=naverLogin.user.email;
                sns_nick=naverLogin.user.nickname;
                
-               confirm("네이버 로그인 성공 "+ naverLogin.user.email + naverLogin.user.nickname + sns_type);
+               //confirm("네이버 로그인 성공 "+ naverLogin.user.email + naverLogin.user.nickname + sns_type);
                snsJoinInsert();	//호출
             
 //               location.href = "<c:url value='/'/>";

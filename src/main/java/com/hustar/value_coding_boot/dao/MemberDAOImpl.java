@@ -31,6 +31,17 @@ public class MemberDAOImpl implements MemberDAO {
 		return (MemberVO) sql.selectOne(sql_id, memberVO);
 	}
 	
+	//소셜 로그인(가입)
+	@Override
+	public void sosialJoin(MemberVO vo) throws Exception {
+		sql.insert("memberMapper.sosialJoin", vo);
+	}
+
+	@Override
+	public int checkCode(MemberVO vo) throws Exception {
+		return sql.selectOne("memberMapper.checkCode", vo);
+	}
+	
 	// 회원정보 수정
 	@Override
 	public void ModifyMypage(MemberVO memberVO)throws Exception{
@@ -54,9 +65,28 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
 		return sql.selectList("ViewMyCommentMember", memberVO);
 	}
-	//소셜 로그인(가입)
+
+	// 내가 쓴 글 개수
 	@Override
-	public void sosialJoin(MemberVO vo) throws Exception {
-		sql.insert("memberMapper.sosialJoin", vo);
+	public int getMyPostCnt(MemberVO memberVO) throws Exception{
+		return sql.selectOne("memberMapper.getMyPostCnt", memberVO);
+	}
+	
+	// 내가 총 댓글 개수
+	@Override
+	public int getMyCommentCnt(MemberVO memberVO)throws Exception{
+		return sql.selectOne("getMyCommentCnt", memberVO);
+	}
+	
+	// 전체 글 삭제
+	@Override
+	public void DeleteMyPost(MemberVO memberVO)throws Exception{
+		sql.delete("DeleteMyPost",memberVO);
+	}
+
+	// 전체 댓글 삭제
+	@Override
+	public void DeleteMyComment(MemberVO memberVO)throws Exception{
+		sql.delete("DeleteMyComment",memberVO);
 	}
 }

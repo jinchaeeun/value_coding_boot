@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -31,6 +32,7 @@ import com.hustar.value_coding_boot.service.MemberService;
 import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
+import com.hustar.value_coding_boot.vo.Paging;
 
 @Controller 
 @RequestMapping("/member/**")
@@ -102,6 +104,7 @@ public class MemberController {
 		
 		// 로그인 필수
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		System.out.println("로그인 세션 " + loginVO);
 		
 		if(loginVO == null) {
 			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
@@ -113,7 +116,7 @@ public class MemberController {
 	
 	// 내가 작성한 질문
 	@RequestMapping("/member/mypage_board") 
-	public String mypage_board(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
+	public String mypage_board(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception { 
 		
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
 		
@@ -127,6 +130,10 @@ public class MemberController {
 		List<BoardVO> boardVO = (List<BoardVO>)service.ViewMyPostMember(loginVO);
 		model.addAttribute("boardVO",boardVO);
 		
+		Paging page = new Paging();
+		
+
+		
 		/*
 		CommentVO commentVO = (CommentVO)service.CountComment();
 		model.addAttribute("commentVO", commentVO);
@@ -135,6 +142,25 @@ public class MemberController {
 		return "member/mypage_board"; 
 	}
 	
+	// 내 글 전체 삭제
+	@RequestMapping("/member/mypage_BoardDelete.do")
+	public String mypage_boardDelete(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		// 로그인 필수
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
+		
+		//게시글 전체 삭제
+		service.DeleteMyPost(loginVO);
+		
+		return "redirect:/member/mypage_board";
+	}
+	
+
 	// 내가 작성한 답변
 	@RequestMapping("/member/mypage_comment") 
 	public String mypage_comment(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
@@ -147,20 +173,69 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 		
-		
 		// (loginVO) 받아서!! 세션 id!! 가져감!!
 		List<CommentVO> commentVO = (List<CommentVO>)service.ViewMyCommentMember(loginVO);
 		
-		/*
-		 // DB에서 데이터 가져오는지 체크
+		/* // DB에서 데이터 가져오는지 체크
 		for(int i=0;i<commentVO.size();i++) {
 			System.out.println(commentVO.get(i).getCo_comments());
-		}
-		*/
+		}*/
 
 		model.addAttribute("commentVO",commentVO);
 		
 		return "member/mypage_comment"; 
+	}
+	
+	// 내 글 전체 삭제
+	@RequestMapping("/member/mypage_CommentDelete.do")
+	public String mypage_CommentDelete(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		// 로그인 필수
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
+	
+		//댓글 전체 삭제
+		service.DeleteMyComment(loginVO);
+		
+		return "redirect:/member/mypage_comment";
+	}
+	
+	
+	// 내 작성 글 / 댓글 개수 
+	@RequestMapping(value="/member/mypage_activity")
+	public String mypage_activity(Model model, HttpSession session, RedirectAttributes redirectAttributes, MemberVO memberVO) throws Exception{
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		// 로그인 필수
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
+		
+		// 내가 쓴 총 게시물 수
+		int MyPostCnt = 0;
+		// 내가 쓴 총 댓글 수
+		int MyCommentCnt = 0;
+		
+		// po_writer를 받고 저장 서비스를 불러와 서비스 안에 po_writer
+		
+		try {
+			MyPostCnt = service.getMyPostCnt(loginVO);
+			MyCommentCnt = service.getMyCommentCnt(loginVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("MyPostCnt", MyPostCnt);
+		model.addAttribute("MyCommentCnt",MyCommentCnt);
+		
+		System.out.println("나의 게시물 수 " + MyPostCnt);
+		
+		return "member/mypage_activity";
 	}
 	
 	
@@ -183,6 +258,7 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
+
 	// 회원 탈퇴
 	@RequestMapping(value= "/memberDeleteView", method = RequestMethod.GET)
 	public String memberDeleteView(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
@@ -314,7 +390,6 @@ public class MemberController {
 			@ModelAttribute("memberVO") MemberVO vo, HttpServletRequest req,
 			HttpServletResponse res, 
 			RedirectAttributes redirectAttributes, String sns_id, String sns_nick, int sns_type) throws Exception {
-		logger.info("==============================sosialJoin");
 		
 		System.out.println("소셜 아이디: " + sns_id);
 		
@@ -325,15 +400,56 @@ public class MemberController {
 		int cnt = service.checkId(vo);
 		System.out.println("cnt = " + cnt);
 		
+		//소셜 로그인 가입코드 (1: 일반, 2: 카카오, 3: 네이버, 4: 구글)
+		String sosial ="";
+		if(sns_type == 2) sosial ="kakao_"; 
+		else if(sns_type == 3) sosial ="naver_";
+		else if(sns_type == 4) sosial ="google_";
+		
+		String randomText="";
+		for(int i=0; i<8; i++) {
+			int rndVal = (int)(Math.random()*62);	//난수 생성
+			if(rndVal < 10) {						//10보다 작은 경우
+				randomText += rndVal;				//숫자 그대로 저장 (0~9)
+			}else if(rndVal > 35) {					//소문자인 경우 (36~62)
+				randomText += (char)(rndVal + 61);	//문자로 반환해 저장
+			}else {									//그외 대문자 (10~35)
+				randomText += (char)(rndVal + 55);	//문자로 반환해 저장
+			}
+		}
+		System.out.println("랜덤값은 + " + randomText);
+		String rnd_sns_nick = sosial + randomText + sns_nick;
+
+		System.out.println("변경된 닉네임 값은 + " + rnd_sns_nick);
+		
+		//가입코드 같으면 진행, 아니면 else로 실패 출력
+
 		if(cnt>0) {	//이미 가입한 아이디므로 바로 로그인
-			redirectAttributes.addFlashAttribute("msg", "소셜 로그인 성공");			
-			model.addAttribute("login", true);
+			//redirectAttributes.addFlashAttribute("msg", "소셜 로그인 성공");
+			//이미 가입되어있을 때 가입코드 확인한다.
+			int signUpCode = service.checkCode(vo);
+			System.out.println("checkCode = " + signUpCode);
+			if(sns_type==signUpCode) {
+				//가입 성공
+				model.addAttribute("login", true);
+			}else {
+				//가입 불가
+				model.addAttribute("login", false);
+			}
 		}else {
 			//데이터 삽입 후 로그인 처리됨
+			vo.setMe_nickName(rnd_sns_nick);
 			service.sosialJoin(vo);
-			redirectAttributes.addFlashAttribute("msg", "소셜 회원가입 성공");
+			//redirectAttributes.addFlashAttribute("msg", "소셜 회원가입 성공");
 			model.addAttribute("login", true);
 		}
+		/*
+		else {
+		 
+			System.out.println("사용자가 이 타입으로 가입하지 않았음");
+			//redirectAttributes.addFlashAttribute("msg", "해당 버튼으로 가입하지 않은 계정입니다. 다시 시도하여 주십시오.");	
+		}
+		*/
 		
 		//로그인 체크
 		MemberVO loginVO = (MemberVO) service.selectMemberView(vo, null, null, "selectMemberView");

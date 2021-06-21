@@ -86,7 +86,6 @@ public class MemberVO {
 
 
 
-
 	@Override
 	public String toString() {
 		return "MemberVO [me_id=" + me_id + ", me_pass=" + me_pass + ", me_nickName=" + me_nickName + ", me_regDate="
