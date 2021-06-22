@@ -1,5 +1,6 @@
 package com.hustar.value_coding_boot.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -56,14 +57,24 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	// 회원 나의 게시물
 	@Override
-	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
-		return sql.selectList("ViewMyPostMember", memberVO);
+	public List<BoardVO> ViewMyPostMember(MemberVO memberVO, int displayPost, int postNum)throws Exception{
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		data.put("memberVO", memberVO); 
+		data.put("displayPost", displayPost);  // 출력할 게시물
+		data.put("postNum", postNum);  // 한 페이지에 출력할 게시물 개수
+
+		return sql.selectList("ViewMyPostMember", data);
 	}
 		
 	// 나의 답변
 	@Override
-	public List<AnswerVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
-		return sql.selectList("ViewMyCommentMember", memberVO);
+	public List<AnswerVO> ViewMyCommentMember(MemberVO memberVO, int displayPost, int postNum) throws Exception{
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		data.put("memberVO", memberVO); 
+		data.put("displayPost", displayPost);  // 출력할 게시물
+		data.put("postNum", postNum);  // 한 페이지에 출력할 게시물 개수
+		
+		return sql.selectList("ViewMyCommentMember", data);
 	}
 
 	// 내가 쓴 글 개수

@@ -78,10 +78,10 @@ $('#btn2').bind('click', function(event) {
    fn_getPage('./mypage_modify');
 	});
 $('#btn3').bind('click', function(event) {
-	   fn_getPage('./mypage_board');
+	   fn_getPage('./mypage_board?num=1');
 		});
 $('#btn4').bind('click', function(event) {
-	   fn_getPage('./mypage_comment');
+	   fn_getPage('./mypage_comment?num=1');
 		});
 
 	function fn_getPage(url) {
