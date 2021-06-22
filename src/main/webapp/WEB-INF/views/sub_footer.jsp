@@ -48,6 +48,7 @@
 			let inputLinks = document.querySelectorAll("input");
 			let buttonLinks = document.querySelectorAll("button");
 			let areaLinks = document.querySelectorAll("textarea");
+			let selectLinks = document.querySelectorAll("select");
 			let goggleLinks = document.querySelectorAll(".g-signin2");
 			let delLinks = document.querySelectorAll(".delete-btn");
 			let allLinks = document.querySelectorAll(".delete-all");
@@ -88,6 +89,15 @@
 			});
 
 			areaLinks.forEach((link) => {
+				link.addEventListener("mouseover", () => {
+					mouseCursor.classList.add("cursor-grow");
+				});
+				link.addEventListener("mouseleave", () => {
+					mouseCursor.classList.remove("cursor-grow");
+				});
+			});
+			
+			selectLinks.forEach((link) => {
 				link.addEventListener("mouseover", () => {
 					mouseCursor.classList.add("cursor-grow");
 				});
