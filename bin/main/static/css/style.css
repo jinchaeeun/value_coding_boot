@@ -127,6 +127,7 @@ img {
 .notice-sub > li:first-child{padding: 0; border: 0;}
 .notice-sub > li:last-child{border: 0;}
 .delete-all {color: #111; float: right; margin: 10px; margin-bottom: 15px; cursor: pointer;}
+.notice-zero {color: #1d3a6d; font-size: 1rem;}
 
 .header .tnb{float: right; margin-top: 20px; margin-right: 20px;}
 .header .tnb > ul > li{float: left;}
