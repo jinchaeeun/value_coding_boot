@@ -6,7 +6,10 @@
 <link rel="stylesheet" type="text/css" href="../js/ckeditor5/sample/styles.css">
 <script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
 
-<div class="notice-write-wrap">
+<div class="circle-small"></div>
+<div class="circle-big"></div>	
+
+<div class="notice-write-wrap" data-aos="fade-up" data-aos-delay="300">
 	<div class="notice-write-box">
 		<h1>글쓰기</h1>
 
