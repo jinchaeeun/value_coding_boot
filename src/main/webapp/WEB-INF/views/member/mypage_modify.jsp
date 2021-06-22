@@ -10,7 +10,6 @@
 <c:set var="session" value="${sessionScope.login}" scope="application"/>
 
  <div class="mypage">
-        <h2><span style="color: #1d3a6d;">${session.me_nickName}</span>의 마이페이지</h2>
         <div class="mypage-form">
             <ul class="mypage-tap">
                 <li class="mypage-tapmenu" id="btn1"><a href="#">내 활동</a></li>
@@ -23,6 +22,9 @@
     <c:if test="${session.me_singupcode != 1}">
 	<form method ="post" name="mypageForm" action="<c:url value='/member/ModifyMypage'/>">
 		<div class="mypage-con-column">
+		
+        	<h1>내 정보 수정</h1>
+        	
 			<div class="mypage-mod">
 				<span><b>소셜 로그인 가입자</b></span>
 				<span>닉네임</span>
@@ -56,6 +58,9 @@
 		<c:if test="${session.me_singupcode == 1}">
 		<form method ="post" name="mypageForm" action="<c:url value='/member/ModifyMypage'/>">
 		     <div class="mypage-con-column">
+		     
+        	<h1>내 정보 수정</h1>
+        	
                 <div class="mypage-mod">
                     <span>닉네임</span>
                     <input type="text" name="me_nickName" id="me_nickName" value='<c:out value="${session.me_nickName}"/>' />

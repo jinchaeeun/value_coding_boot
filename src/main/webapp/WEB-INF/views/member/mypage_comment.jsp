@@ -10,7 +10,6 @@
 <div class="circle-big"></div>	
 
 <div class="mypage">
-        <h2><span style="color: #1d3a6d;"><c:out value="${session.me_nickName}"/></span>의 마이페이지</h2>
         <div class="mypage-form">
             <ul class="mypage-tap">
                 <li class="mypage-tapmenu" id="btn1"><a href="#">내 활동</a></li>
@@ -23,6 +22,9 @@
 	
 	
 		 <div class="mypage-con-column">
+		 
+        	<h1>답변</h1>
+        		
 		 	<div class="mypage-boardbox">
 		     <a href="#" onclick="deleteAllConfirm(); return false;">전체 삭제</a>
             	<ul>

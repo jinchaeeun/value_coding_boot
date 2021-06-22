@@ -15,7 +15,7 @@
 <div id="ajax_div">
 	
     <div class="mypage">
-        <h2><span style="color: #1d3a6d;"><c:out value="${session.me_nickName}"/></span>의 마이페이지</h2>
+
         <div class="mypage-form">
             <ul class="mypage-tap">
                 <li class="mypage-tapmenu on" id="btn1"><a href="#">내 활동</a></li>
@@ -26,9 +26,10 @@
             </ul>
 
 
-
-
             <div class="mypage-con">
+            
+        		<h1><span style="color: #1d3a6d;"><c:out value="${session.me_nickName}"/></span>의 마이페이지</h1>
+        		
                 <div class="left-dash">
                     <ul class="mymy">
                         <li><img src="../img/user.png" alt="" width="100px;"></li>
