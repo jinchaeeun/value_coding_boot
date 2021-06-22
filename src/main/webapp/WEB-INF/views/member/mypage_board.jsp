@@ -30,7 +30,7 @@
 							<ul class="mypage-board">
 								<li> 게시판 | <c:out value=" ${postVO.po_boardname }" /> <c:out value=" ${postVO.po_num }" /></li>
 								<li><h2><a href="<c:url value='/board/notice_view?po_num=${postVO.po_num }' />"><c:out value="${postVO.po_title }" /></a></h2></li>
-								<li><c:out value=" ${postVO.po_contents }" /></li>
+								<li>${postVO.po_contents }</li>
 							</ul>
 							<div class="mypage-boardinfo">
 								<div class="myboard-cnt">
