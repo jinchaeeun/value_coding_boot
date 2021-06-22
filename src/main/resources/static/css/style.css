@@ -608,29 +608,29 @@ svg:not(:root) {
     width: 100%;
 }
 
-.mypage-con-column h1 {margin-bottom: 40px;}
+.mypage-con-column > h1 {margin-bottom: 30px;}
 
 /* 마이페이지 board */
 .myquestion {display:flex; text-align:left;}
-.mypage-boardbox {text-align:end; height: 520px;}
-.mypage-boardbox > a {color : gray; font-size: 0.8rem;}
-.mypage-boardbox > ul > li {border-bottom:1px solid #b7b7b7bf;}
+.mypage-boardbox {text-align:end; height: 520px; overflow-y: scroll;}
+.mypage-boardbox > a {color : gray; font-size: 0.8rem; margin-right: 20px;}
+.mypage-boardbox > ul > li {border-bottom:1px solid #ddd;}
 
-.myquestion > ul {padding: 10px; }
-.myquestion > ul > li {padding: 2px 0; }
-.myquestion > ul > li:nth-child(1){color:gray;}
+.myquestion > ul {padding: 15px; }
+.myquestion > ul > li {padding: 5px 0; }
+.myquestion > ul > li:nth-child(1){color:gray; font-size: 0.8rem; margin-bottom: 15px;}
 .myquestion > ul > li:nth-child(2) > h2 {font-size:17px;}
-.mypage-board {width:85%;}
+.mypage-board {width:83%;}
 .mypage-manage {width: 15%;}
 
 .mypage-boardinfo{align-self: center; padding:8px; }
+.myquestion-remove {margin-left: 10px;}
 .myboard-cnt {text-align:center; padding: 5px; font-weight:bold;}
 .myboard-cnt > span {font-size:20px;}
-.myquestion-manage {display:flex;}
-.myquestion-manage > li {padding : 5px;}
+.myquestion-manage {display:flex; font-size: 0.8rem; padding: 8px;}
 	
 /* 마이페이지 수정 */
-.mypage-form .mypage-con-column span{text-align: left; padding: 10px; margin-left: 10px; margin-top: 10px; font-weight: 700;}
+.mypage-form .mypage-con-column span{text-align: left; font-weight: 700; margin-left: 10px; padding: 13px; margin-top: 10px;}
 .mypage-form .mypage-con-column input{margin: 0 20px; height: 40px; border-radius: 4px; border: 1px solid #c0c4d7; padding: 6px 12px; font-size: 14px;}
 .mypage-form .mypage-con-column input[type="checkbox"]{height: 20px; }
 
@@ -659,11 +659,11 @@ body > div.mypage > div > form > div > div > button.delete_cancle {background :#
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     align-items: center;
     width: 700px;
-    height: 700px;
+    height: 800px;
     padding: 70px 60px 60px 60px;
 }
 
-.mypage-con h1 {margin-bottom: 50px;}
+.mypage-con h1 {margin-bottom: 100px;}
 
 .mypage_nick {font-size: 1.2rem}
 .left-dash {box-shadow: 0 4px 12px #1d3a6d71; width: 380px; margin: 0 auto; padding: 40px; margin-bottom: 20px; border-radius: 6px;}
