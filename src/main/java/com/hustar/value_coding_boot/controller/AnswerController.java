@@ -2,6 +2,7 @@ package com.hustar.value_coding_boot.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hustar.value_coding_boot.service.AnswerService;
 import com.hustar.value_coding_boot.service.BoardService;
 import com.hustar.value_coding_boot.vo.AnswerVO;
+import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Controller
 public class AnswerController {
@@ -24,15 +26,21 @@ public class AnswerController {
 	
 	// 답글 작성
 	@RequestMapping("/answer/write")
-	public String answerWrite(HttpServletRequest request) throws Exception {
+	public String answerWrite(HttpSession session, HttpServletRequest request) throws Exception {
 		logger.info("답글 작성");
 		
 		AnswerVO answerVO = new AnswerVO();
 		
+		// 로그인 필수
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		System.out.println("로그인 세션 " + loginVO);
+		
+		
 		// request로 값을 받아와서 answerVO에 저장
 		answerVO.setAns_contents(request.getParameter("ans_contents"));
-		answerVO.setPo_num(Integer.parseInt(request.getParameter("po_num")));
+		answerVO.setAns_po_num(Integer.parseInt(request.getParameter("po_num")));
 		answerVO.setAns_writer(request.getParameter("ans_writer"));
+		answerVO.setAns_writer_Id(loginVO.getMe_id());
 		
 		answerService.write(answerVO);
 		
@@ -56,7 +64,7 @@ public class AnswerController {
 		
 		// request로 값을 받아와서 answerVO에 저장
 		answerVO.setAns_contents(request.getParameter("update-answer-contents"));
-		answerVO.setPo_num(Integer.parseInt(request.getParameter("po_num")));
+		answerVO.setAns_po_num(Integer.parseInt(request.getParameter("po_num")));
 		answerVO.setAns_num(Integer.parseInt(request.getParameter("ans_num")));
 		
 		answerService.update(answerVO);
@@ -73,7 +81,7 @@ public class AnswerController {
 		AnswerVO answerVO = new AnswerVO();
 		
 		answerVO.setAns_num(ans_num);
-		answerVO.setPo_num(po_num);
+		answerVO.setAns_po_num(po_num);
 		
 		AnswerVO parentVO = answerService.detail(answerVO);
 		
@@ -102,15 +110,15 @@ public class AnswerController {
 		
 		re_answerVO.setAns_group_num(answerVO.getAns_num());
 		re_answerVO.setAns_contents(answerVO.getAns_contents());
-		re_answerVO.setPo_num(answerVO.getPo_num());
+		re_answerVO.setAns_po_num(answerVO.getAns_po_num());
 		re_answerVO.setAns_writer(answerVO.getAns_writer());
 		re_answerVO.setAns_depth(1);
 		re_answerVO.setAns_group_order(group_order + 1);
 		
 		// 대댓글 입력
 		answerService.childInsert(re_answerVO);
-		boardService.updateAnsCnt(answerVO.getPo_num());
+		boardService.updateAnsCnt(answerVO.getAns_po_num());
 		
-		return "redirect:/board/notice_view?po_num=" + answerVO.getPo_num();
+		return "redirect:/board/notice_view?po_num=" + answerVO.getAns_po_num();
 	}
 }

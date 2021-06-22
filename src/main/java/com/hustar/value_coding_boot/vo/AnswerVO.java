@@ -10,6 +10,7 @@ public class AnswerVO {
 	private Date ans_datetime;  // 답글 작성일
 	private Date ans_updatetime;  // 답글 수정일
 	private String ans_writer;  // 답글 작성자
+	private String ans_writer_Id;  // 답글 작성자 ID
 	private int ans_hots;  // 답글 좋아요 수
 	private String ans_deleteYn;  // 답글 삭제여부
 	
@@ -102,6 +103,14 @@ public class AnswerVO {
 
 	public void setAns_writer(String ans_writer) {
 		this.ans_writer = ans_writer;
+	}
+
+	public String getAns_writer_Id() {
+		return ans_writer_Id;
+	}
+
+	public void setAns_writer_Id(String ans_writer_Id) {
+		this.ans_writer_Id = ans_writer_Id;
 	}
 
 	public int getAns_hots() {
