@@ -16,7 +16,7 @@
 <div class="circle-small"></div>
 <div class="circle-big"></div>
 
-<div class="login-box">
+<div class="login-box" data-aos="fade-down" data-aos-delay="300">
 	<form method="post" name="frm" action="<c:url value='/member/actionLogin.do'/>">
 		<div class="login">
 		
