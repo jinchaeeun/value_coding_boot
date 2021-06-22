@@ -6,7 +6,7 @@ public class Paging {
 	// 게시물 총 개수
 	private int count;
 	// 한 페이지에 출력할 게시물 개수
-	private int postNum = 10;
+	private int postNum = 15;
 	// 하단 페이징 번호 ([게시물 총 개수 / 한 페이지에 출력할 개수] 의 올림)
 	private int pageNum;
 	// 출력할 게시물
