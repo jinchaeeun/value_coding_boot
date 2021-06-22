@@ -39,7 +39,7 @@ button {cursor:pointer}
 label {cursor:none}
 
 textarea, select {font-family: Inter, "NEXON Lv1 Gothic OTF" !important; font-size:1em}
-select {margin:0}
+select {margin:0; padding: 3px 5px}
 p {margin:0;padding:0;word-break:break-all}
 hr {display:none}
 pre {overflow-x:scroll;font-size:1em}
@@ -608,29 +608,29 @@ svg:not(:root) {
     width: 100%;
 }
 
-.mypage-con-column h1 {margin-bottom: 40px;}
+.mypage-con-column > h1 {margin-bottom: 30px;}
 
 /* 마이페이지 board */
 .myquestion {display:flex; text-align:left;}
-.mypage-boardbox {text-align:end; height: 520px;}
-.mypage-boardbox > a {color : gray; font-size: 0.8rem;}
-.mypage-boardbox > ul > li {border-bottom:1px solid #b7b7b7bf;}
+.mypage-boardbox {text-align:end; height: 520px; overflow-y: scroll;}
+.mypage-boardbox > a {color : gray; font-size: 0.8rem; margin-right: 20px;}
+.mypage-boardbox > ul > li {border-bottom:1px solid #ddd;}
 
-.myquestion > ul {padding: 10px; }
-.myquestion > ul > li {padding: 2px 0; }
-.myquestion > ul > li:nth-child(1){color:gray;}
+.myquestion > ul {padding: 15px; }
+.myquestion > ul > li {padding: 5px 0; }
+.myquestion > ul > li:nth-child(1){color:gray; font-size: 0.8rem; margin-bottom: 15px;}
 .myquestion > ul > li:nth-child(2) > h2 {font-size:17px;}
-.mypage-board {width:85%;}
+.mypage-board {width:83%;}
 .mypage-manage {width: 15%;}
 
 .mypage-boardinfo{align-self: center; padding:8px; }
+.myquestion-remove {margin-left: 10px;}
 .myboard-cnt {text-align:center; padding: 5px; font-weight:bold;}
 .myboard-cnt > span {font-size:20px;}
-.myquestion-manage {display:flex;}
-.myquestion-manage > li {padding : 5px;}
+.myquestion-manage {display:flex; font-size: 0.8rem; padding: 8px;}
 	
 /* 마이페이지 수정 */
-.mypage-form .mypage-con-column span{text-align: left; padding: 10px; margin-left: 10px; margin-top: 10px; font-weight: 700;}
+.mypage-form .mypage-con-column span{text-align: left; font-weight: 700; margin-left: 10px; padding: 13px; margin-top: 10px;}
 .mypage-form .mypage-con-column input{margin: 0 20px; height: 40px; border-radius: 4px; border: 1px solid #c0c4d7; padding: 6px 12px; font-size: 14px;}
 .mypage-form .mypage-con-column input[type="checkbox"]{height: 20px; }
 
@@ -659,14 +659,14 @@ body > div.mypage > div > form > div > div > button.delete_cancle {background :#
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     align-items: center;
     width: 700px;
-    height: 700px;
+    height: 800px;
     padding: 70px 60px 60px 60px;
 }
 
-.mypage-con h1 {margin-bottom: 50px;}
+.mypage-con h1 {margin-bottom: 100px;}
 
 .mypage_nick {font-size: 1.2rem}
-.left-dash {box-shadow: 0 4px 12px #1d3a6d71; width: 380px; margin: 0 auto; padding: 40px; margin-bottom: 20px;}
+.left-dash {box-shadow: 0 4px 12px #1d3a6d71; width: 380px; margin: 0 auto; padding: 40px; margin-bottom: 20px; border-radius: 6px;}
 .mymy{width: 300px; margin: 10px 0;}
 .mymy > li {padding: 10px;}
 
@@ -709,7 +709,7 @@ body > div.mypage > div > form > div > div > button.delete_cancle {background :#
 
 
 /* 공지사항 스타일 */
-.notice-wrap {text-align: center; max-width: 1200px; margin: 0 auto; margin-top: 80px;}
+.notice-wrap {text-align: center; max-width: 1200px; margin: 0 auto; margin-top: 200px;}
 .notice-wrap .notice-box {max-width: 1200px;}
 
 .notice-box ul {background: #fff;}
@@ -732,7 +732,7 @@ body > div.mypage > div > form > div > div > button.delete_cancle {background :#
 .search-box {overflow: hidden;}
 .search-box div {float: right; padding: 10px;}
 .search-box div input {font-size: 15px; padding: 3px 5px;}
-.search-box div button {padding: 5px 10px; background: #8bcaff; color: #fff; font-weight: bold; border: 3px solid #8bcaff; border-radius: 5px;}
+.search-box div button {padding: 5px 10px; background: #969ce3; color: #fff; font-weight: bold; border: 3px solid #969ce3; border-radius: 5px;}
 .search-box div button:hover {background: #3078b5; border: 3px solid #3078b5; }
 
 /* 페이징 버튼 */
@@ -748,17 +748,16 @@ body > div.mypage > div > form > div > div > button.delete_cancle {background :#
 .write-btn-box a:hover {background: #3078b5;}
 
 /* 공지사항 글쓰기 스타일 */
-.notice-write-wrap {max-width: 1200px; margin: 0 auto; margin-top: 60px;}
-.notice-write-wrap .notice-write-box {padding: 20px;}
-.notice-write-wrap .notice-write-box h1 {text-align: center; font-size: 32px; margin-bottom: 30px;}
+.notice-write-wrap {max-width: 1200px; margin: 0 auto; margin-top: 200px;}
+.notice-write-wrap .notice-write-box h1 {text-align: center; font-size: 32px; margin-bottom: 60px;}
 
-.notice-write-wrap .notice-write-box .write-form {border: 1px solid #ccc; background: #fff;}
+.notice-write-wrap .notice-write-box .write-form {border: 1px solid #ccc; background: #fff; padding: 0px 20px 20px 20px;}
 .notice-write-wrap .notice-write-box .write-form ul {padding: 10px;}
 .notice-write-wrap .notice-write-box .write-form ul li {padding: 10px;}
-.notice-write-wrap .notice-write-box .write-form ul li > label {display: block; font-size: 15px; margin-bottom: 10px;}
-.notice-write-wrap .notice-write-box .write-form ul li > .title {width: 80%;}
-.notice-write-wrap .notice-write-box .write-form ul li > select {width: 18%; font-size: 15px; padding: 5px;}
-.notice-write-wrap .notice-write-box .write-form ul li > div > label {font-size: 15px;}
+.notice-write-wrap .notice-write-box .write-form ul li > label {display: block; font-weight: 700; margin-top: 10px; margin-bottom: 10px; padding: 3px;}
+.notice-write-wrap .notice-write-box .write-form ul li > .title {width: 80%; margin-right: 5px;}
+.notice-write-wrap .notice-write-box .write-form ul li > select {width: 19%; font-size: 15px; padding: 5px;}
+.notice-write-wrap .notice-write-box .write-form ul li > div > label {font-size: 15px; padding-left: 25px;}
 .notice-write-wrap .notice-write-box .write-form ul li > div > input {padding: 5px;}
 .notice-write-wrap .notice-write-box .write-form ul li > input {font-size: 15px; padding: 5px; width: 100%;}
 .notice-write-wrap .notice-write-box .write-form ul li textarea {font-size: 12px; width: 100%; height: 400px; padding: 5px;}
@@ -810,43 +809,48 @@ body > div.mypage > div > form > div > div > button.delete_cancle {background :#
 }
 
 /* 공지사항 뷰 스타일 */
-.notice-view-wrap {max-width: 1200px; margin: 0 auto; margin-top: 60px;}
+.notice-view-wrap {max-width: 1200px; margin: 0 auto; margin-top: 200px;}
 
-.view h2 {text-align: center; font-size: 32px; padding: 20px;}
+.notice-wrap h1 {margin-bottom: 40px;}
+.notice-box {height: 630px;}
+.view-box {height: 530px;}
+
+.view h1 {text-align: center; margin-bottom: 60px;}
 
 .view .view-hd {text-align: center; overflow: hidden; padding-bottom: 10px;}
-.view .view-hd span {float: right; margin: 0 5px;}
+.view .view-hd span {float: right; margin: 0 10px;}
 .view .view-hd p {float: right; margin-right: 20px;}
 .view .view-hd p.title {float: left; font-size: 20px; margin-left: 10px;}
 
-.view .view-content {background: #fff; padding: 20px; border: 1px solid #ccc; min-height: 500px;}
+.view .view-content {background: #fff; padding: 20px; border: 1px solid #ccc; min-height: 400px; overflow-y: scroll;}
 
 .view .view-file {background: #fff; margin: 10px 0;}
 .view .view-file a {display: block; padding: 5px; border-bottom: 1px dashed #ccc;}
 .view .view-file a:last-child {border-bottom: 0;}
 
-.write-btn-box {padding: 10px; overflow: hidden;}
-.write-btn-box a {float: right; padding: 10px; background: #8bcaff; color: #fff; border-radius: 5px; font-weight: bold; margin: 5px;}
+.write-btn-box {padding: 0px; padding-top: 10px; overflow: hidden;}
+.write-btn-box a {float: right; padding: 10px; background: #969ce3; color: #fff; border-radius: 5px; font-weight: bold; margin: 5px;}
 .write-btn-box a:hover {background: #3078b5;}
 
-.answer-wrap {padding: 10px;}
-.answer-wrap .answer-box {}
-.answer-wrap .answer-box h3 {padding: 5px; border-bottom: 1px solid #000; margin-bottom: 10px;}
+.answer-wrap {padding-top: 10px;}
+.answer-wrap .answer-box {max-height: 300px;}
+.answer-wrap .answer-box h3 {padding: 5px 0px; color: gray; font-weight: 500; font-size: 0.8rem; margin-bottom: 10px; border-bottom: 1px dashed #ccc;}
 .answer-wrap .answer-box .answer {margin-bottom: 10px; border-bottom: 1px solid #ddd;}
 
 .answer-wrap .answer-box .answer .answer-writer {display: inline-block; width: 15%; vertical-align: top;}
-.answer-wrap .answer-box .answer .answer-writer span {font-size: 14px;}
+.answer-wrap .answer-box .answer .answer-writer span {font-weight: 700;}
 
 .answer-wrap .answer-box .answer .answer-content-box {display: inline-block; width: 80%; vertical-align: middle;}
-.answer-wrap .answer-box .answer .answer-content-box .answer-content {font-size: 13px; margin-bottom: 10px;}
-.answer-wrap .answer-box .answer .answer-content-box .answer-info {color: #ccc; font-size: 11px; margin-bottom: 10px;}
-.answer-wrap .answer-box .answer .answer-content-box .answer-info a {color: #ccc;}
+.answer-wrap .answer-box .answer .answer-content-box .answer-content {font-size: 0.8rem; margin-bottom: 10px;}
+.answer-wrap .answer-box .answer .answer-content-box .answer-info {color: #ccc; font-size: 0.8rem; margin-bottom: 10px;}
+.answer-wrap .answer-box .answer .answer-content-box .answer-info a {color: #888; margin-right: 5px;}
+.answer-info span {margin-right: 15px;}
 
-.answer-write-wrap {padding: 10px;}
+.answer-write-wrap {padding: 10px 0px;}
 .answer-write-wrap .answer-write-box {overflow: hidden;}
-.answer-write-wrap .answer-write-box p {font-size: 13px; font-weight: bold; margin-bottom: 10px;}
-.answer-write-wrap .answer-write-box textarea {border: 1.5px solid #000; border-radius: 2px; width: 100%; height: 100px; padding: 5px;}
-.answer-write-wrap .answer-write-box input {float: right; padding: 5px 10px; border: 0; background-color: #fff; color: #888;}
+.answer-write-wrap .answer-write-box p {font-weight: bold; margin-bottom: 10px;}
+.answer-write-wrap .answer-write-box textarea {border: 1.5px solid #000; border-radius: 2px; width: 100%; height: 100px; padding: 10px; font-size: 0.8rem;}
+.answer-write-wrap .answer-write-box input {float: right; font-size: 0.8rem; padding-top: 10px; border: 0; background-color: #fff; color: #888; cursor: pointer;}
 
 /* about 페이지 스타일 */
 .about-wrap {margin-top: 100px;}

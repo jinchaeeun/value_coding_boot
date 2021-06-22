@@ -6,9 +6,9 @@
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
 <div class="notice-view-wrap">
-	<div class="notice-box">
+	<div class="notice-box view-box">
 		<div class="view">
-			<h2><c:out value="${board}"/></h2>
+			<h1><c:out value="${board}"/></h1>
 	
 			<div class="view-hd">
 				<p class="title"><b><c:out value="${read.po_title}" /></b></p>
@@ -42,7 +42,7 @@
 	
 	<div class="answer-wrap">
 		<div class="answer-box">
-			<h3>댓글</h3>
+			<h3></h3>
 			
 			<form action="/answer/write" method="post" name="answerForm">
 				<div class="answer-write-wrap">
