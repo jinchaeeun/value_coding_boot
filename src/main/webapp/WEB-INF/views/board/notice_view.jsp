@@ -6,7 +6,7 @@
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
 <div class="notice-view-wrap">
-	<div class="notice-box">
+	<div class="notice-box view-box">
 		<div class="view">
 			<h1><c:out value="${board}"/></h1>
 	
