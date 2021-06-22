@@ -21,8 +21,8 @@ public class CourseServiceImpl implements CourseService {
 	private CourseDao courseDao;
 	
 	@Override
-	public List<Course> getAllCourses() throws Exception {
-		return courseDao.getAllCourses();
+	public List<Course> getAllCourses(String noti_alert_id) throws Exception {
+		return courseDao.getAllCourses(noti_alert_id);
 	}	
 	
 	@Override
@@ -36,8 +36,8 @@ public class CourseServiceImpl implements CourseService {
 	}
 	
 	@Override
-	public void deleteCourseAll() throws Exception {
-		courseDao.deleteCourseAll();
+	public void deleteCourseAll(String noti_alert_id) throws Exception {
+		courseDao.deleteCourseAll(noti_alert_id);
 	}
 	
 }

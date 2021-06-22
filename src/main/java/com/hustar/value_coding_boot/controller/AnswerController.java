@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hustar.value_coding_boot.service.AnswerService;
 import com.hustar.value_coding_boot.service.BoardService;
+import com.hustar.value_coding_boot.service.CourseService;
 import com.hustar.value_coding_boot.vo.AnswerVO;
+import com.hustar.value_coding_boot.vo.BoardVO;
+import com.hustar.value_coding_boot.vo.Course;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Controller
@@ -23,6 +26,9 @@ public class AnswerController {
 
 	@Inject
 	private BoardService boardService;
+	
+	@Inject
+	private CourseService courseService;
 	
 	// 답글 작성
 	@RequestMapping("/answer/write")
@@ -50,7 +56,22 @@ public class AnswerController {
 		// 부모 답글에 group_num 할당
 		answerService.updateParent(ans_num);
 		
+		// 해당 게시글의 답변 수 증가
 		boardService.updateAnsCnt(Integer.parseInt(request.getParameter("po_num")));
+		
+		BoardVO board = boardService.read(Integer.parseInt(request.getParameter("po_num")));
+		
+		// 게시글에 달린 답변에 알림 추가
+		// 본인의 게시글에 본인이 답글을 달면 알림이 가지 않음
+		if(!board.getPo_write_Id().equals(loginVO.getMe_id())) {
+			Course course = new Course();
+			
+			course.setNoti_message("'" + board.getPo_title() + "' 게시글의 답변이 등록 되었습니다.");
+			course.setNoti_alert_id(board.getPo_write_Id());
+			course.setNoti_po_num(board.getPo_num());
+			
+			courseService.writeCourse(course);
+		}
 		
 		return "redirect:/board/notice_view?po_num=" + request.getParameter("po_num");
 	}
@@ -122,6 +143,20 @@ public class AnswerController {
 		answerService.childInsert(re_answerVO);
 		boardService.updateAnsCnt(answerVO.getAns_po_num());
 		
+		BoardVO board = boardService.read(answerVO.getAns_po_num());
+		
+		// 게시글에 달린 답변에 알림 추가
+		// 본인의 게시글에 본인이 답글을 달면 알림이 가지 않음
+		if(!board.getPo_write_Id().equals(loginVO.getMe_id())) {
+			Course course = new Course();
+			
+			course.setNoti_message("'" + board.getPo_title() + "' 게시글의 답변이 등록 되었습니다.");
+			course.setNoti_alert_id(board.getPo_write_Id());
+			course.setNoti_po_num(board.getPo_num());
+			
+			courseService.writeCourse(course);
+		}
+				
 		return "redirect:/board/notice_view?po_num=" + answerVO.getAns_po_num();
 	}
 }

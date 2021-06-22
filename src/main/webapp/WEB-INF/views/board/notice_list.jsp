@@ -18,7 +18,7 @@
 			</select>
 			
 			<input type="text" name="keyword" value="${page.keyword}">
-			<button type="button" id="searchBtn" onclick="fn_search();">검색</button>
+			<button type="button" id="searchBtn" onclick="fn_search('${board}');">검색</button>
 		</div>
 	</div> <!-- search-box -->
 
@@ -87,14 +87,14 @@
 </script>
 
 <script type="text/javascript">
-	function fn_search() {
+	function fn_search(boardName) {
 		let searchType = document.getElementsByName("searchType")[0].value;
 		let keyword = document.getElementsByName("keyword")[0].value;
 	
 		console.log(searchType);
 		console.log(keyword);
 		
-		location.href = "/board/notice_list?num=1" + "&searchType=" + searchType + "&keyword=" + keyword; 
+		location.href = "/board/notice_list?board="+ boardName +"&num=1" + "&searchType=" + searchType + "&keyword=" + keyword; 
 	}
 	/* document.getElementById("searchBtn").onClick = function() {
 		let searchKey = document.getElementsByName("searchType")[0].value;

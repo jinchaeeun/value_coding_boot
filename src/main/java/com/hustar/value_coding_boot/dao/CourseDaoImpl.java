@@ -18,8 +18,8 @@ public class CourseDaoImpl implements CourseDao{
 
 
 	@Override
-	public List<Course> getAllCourses() throws Exception {		
-		return sqlSession.selectList("mapper.massageMapper.list");
+	public List<Course> getAllCourses(String noti_alert_id) throws Exception {		
+		return sqlSession.selectList("mapper.massageMapper.list", noti_alert_id);
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class CourseDaoImpl implements CourseDao{
 	}
 	
 	@Override
-	public void deleteCourseAll() throws Exception {
-		sqlSession.delete("mapper.massageMapper.deleteAll");
+	public void deleteCourseAll(String noti_alert_id) throws Exception {
+		sqlSession.delete("mapper.massageMapper.deleteAll", noti_alert_id);
 	}
 }
