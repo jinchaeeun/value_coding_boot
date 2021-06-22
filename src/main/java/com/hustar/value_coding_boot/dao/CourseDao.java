@@ -7,7 +7,7 @@ import com.hustar.value_coding_boot.vo.Course;
 public interface CourseDao {
 	
 	// 알림 목록 조회
-	List<Course> getAllCourses() throws Exception;
+	List<Course> getAllCourses(String noti_alert_id) throws Exception;
 	
 	// 알림 조회
 	Course getCourceByCode(String couresCode) throws Exception;
@@ -19,5 +19,5 @@ public interface CourseDao {
 	public void deleteCourse(int noti_id) throws Exception;
 	
 	// 알림 전체 삭제
-	public void deleteCourseAll() throws Exception;
+	public void deleteCourseAll(String noti_alert_id) throws Exception;
 }

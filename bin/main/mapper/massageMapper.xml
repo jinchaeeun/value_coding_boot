@@ -3,12 +3,14 @@
 <mapper namespace="mapper.massageMapper">
 
 	<!-- 알림 목록 -->
-	<select id="list" resultType="com.hustar.value_coding_boot.vo.Course">
+	<select id="list" parameterType="string" resultType="com.hustar.value_coding_boot.vo.Course">
 		<![CDATA[
 			SELECT
 				*
 			FROM
 				t_notify
+			WHERE 
+				noti_alert_id = #{noti_alert_id}
 			]]>
 	</select>
 	<!-- //알림 목록 -->
@@ -30,11 +32,13 @@
 	<insert id="insert" useGeneratedKeys="true" keyProperty="noti_id">
 	<![CDATA[
 		INSERT INTO t_notify 
-		VALUES (
-			NULL,
-			#{noti_message},
-			NOW()
-		)
+			VALUES (
+				NULL,
+				#{noti_po_num},
+				#{noti_message},
+				#{noti_alert_id},
+				NOW()
+			)
 		]]>
 	</insert>
 	<!-- //알림 작성 -->
@@ -43,22 +47,24 @@
 	<delete id="delete" parameterType="int">
 		<![CDATA[
 			DELETE
-			FROM
-				t_notify
-			WHERE
-				noti_id = #{noti_id}
+				FROM
+					t_notify
+				WHERE
+					noti_id = #{noti_id}
 		]]>
 	</delete>
 	<!-- //알림 삭제 -->
 	
-	<!-- 알림 삭제 -->
-	<delete id="deleteAll" parameterType="int">
+	<!-- 알림 전체 삭제 -->
+	<delete id="deleteAll" parameterType="string">
 		<![CDATA[
 			DELETE
-			FROM
-				t_notify
+				FROM
+					t_notify
+				WHERE 
+					noti_alert_id = #{noti_alert_id}
 		]]>
 	</delete>
-	<!-- //알림 삭제 -->
+	<!-- //알림 전체 삭제 -->
 	
 </mapper>

@@ -76,7 +76,7 @@
 									<c:forEach var="course" items="${courses}">
 										<li>
 											<div class="notice-info">
-												<a class="notice-query" href="none"><c:out value="${course.noti_message }" /></a>
+												<a class="notice-query" href="/board/notice_view?po_num=<c:out value='${course.noti_po_num }' />" >${course.noti_message }</a>
 												<span class="date-span"><c:out value="${course.noti_datetime }" /></span>
 											</div>
 										<span class="delete-btn" onclick="javascript:courseDelete(${course.noti_id });"></span>
