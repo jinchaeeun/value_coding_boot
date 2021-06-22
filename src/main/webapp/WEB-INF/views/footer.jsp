@@ -43,20 +43,22 @@
 			})
 
 			let mouseCursor = document.querySelector(".cursor");
-			let logoLinks = document.querySelectorAll(".header h1");
-			let tnbLinks = document.querySelectorAll(".tnb li a");
-			let gnbLinks = document.querySelectorAll(".gnb li a");
-			let goLinks = document.querySelectorAll(".go-btn");
+			let aLinks = document.querySelectorAll("a");
+			let inputLinks = document.querySelectorAll("input");
+			let buttonLinks = document.querySelectorAll("button");
+			let goggleLinks = document.querySelectorAll(".g-signin2");
 			let delLinks = document.querySelectorAll(".delete-btn");
 			let allLinks = document.querySelectorAll(".delete-all");
+			
 			window.addEventListener("scroll", cursor);
 			window.addEventListener("mousemove", cursor);
+			
 			function cursor(e) {
 				mouseCursor.style.left = e.pageX + "px";
 				mouseCursor.style.top = e.pageY - scrollY + "px";
 			}
 			
-			logoLinks.forEach((link) => {
+			aLinks.forEach((link) => {
 				link.addEventListener("mouseover", () => {
 					mouseCursor.classList.add("cursor-grow");
 				});
@@ -65,25 +67,7 @@
 				});
 			});
 
-			tnbLinks.forEach((link) => {
-				link.addEventListener("mouseover", () => {
-					mouseCursor.classList.add("cursor-grow");
-				});
-				link.addEventListener("mouseleave", () => {
-					mouseCursor.classList.remove("cursor-grow");
-				});
-			});
-
-			gnbLinks.forEach((link) => {
-				link.addEventListener("mouseover", () => {
-					mouseCursor.classList.add("cursor-grow");
-				});
-				link.addEventListener("mouseleave", () => {
-					mouseCursor.classList.remove("cursor-grow");
-				});
-			});
-
-			goLinks.forEach((link) => {
+			inputLinks.forEach((link) => {
 				link.addEventListener("mouseover", () => {
 					mouseCursor.classList.add("cursor-grow");
 				});
@@ -92,6 +76,24 @@
 				});
 			});
 			
+			buttonLinks.forEach((link) => {
+				link.addEventListener("mouseover", () => {
+					mouseCursor.classList.add("cursor-grow");
+				});
+				link.addEventListener("mouseleave", () => {
+					mouseCursor.classList.remove("cursor-grow");
+				});
+			});
+
+			goggleLinks.forEach((link) => {
+				link.addEventListener("mouseover", () => {
+					mouseCursor.classList.add("cursor-grow");
+				});
+				link.addEventListener("mouseleave", () => {
+					mouseCursor.classList.remove("cursor-grow");
+				});
+			});
+
 			delLinks.forEach((link) => {
 				link.addEventListener("mouseover", () => {
 					mouseCursor.classList.add("cursor-grow");
