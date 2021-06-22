@@ -42,6 +42,8 @@ public class BoardServiceImpl implements BoardService {
 		return dao.list(displayPost, postNum, searchType, keyword, board);
 	}
 	
+	
+	
 	// 게시글 조회
 	@Override
 	public BoardVO read(int po_num) throws Exception {

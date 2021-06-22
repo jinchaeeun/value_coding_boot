@@ -63,13 +63,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	// 내가 쓴 글 조회
-	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
-		return dao.ViewMyPostMember(memberVO);
+	public List<BoardVO> ViewMyPostMember(MemberVO memberVO, int displayPost, int postNum)throws Exception{
+
+		return dao.ViewMyPostMember(memberVO, displayPost, postNum);
 	}
 	
 	// 내가 쓴 댓글 조회
-	public List<AnswerVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
-		return dao.ViewMyCommentMember(memberVO);
+	public List<AnswerVO> ViewMyCommentMember(MemberVO memberVO, int displayPost, int postNum) throws Exception{
+		return dao.ViewMyCommentMember(memberVO, displayPost, postNum);
 	}
 
 	// 내 총 작성글 갯수
