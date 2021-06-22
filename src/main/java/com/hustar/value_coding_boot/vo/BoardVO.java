@@ -11,6 +11,7 @@ public class BoardVO {
 	private Date po_datetime; // 작성일자
 	private Date po_updatetime; // 수정일자
 	private String po_writer; // 작성자
+	private String po_write_Id; // 작성자 ID
 	private int po_views; // 조회수
 	private int po_ans_cnt; // 답변수
 	
@@ -108,6 +109,14 @@ public class BoardVO {
 
 	public void setPo_writer(String po_writer) {
 		this.po_writer = po_writer;
+	}
+
+	public String getPo_write_Id() {
+		return po_write_Id;
+	}
+
+	public void setPo_write_Id(String po_write_Id) {
+		this.po_write_Id = po_write_Id;
 	}
 
 	public int getPo_views() {

@@ -43,6 +43,8 @@
 			<h3>댓글</h3>
 			
 			<form action="/answer/write" method="post" name="answerForm">
+
+			
 				<div class="answer-write-wrap">
 					<div class="answer-write-box">
 						<p><c:out value="${session.me_nickName}"/><input type="hidden" name="ans_writer" value='<c:out value="${session.me_nickName}"/>'></p>

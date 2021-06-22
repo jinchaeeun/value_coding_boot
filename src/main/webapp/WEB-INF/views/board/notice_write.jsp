@@ -18,6 +18,7 @@
 						<input class="title" type="text" name="po_title" placeholder="제목을 입력하세요">
 						<!-- 작성자 -->
 						<input type="hidden" name="po_writer" value='${session.me_nickName}'/>
+						<input type="hidden" name="po_write_Id" value='${session.me_id}'/>
 						
 						<select name="po_boardname" id="">
 							<option value="">게시판을 선택하세요.</option>
