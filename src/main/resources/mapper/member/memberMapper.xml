@@ -98,13 +98,13 @@
 	   			ans_writer_Id = #{memberVO.me_id}
 	   		AND 
 	   			po_deleteYn = 'N'
-	   		ORDER BY ans_datetime DESC;
+	   		ORDER BY ans_datetime DESC
+	   		LIMIT #{displayPost}, #{postNum};
    		]]>
    </select>
    <!-- // 내가 쓴 답변 조회  -->
    
    <!--  내가 쓴 총 글 개수 -->
- 
      <select id="getMyPostCnt" parameterType="memberVO" resultType="int">
       <![CDATA[
 			SELECT COUNT(*) 
@@ -119,7 +119,7 @@
       <![CDATA[
 			SELECT COUNT(*) 
 			FROM t_answer 
-			WHERE ans_writer_Id = #{me_id};
+			WHERE ans_writer_Id = #{me_id} AND ans_deleteYn = 'N';
   		]]>
  	 </select>
  	<!--  //내가 쓴 총 댓글 개수 --> 

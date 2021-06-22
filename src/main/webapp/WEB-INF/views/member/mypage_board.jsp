@@ -3,16 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<link rel="stylesheet" href="../css/style.css">
+<!-- 상단 헤더 불러오기 -->
+<jsp:include page="../sub_header.jsp"></jsp:include>
+
+<div class="circle-small"></div>
+<div class="circle-big"></div>	
+
+<c:set var="session" value="${sessionScope.login}" scope="application"/>
 
 <div class="mypage">
         <div class="mypage-form">
             <ul class="mypage-tap">
-                <li class="mypage-tapmenu" id="btn1"><a href="#">내 활동</a></li>
-                <li class="mypage-tapmenu" id="btn2"><a href="#">정보 수정</a></li>
+                <li class="mypage-tapmenu" id="btn1"><a href="/member/mypage_activity">내 활동</a></li>
+                <li class="mypage-tapmenu" id="btn2"><a href="/member/mypage_modify">정보 수정</a></li>
                 <hr>
-                <li class="mypage-tapmenu on" id="btn3"><a href="#">게시글</a></li>
-                <li class="mypage-tapmenu" id="btn4"><a href="#">답변</a></li>
+                <li class="mypage-tapmenu on" id="btn3"><a href="/member/mypage_board?num=1">게시글</a></li>
+                <li class="mypage-tapmenu" id="btn4"><a href="/member/mypage_comment?num=1">답변</a></li>
             </ul>
             
 
@@ -51,24 +57,24 @@
 			<div class="paging">
 				<div>
 					<ul>
-						<li><a href="/member/member_board?num=1">처음</a></li>
+						<li><a href="/member/mypage_board?num=1">처음</a></li>
 						<c:if test="${page.prev}">
-							<li><a href="/member/member_board?num=${page.startPageNum - 1}">이전</a></li>
+							<li><a href="/member/mypage_board?num=${page.startPageNum - 1}">이전</a></li>
 						</c:if>
 						
 						<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
 							<c:if test="${select != num}">
-								<li><a href="/member/member_board?num=${num}">${num}</a></li>	
+								<li><a href="/member/mypage_board?num=${num}">${num}</a></li>	
 							</c:if>
 							<c:if test="${select == num}">
-								<li class="on"><a href="/member/member_board?num=${num}">${num}</a></li>	
+								<li class="on"><a href="/member/mypage_board?num=${num}">${num}</a></li>	
 							</c:if>
 						</c:forEach>
 						
 						<c:if test="${page.next}">
-							<li><a href="/member/member_board?num=${page.endPageNum + 1}">다음</a></li>
+							<li><a href="/member/mypage_board?num=${page.endPageNum + 1}">다음</a></li>
 						</c:if>
-						<li><a href="/member/member_board?num=${page.lastPageNum}">마지막</a></li>
+						<li><a href="/member/mypage_board?num=${page.lastPageNum}">마지막</a></li>
 					</ul>
 				</div>
 			</div> <!-- paging -->
@@ -80,7 +86,7 @@
 <script>
 
 
-$('#btn1').bind('click', function(event) {
+/* $('#btn1').bind('click', function(event) {
 	fn_getPage('./mypage_activity');
 	});
 $('#btn2').bind('click', function(event) {
@@ -92,7 +98,7 @@ $('#btn3').bind('click', function(event) {
 $('#btn4').bind('click', function(event) {
 	   fn_getPage('./mypage_comment?num=1');
 		});
-
+ */
 	
 function deleteConfirm(po_num){
 	if(confirm('삭제하시겠습니까?') == true) {

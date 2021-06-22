@@ -18,11 +18,11 @@
 
         <div class="mypage-form">
             <ul class="mypage-tap">
-                <li class="mypage-tapmenu on" id="btn1"><a href="#">내 활동</a></li>
-                <li class="mypage-tapmenu" id="btn2"><a href="#">정보 수정</a></li>
+                <li class="mypage-tapmenu on" id="btn1"><a href="/member/mypage_activity">내 활동</a></li>
+                <li class="mypage-tapmenu" id="btn2"><a href="/member/mypage_modify">정보 수정</a></li>
                 <hr>
-                <li class="mypage-tapmenu" id="btn3"><a href="#">게시글</a></li>
-                <li class="mypage-tapmenu" id="btn4"><a href="#">답변</a></li>
+                <li class="mypage-tapmenu" id="btn3"><a href="/member/mypage_board?num=1">게시글</a></li>
+                <li class="mypage-tapmenu" id="btn4"><a href="/member/mypage_comment?num=1">답변</a></li>
             </ul>
 
 
@@ -69,7 +69,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 
-$('.on').bind('click', function(event) {
+/* $('#btn1').bind('click', function(event) {
 	console.log("btn1 click");
 	fn_getPage('./mypage_activity');
 	console.log("btn1 click after");
@@ -109,7 +109,7 @@ $('#btn4').bind('click', function(event) {
 			//hide	
 		}
 	});
-}
+} */
 
 </script>
 

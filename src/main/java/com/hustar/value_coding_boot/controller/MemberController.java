@@ -27,12 +27,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
-import com.hustar.value_coding_boot.service.BoardService;
 import com.hustar.value_coding_boot.service.MemberService;
 import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
-import com.hustar.value_coding_boot.vo.Paging;
+import com.hustar.value_coding_boot.vo.MyPaging;
 
 @Controller 
 @RequestMapping("/member/**")
@@ -113,7 +112,7 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 	
-		return "member/mypage_modify"; 
+		return "/member/mypage_modify"; 
 	} 
 	
 	// 내가 작성한 질문
@@ -133,7 +132,7 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 
-		Paging page = new Paging();
+		MyPaging page = new MyPaging();
 		
 		// 현재 페이지
 		page.setNum(num);
@@ -154,7 +153,7 @@ public class MemberController {
 		}
 		*/
 		
-		return "member/mypage_board"; 
+		return "/member/mypage_board"; 
 	}
 	
 	// 내 글 전체 삭제
@@ -193,7 +192,7 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 		
-		Paging page = new Paging();
+		MyPaging page = new MyPaging();
 		
 		// 현재 페이지
 		page.setNum(num);
@@ -216,7 +215,7 @@ public class MemberController {
 
 		model.addAttribute("answerVO",answerVO);
 		
-		return "member/mypage_comment"; 
+		return "/member/mypage_comment"; 
 	}
 	
 	// 내 글 전체 삭제
@@ -268,7 +267,7 @@ public class MemberController {
 		
 		//System.out.println("나의 게시물 수 " + MyPostCnt);
 		
-		return "member/mypage_activity";
+		return "/member/mypage_activity";
 	}
 	
 	
@@ -307,7 +306,7 @@ public class MemberController {
 		}
 		
 		
-		return "member/delete";
+		return "/member/delete";
 	}
 	
 	// 회원 탈퇴 POST

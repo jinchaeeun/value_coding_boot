@@ -1,22 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<link rel="stylesheet" href="../css/style.css">
+<!-- 상단 헤더 불러오기 -->
+<jsp:include page="../sub_header.jsp"></jsp:include>
 
 <div class="circle-small"></div>
 <div class="circle-big"></div>	
 
 <c:set var="session" value="${sessionScope.login}" scope="application"/>
 
+<div id="ajax_div">
  <div class="mypage">
         <div class="mypage-form">
             <ul class="mypage-tap">
-                <li class="mypage-tapmenu" id="btn1"><a href="#">내 활동</a></li>
-                <li class="mypage-tapmenu on" id="btn2"><a href="#">정보 수정</a></li>
+                <li class="mypage-tapmenu" id="btn1"><a href="/member/mypage_activity">내 활동</a></li>
+                <li class="mypage-tapmenu on" id="btn2"><a href="/member/mypage_modify">정보 수정</a></li>
                 <hr>
-                <li class="mypage-tapmenu" id="btn3"><a href="#">게시글</a></li>
-                <li class="mypage-tapmenu" id="btn4"><a href="#">답변</a></li>
+                <li class="mypage-tapmenu" id="btn3"><a href="/member/mypage_board?num=1">게시글</a></li>
+                <li class="mypage-tapmenu" id="btn4"><a href="/member/mypage_comment?num=1">답변</a></li>
             </ul>
            
     <c:if test="${session.me_singupcode != 1}">
@@ -97,12 +100,12 @@
  
         </div>
     </div>
-
+</div>
  
  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 
-$('#btn1').bind('click', function(event) {
+/* $('#btn1').bind('click', function(event) {
 	fn_getPage('./mypage_activity');
 	});
 $('#btn2').bind('click', function(event) {
@@ -114,7 +117,7 @@ $('#btn3').bind('click', function(event) {
 $('#btn4').bind('click', function(event) {
 	   fn_getPage('./mypage_comment?num=1');
 		});
-
+ */
 
 	
 
