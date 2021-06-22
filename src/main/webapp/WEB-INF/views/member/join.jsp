@@ -8,7 +8,7 @@
 <div class="circle-small"></div>
 <div class="circle-big"></div>
 
-<div class="join-box">
+<div class="join-box" data-aos="fade-down" data-aos-delay="300">
 	<div class="join">
 	
 	<h1>회원가입</h1>

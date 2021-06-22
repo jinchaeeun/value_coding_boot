@@ -5,7 +5,17 @@
 <!-- 상단 헤더 불러오기 -->
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
-<div class="notice-view-wrap">
+<style>
+	html {
+	    overflow-y: scroll !important;
+	}
+</style>
+
+
+<div class="circle-small"></div>
+<div class="circle-big"></div>	
+
+<div class="notice-view-wrap" data-aos="fade-down" data-aos-delay="300">
 	<div class="notice-box view-box">
 		<div class="view">
 			<h1><c:out value="${board}"/></h1>

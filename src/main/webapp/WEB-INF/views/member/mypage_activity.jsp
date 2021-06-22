@@ -14,7 +14,7 @@
 
 <div id="ajax_div">
 	
-    <div class="mypage">
+    <div class="mypage" data-aos="fade-down" data-aos-delay="300">
 
         <div class="mypage-form">
             <ul class="mypage-tap">

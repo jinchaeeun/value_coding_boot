@@ -5,7 +5,10 @@
 <!-- 상단 헤더 불러오기 -->
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
-<div class="notice-wrap">
+<div class="circle-small"></div>
+<div class="circle-big"></div>	
+
+<div class="notice-wrap" data-aos="fade-down" data-aos-delay="300">
 	<h1 class="board-name"><c:out value="${board}"/></h1>
 	
 	<div class="search-box">
@@ -22,7 +25,7 @@
 		</div>
 	</div> <!-- search-box -->
 
-	<div class="notice-box" data-aos="flip-left" data-aos-delay="100">
+	<div class="notice-box">
 		<ul class="th">
 			<li>
 				<div class="no">번호</div>
@@ -36,7 +39,7 @@
 		
 		<ul class="td">
 			<c:forEach items="${list}" var="list">
-				<li data-aos="fade-up" data-aos-delay="200">
+				<li>
 					<div class="no"><c:out value="${list.po_num}" /></div>
 					<div class="title"><a href="/board/notice_view?po_num=${list.po_num}"><c:out value="${list.po_title}" /></a></div>
 					<div class="writer"><c:out value="${list.po_writer}" /></div>
