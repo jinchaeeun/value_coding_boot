@@ -6,8 +6,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hustar.value_coding_boot.dao.CourseDao;
+import com.hustar.value_coding_boot.vo.BoardFileVO;
+import com.hustar.value_coding_boot.vo.BoardVO;
 import com.hustar.value_coding_boot.vo.Course;
 
 @Service
@@ -19,6 +23,11 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public List<Course> getAllCourses() throws Exception {
 		return courseDao.getAllCourses();
+	}	
+	
+	@Override
+	public void writeCourse(Course course) throws Exception {
+		courseDao.writeCourse(course);
 	}
 	
 	@Override

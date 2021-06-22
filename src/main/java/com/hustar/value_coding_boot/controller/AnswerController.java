@@ -1,5 +1,9 @@
 package com.hustar.value_coding_boot.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hustar.value_coding_boot.service.AnswerService;
 import com.hustar.value_coding_boot.service.BoardService;
+import com.hustar.value_coding_boot.service.CourseService;
 import com.hustar.value_coding_boot.vo.AnswerVO;
+import com.hustar.value_coding_boot.vo.BoardVO;
+import com.hustar.value_coding_boot.vo.Course;
 
 @Controller
 public class AnswerController {
@@ -21,6 +28,9 @@ public class AnswerController {
 
 	@Inject
 	private BoardService boardService;
+
+	@Inject
+	private CourseService courseService;
 	
 	// 답글 작성
 	@RequestMapping("/answer/write")
@@ -43,6 +53,13 @@ public class AnswerController {
 		answerService.updateParent(ans_num);
 		
 		boardService.updateAnsCnt(Integer.parseInt(request.getParameter("po_num")));
+		
+		BoardVO boardVO = boardService.read(Integer.parseInt(request.getParameter("po_num")));
+	
+		Course course = new Course();
+		course.setNoti_message("'" + boardVO.getPo_title() + "' 질문의 답변이 등록되었습니다.");
+		
+		courseService.writeCourse(course);
 		
 		return "redirect:/board/notice_view?po_num=" + request.getParameter("po_num");
 	}

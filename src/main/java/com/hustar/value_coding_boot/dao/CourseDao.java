@@ -11,6 +11,9 @@ public interface CourseDao {
 	
 	// 알림 조회
 	Course getCourceByCode(String couresCode) throws Exception;
+
+	// 알림 작성
+	public void writeCourse(Course cource) throws Exception;
 	
 	// 알림 삭제
 	public void deleteCourse(int noti_id) throws Exception;
