@@ -100,6 +100,8 @@ public class BoardController {
 		
 		// 게시물의 전체 개수 구함
 		page.setCount(boardService.count(searchType, keyword, board));
+		System.out.println("게시물의 전제 개수 : " + boardService.count(searchType, keyword, board));
+		System.out.println("게시물의 전제 개수 : " + page.getCount());
 		
 		// 검색 타입과 검색어
 		page.setSearchType(searchType);

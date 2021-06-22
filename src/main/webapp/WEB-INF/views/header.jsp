@@ -24,6 +24,11 @@
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 		<link rel="stylesheet" href="./css/style.css">
+		
+		<!-- 웹 소켓 -->
+	    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+	    <script src="/app.js"></script>
 
 		<!-- 스크롤시 fixed -->
 		<script src="./js/autofix.js"></script>
