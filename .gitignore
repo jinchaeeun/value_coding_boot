@@ -14,3 +14,4 @@ LOG_PATH_IS_UNDEFINED/daily_common/2021-06-19.log
 LOG_PATH_IS_UNDEFINED/daily_error/2021-06-19.log
 src/main/resources/log4jdbc.log4j2.properties
 src/main/resources/logback.xml
+build/

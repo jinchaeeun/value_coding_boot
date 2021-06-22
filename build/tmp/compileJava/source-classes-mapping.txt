@@ -20,6 +20,8 @@ com/hustar/value_coding_boot/service/BoardServiceImpl.java
  com.hustar.value_coding_boot.service.BoardServiceImpl
 com/hustar/value_coding_boot/dao/AnswerDAO.java
  com.hustar.value_coding_boot.dao.AnswerDAO
+com/hustar/value_coding_boot/controller/MessageController.java
+ com.hustar.value_coding_boot.controller.MessageController
 com/hustar/value_coding_boot/service/AnswerServiceImpl.java
  com.hustar.value_coding_boot.service.AnswerServiceImpl
 com/hustar/value_coding_boot/service/AnswerService.java
@@ -30,6 +32,8 @@ com/hustar/value_coding_boot/vo/AnswerVO.java
  com.hustar.value_coding_boot.vo.AnswerVO
 com/hustar/value_coding_boot/dao/BoardDAOImpl.java
  com.hustar.value_coding_boot.dao.BoardDAOImpl
+com/hustar/value_coding_boot/configuration/WebSocketConfig.java
+ com.hustar.value_coding_boot.configuration.WebSocketConfig
 com/hustar/value_coding_boot/dao/MemberDAOImpl.java
  com.hustar.value_coding_boot.dao.MemberDAOImpl
 com/hustar/value_coding_boot/controller/AnswerController.java
