@@ -33,7 +33,7 @@
 		VALUES (
 			NULL,
 			#{noti_message},
-			NOW())
+			NOW()
 		)
 		]]>
 	</insert>
