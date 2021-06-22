@@ -30,7 +30,9 @@
 							<a href="/board/downloadFile?fi_num=${file.fi_num}&po_num=${file.po_num}">
 								<i class="fa fa-download" aria-hidden="true"></i><c:out value=" ${file.fi_ori_filename}"/>
 							</a>
-							<a href="#" onclick="javascript:confirmDeleteFile(${file.fi_num}, ${file.po_num});">[삭제]</a>
+							<c:if test="${login.me_id eq read.po_write_Id}">
+								<a href="#" onclick="javascript:confirmDeleteFile(${file.fi_num}, ${file.po_num});">[삭제]</a>
+							</c:if>
 						</div>
 					</c:forEach>
 				</div>
@@ -43,8 +45,6 @@
 			<h3>댓글</h3>
 			
 			<form action="/answer/write" method="post" name="answerForm">
-
-			
 				<div class="answer-write-wrap">
 					<div class="answer-write-box">
 						<p><c:out value="${session.me_nickName}"/><input type="hidden" name="ans_writer" value='<c:out value="${session.me_nickName}"/>'></p>
@@ -68,8 +68,10 @@
 						
 						<div class="answer-info">
 							<span><fmt:formatDate value="${answer.ans_datetime}" pattern="yyyy-MM-dd HH:mm" /></span>
-							<a href="#none" onclick="javascript:updateAnswerDetail(${answer.ans_num}, '${answer.ans_contents}', '${read.po_num}'); return false;">수정</a>
-							<a href="/answer/delete?ans_num=${answer.ans_num}&po_num=${read.po_num}">삭제</a>
+							<c:if test="${login.me_id eq answer.ans_writer_Id}">
+								<a href="#none" onclick="javascript:updateAnswerDetail(${answer.ans_num}, '${answer.ans_contents}', '${read.po_num}'); return false;">수정</a>
+								<a href="/answer/delete?ans_num=${answer.ans_num}&po_num=${read.po_num}">삭제</a>
+							</c:if>
 							<c:if test="${answer.ans_depth == 0}">
 								<a href="#none" onclick="javascript:reAnswer(${answer.ans_num}, '${read.po_num}'); return false;">답글쓰기</a>
 							</c:if>
@@ -83,8 +85,10 @@
 	
 	<div class="write-btn-box">
 		<a href="/board/notice_list?board=${board}&num=1">목록으로</a>
-		<a href="/board/notice_updateView?po_num=${read.po_num}">수정</a>
-		<a href="#" onclick="javascript:noticeDelete();">삭제</a>
+		<c:if test="${login.me_id eq read.po_write_Id}">
+			<a href="/board/notice_updateView?po_num=${read.po_num}">수정</a>
+			<a href="#" onclick="javascript:noticeDelete();">삭제</a>
+		</c:if>
 	</div>
 </div> <!-- notice-view-wrap -->
 

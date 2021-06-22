@@ -25,7 +25,6 @@
 				<div class="id_check">
 					<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" ><a href="javascript:checkId();">중복확인</a>
 				</div>
-				<input class="form-control" type="text" id="me_id" name="me_id" placeholder="아이디(이메일)" ><a href="javascript:checkId();" class="checkId">중복확인</a>
 			</div>
 
 			<div class="form-group has-feedback">
@@ -63,7 +62,7 @@
 	</div>
 
 	<div class="button">
-		<a href="/login">이전</a>
+		<a href="/member/login">이전</a>
 	</div>
 </div>
 

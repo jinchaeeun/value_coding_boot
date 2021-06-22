@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
@@ -28,6 +30,7 @@ import com.hustar.value_coding_boot.service.BoardService;
 import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardFileVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
+import com.hustar.value_coding_boot.vo.MemberVO;
 import com.hustar.value_coding_boot.vo.Paging;
 
 @Controller
@@ -48,8 +51,15 @@ public class BoardController {
 	
 	// 글쓰기 화면
 	@RequestMapping(value = "/board/notice_write", method = RequestMethod.GET)
-	public String notice_write() throws Exception {
+	public String notice_write(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
 		logger.info("notice_write");
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg", "로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
 		
 		return "/board/notice_write";
 	}
@@ -114,8 +124,15 @@ public class BoardController {
 	
 	// 게시글 조회
 	@RequestMapping(value = "/board/notice_view", method = RequestMethod.GET)
-	public String notice_view(int po_num, Model model, AnswerVO answerVO) throws Exception {
+	public String notice_view(int po_num, Model model, AnswerVO answerVO, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
 		logger.info("notice_view");
+		
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		
+		if(loginVO == null) {
+			redirectAttributes.addFlashAttribute("msg", "로그인이 필요합니다,");
+			return "redirect:/member/login";
+		}
 		
 		BoardVO boardVO = boardService.read(po_num);
 		
@@ -142,6 +159,8 @@ public class BoardController {
 		// 게시판 이름 넘겨줌
 		model.addAttribute("board", boardName);
 		
+		// 로그인 정보
+		model.addAttribute("login", loginVO);		
 		return "/board/notice_view";
 	}
 	

@@ -100,10 +100,12 @@ public class AnswerController {
 	
 	// 대댓글 작성
 	@RequestMapping("/answer/ans_write")
-	public String answeransWrite(AnswerVO answerVO) throws Exception {
+	public String answeransWrite(AnswerVO answerVO, HttpSession session) throws Exception {
 		logger.info("대댓글 작성");
 		
 		AnswerVO re_answerVO = new AnswerVO();
+		
+		MemberVO loginVO = (MemberVO)session.getAttribute("login");
 		
 		// 그룹 내 순서 조회
 		int group_order = answerService.selectMaxGroupOrder(answerVO.getAns_num());
@@ -112,6 +114,7 @@ public class AnswerController {
 		re_answerVO.setAns_contents(answerVO.getAns_contents());
 		re_answerVO.setAns_po_num(answerVO.getAns_po_num());
 		re_answerVO.setAns_writer(answerVO.getAns_writer());
+		re_answerVO.setAns_writer_Id(loginVO.getMe_id());
 		re_answerVO.setAns_depth(1);
 		re_answerVO.setAns_group_order(group_order + 1);
 		

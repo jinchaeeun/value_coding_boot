@@ -1,6 +1,5 @@
 package com.hustar.value_coding_boot.controller;
 
-import java.net.URLEncoder;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -25,7 +24,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) 
 	public String about(Model model) throws Exception { 
-		System.out.println("home controller start"); 
 		List<Course> course = courseService.getAllCourses();
 		
 		model.addAttribute("courses", course);		
