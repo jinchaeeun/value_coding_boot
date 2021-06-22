@@ -17,58 +17,59 @@
 <div class="circle-big"></div>
 
 <div class="login-box">
-	<h1>로그인</h1>
 	<form method="post" name="frm" action="<c:url value='/member/actionLogin.do'/>">
 		<div class="login">
-		   <span>아이디(이메일)</span>
+		
+		   <h1>로그인</h1>
+			
 		   <input type="text" name="me_id" placeholder="아이디">
-		   <span>비밀번호</span>
 		   <input type="password" name="me_pass" placeholder="비밀번호">
 		   <button type="button" onclick="actionLogin();">로그인</button>
 		   <label><input type="checkbox" id="chk-notice" value="log-in">&nbsp로그인 상태 유지</label>
+	
+			<div class="findIdPw">
+			   <a href="#none">아이디 찾기</a>
+			   <a href="#none">비밀번호 찾기</a>
+			   <a href="<c:url value='/member/join'/>">회원가입</a>      
+			</div>
+			<input type="hidden" id="tocken" name="tocken" value="0">
+			<a id="kakao-login-btn"></a>
+			<!-- 카카오 로그인 -->
+			   <div class="kakao-login">
+			      <ul>
+			         <li onclick="kakaoLogin();">
+			           <a href="javascript:void(0)">
+			            <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/>
+			           </a>
+			         </li>
+			      </ul>
+			
+			  </div>
+		
+		   
+			<!-- 네이버 로그인 -->
+			<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+			<div id="naverIdLogin">
+				<ul>
+					<li>
+						<a id="naverIdLogin_loginButton" href="#">
+							<img src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.1" height="0">
+						</a>
+					</li>
+				</ul>
+			<!-- //네이버아이디로로그인 버튼 노출 영역 -->
+		
+			</div>
+		
+			<!-- 구글 로그인 (127.0.0.1 테스트 불가, LOCALHOST사용)-->
+			<!-- 구글 로그인 버튼-->
+				<!-- 구글 로그인 버튼-->
+			<div class="g-signin2" data-onsuccess="onSignIn">
+			<!-- 스타일 지정하기 -->
+			</div>
+	
 		</div>
 	</form>
-	
-	<div class="findIdPw">
-	   <a href="#none">아이디 찾기</a>
-	   <a href="#none">비밀번호 찾기</a>
-	   <a href="<c:url value='/member/join'/>">회원가입</a>      
-	</div>
-	<input type="hidden" id="tocken" name="tocken" value="0">
-	<a id="kakao-login-btn"></a>
-	<!-- 카카오 로그인 -->
-	   <div class="kakao-login">
-	      <ul>
-	         <li onclick="kakaoLogin();">
-	           <a href="javascript:void(0)">
-	            <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/>
-	           </a>
-	         </li>
-	      </ul>
-	
-	  </div>
-
-   
-	<!-- 네이버 로그인 -->
-	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
-	<div id="naverIdLogin">
-		<ul>
-			<li>
-				<a id="naverIdLogin_loginButton" href="#">
-					<img src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.1" height="0">
-				</a>
-			</li>
-		</ul>
-	<!-- //네이버아이디로로그인 버튼 노출 영역 -->
-
-	</div>
-
-	<!-- 구글 로그인 (127.0.0.1 테스트 불가, LOCALHOST사용)-->
-	<!-- 구글 로그인 버튼-->
-		<!-- 구글 로그인 버튼-->
-	<div class="g-signin2" data-onsuccess="onSignIn">
-	<!-- 스타일 지정하기 -->
-	</div>
 	
 </div>
 

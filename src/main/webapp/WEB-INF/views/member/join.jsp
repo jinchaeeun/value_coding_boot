@@ -9,8 +9,9 @@
 <div class="circle-big"></div>
 
 <div class="join-box">
-	<h1>회원가입</h1>
 	<div class="join">
+	
+	<h1>회원가입</h1>
 
 		<form method="post" name="frm"  action="<c:url value='/member/joinInsert'/>">
 
@@ -38,7 +39,7 @@
 					placeholder="비밀번호 확인" />
 			</div>
 
-			<div class="form-group has-feedback">
+			<div class="form-group has-feedback language-box">
 				<label class="control-label" for="checkDevLangDiv">선호 개발 언어</label>
 				<div class="checkDevLangDiv">
 					<ul>
@@ -59,10 +60,6 @@
 				<button class="btn btn-success" type="button" onclick="submitForm();">가입하기</button>
 			</div>
 		</form>
-	</div>
-
-	<div class="button">
-		<a href="/member/login">이전</a>
 	</div>
 </div>
 
