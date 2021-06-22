@@ -1,7 +1,5 @@
 package com.hustar.value_coding_boot.vo;
 
-import java.util.Date;
-
 public class Course {
 
 	private int noti_id;

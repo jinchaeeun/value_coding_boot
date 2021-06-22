@@ -103,6 +103,7 @@
 		 		po_datetime,
 		 		po_updatetime,
 		 		po_writer,
+		 		po_write_Id,
 		 		po_views,
 		 		po_ans_cnt,
 		 		po_noticeYn,
@@ -186,7 +187,7 @@
 			UPDATE t_post SET
 				po_ans_cnt = (
 					SELECT COUNT(*) FROM t_answer 
-						WHERE po_num = #{po_num} 
+						WHERE ans_po_num = #{po_num} 
 						AND ans_deleteYn='N'
 						)
 				WHERE po_num = #{po_num};

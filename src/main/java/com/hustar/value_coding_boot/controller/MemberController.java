@@ -55,7 +55,7 @@ public class MemberController {
 		Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 		if(inputFlashMap != null) {
 			model.addAttribute("msg", inputFlashMap.get("msg"));
-			System.out.println("msg = " + inputFlashMap.get("msg"));
+			//System.out.println("msg = " + inputFlashMap.get("msg"));
 		}
 		return "/member/join";
 	}
@@ -75,7 +75,7 @@ public class MemberController {
 		
 		
 		int cnt = service.checkId(vo);
-		System.out.println("cnt = " + cnt);
+		//System.out.println("cnt = " + cnt);
 		
 		if(cnt>0) {
 			redirectAttributes.addFlashAttribute("msg", "이미 가입된 아이디입니다.");
@@ -96,7 +96,7 @@ public class MemberController {
 		Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 		if(inputFlashMap != null) {
 			model.addAttribute("msg", inputFlashMap.get("msg"));
-			System.out.println("msg = " + inputFlashMap.get("msg"));
+			//System.out.println("msg = " + inputFlashMap.get("msg"));
 		}
 		return "/member/login";
 	}
@@ -106,7 +106,7 @@ public class MemberController {
 		
 		// 로그인 필수
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
-		System.out.println("로그인 세션 " + loginVO);
+		//System.out.println("로그인 세션 " + loginVO);
 		
 		if(loginVO == null) {
 			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
@@ -208,9 +208,11 @@ public class MemberController {
 		List<AnswerVO> answerVO = (List<AnswerVO>)service.ViewMyCommentMember(loginVO, page.getDisplayPost(), page.getPostNum());
 	 
 		 // DB에서 데이터 가져오는지 체크
-		for(int i=0;i<answerVO.size();i++) {
-			System.out.println("mypage_comment : 댓글 가져오기" + answerVO.get(i).getAns_contents());
-		}
+			/*
+			 * for(int i=0;i<answerVO.size();i++) {
+			 * System.out.println("mypage_comment : 댓글 가져오기" +
+			 * answerVO.get(i).getAns_contents()); }
+			 */
 
 		model.addAttribute("answerVO",answerVO);
 		
@@ -264,7 +266,7 @@ public class MemberController {
 		model.addAttribute("MyPostCnt", MyPostCnt);
 		model.addAttribute("MyCommentCnt",MyCommentCnt);
 		
-		System.out.println("나의 게시물 수 " + MyPostCnt);
+		//System.out.println("나의 게시물 수 " + MyPostCnt);
 		
 		return "member/mypage_activity";
 	}
@@ -341,8 +343,8 @@ public class MemberController {
 		
 		int cnt = service.checkId(membervo);
 		
-		System.out.println("checkId");
-		System.out.println("cnt => " + cnt);
+		//System.out.println("checkId");
+		//System.out.println("cnt => " + cnt);
 		if(cnt>0) {
 			model.addAttribute("duplicate", true);
 		}else {
@@ -445,10 +447,10 @@ public class MemberController {
 				randomText += (char)(rndVal + 55);	//문자로 반환해 저장
 			}
 		}
-		System.out.println("랜덤값은 + " + randomText);
+		//System.out.println("랜덤값은 + " + randomText);
 		String rnd_sns_nick = sosial + randomText + sns_nick;
 
-		System.out.println("변경된 닉네임 값은 + " + rnd_sns_nick);
+		//System.out.println("변경된 닉네임 값은 + " + rnd_sns_nick);
 		
 		//가입코드 같으면 진행, 아니면 else로 실패 출력
 
@@ -456,7 +458,7 @@ public class MemberController {
 			//redirectAttributes.addFlashAttribute("msg", "소셜 로그인 성공");
 			//이미 가입되어있을 때 가입코드 확인한다.
 			int signUpCode = service.checkCode(vo);
-			System.out.println("checkCode = " + signUpCode);
+			//System.out.println("checkCode = " + signUpCode);
 			if(sns_type==signUpCode) {
 				//가입 성공
 				model.addAttribute("login", true);
@@ -483,7 +485,7 @@ public class MemberController {
 		MemberVO loginVO = (MemberVO) service.selectMemberView(vo, null, null, "selectMemberView");
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		request.getSession().setAttribute("login", loginVO);
-		System.out.println("login 세션 =>" +loginVO);
+		//System.out.println("login 세션 =>" +loginVO);
 		
 		return new ModelAndView(jsonView);
 	}

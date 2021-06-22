@@ -100,7 +100,7 @@ img {
 	padding: 5px 10px;
 	background: #fff;
 	border-radius: 4px; 
-	border-left: 3px solid #1d3a6d;
+	border-left: 5px solid #1d3a6d;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .sub-gnb > li{padding: 13px; border-bottom: 1px solid #eee;}
@@ -133,14 +133,14 @@ img {
 .header .tnb{float: right; margin-top: 20px; margin-right: 20px;}
 .header .tnb > ul > li{float: left;}
 .header .tnb > ul > li:first-child > a{color: #1d3a6d;}
-.header .tnb > ul > li > a{display: block; padding: 10px 15px 10px 15px; font-size: 1rem; font-weight: 700;}
+.header .tnb > ul > li > a{display: block; padding: 10px 15px 10px 15px; font-size: 1.1rem; font-weight: 700;}
 
-.notice {margin-right: 45px;}
+.notice {margin-right: 40px;}
 .notice > a {color: #1d3a6d;}
 
 .notification {
 	top: -2.9em;
-	right: 13.4em;
+	right: 14em;
 	width: 5.5em;
 	height: 5.5em;
 	text-align: center;
@@ -410,7 +410,7 @@ img {
 /*login.html*/
 .login-box{margin: 300px auto; text-align: center;}
 .login-box h1{text-align: center; margin-bottom: 40px;}
-.login-box .login{max-width: 500px; margin: 20px auto; border-left: 3px solid #1d3a6d; padding: 70px 50px 70px 50px; background: #fff; display: grid; box-shadow: 0 4px 12px rgb(0 0 0 / 10%); }
+.login-box .login{max-width: 500px; margin: 20px auto; border-left: 5px solid #1d3a6d; padding: 70px 60px; background: #fff; display: grid; box-shadow: 0 4px 12px rgb(0 0 0 / 10%); }
 .login-box .login input{
 	margin: 10px 0px;
     height: 40px;
@@ -509,7 +509,7 @@ svg:not(:root) {
 /*join 회원가입*/
 .join-box{width: 480px; margin: 230px auto; }
 .join-box h1{text-align: center; margin-bottom: 40px;}
-.join-box .join{ max-width: 500px; margin: 0px auto; border-left: 3px solid #1d3a6d; padding: 70px 50px 60px 50px; background: #fff; display: grid; box-shadow: 0 4px 12px rgb(0 0 0 / 10%);}
+.join-box .join{ max-width: 500px; margin: 0px auto; border-left: 5px solid #1d3a6d; padding: 70px 60px 60px 60px; background: #fff; display: grid; box-shadow: 0 4px 12px rgb(0 0 0 / 10%);}
 .join-box .join span{margin-top: 10px;}
 .join-box .join input{margin: 10px 0px; height: 40px; }
 
@@ -597,7 +597,7 @@ svg:not(:root) {
 .mypage .mypage-form .mypage-con-column {  
     background: #fff;
     border-radius: 4px; 
-    border-left: 3px solid #1d3a6d;
+    border-left: 5px solid #1d3a6d;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 600px;
 }
@@ -655,7 +655,7 @@ body > div.mypage > div > form > div > div > button.delete_cancle {background :#
     display: flex;
     background: #fff;
     border-radius: 4px; 
-    border-left: 3px solid #1d3a6d;
+    border-left: 5px solid #1d3a6d;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     align-items: center;
     width: 700px;
