@@ -115,24 +115,26 @@ public class Paging {
 	}
 
 	private void dataCalc() {
-		// 마지막 번호
+		// 표시되는 페이지 번호 중 마지막 번호
 		endPageNum = (int)(Math.ceil((double)num / (double)pageNumCount) * pageNumCount);
 		
-		lastPageNum = (int)(Math.ceil((double) count / (double) pageNumCount));
+		// 가장 마지막 게시물을 포함하는 페이지 번호
+		lastPageNum = (int)(Math.ceil((double) count / (double) postNum));
 		
-		// 시작 번호
+		// 표시되는 페이지 번호 중 시작 번호
 		startPageNum = endPageNum - (pageNumCount - 1);
 		 
 		// 마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)count / (double)pageNumCount));
+		int endPageNum_tmp = (int)(Math.ceil((double)count / (double)postNum));
 		 
 		if(endPageNum > endPageNum_tmp) {
 			endPageNum = endPageNum_tmp;
 		}
 		 
 		prev = startPageNum == 1 ? false : true;
-		next = endPageNum * pageNumCount >= count ? false : true;
-		 
+		next = endPageNum * postNum >= count ? false : true;
+		
+		// 출력할 게시물
 		displayPost = (num - 1) * postNum;
 	}
 	
