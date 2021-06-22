@@ -5,8 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
-import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 public interface MemberService {
@@ -28,10 +28,10 @@ public interface MemberService {
 	public void deleteMember(MemberVO memberVO)throws Exception;
 	
 	// 내 작성글 조회 
-	public List<BoardVO> ViewMyPostMember(MemberVO memberVO) throws Exception;
+	public List<BoardVO> ViewMyPostMember(MemberVO memberVO, int displayPost, int postNum) throws Exception;
 
 	// 내 댓글 조회
-	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception;
+	public List<AnswerVO> ViewMyCommentMember(MemberVO memberVO, int displayPost, int postNum) throws Exception;
 
 	// 내 총 작성글 개수
 	public int getMyPostCnt(MemberVO memberVO)throws Exception;
@@ -44,4 +44,5 @@ public interface MemberService {
 
 	// 전체 댓글 삭제
 	public void DeleteMyComment(MemberVO memberVO) throws Exception;
+
 }

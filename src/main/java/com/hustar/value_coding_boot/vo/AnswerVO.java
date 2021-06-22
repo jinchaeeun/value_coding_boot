@@ -10,6 +10,7 @@ public class AnswerVO {
 	private Date ans_datetime;  // 답글 작성일
 	private Date ans_updatetime;  // 답글 수정일
 	private String ans_writer;  // 답글 작성자
+	private String ans_writer_Id;  // 답글 작성자 ID
 	private int ans_hots;  // 답글 좋아요 수
 	private String ans_deleteYn;  // 답글 삭제여부
 	
@@ -17,6 +18,13 @@ public class AnswerVO {
 	private int ans_group_order;  // 답글 순서
 	private int ans_depth;  // 답글 깊이
 
+	/* BoardVO 조인하기 위해서 */
+	private int po_num; // 게시글 번호
+	private String po_boardname; // 게시판 카테고리
+	private String po_title; // 게시글 제목
+	private int po_ans_cnt; // 답변수
+	
+	
 	public int getAns_group_num() {
 		return ans_group_num;
 	}
@@ -97,6 +105,14 @@ public class AnswerVO {
 		this.ans_writer = ans_writer;
 	}
 
+	public String getAns_writer_Id() {
+		return ans_writer_Id;
+	}
+
+	public void setAns_writer_Id(String ans_writer_Id) {
+		this.ans_writer_Id = ans_writer_Id;
+	}
+
 	public int getAns_hots() {
 		return ans_hots;
 	}
@@ -112,4 +128,41 @@ public class AnswerVO {
 	public void setAns_deleteYn(String ans_deleteYn) {
 		this.ans_deleteYn = ans_deleteYn;
 	}
+	
+	/* BoardVO */
+
+	public int getPo_num() {
+		return po_num;
+	}
+
+	public void setPo_num(int po_num) {
+		this.po_num = po_num;
+	}
+
+	public String getPo_boardname() {
+		return po_boardname;
+	}
+
+	public void setPo_boardname(String po_boardname) {
+		this.po_boardname = po_boardname;
+	}
+
+	public String getPo_title() {
+		return po_title;
+	}
+
+	public void setPo_title(String po_title) {
+		this.po_title = po_title;
+	}
+
+	public int getPo_ans_cnt() {
+		return po_ans_cnt;
+	}
+
+	public void setPo_ans_cnt(int po_ans_cnt) {
+		this.po_ans_cnt = po_ans_cnt;
+	}
+	
+	
+	
 }

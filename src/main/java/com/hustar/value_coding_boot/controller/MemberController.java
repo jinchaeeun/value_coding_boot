@@ -27,9 +27,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import com.hustar.value_coding_boot.service.BoardService;
 import com.hustar.value_coding_boot.service.MemberService;
+import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
-import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 import com.hustar.value_coding_boot.vo.Paging;
 
@@ -40,6 +41,8 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Inject
 	MemberService service;
+	
+	
 	
 	@Resource(name="jsonView")
 	MappingJackson2JsonView jsonView;
@@ -115,7 +118,12 @@ public class MemberController {
 	
 	// 내가 작성한 질문
 	@RequestMapping("/member/mypage_board") 
-	public String mypage_board(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception { 
+	public String mypage_board(
+			HttpSession session, 
+			RedirectAttributes redirectAttributes, 
+			Model model, 
+			@RequestParam("num") int num // 현재 선택한 페이지
+			) throws Exception {
 		
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
 		
@@ -124,18 +132,26 @@ public class MemberController {
 			redirectAttributes.addFlashAttribute("msg","로그인이 필요합니다,");
 			return "redirect:/member/login";
 		}
-		
-		// (loginVO) 받아서!! 세션 id!! 가져감!!
-		List<BoardVO> boardVO = (List<BoardVO>)service.ViewMyPostMember(loginVO);
-		model.addAttribute("boardVO",boardVO);
-		
+
 		Paging page = new Paging();
 		
-
+		// 현재 페이지
+		page.setNum(num);
 		
+		// 게시물의 개수 
+		page.setCount(service.getMyPostCnt(loginVO));
+		
+		model.addAttribute("page", page);
+		model.addAttribute("select", num);
+		
+		// (loginVO) 받아서!! 세션 id!! 가져감!!
+		List<BoardVO> boardVO = (List<BoardVO>)service.ViewMyPostMember(loginVO, page.getDisplayPost(), page.getPostNum());
+		model.addAttribute("boardVO",boardVO);
+	 
 		/*
-		CommentVO commentVO = (CommentVO)service.CountComment();
-		model.addAttribute("commentVO", commentVO);
+		for(int i=0;i<boardVO.size();i++) {
+			System.out.println("mypage_board : 게시글 제목 가져오기"  + boardVO.get(i).getPo_title());
+		}
 		*/
 		
 		return "member/mypage_board"; 
@@ -162,7 +178,12 @@ public class MemberController {
 
 	// 내가 작성한 답변
 	@RequestMapping("/member/mypage_comment") 
-	public String mypage_comment(HttpSession session, RedirectAttributes redirectAttributes, Model model) throws Exception{ 
+	public String mypage_comment(
+			HttpSession session, 
+			RedirectAttributes redirectAttributes, 
+			Model model,
+			@RequestParam("num") int num // 현재 선택한 페이지
+			) throws Exception{ 
 		
 		MemberVO loginVO = (MemberVO) session.getAttribute("login");
 		
@@ -172,15 +193,26 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 		
-		// (loginVO) 받아서!! 세션 id!! 가져감!!
-		List<CommentVO> commentVO = (List<CommentVO>)service.ViewMyCommentMember(loginVO);
+		Paging page = new Paging();
 		
-		/* // DB에서 데이터 가져오는지 체크
-		for(int i=0;i<commentVO.size();i++) {
-			System.out.println(commentVO.get(i).getCo_comments());
-		}*/
+		// 현재 페이지
+		page.setNum(num);
+		
+		// 게시물의 개수 
+		page.setCount(service.getMyCommentCnt(loginVO));
+		
+		model.addAttribute("page", page);
+		model.addAttribute("select", num);
+		
+		// (loginVO) 받아서!! 세션 id!! 가져감!!
+		List<AnswerVO> answerVO = (List<AnswerVO>)service.ViewMyCommentMember(loginVO, page.getDisplayPost(), page.getPostNum());
+	 
+		 // DB에서 데이터 가져오는지 체크
+		for(int i=0;i<answerVO.size();i++) {
+			System.out.println("mypage_comment : 댓글 가져오기" + answerVO.get(i).getAns_contents());
+		}
 
-		model.addAttribute("commentVO",commentVO);
+		model.addAttribute("answerVO",answerVO);
 		
 		return "member/mypage_comment"; 
 	}

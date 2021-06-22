@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import com.hustar.value_coding_boot.dao.MemberDAO;
+import com.hustar.value_coding_boot.vo.AnswerVO;
 import com.hustar.value_coding_boot.vo.BoardVO;
-import com.hustar.value_coding_boot.vo.CommentVO;
 import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Service
@@ -63,13 +63,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	// 내가 쓴 글 조회
-	public List<BoardVO> ViewMyPostMember(MemberVO memberVO)throws Exception{
-		return dao.ViewMyPostMember(memberVO);
+	public List<BoardVO> ViewMyPostMember(MemberVO memberVO, int displayPost, int postNum)throws Exception{
+
+		return dao.ViewMyPostMember(memberVO, displayPost, postNum);
 	}
 	
 	// 내가 쓴 댓글 조회
-	public List<CommentVO> ViewMyCommentMember(MemberVO memberVO) throws Exception{
-		return dao.ViewMyCommentMember(memberVO);
+	public List<AnswerVO> ViewMyCommentMember(MemberVO memberVO, int displayPost, int postNum) throws Exception{
+		return dao.ViewMyCommentMember(memberVO, displayPost, postNum);
 	}
 
 	// 내 총 작성글 갯수

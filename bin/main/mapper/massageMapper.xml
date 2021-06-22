@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.massageMapper">
+
+	<!-- 알림 목록 -->
+	<select id="list" resultType="com.hustar.value_coding_boot.vo.Course">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				t_notify
+			]]>
+	</select>
+	<!-- //알림 목록 -->
+	
+	<!-- 알림 조회 -->
+	<select id="read" parameterType="string" resultType="com.hustar.value_coding_boot.vo.Course">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				t_notify
+			WHERE
+				noti_id = #{noti_id}
+		]]>
+	</select>
+	<!-- //알림 조회 -->
+	
+	<!-- 알림 작성 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="noti_id">
+	<![CDATA[
+		INSERT INTO t_notify 
+		VALUES (
+			NULL,
+			#{noti_message},
+			NOW()
+		)
+		]]>
+	</insert>
+	<!-- //알림 작성 -->
+	
+	<!-- 알림 삭제 -->
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			DELETE
+			FROM
+				t_notify
+			WHERE
+				noti_id = #{noti_id}
+		]]>
+	</delete>
+	<!-- //알림 삭제 -->
+	
+	<!-- 알림 삭제 -->
+	<delete id="deleteAll" parameterType="int">
+		<![CDATA[
+			DELETE
+			FROM
+				t_notify
+		]]>
+	</delete>
+	<!-- //알림 삭제 -->
+	
+</mapper>

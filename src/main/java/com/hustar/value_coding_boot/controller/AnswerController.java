@@ -2,6 +2,7 @@ package com.hustar.value_coding_boot.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hustar.value_coding_boot.service.AnswerService;
 import com.hustar.value_coding_boot.service.BoardService;
 import com.hustar.value_coding_boot.vo.AnswerVO;
+import com.hustar.value_coding_boot.vo.MemberVO;
 
 @Controller
 public class AnswerController {
@@ -24,15 +26,21 @@ public class AnswerController {
 	
 	// 답글 작성
 	@RequestMapping("/answer/write")
-	public String answerWrite(HttpServletRequest request) throws Exception {
+	public String answerWrite(HttpSession session, HttpServletRequest request) throws Exception {
 		logger.info("답글 작성");
 		
 		AnswerVO answerVO = new AnswerVO();
+		
+		// 로그인 필수
+		MemberVO loginVO = (MemberVO) session.getAttribute("login");
+		System.out.println("로그인 세션 " + loginVO);
+		
 		
 		// request로 값을 받아와서 answerVO에 저장
 		answerVO.setAns_contents(request.getParameter("ans_contents"));
 		answerVO.setAns_po_num(Integer.parseInt(request.getParameter("po_num")));
 		answerVO.setAns_writer(request.getParameter("ans_writer"));
+		answerVO.setAns_writer_Id(loginVO.getMe_id());
 		
 		answerService.write(answerVO);
 		

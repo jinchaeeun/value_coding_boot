@@ -73,23 +73,32 @@
    <!-- //회원탈퇴 -->
    
    <!-- 내가 쓴 글 조회 -->
-   <select id="ViewMyPostMember" parameterType="memberVO" resultType="BoardVO">
-   		<![CDATA[
+   <select id="ViewMyPostMember" parameterType="hashmap" resultType="BoardVO">
 	   		SELECT *
 	   		FROM T_POST
-	   		WHERE po_writer = #{me_id} AND po_deleteYn = 'N'
-   		]]>
+	   		WHERE 
+	   			po_write_Id = #{memberVO.me_id} 
+	   		AND 
+	   			po_deleteYn = 'N'
+			ORDER BY
+				po_noticeYn ASC,
+				po_num DESC,
+				po_datetime DESC
+			LIMIT #{displayPost}, #{postNum}
    </select>
    <!-- // 내가 쓴 글 조회  -->
    
    <!-- 내가 쓴 답변 조회 -->
-   <select id="ViewMyCommentMember" parameterType="memberVO" resultType="CommentVO">
+   <select id="ViewMyCommentMember" parameterType="hashmap" resultType="AnswerVO">
        <![CDATA[
 	   		SELECT *
-	   		FROM t_comment LEFT OUTER JOIN t_post
-	   		ON t_post.po_num = t_comment.co_post_num
-	   		WHERE CO_USER_ID = #{me_id}
-	   		ORDER BY CO_DATETIME DESC;
+	   		FROM t_answer LEFT OUTER JOIN t_post
+	   		ON t_post.po_num = t_answer.ans_po_num
+	   		WHERE 
+	   			ans_writer_Id = #{memberVO.me_id}
+	   		AND 
+	   			po_deleteYn = 'N'
+	   		ORDER BY ans_datetime DESC;
    		]]>
    </select>
    <!-- // 내가 쓴 답변 조회  -->
@@ -100,7 +109,7 @@
       <![CDATA[
 			SELECT COUNT(*) 
 			FROM t_post 
-			WHERE po_writer = #{me_id} AND po_deleteYn = 'N';
+			WHERE po_write_Id = #{me_id} AND po_deleteYn = 'N';
   		]]>
  	 </select>
     <!--  //내가 쓴 총 글 개수 -->
@@ -109,8 +118,8 @@
  	<select id="getMyCommentCnt" parameterType="memberVO" resultType="int">
       <![CDATA[
 			SELECT COUNT(*) 
-			FROM t_comment 
-			WHERE co_user_id = #{me_id};
+			FROM t_answer 
+			WHERE ans_writer_Id = #{me_id};
   		]]>
  	 </select>
  	<!--  //내가 쓴 총 댓글 개수 --> 
@@ -118,7 +127,7 @@
  	 <!-- 내가 쓴 글 전체 삭제 -->
  	 <delete id="DeleteMyPost" parameterType="memberVO">
  	 <![CDATA[
- 	 	DELETE FROM T_POST WHERE po_writer = #{me_id} AND po_deleteYn = 'N';
+ 	 	DELETE FROM T_POST WHERE po_write_Id = #{me_id} AND po_deleteYn = 'N';
  	 ]]>
  	 </delete>
  	 <!-- //내가 쓴 글 전체 삭제 -->
@@ -126,7 +135,7 @@
  	 <!-- 내가 쓴 댓글 전체 삭제 -->
  	 <delete id="DeleteMyComment" parameterType="memberVO">
  	 <![CDATA[
- 	 	DELETE FROM T_COMMENT WHERE co_user_id = #{me_id};
+ 	 	DELETE FROM t_answer WHERE ans_writer_Id = #{me_id};
  	 ]]>
  	 </delete>
  	 <!-- //내가 쓴 댓글 전체 삭제 -->
