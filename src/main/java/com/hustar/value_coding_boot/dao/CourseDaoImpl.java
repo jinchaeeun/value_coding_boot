@@ -17,12 +17,22 @@ public class CourseDaoImpl implements CourseDao{
 
 
 	@Override
-	public List<Course> getAllCouses() throws Exception {		
+	public List<Course> getAllCourses() throws Exception {		
 		return sqlSession.selectList("mapper.massageMapper.list");
 	}
 
 	@Override
 	public Course getCourceByCode(String courseCode) throws Exception {
 		return sqlSession.selectOne("mapper.massageMapper.read", courseCode);
-	}	
+	}
+	
+	@Override
+	public void deleteCourse(int noti_id) throws Exception {
+		sqlSession.delete("mapper.massageMapper.delete", noti_id);
+	}
+	
+	@Override
+	public void deleteCourseAll() throws Exception {
+		sqlSession.delete("mapper.massageMapper.deleteAll");
+	}
 }

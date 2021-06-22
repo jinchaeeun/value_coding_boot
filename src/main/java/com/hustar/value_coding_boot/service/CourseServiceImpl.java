@@ -17,7 +17,18 @@ public class CourseServiceImpl implements CourseService {
 	private CourseDao courseDao;
 	
 	@Override
-	public List<Course> getAllCouses() throws Exception {
-		return courseDao.getAllCouses();
+	public List<Course> getAllCourses() throws Exception {
+		return courseDao.getAllCourses();
 	}
+	
+	@Override
+	public void deleteCourse(int noti_id) throws Exception {
+		courseDao.deleteCourse(noti_id);
+	}
+	
+	@Override
+	public void deleteCourseAll() throws Exception {
+		courseDao.deleteCourseAll();
+	}
+	
 }

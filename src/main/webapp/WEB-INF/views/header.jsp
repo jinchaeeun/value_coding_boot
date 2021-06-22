@@ -70,7 +70,7 @@
 							
 								<ul class="notice-sub sub-gnb">
 									<li>
-										<span class="delete-all">전체 삭제</span>
+										<span class="delete-all" onclick="javascript:courseDeleteAll();">전체 삭제</span>
 									</li>
 									
 									<c:forEach var="course" items="${courses}">
@@ -79,13 +79,22 @@
 												<a class="notice-query" href="none"><c:out value="${course.noti_message }" /></a>
 												<span class="date-span"><c:out value="${course.noti_datetime }" /></span>
 											</div>
-										<span class="delete-btn"></span>
+										<span class="delete-btn" onclick="javascript:courseDelete(${course.noti_id });"></span>
 										</li>
 									</c:forEach>
-									
 								</ul>
+								
+								<script type="text/javascript">
+									function courseDeleteAll() {
+										location.href = "/course_delete_all";
+									}							
+								
+									function courseDelete(data) {
+										location.href = "/course_delete?noti_id=" + data;
+									}
+								</script>
 							</li>
-						<!-- 로그인이 된 경우 -->
+						
 							<li><a href="<c:url value='/member/actionLogout.do'/>">로그아웃</a></li>
 							<li><a href="<c:url value='/member/mypage_activity'/>">마이페이지</a></li>
 							
@@ -94,7 +103,17 @@
 					            let SubCount = Sub.childElementCount - 1;
 					            
 					            let X = document.getElementsByClassName("number")[0];
-					            X.innerText = SubCount;
+					            X.innerText = SubCount;					            
+
+					            if (SubCount == 0) {
+					            	$('.delete-all').remove();					            	
+					            	
+						            let sub = document.querySelector('.notice-sub');
+						            let a = document.createElement('a');
+						            a.setAttribute('class', 'notice-zero');
+						            a.innerText = "알림 창이 텅텅 비었어요!";
+						            sub.append(a);           	
+					            }
 							</script>
 						</c:if>
 

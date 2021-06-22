@@ -7,5 +7,7 @@ import com.hustar.value_coding_boot.vo.Course;
 public interface CourseService {
 	
 	// 알림 목록 조회
-	List<Course> getAllCouses() throws Exception;
+	List<Course> getAllCourses() throws Exception;
+	public void deleteCourse(int noti_id) throws Exception;
+	public void deleteCourseAll() throws Exception;
 }
