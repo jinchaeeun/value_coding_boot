@@ -7,7 +7,6 @@ public class Course {
 	private int noti_id;
 	private String noti_message;
 	private String noti_datetime;
-	private String noti_check;
 
 	public int getNoti_id() {
 		return noti_id;
@@ -31,13 +30,5 @@ public class Course {
 
 	public void setNoti_datetime(String noti_datetime) {
 		this.noti_datetime = noti_datetime;
-	}
-	
-	public String getNoti_check() {
-		return noti_check;
-	}
-
-	public void setNoti_check(String noti_check) {
-		this.noti_check = noti_check;
 	}
 }

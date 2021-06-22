@@ -26,6 +26,19 @@
 	</select>
 	<!-- //알림 조회 -->
 	
+	<!-- 알림 작성 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="noti_id">
+	<![CDATA[
+		INSERT INTO t_notify 
+		VALUES (
+			NULL,
+			#{noti_message},
+			NOW()
+		)
+		]]>
+	</insert>
+	<!-- //알림 작성 -->
+	
 	<!-- 알림 삭제 -->
 	<delete id="delete" parameterType="int">
 		<![CDATA[
@@ -48,5 +61,4 @@
 	</delete>
 	<!-- //알림 삭제 -->
 	
-
 </mapper>
