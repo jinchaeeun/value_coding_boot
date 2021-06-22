@@ -31,7 +31,7 @@
 						기술적인 문제에 대한 답변을 찾고 기여할 수있는 커뮤니티 기반 공간입니다 .					
 					</p>
 
-					<a class="go-btn" href="javascript:void(0)">
+					<a href="/board/notice_list?board=언어&num=1" class="go-btn" href="javascript:void(0)">
 					  <span>궁금한 점이 있으신가요? <img src="./img/question.png"></span>
 					  <div class="wave"></div>
 					</a>
@@ -103,7 +103,7 @@
 					            let content=document.querySelector('.content').value;
 					            socket.send(content);
 					        }
-					</script>					
+					</script>			
 					
 				</div>
 				<div class="visual-box"  data-aos="fade-up" data-aos-delay="700">

@@ -67,33 +67,22 @@
 							</div>
 						
 							<li class="notice"><a>알림</a>
+							
 								<ul class="notice-sub sub-gnb">
 									<li>
 										<span class="delete-all">전체 삭제</span>
 									</li>
-									<li>
-										<div class="notice-info">
-											<a class="notice-query" href="none">새로운 환경에서 로그인 되었습니다.</a>
-											<span class="date-span">방금</span>
-										</div>
-									<span class="delete-btn"></span>
-									</li>
-
-									<li>								
-										<div class="notice-info">
-											<a class="notice-query" href="none">'스프링 부트 모드 선택' 질문의 답변이 등록되었습니다.</a>
-											<span class="date-span">25분 전</span>
-										</div>
+									
+									<c:forEach var="course" items="${courses}">
+										<li>
+											<div class="notice-info">
+												<a class="notice-query" href="none"><c:out value="${course.noti_message }" /></a>
+												<span class="date-span"><c:out value="${course.noti_datetime }" /></span>
+											</div>
 										<span class="delete-btn"></span>
-									</li>
-
-									<li>
-										<div class="notice-info">
-											<a class="notice-query" href="none">'UEFI와 레거시 부팅의 차이점' 질문의 답변이 등록되었습니다.</a>
-											<span class="date-span">2시간 전</span>
-										</div>
-										<span class="delete-btn"></span>
-									</li>
+										</li>
+									</c:forEach>
+									
 								</ul>
 							</li>
 						<!-- 로그인이 된 경우 -->
