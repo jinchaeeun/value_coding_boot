@@ -17,4 +17,5 @@ public class ValueCodingBootApplication {
     public ServerEndpointExporter serverEndpointExporter() {
         return new ServerEndpointExporter();
     }
+	
 }

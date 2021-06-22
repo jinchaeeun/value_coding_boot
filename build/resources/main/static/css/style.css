@@ -102,14 +102,14 @@ img {
 	border-left: 3px solid #1d3a6d;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-.sub-gnb > li{padding: 13px; border-top: 1px solid #eee;}
+.sub-gnb > li{padding: 13px; border-bottom: 1px solid #eee;}
 .sub-gnb > li:first-child{border: 0;}
 .sub-gnb > li a {font-size: 1rem;}
 
-.notice-sub {margin-top: 10px; margin-left: -130px; width: 400px;}
+.notice-sub {margin-top: 10px; margin-left: -130px; width: 400px; max-height: 1100px; overflow-y: scroll;}
 .notice-sub > li a {line-height: 1.5;}
-.date-span {margin-left: 5px; color: #ccc;}
-.notice-info {display: inline-block; width: 323px;}
+.date-span {margin-left: 7px; color: #ccc;}
+.notice-info {display: inline-block; width: 308px;}
 
 .delete-btn {
   margin-top: 3px;
@@ -124,8 +124,9 @@ img {
   cursor: pointer;
 }
 
-.notice-sub > li:last-child{padding: 0; border: 0;}
-.delete-all {color: #111; float: right; margin-right: 10px; margin-bottom: 10px; cursor: pointer;}
+.notice-sub > li:first-child{padding: 0; border: 0;}
+.notice-sub > li:last-child{border: 0;}
+.delete-all {color: #111; float: right; margin: 10px; margin-bottom: 15px; cursor: pointer;}
 
 .header .tnb{float: right; margin-top: 20px; margin-right: 20px;}
 .header .tnb > ul > li{float: left;}
@@ -140,7 +141,8 @@ img {
 	right: 17.7em;
 	width: 5.5em;
 	height: 5.5em;
-	padding: 17px 13px;
+	text-align: center;
+	padding-top: 16px;
 	display: inline-block;
 	position: absolute;
 	background-color: #1d3a6d;
@@ -492,7 +494,7 @@ svg:not(:root) {
     vertical-align: top;
 }
 
-/*join.html*/
+/*join 회원가입*/
 .join-box{width: 480px; margin: 200px auto; }
 .join-box h1{text-align: center;}
 .join-box .join{ max-width: 500px; margin: 20px auto; border: 1px solid #e1e1e1; padding: 20px; background: #fff; display: grid; }
@@ -504,63 +506,155 @@ svg:not(:root) {
 .join-box ul li{float: left; width: 33.33%; } /*3개 한 줄 차지*/
 .join-box ul li:nth-child(3n+1) { clear: both; } /*4번째부터 스타일 초기화해서 다음 줄에 배치 */
 
-.join button{width: 100%; height: 40px; background: #c3323a; border: 1px solid #7d7d7d; color: #fff;}
-.join-box a{text-align: center;}
+.join button{width: 100%; height: 40px; background: #1d3a6d; border: 1px solid #7d7d7d; color: #fff;}
+.join button:hover{background: #c0c4d7; color: #1d3a6d; border: 1px solid #c0c4d7;}
 
-.button{width: 30px; margin:0 auto;}
+.button{width: 30px; margin:0 auto;} /*이전 버튼*/
+
+.join-box body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+.join-box label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.join-box .form-control {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    }
+.join-box .form-group {
+    margin-bottom: 15px;
+}
+
+.join-box .form-group a {
+    color: #1d3a6d;
+    text-decoration: none;
+}
+.id_check {
+    text-align: right;
+}
+.join-box .btn-success {
+    color: #fff;
+    background-color: #1d3a6d;
+    border-color: #1d3a6d;
+}
+.join-box .btn {
+    border-radius: 4px;
+}
 
 
 /*mypage.jsp*/
-.mypage-box{width: 480px; margin: 200px auto; }
-.mypage-box h1{text-align: center; margin-bottom:20px;}
+.mypage{
+    width: 100vw; 
+    height: 100vh; 
+    text-align: center; 
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
 
-/*마이페이지 메뉴*/
+.mypage > h2 {font-size:17px; margin-bottom:20px;}
+.mypage-form {display: flex; justify-content: center; align-items: flex-start; }
 
-.usr_nickname {color : #102770;}
-.mypage-box > ul{display: table; width: 100%; text-align: center;}
-.mypage-box ul.mypage-tap li{display: table-cell; width: 33%; }
-.mypage-box ul.mypage-tap li > a{display: block; padding: 10px; font-size:14px;}
-.mypage-box ul.mypage-tap li > a#mypage-menu1 {border-right: 1px solid #e1e1e1;}
-.mypage-box ul.mypage-tap li:hover span:before{width: 100%; left:0;}
-.mypage-box ul.mypage-tap li:hover span:after{opacity: 1;}
+/* 마이페이지 메뉴 */
+.mypage .mypage-form .mypage-tap {width: 200px;}
+.mypage .mypage-form .mypage-tap > hr {width:90%;height:1px;border:none;background-color:#d5d8e6;}
+.mypage .mypage-form .mypage-tap li {margin: 10px; padding: 10px;  text-align: left; background-color: #ffffff; border-radius: 4px; }
+.mypage .mypage-form .mypage-tap li:hover {background-color: #c0c4d7; border-radius: 4px; font-weight: bold; flex: 1; color: #1d3a6d;}
+.mypage .mypage-form .mypage-tap li.on {background-color: #c0c4d7; border-radius: 4px; font-weight: bold; flex: 1; color: #1d3a6d;}
 
-.mypage-box ul.mypage-tap li.on span:before{width: 100%; left:0;}
-.mypage-box ul.mypage-tap li.on span:after{opacity: 1;}
+.mypage .mypage-form .mypage-tapmenu > a {font-size:16px;}
 
-.mypage-box ul.mypage-tap li.on a{font-weight:600}
+/* 마이페이지 게시글 */
+.mypage .mypage-form .mypage-con-column {  
+    background: #fff;
+    border-radius: 4px; 
+    border-left: 3px solid #1d3a6d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 600px;
+}
 
-.mypage-box ul.mypage-tap li > a span{display: block; position: relative;}
+.mypage-mod {
+    display: grid;
+    padding: 20px;
+    width: 100%;
+ 
+}
+
+/* 마이페이지 board */
+.myquestion {display:flex; text-align:left;}
+.mypage-boardbox {padding: 20px; text-align:end;}
+.mypage-boardbox > a {color : gray;}
+.mypage-boardbox > ul > li {border-bottom:1px solid #b7b7b7bf;}
+
+.myquestion > ul {padding: 10px; }
+.myquestion > ul > li {padding: 2px 0; }
+.myquestion > ul > li:nth-child(1){color:gray;}
+.myquestion > ul > li:nth-child(2) > h2 {font-size:17px;}
+.mypage-board {width:85%;}
+.mypage-manage {width: 15%;}
+
+.mypage-boardinfo{align-self: center; padding:8px; }
+.myboard-cnt {text-align:center; padding: 5px; font-weight:bold;}
+.myboard-cnt > span {font-size:20px;}
+.myquestion-manage {display:flex;}
+.myquestion-manage > li {padding : 5px;}
 	
-.mypage-box ul.mypage-tap li > a span:after{opacity: 0; content:""; width:0; height: 0; 
-border-top:0 solid transparent; border-bottom: 5px solid #000; border-left: 5px solid transparent; border-right: 5px solid transparent;
-position:absolute; left:50%; transform:translateX(-50%); bottom:-7px; }
+/* 마이페이지 수정 */
+.mypage-form .mypage-con-column span{text-align: left; font-size: 14px; padding: 10px;}
+.mypage-form .mypage-con-column input{margin: 0 20px; height: 40px;}
+.mypage-form .mypage-con-column input[type="checkbox"]{height: 20px; }
 
-/*마이페이지 내 정보 수정*/
-.mypage-box .mypage-form {max-width: 500px; margin: 20px auto; border: 1px solid #e1e1e1; padding: 20px; background: #fff; display: grid; }
-.mypage-box .mypage-form span{margin-top: 10px;}
-.mypage-box .mypage-form input{margin: 10px 0px; height: 40px; }
+.mypage-form .mypage-con-column #mypage_Email{background:#d3d3d3; border:0px;}
 
-.mypage-box .mypage-form .checkDevLangDiv{margin: 10px 0; border: 1px solid #7d7d7d; }
-.mypage-box .mypage-form input[type="checkbox"]{margin: 10px 5px; height: 20px; }
-.mypage-box .checkDevLangDiv ul li{float: left; width: 33.33%; } /*3개 한 줄 차지*/
-.mypage-box .checkDevLangDiv ul li:nth-child(3n+1) { clear: both; } /*4번째부터 스타일 초기화해서 다음 줄에 배치 */
+.mypage-form .mypage-con-column .checkDevLangDiv{margin: 0 20px 20px 10px; border: 1px solid #7d7d7d; }
+.mypage-form .mypage-con-column .checkDevLangDiv ul li{float: left; width: 33.33%; text-align: left;} /*3개 한 줄 차지*/
+.mypage-form .mypage-con-column .checkDevLangDiv ul li:nth-child(3n+1) { clear: both; } /*4번째부터 스타일 초기화해서 다음 줄에 배치 */
 
-.mypage-form button{width: 100%; height: 40px; background: #102770; border: 0px; color: #fff;}
-.mypage-box a{text-align: center;}
 
-.mypage-box .mypage-form #mypage_Email{background:#d3d3d3; border:0px;}
+.mypage-form button{height: 40px; background: #263f73; border: 0px; color: #fff; margin-bottom: 10px; }
+.memberdelete {text-align: right; padding:10px; font-size: 12px; color: #7d7d7d;}
 
-/*마이페이지 나의 게시물*/
-.mypage-form > ul > li{padding: 1rem;}
-.mypage-form > ul > li:not(:last-child){border-bottom:1px solid #e1e1e1;}
-.myquestion-tittle a:hover{text-decoration:underline;}
+/* 마이페이지 내 활동 */
 
-.nick_check {color:#102770;}
-.myquestion-content {margin-top:1rem;}
-.myquestion-manage{display:flex; justify-content: flex-end;}
-.myquestion-manage > li{padding-left: 10px;}
+.mypage .mypage-form .mypage-con {  
+    display: flex;
+    background: #fff;
+    border-radius: 4px; 
+    border-left: 3px solid #1d3a6d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    width: 700px;
+}
 
-.myquestion-manage .myquestion-remove a{color: #102770;}
+.left-dash {box-shadow: 0 4px 12px #1d3a6d71}
+.mymy{width: 300px; margin: 10px 0;}
+.mymy > li {padding: 10px;}
+
+.right-dash {flex: 2;}
+.right-dash .activity {display: flex; justify-content:center; padding: 20px;}
+
+.right-dash .activity > li {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1d3a6d;
+    margin: 5px;
+}
+.activity-title {padding: 10px; border-bottom: 2px solid #1d3a6d; font-size: 14px; font-weight: bold;}
+.activity-con {text-align: center; font-size: 40px; color: #1d3a6d; padding-top: 10px;}
 
 /*페이징 */
 .paging ul {text-align: center; margin: 20px;}
@@ -766,3 +860,5 @@ position:absolute; left:50%; transform:translateX(-50%); bottom:-7px; }
 
 .coding-frame {height: 1070px;}
 
+
+.go-btn { margin-bottom: 200px;}

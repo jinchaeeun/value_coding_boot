@@ -24,9 +24,9 @@
 
 html, body{overflow: hidden !important; cursor: none;}
 
-body {margin:0;padding:0;font-size:0.75em; font-family: Inter, "NEXON Lv1 Gothic OTF" !important; background:#fff;}
+body {margin:0;padding:0; font-family: Inter, "NEXON Lv1 Gothic OTF" !important; background:#fff;}
 html, h1, h2, h3, h4, h5, h6, form, fieldset, img {margin:0;padding:0;border:0}
-h1, h2, h3, h4, h5, h6 {font-size:1em; font-family: Inter, "NEXON Lv1 Gothic OTF" !important;}
+h1, h2, h3, h4, h5, h6 {font-family: Inter, "NEXON Lv1 Gothic OTF" !important;}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block}
 
 ul, dl,dt,dd {margin:0;padding:0;list-style:none}
@@ -34,8 +34,9 @@ legend {position:absolute;margin:0;padding:0;font-size:0;line-height:0;text-inde
 label, input, button, select, img {vertical-align:middle;font-size:1em}
 input, button {margin:0;padding:0; font-family: Inter, "NEXON Lv1 Gothic OTF" !important; font-size:1em}
 input[type="submit"]{cursor:pointer}
+input[type="checkbox"]{cursor:pointer}
 button {cursor:pointer}
-label {cursor:pointer}
+label {cursor:none}
 
 textarea, select {font-family: Inter, "NEXON Lv1 Gothic OTF" !important; font-size:1em}
 select {margin:0}
@@ -106,9 +107,9 @@ img {
 .sub-gnb > li:first-child{border: 0;}
 .sub-gnb > li a {font-size: 1rem;}
 
-.notice-sub {margin-top: 10px; margin-left: -130px; width: 400px; max-height: 1100px; overflow-y: scroll;}
+.notice-sub {margin-top: 10px; margin-left: -115px; width: 400px; max-height: 1100px; overflow-y: scroll;}
 .notice-sub > li a {line-height: 1.5;}
-.date-span {margin-left: 7px; color: #ccc;}
+.date-span {margin-left: 7px; color: #ccc; font-size: 0.8rem;}
 .notice-info {display: inline-block; width: 308px;}
 
 .delete-btn {
@@ -126,7 +127,7 @@ img {
 
 .notice-sub > li:first-child{padding: 0; border: 0;}
 .notice-sub > li:last-child{border: 0;}
-.delete-all {color: #111; float: right; margin: 10px; margin-bottom: 15px; cursor: pointer;}
+.delete-all {color: #111; float: right; margin: 10px; font-size: 0.8rem; margin-bottom: 15px; cursor: pointer;}
 .notice-zero {color: #1d3a6d; font-size: 1rem;}
 
 .header .tnb{float: right; margin-top: 20px; margin-right: 20px;}
@@ -134,16 +135,16 @@ img {
 .header .tnb > ul > li:first-child > a{color: #1d3a6d;}
 .header .tnb > ul > li > a{display: block; padding: 10px 15px 10px 15px; font-size: 1rem; font-weight: 700;}
 
-.notice {margin-right: 25px;}
+.notice {margin-right: 45px;}
 .notice > a {color: #1d3a6d;}
 
 .notification {
-	top: -2.2em;
-	right: 17.7em;
+	top: -2.9em;
+	right: 13.4em;
 	width: 5.5em;
 	height: 5.5em;
 	text-align: center;
-	padding-top: 16px;
+	padding-top: 22px;
 	display: inline-block;
 	position: absolute;
 	background-color: #1d3a6d;
@@ -407,21 +408,35 @@ img {
 
 
 /*login.html*/
-.login-box{margin: 200px auto; text-align: center;}
-.login-box .login{max-width: 500px; margin: 20px auto; border: 1px solid #e1e1e1; padding: 20px; background: #fff; display: grid; }
-.login-box .login input{margin: 10px 0; width: 100%; height: 40px; border-radius: 4px; border: 1px solid #1d3a6d;}
+.login-box{margin: 300px auto; text-align: center;}
+.login-box h1{text-align: center; margin-bottom: 40px;}
+.login-box .login{max-width: 500px; margin: 20px auto; border-left: 3px solid #1d3a6d; padding: 70px 50px 70px 50px; background: #fff; display: grid; box-shadow: 0 4px 12px rgb(0 0 0 / 10%); }
+.login-box .login input{
+	margin: 10px 0px;
+    height: 40px;
+    padding: 6px 12px;
+	width: 100%; 
+	font-size: 14px;
+	border: 1px solid #c0c4d7;
+	border-radius: 4px;
+}
+
+.login-box label {font-size: 14px; text-align: right; padding-right: 3px;}
 
 .login input[type="checkbox"]{ width: 20px;}
 
-#chk-notice{width:20px;}
+#chk-notice{width:20px; margin-right: 5px;}
 
-.login button{width: 100%; height: 40px; background: #1d3a6d; border: 1px solid #1d3a6d; color: #fff; border-radius: 4px}
+.login button{width: 100%; height: 45px; background: #1d3a6d; border: 1px solid #1d3a6d; color: #fff; border-radius: 4px; margin-top: 10px; font-weight: 700;}
+
+.findIdPw {margin: 20px; font-size: 14px;}
+
 
 /*---------SNS Login API-----------------------------------------------------------*/
 .login-box img{
-width: 220px;
+width: 270px;
 height: auto;
-margin-top: 10px;
+margin-top: 15px;
 }
 .login-box .findIdPw a{
 padding: 5px 10px 5px 10px;
@@ -435,13 +450,13 @@ border-right: 1px solid #ccc;
 }
 
 .g-signin2{
-	margin-top: 10px;
+	margin-top: 15px;
 }
 
 .g-signin2 > div {
     display: inline-block;
-    width: 220px;
-    height:47.7px;
+    width: 270px !important;
+    height: 42px !important;
 }
 
 .abcRioButtonLightBlue {
@@ -485,32 +500,30 @@ svg:not(:root) {
     padding-top: 5px;
 }
 .abcRioButtonContents {
-    font-family: Roboto,arial,sans-serif;
-    font-size: 14px;
-    line-height: 41px;
-    font-weight: 500;
-    letter-spacing: .21px;
-    margin-left: 6px;
-    margin-right: 6px;
-    vertical-align: top;
+    font-family: Inter, "NEXON Lv1 Gothic OTF" !important;
+    font-size: 1rem !important;
+    color: #111;
+    font-weight: 700 !important;
 }
 
 /*join 회원가입*/
-.join-box{width: 480px; margin: 200px auto; }
-.join-box h1{text-align: center;}
-.join-box .join{ max-width: 500px; margin: 20px auto; border: 1px solid #e1e1e1; padding: 20px; background: #fff; display: grid; }
+.join-box{width: 480px; margin: 230px auto; }
+.join-box h1{text-align: center; margin-bottom: 40px;}
+.join-box .join{ max-width: 500px; margin: 0px auto; border-left: 3px solid #1d3a6d; padding: 70px 50px 60px 50px; background: #fff; display: grid; box-shadow: 0 4px 12px rgb(0 0 0 / 10%);}
 .join-box .join span{margin-top: 10px;}
 .join-box .join input{margin: 10px 0px; height: 40px; }
 
-.join-box .join .checkDevLangDiv{margin: 10px 0; border: 1px solid #7d7d7d; overflow:hidden;}
+.join-box .join .checkDevLangDiv{margin: 10px 0; border: 1px solid #c0c4d7; overflow:hidden;}
 .join-box .join input[type="checkbox"]{margin: 10px 5px; height: 20px; }
+.join-box ul {padding: 7px;} /*3개 한 줄 차지*/
 .join-box ul li{float: left; width: 33.33%; } /*3개 한 줄 차지*/
 .join-box ul li:nth-child(3n+1) { clear: both; } /*4번째부터 스타일 초기화해서 다음 줄에 배치 */
 
-.join button{width: 100%; height: 40px; background: #1d3a6d; border: 1px solid #7d7d7d; color: #fff;}
-.join button:hover{background: #c0c4d7; color: #1d3a6d; border: 1px solid #c0c4d7;}
+.join button{width: 100%; height: 45px; background: #1d3a6d; border: 1px solid #c0c4d7; color: #fff; font-weight: 700;}
 
-.button{width: 30px; margin:0 auto;} /*이전 버튼*/
+.language-box {
+	margin-top: 40px;
+}
 
 .join-box body {
     font-size: 14px;
@@ -521,6 +534,7 @@ svg:not(:root) {
 .join-box label {
     display: inline-block;
     max-width: 100%;
+    margin-left: 3px;
     margin-bottom: 5px;
     font-weight: 700;
 }
@@ -529,18 +543,19 @@ svg:not(:root) {
     width: 100%;
     padding: 6px 12px;
     font-size: 14px;
-    border: 1px solid #ccc;
+    border: 1px solid #c0c4d7;
     border-radius: 4px;
     }
 .join-box .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .join-box .form-group a {
     color: #1d3a6d;
-    text-decoration: none;
+	font-weight: 700;
 }
 .id_check {
+	font-size: 0.8em;
     text-align: right;
 }
 .join-box .btn-success {
@@ -550,6 +565,7 @@ svg:not(:root) {
 }
 .join-box .btn {
     border-radius: 4px;
+    margin-top: 10px;
 }
 
 
