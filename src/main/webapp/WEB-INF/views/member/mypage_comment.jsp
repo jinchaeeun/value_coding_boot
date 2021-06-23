@@ -28,14 +28,13 @@
 		 	<div class="mypage-boardbox">
 		     <a href="#" onclick="deleteAllConfirm(); return false;">전체 삭제</a>
 		     
-		     
-		     <div class="MyCommentCnt" style="text-align:center; margin-top:200px;">
+
 	    		<c:if test="${MyCommentCnt == 0 }">
-	    			작성하신 답변이 없습니다!
+		    		<div class="MyCommentCnt" style="text-align:center; margin-top:200px;">
+		    			작성하신 답변이 없습니다!
+		    		</div>
 				</c:if>
-			</div>
-			
-		     
+
             	<ul>
 					<c:forEach items="${answerVO }" var="myComment">
 				<li>

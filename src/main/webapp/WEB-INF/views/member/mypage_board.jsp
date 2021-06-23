@@ -31,11 +31,12 @@
 		     <a href="#" onclick="deleteAllConfirm(); return false;">전체 삭제</a>
 		     
 		     
-		     <div class="mypostCnt" style="text-align:center; margin-top:200px;">
+		     
 	    		<c:if test="${MyPostCnt == 0 }">
-	    			작성하신 게시글이 없습니다.
+		    		<div class="mypostCnt"  style="text-align:center; margin-top:200px;">
+		    			작성하신 게시글이 없습니다.
+		    		</div>
 				</c:if>
-			</div>
 			
             	<ul>
 					<c:forEach items="${boardVO }" var="postVO">
