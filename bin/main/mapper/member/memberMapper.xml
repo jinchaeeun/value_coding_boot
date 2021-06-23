@@ -127,17 +127,27 @@
  	<!--  //내가 쓴 총 댓글 개수 --> 
  	 
  	 <!-- 내가 쓴 글 전체 삭제 -->
- 	 <delete id="DeleteMyPost" parameterType="memberVO">
+ 	 <update id="DeleteMyPost" parameterType="memberVO">
  	 <![CDATA[
- 	 	DELETE FROM T_POST WHERE po_write_Id = #{me_id} AND po_deleteYn = 'N';
+ 		UPDATE 
+ 			T_POST
+ 		SET 
+			po_deleteYn = 'Y'
+		WHERE 
+			po_write_Id = #{me_id};
  	 ]]>
- 	 </delete>
+ 	 </update>
  	 <!-- //내가 쓴 글 전체 삭제 -->
  	 
  	 <!-- 내가 쓴 댓글 전체 삭제 -->
  	 <delete id="DeleteMyComment" parameterType="memberVO">
  	 <![CDATA[
- 	 	DELETE FROM t_answer WHERE ans_writer_Id = #{me_id};
+ 	 	UPDATE 
+ 			T_ANSWER
+ 		SET 
+			ans_deleteYn = 'Y'
+		WHERE 
+			ans_writer_Id = #{me_id};
  	 ]]>
  	 </delete>
  	 <!-- //내가 쓴 댓글 전체 삭제 -->
