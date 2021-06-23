@@ -4,6 +4,10 @@
 <jsp:include page="../sub_header.jsp"></jsp:include>
 
 <div class="about-wrap">
+
+	<div class="circle-small"></div>
+	<div class="circle-big"></div>
+			
 	<div class="about-box">
 		<div class="about-hd section" id="section0">
 			<div class="about-img-logo">
@@ -11,90 +15,72 @@
 			</div>
 			<div class="about-comment">
 				<span>개발자의, 개발자에 의한, 개발자를 위한, <b>개발자 커뮤니티</b></span>
-				<br><br><br>
-				<p>가치 코딩은 개발자들이 서로 같이 가치 있는 코딩을 하기위해 만든 개발자 커뮤니티 입니다.</p>
+				<br><br>
+				<p>가<span class="point">치</span> 코딩</p>
 			</div>
 		</div> <!-- about-hd -->
-		<div class="about-intro section" id="section1">
-			<h2>한국의 수많은 개발자들</h2>
-			<p>우리나라의 수많은 개발자들과 예비 개발자들이 개발을 하고 있습니다.</p>
-			
-			<div class="about-intro-number">
-				<ul>
-					<li>
-						<p class="counter">300,000</p>
-						<span>SW 전문인력</span>
-					</li>
-					<li>
-						<p class="counter">32,000</p>
-						<span>매년 SW 전공 졸업자 수</span>
-					</li>
-					<li>
-						<p class="counter">26,000</p>
-						<span>SW 기업 수</span>
-					</li>
-				</ul>
-			</div>
-		</div>
-		
-		<!-- 카운트업 js -->
-		<script>
-			$('.counter').counterUp({
-				delay: 5,
-				time: 500
-			});
-		</script>
 		
 		<div class="about-body section" id="section2">
 			<div class="about-maker">
-				<h2>만든이들</h2>
 				<div class="about-dev">
 					<div class="about-dev-people">
 						<div class="about-dev-img">
-							<img alt="" src="../img/question.png">
+							<img alt="" src="../img/11.png">
 						</div>
 						<div class="about-dev-info">
-							<p>강아현 </p>
+							<h3>강아현 </h3>
 							<br>
-							<p>GitHub 주소 : </p>​
-							<p>E-mail : </p>​
-							<p>맡은 역할 : </p>
+							<span># 깃허브</span>
+							<p>https://github.com/Hyunstagram</p>
+							<span># 이메일</span>​
+							<p>fgrt1006@navar.com</p>
+							<span># 역할</span>​
+							<p>메인페이지 프론트엔드/백엔드 전담</p>
 						</div>
 					</div> <!-- about-dev-people -->
 					<div class="about-dev-people">
 						<div class="about-dev-img">
-							<img alt="" src="../img/question.png">
+							<img alt="" src="../img/44.png">
 						</div>
 						<div class="about-dev-info">
-							<p>김나현</p>
+							<h3>김나현</h3>
 							<br>
-							<p>GitHub 주소 : </p>​
-							<p>E-mail : </p>​
-							<p>맡은 역할 : </p>
+							<span># 깃허브</span>
+							<p>https://github.com/032605 </p>
+							<span># 이메일</span>​
+							<p>032605@naver.com</p>
+							<span># 역할</span>​
+							<p>마이페이지 프론트엔드/백엔드 전담</p>
 						</div>
 					</div> <!-- about-dev-people -->
 					<div class="about-dev-people">
 						<div class="about-dev-img">
-							<img alt="" src="../img/question.png">
+							<img alt="" src="../img/22.png">
 						</div>
 						<div class="about-dev-info">
-							<p>마제환 : Ma JeHwan</p>
+							<h3>마제환</h3>
 							<br>
-							<p>GitHub 주소 : https://github.com/mjh1583</p>​
-							<p>E-mail : mjh1583@naver.com</p>​
-							<p>맡은 역할 : 게시판의 HTML + CSS + 백엔드 구현</p>
+							<span># 깃허브</span>
+							<p>https://github.com/mjh1583</p>
+							<span># 이메일</span>​
+							<p>mjh1583@naver.com</p>
+							<span># 역할</span>​
+							<p>게시판 프론트엔드/백엔드 전담</p>
 						</div>
 					</div> <!-- about-dev-people -->
 					<div class="about-dev-people">
 						<div class="about-dev-img">
-							<img alt="" src="../img/question.png">
+							<img alt="" src="../img/33.png">
 						</div>
 						<div class="about-dev-info">
-							<p>진채은</p>
+							<h3>진채은</h3>
 							<br>
-							<p>GitHub 주소 : </p>​
-							<p>E-mail : </p>​
-							<p>맡은 역할 : </p>
+							<span># 깃허브</span>
+							<p>https://github.com/jinchaeeun</p>
+							<span># 이메일</span>​
+							<p>kbg05032@naver.com</p>
+							<span># 역할</span>​
+							<p>로그인/회원가입 프론트엔드/백엔드 전담</p>
 						</div>
 					</div> <!-- about-dev-people -->
 				</div> <!-- about-dev -->	
