@@ -42,7 +42,6 @@
 				$(this).children("ul").slideToggle(100)
 			})
 
-
 			let mouseCursor = document.querySelector(".cursor");
 			let aLinks = document.querySelectorAll("a");
 			let inputLinks = document.querySelectorAll("input");
@@ -105,7 +104,7 @@
 					mouseCursor.classList.remove("cursor-grow");
 				});
 			});
-
+			
 			goggleLinks.forEach((link) => {
 				link.addEventListener("mouseover", () => {
 					mouseCursor.classList.add("cursor-grow");
@@ -136,6 +135,11 @@
 			$(document).ready(function() {
 				document.querySelector(".circle-small").classList.add("go");
 				document.querySelector(".circle-big").classList.add("go");
+				
+	            let subCount = sub.childElementCount - 1;
+	            
+	            let x = document.getElementsByClassName("number")[0];
+	            x.innerText = subCount;
 			});
 
 		  AOS.init();

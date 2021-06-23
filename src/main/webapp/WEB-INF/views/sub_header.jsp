@@ -95,7 +95,7 @@
 									}
 								</script>
 							</li>
-
+						
 							<li><a href="<c:url value='/member/actionLogout.do'/>">로그아웃</a></li>
 							<li><a href="<c:url value='/member/mypage_activity'/>">마이페이지</a></li>
 							
@@ -104,7 +104,17 @@
 					            let SubCount = Sub.childElementCount - 1;
 					            
 					            let X = document.getElementsByClassName("number")[0];
-					            X.innerText = SubCount;
+					            X.innerText = SubCount;					            
+
+					            if (SubCount == 0) {
+					            	$('.delete-all').remove();					            	
+					            	
+						            let sub = document.querySelector('.notice-sub');
+						            let a = document.createElement('a');
+						            a.setAttribute('class', 'notice-zero');
+						            a.innerText = "알림 창이 텅텅 비었어요!";
+						            sub.append(a);           	
+					            }
 							</script>
 						</c:if>
 
@@ -140,8 +150,8 @@
 						</li>
 						
 						<li><a href="<c:url value='/coding/codingTest'/>"># 코딩연습</a></li>
-
-						<li><a href="none"># 만든이</a></li>
+						
+						<li><a href="<c:url value='/about/about'/>"># 만든이들</a></li>
 					</ul>
 				</div>
 			</div>

@@ -37,6 +37,10 @@ input[type="submit"]{cursor:pointer}
 input[type="checkbox"]{cursor:pointer}
 button {cursor:pointer}
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 textarea, select {font-family: Inter, "NEXON Lv1 Gothic OTF" !important; font-size:1em}
 select {margin:0; padding: 3px 5px}
 p {margin:0;padding:0;word-break:break-all}
@@ -62,7 +66,7 @@ img {
 	height: 0.8rem;
 	border: 2px solid var(--color-texta);
 	border-radius: 50%;
-	position: absolute;
+	position: fixed;
 	z-index: 1000;
 	transform: translate(-50%, -50%);
 	pointer-events: none;
@@ -882,7 +886,7 @@ body > div.mypage > div > form > div > div > button.delete_cancle {background :#
 .about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people .about-dev-info {display: inline-block; width: 50%; vertical-align: middle;}
 .about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people .about-dev-info span {font-size: 0.9rem;}
 .about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people .about-dev-info p {margin-top: 5px; margin-bottom: 20px; font-size: 1.2rem;}
-.about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people .about-dev-info h3 {font-size: 30px;  margin: 20px 0px 10px 0px;}
+.about-wrap .about-box .about-body .about-maker .about-dev .about-dev-people .about-dev-info h3 {font-size: 30px;  margin: 20px 0px 10px 0px; letter-spacing: 0.2rem}
 
 /* 코딩연습 */
 
