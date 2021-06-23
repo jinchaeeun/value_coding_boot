@@ -115,3 +115,5 @@ function deleteAllConfirm(){
 
 
 
+<!-- 하단 헤더 불러오기 -->
+ <jsp:include page="../sub_footer.jsp"></jsp:include>

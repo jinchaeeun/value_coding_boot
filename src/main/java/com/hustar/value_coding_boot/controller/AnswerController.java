@@ -101,8 +101,8 @@ public class AnswerController {
 		
 		AnswerVO answerVO = new AnswerVO();
 		
-		answerVO.setAns_num(ans_num);
-		answerVO.setAns_po_num(po_num);
+		answerVO.setAns_num(ans_num); // 답글 번호
+		answerVO.setAns_po_num(po_num); // 게시판 번호
 		
 		AnswerVO parentVO = answerService.detail(answerVO);
 		

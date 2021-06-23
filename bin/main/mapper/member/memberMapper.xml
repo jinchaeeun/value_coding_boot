@@ -98,6 +98,8 @@
 	   			ans_writer_Id = #{memberVO.me_id}
 	   		AND 
 	   			po_deleteYn = 'N'
+	   		AND 
+	   			ans_deleteYn = 'N'
 	   		ORDER BY ans_datetime DESC
 	   		LIMIT #{displayPost}, #{postNum};
    		]]>

@@ -44,7 +44,7 @@
 							</div>
 							<ul class="myquestion-manage">
 								<li><a href="<c:url value='/board/notice_updateView?po_num=${postVO.po_num}' />">수정</a></li>
-				  				<li class="myquestion-remove"><a href="#" onclick="deleteConfirm(${postVO.po_num});return false;">삭제</a></li>			
+				  				<li class="myquestion-remove"><a href="#" onclick="deleteConfirm( ${myComment.ans_num}, ${myComment.po_num});return false;">삭제</a></li>			
 							</ul>
 						</div>
 					</div>
@@ -98,12 +98,21 @@ $('#btn4').bind('click', function(event) {
 	   fn_getPage('./mypage_comment?num=1');
 		}); */
 
+		
+function deleteConfirm(ans_num, po_num){
+	if(confirm('삭제하시겠습니까?') == true) {
+		location.href = "/answer/delete?ans_num=" + ans_num + "&po_num= " + po_num;
+	}
+}
 
 
 function deleteAllConfirm(){
 	if(confirm('전체 삭제하시겠습니까?') == true) {
-		location.href = '<c:url value='/member/mypage_CommentDelete.do' />';
+		location.href = '/member/mypage_CommentDelete.do';
 	}
 }
 
 </script>
+
+<!-- 하단 헤더 불러오기 -->
+ <jsp:include page="../sub_footer.jsp"></jsp:include>

@@ -171,7 +171,7 @@ public class MemberController {
 		//게시글 전체 삭제
 		service.DeleteMyPost(loginVO);
 		
-		return "redirect:/member/mypage_board";
+		return "redirect:/member/mypage_board?num=1";
 	}
 	
 
@@ -233,7 +233,7 @@ public class MemberController {
 		//댓글 전체 삭제
 		service.DeleteMyComment(loginVO);
 		
-		return "redirect:/member/mypage_comment";
+		return "redirect:/member/mypage_comment?num=1";
 	}
 	
 	

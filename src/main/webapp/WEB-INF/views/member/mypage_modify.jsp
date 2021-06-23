@@ -151,3 +151,6 @@ function mypageSNS_SubmitForm(form){
 };
 
 </script>
+
+<!-- 하단 헤더 불러오기 -->
+ <jsp:include page="../sub_footer.jsp"></jsp:include>
