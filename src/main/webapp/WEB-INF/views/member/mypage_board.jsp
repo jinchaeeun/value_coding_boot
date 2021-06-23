@@ -29,26 +29,34 @@
         	
 		 	<div class="mypage-boardbox">		
 		     <a href="#" onclick="deleteAllConfirm(); return false;">전체 삭제</a>
+		     
+		     
+		     <div class="mypostCnt" style="text-align:center; margin-top:200px;">
+	    		<c:if test="${MyPostCnt == 0 }">
+	    			작성하신 게시글이 없습니다.
+				</c:if>
+			</div>
+			
             	<ul>
 					<c:forEach items="${boardVO }" var="postVO">
-					<li id ="boardList">
-						<div class="myquestion">
-							<ul class="mypage-board">
-								<li> 게시판 | <c:out value=" ${postVO.po_boardname }" /> <c:out value=" ${postVO.po_num }" /></li>
-								<li><h2><a href="<c:url value='/board/notice_view?po_num=${postVO.po_num }' />"><c:out value="${postVO.po_title }" /></a></h2></li>
-								<li>${postVO.po_contents }</li>
-							</ul>
-							<div class="mypage-boardinfo">
-								<div class="myboard-cnt">
-									<span style="color:#1d3a6d"><c:out value="${postVO.po_ans_cnt }" /></span>
-								</div>
-								<ul class="myquestion-manage">
-									<li><a href="<c:url value='/board/notice_updateView?po_num=${postVO.po_num}' />">수정</a></li>
-					  				<li class="myquestion-remove"><a href="#" onclick="deleteConfirm(${postVO.po_num});return false;">삭제</a></li>			
+						<li id ="boardList">
+							<div class="myquestion">
+								<ul class="mypage-board">
+									<li> 게시판 | <c:out value=" ${postVO.po_boardname }" /> <c:out value=" ${postVO.po_num }" /></li>
+									<li><h2><a href="<c:url value='/board/notice_view?po_num=${postVO.po_num }' />"><c:out value="${postVO.po_title }" /></a></h2></li>
+									<li>${postVO.po_contents }</li>
 								</ul>
+								<div class="mypage-boardinfo">
+									<div class="myboard-cnt">
+										<span style="color:#1d3a6d"><c:out value="${postVO.po_ans_cnt }" /></span>
+									</div>
+									<ul class="myquestion-manage">
+										<li><a href="<c:url value='/board/notice_updateView?po_num=${postVO.po_num}' />">수정</a></li>
+						  				<li class="myquestion-remove"><a href="#" onclick="deleteConfirm(${postVO.po_num});return false;">삭제</a></li>			
+									</ul>
+								</div>
 							</div>
-						</div>
-					</li>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -113,6 +121,13 @@ function deleteAllConfirm(){
 }
 </script>
 
+<script>
+
+
+function testtest(postVO){
+	console.log(postVO.length);	
+}
+</script>
 
 
 <!-- 하단 헤더 불러오기 -->

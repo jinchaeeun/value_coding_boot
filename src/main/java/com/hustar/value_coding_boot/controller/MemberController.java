@@ -140,6 +140,16 @@ public class MemberController {
 		// 게시물의 개수 
 		page.setCount(service.getMyPostCnt(loginVO));
 		
+		// 내가 쓴 총 게시물 수
+		int MyPostCnt = 0;
+
+		try {
+			MyPostCnt = service.getMyPostCnt(loginVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("MyPostCnt", MyPostCnt);
+		
 		model.addAttribute("page", page);
 		model.addAttribute("select", num);
 		
@@ -200,6 +210,17 @@ public class MemberController {
 		// 게시물의 개수 
 		page.setCount(service.getMyCommentCnt(loginVO));
 		
+		// 내가 쓴 총 댓글 수
+		int MyCommentCnt = 0;
+		
+		// po_writer를 받고 저장 서비스를 불러와 서비스 안에 po_writer
+		try {
+			MyCommentCnt = service.getMyCommentCnt(loginVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("MyCommentCnt",MyCommentCnt);
+		
 		model.addAttribute("page", page);
 		model.addAttribute("select", num);
 		
@@ -255,7 +276,6 @@ public class MemberController {
 		int MyCommentCnt = 0;
 		
 		// po_writer를 받고 저장 서비스를 불러와 서비스 안에 po_writer
-		
 		try {
 			MyPostCnt = service.getMyPostCnt(loginVO);
 			MyCommentCnt = service.getMyCommentCnt(loginVO);
