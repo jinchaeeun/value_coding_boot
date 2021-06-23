@@ -611,18 +611,19 @@ svg:not(:root) {
 
 /* 마이페이지 board */
 .myquestion {display:flex; text-align:left;}
-.mypage-boardbox {text-align:end; height: 520px; overflow-y: scroll;}
+.mypage-boardbox {text-align:end; height: 520px;}
 .mypage-boardbox > a {color : gray; font-size: 0.8rem; margin-right: 20px;}
 .mypage-boardbox > ul > li {border-bottom:1px solid #ddd;}
 
 .myquestion > ul {padding: 15px; }
-.myquestion > ul > li {padding: 5px 0; }
-.myquestion > ul > li:nth-child(1){color:gray; font-size: 0.8rem; margin-bottom: 15px;}
+.myquestion > ul > li {padding: 5px 0;}
+.myquestion > ul > li:nth-child(1){color:gray; font-size: 0.8rem; margin-bottom: 10px;}
 .myquestion > ul > li:nth-child(2) > h2 {font-size:17px;}
+.myquestion > ul > li:nth-child(3) {overflow-y: scroll; max-height: 50px;}
 .mypage-board {width:83%;}
 .mypage-manage {width: 15%;}
 
-.mypage-boardinfo{align-self: center; padding:8px; }
+.mypage-boardinfo{align-self: center; padding:8px; padding-top: 38px;}
 .myquestion-remove {margin-left: 10px;}
 .myboard-cnt {text-align:center; padding: 5px; font-weight:bold;}
 .myboard-cnt > span {font-size:20px;}
