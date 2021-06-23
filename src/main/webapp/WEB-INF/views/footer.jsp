@@ -135,6 +135,11 @@
 			$(document).ready(function() {
 				document.querySelector(".circle-small").classList.add("go");
 				document.querySelector(".circle-big").classList.add("go");
+				
+	            let subCount = sub.childElementCount - 1;
+	            
+	            let x = document.getElementsByClassName("number")[0];
+	            x.innerText = subCount;
 			});
 
 		  AOS.init();

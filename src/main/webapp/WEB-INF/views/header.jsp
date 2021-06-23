@@ -155,7 +155,7 @@
 						
 						<li><a href="<c:url value='/coding/codingTest'/>"># 코딩연습</a></li>
 						
-						<li><a href="none"># 만든이</a></li>
+						<li><a href="<c:url value='/about/about'/>"># 만든이들</a></li>
 					</ul>
 				</div>
 			</div>

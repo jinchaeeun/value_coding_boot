@@ -1,8 +1,10 @@
 package com.hustar.value_coding_boot.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.hustar.value_coding_boot.service.CourseService;
 import com.hustar.value_coding_boot.vo.Course;
@@ -59,5 +62,14 @@ public class HomeController {
 		courseService.deleteCourseAll(loginVO.getMe_id());
 		
 		return "redirect:/";
+	}
+	
+	// 회원가입 메시지
+	@RequestMapping(value = "/about/about")
+	public String getAbout(HttpServletRequest request,
+			Model model) throws Exception {	
+		logger.info("get about");
+		
+		return "/about/about";
 	}
 }
