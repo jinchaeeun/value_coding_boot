@@ -17,8 +17,8 @@
                 <li class="mypage-tapmenu" id="btn1"><a href="/member/mypage_activity">내 활동</a></li>
                 <li class="mypage-tapmenu" id="btn2"><a href="/member/mypage_modify">정보 수정</a></li>
                 <hr>
-                <li class="mypage-tapmenu" id="btn3"><a href="/member/mypage_board?num=1">게시글</a></li>
-                <li class="mypage-tapmenu on" id="btn4"><a href="/member/mypage_comment?num=1">답변</a></li>
+                <li class="mypage-tapmenu" id="btn3"><a href="/member/mypage_board?num=1">내 게시글</a></li>
+                <li class="mypage-tapmenu on" id="btn4"><a href="/member/mypage_comment?num=1">내 답변</a></li>
             </ul>
             
 	
@@ -43,7 +43,8 @@
 								<span style="color:#1d3a6d"><c:out value="${postVO.po_ans_cnt }" /></span>
 							</div>
 							<ul class="myquestion-manage">
-								<li><a href="<c:url value='/board/notice_updateView?po_num=${postVO.po_num}' />">수정</a></li>
+								<!-- 
+								<li><a href="#" onclick="modifyComment (${myComment.ans_num}, ${myComment.po_num}); return false;">수정</a></li> -->
 				  				<li class="myquestion-remove"><a href="#" onclick="deleteConfirm( ${myComment.ans_num}, ${myComment.po_num});return false;">삭제</a></li>			
 							</ul>
 						</div>
@@ -111,6 +112,19 @@ function deleteAllConfirm(){
 		location.href = '/member/mypage_CommentDelete.do';
 	}
 }
+
+
+/*
+function modifyComment(ans_num, po_num) {
+	if(confirm('댓글 수정을 위해 해당 페이지로 이동합니다.') == true) {
+		location.href = "/answer/update?ans_num=" + ans_num + "&po_num=" + po_num;
+	}
+	
+}
+*/
+		
+
+
 
 </script>
 

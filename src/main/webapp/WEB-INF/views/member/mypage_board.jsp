@@ -17,8 +17,8 @@
                 <li class="mypage-tapmenu" id="btn1"><a href="/member/mypage_activity">내 활동</a></li>
                 <li class="mypage-tapmenu" id="btn2"><a href="/member/mypage_modify">정보 수정</a></li>
                 <hr>
-                <li class="mypage-tapmenu on" id="btn3"><a href="/member/mypage_board?num=1">게시글</a></li>
-                <li class="mypage-tapmenu" id="btn4"><a href="/member/mypage_comment?num=1">답변</a></li>
+                <li class="mypage-tapmenu on" id="btn3"><a href="/member/mypage_board?num=1">내 게시글</a></li>
+                <li class="mypage-tapmenu" id="btn4"><a href="/member/mypage_comment?num=1">내 답변</a></li>
             </ul>
             
 
