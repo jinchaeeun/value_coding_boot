@@ -41,7 +41,7 @@
 					<div class="myquestion">
 						<ul class="mypage-board">
 							<li> 게시판 | <c:out value=" ${myComment.po_boardname } " /> ${myComment.po_num } ${myComment.po_title }</li>
-							<li><h2><a href="<c:url value='/board/notice_view?po_num=${postVO.po_num }' />"><c:out value="${myComment.ans_contents }" /></a></h2></li>
+							<li><h2><a href="<c:url value='/board/notice_view?po_num=${myComment.po_num }' />"><c:out value="${myComment.ans_contents }" /></a></h2></li>
 							<li>${myComment.ans_datetime }</li>
 						</ul>
 						<div class="mypage-boardinfo">
